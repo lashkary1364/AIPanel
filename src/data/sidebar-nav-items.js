@@ -55,6 +55,12 @@ export default function () {
       to: "/expencelist",
     },
     {
+      title: "واتیف",
+      htmlBefore: '<i class="material-icons">note_add</i>',
+        // '<i class="material-icons">error</i>',
+      to: "/test",
+    },
+    {
       title: "گزارش تست",
       htmlBefore: '<i class="material-icons">note_add</i>',
         // '<i class="material-icons">error</i>',

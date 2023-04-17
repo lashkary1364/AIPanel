@@ -14,6 +14,9 @@ import PrivateRoute from "./PrivateRoute";
 
 import {Home2} from './home2'
 import { echart1 } from "./echart1";
+import { echart2 } from "./chart2";
+import { echart3 } from "./chart3";
+import { main } from "./main";
 
 // import { ToastProvider } from 'react-toast-notifications'
 
@@ -42,8 +45,11 @@ export default () => (
 })} */}
 
       <Route path="/" key={100000} exact component={Login} />
+      <Route path="/main" key={100000} exact component={main} />
       {/* <Route path="/home2" key={100001} exact component={Home2} /> */}
       <Route path="/chart" key={100001} exact component={echart1} />
+      <Route path="/chart2" key={100001} exact component={echart2} />
+      <Route path="/chart3" key={100001} exact component={echart3} />
 {/* </ToastProvider> */}
 
 {/* </ToastProvider> */}

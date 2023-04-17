@@ -27,6 +27,7 @@ import { Home, home } from "./views/Home";
 import { Designer, stimulreport } from "./views/stimulreport";
 import { Home2 } from "./home2";
 import DefaulCustomeLayout from "./layouts/DefaultCustome";
+import { test } from "./views/reports/test";
 
 export default [
   // {
@@ -136,6 +137,11 @@ export default [
     path:"/stimulreport",
     layout: DefaultLayout,
     component: Designer
+  },
+  {
+    path:"/test",
+    layout: DefaultLayout,
+    component: test
   }
  
 ];

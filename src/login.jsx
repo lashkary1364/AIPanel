@@ -36,7 +36,7 @@ const Login = () => {
         password: Yup.string()
             .required('فیلد پسورد الزامی است')
             .min(1, 'Password must be at least 6 characters'),
-        mohit: Yup.string().required('محیط کاربری الزامی است'),
+       // mohit: Yup.string().required('محیط کاربری الزامی است'),
         //.max(40, 'Password must not exceed 40 characters'),
         // confirmPassword: Yup.string()
         //   .required('Confirm Password is required')
@@ -49,7 +49,7 @@ const Login = () => {
         {
             userName: '',
             password: '',
-            mohit: ''
+           // mohit: ''
             //email: '',
             //password: '',
             // confirmPassword: '',
@@ -138,23 +138,23 @@ const Login = () => {
 
     });
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        getWorkEnvironment();
+    //     getWorkEnvironment();
 
-    }, []);
+    // }, []);
 
 
-    useEffect(
-        () => {
-            console.log("gggggggggggggggg11111111111")
-            mohitItems.map(data => {
-                console.log(data.Id);
-                console.log(data.Name)
-            })
-        },
-        [mohitItems],
-    )
+    // useEffect(
+    //     () => {
+    //         console.log("gggggggggggggggg11111111111")
+    //         mohitItems.map(data => {
+    //             console.log(data.Id);
+    //             console.log(data.Name)
+    //         })
+    //     },
+    //     [mohitItems],
+    // )
 
 
     const getWorkEnvironment = () => {
@@ -202,7 +202,7 @@ const Login = () => {
         <div className="limiter">
             <div className="container-login100">
                 <div className="wrap-login100" style={{ padding: "0px", paddingBottom: "60px" }}>
-                    <label height="100%" width="100%" runat="server"></label>
+                    {/* <label height="100%" width="100%" runat="server"></label>
                     <div style={{ width: "500px", height: "215px", margin: "auto", marginTop: "40px", textAlign: "center" }}>
                         <label className="login100-form-title" style={{ margin: "auto", marginBottom: "0px", paddingBottom: "25px", direction: "rtl", color: "white", fontFamily: "IRANSans", fontSize: "20px" }}>اطلاعیه ها</label>
                         <div style={{ textAlign: "right", marginTop: "0px" }}>
@@ -218,7 +218,7 @@ const Login = () => {
                             <br />
                             <span style={{ color: "white", fontWeight: "500", fontSize: "12px", fontFamily: "IRANSans" }}>. ٦.مرخصي ها در موعد مقرر و با تاييد سرپرست انجام شود</span>
                         </div>
-                    </div>
+                    </div> */}
 
                     <form className="login100-form validate-form" style={{ margin: "auto", marginTop: "40px" }} onSubmit={formik.handleSubmit} >
                         <span className="login100-form-title" style={{ color: "white", fontFamily: "IRANSans", fontSize: "20px" }}>
@@ -245,7 +245,7 @@ const Login = () => {
                                 ''
                         }
 
-                        <div className={formik.errors.mohit && formik.touched.mohit ? 'wrap-input100 validate-input alert-validate' : ' wrap-input100 validate-input'}
+                        {/* <div className={formik.errors.mohit && formik.touched.mohit ? 'wrap-input100 validate-input alert-validate' : ' wrap-input100 validate-input'}
                             style={{ direction: "rtl", fontFamily: "IRANSans" }} data-validate="محیط کاربری ضروری است" >
                             <FormSelect style={{ direction: "rtl", height: "40px", fontFamily: "IRANSans", borderRadius: "25px" }}
                                 onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.mohit}
@@ -264,7 +264,7 @@ const Login = () => {
                             <span className="symbol-input100" style={{ direction: "rtl" }}>
                                 <i className="fa fa-home" aria-hidden="true" style={{ direction: "rtl", marginRight: "10px" }}></i>
                             </span>
-                        </div>
+                        </div> */}
                         {/* {
                             ErrorFlag == true ?
                                 <div style={{ direction: "rtl", color: "red", textAlign: "right" }}><i className='fa fa-warning pl-2'></i><span>وارد کردن محیط کاربری الزامی است</span></div>

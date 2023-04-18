@@ -69,11 +69,13 @@ export const Home2 = () => {
 
     return (
         <div style={{  fontSize: "13px", fontFamily: "IRANSans" }}>
+
             <Container fluid className="main-content-container px-4" >
                 <Row></Row>
                 {/* Page Header */}
                 <Row className="page-header py-4 " dir="rtl" >
-                    <PageTitle sm="4" title="شرکت نرم افزاری دکا" subtitle="Components" className="text-sm-right" />
+                    {/* <PageTitle sm="4" title="شرکت نرم افزاری دکا" subtitle="Components" className="text-sm-right" /> */}
+                    <PageTitle sm="4" title="شرکت نرم افزاری دکا"  className="text-sm-right" />
                 </Row>
 
                 {/* First Row of Posts */}
@@ -111,7 +113,8 @@ export const Home2 = () => {
                                     <span className="text-muted">{post.date}</span>
                                 </CardBody>
                                 <CardFooter dir="rtl" className="text-muted border-top py-3">
-                                    <span className="d-inline-block">                                       
+                                    <span className="d-inline-block">
+                                       
                                         <a className="text-primary" href="/main">
                                            ورود به سیستم
                                         </a>{" "}

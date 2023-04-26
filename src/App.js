@@ -20,6 +20,7 @@ import { main } from "./main";
 import { main2 } from "./main2";
 import { RepChart } from "./RepChart";
 import { Home } from "@material-ui/icons";
+import { test } from "./views/reports/test";
 
 // import { ToastProvider } from 'react-toast-notifications'
 
@@ -48,13 +49,14 @@ export default () => (
 })} */}
 
       <Route path="/" key={100000} exact component={Login} />
-      <Route path="/main" key={100000} exact component={main} />
-       {/* <Route path="/home2" key={100001} exact componen={Home2} />  */}
-      <Route path="/chart" key={100001} exact component={echart1} />
-      <Route path="/chart2" key={100001} exact component={echart2} />
-      <Route path="/chart3" key={100001} exact component={echart3} />
-      <Route path="/repchart" key={100001} exact component={RepChart} />
-     
+      {/* <Route path="/test" key={100001} exact component={test} /> */}
+      <Route path="/main" key={100002} exact component={main} />
+       {/* <Route path="/home2" key={100003} exact componen={Home2} />  */}
+      <Route path="/chart" key={100004} exact component={echart1} />
+      <Route path="/chart2" key={100005} exact component={echart2} />
+      <Route path="/chart3" key={100006} exact component={echart3} />
+      <Route path="/repchart" key={100007} exact component={RepChart} />
+        <Route path="/test" key={100008} exact component={test} />
       
 {/* </ToastProvider> */}
 

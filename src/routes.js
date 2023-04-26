@@ -138,10 +138,10 @@ export default [
     layout: DefaultLayout,
     component: Designer
   },
-  {
-    path:"/test",
-    layout: DefaultLayout,
-    component: test
-  }
+  // {
+  //   path:"/test",
+  //   layout: DefaultLayout,
+  //   component: test
+  // }
  
 ];

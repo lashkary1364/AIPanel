@@ -11,16 +11,14 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 import '../src/login/css/fontiran.css'
 import './assets/ag-grid.css'
 import PrivateRoute from "./PrivateRoute";
-
-import {Home2} from './home2'
 import { echart1 } from "./echart1";
 import { echart2 } from "./chart2";
 import { echart3 } from "./chart3";
 import { main } from "./main";
-import { main2 } from "./main2";
-import { RepChart } from "./RepChart";
-import { Home } from "@material-ui/icons";
-import { test } from "./views/reports/test";
+
+
+import { chart1 } from "./views/chart1";
+import { BarChart } from "./views/BarChart";
 
 // import { ToastProvider } from 'react-toast-notifications'
 
@@ -48,19 +46,18 @@ export default () => (
   );
 })} */}
 
-      <Route path="/" key={100000} exact component={Login} />
-      {/* <Route path="/test" key={100001} exact component={test} /> */}
-      <Route path="/main" key={100002} exact component={main} />
-       {/* <Route path="/home2" key={100003} exact componen={Home2} />  */}
+      <Route path="/" key={100000} exact component={Login} />    
+      <Route path="/main" key={100002} exact component={main} />     
       <Route path="/chart" key={100004} exact component={echart1} />
       <Route path="/chart2" key={100005} exact component={echart2} />
-      <Route path="/chart3" key={100006} exact component={echart3} />
-      <Route path="/repchart" key={100007} exact component={RepChart} />
-        <Route path="/test" key={100008} exact component={test} />
-      
-{/* </ToastProvider> */}
+      <Route path="/chart3" key={100006} exact component={echart3} />      
+      <Route path="/barchart" key={100008} exact component={BarChart} />
+      <Route path="/chart1" key={100009} exact component={chart1} />
 
 {/* </ToastProvider> */}
+{/* </ToastProvider> */}
+
+
     </div>
 
   </Router>

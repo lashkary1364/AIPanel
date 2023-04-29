@@ -38,76 +38,65 @@ const Login = () => {
         initialValues:
         {
             userName: '',
-            password: '',
-          
+            password: '',          
         },
         validationSchema,
         // validateOnChange: false,
         // validateOnBlur: false,
         onSubmit: (data) => {
-             window.location.replace('/home2')
             
-             // axios(
-            //     {
-            //         url:serverAdress+ 'login',
-            //         method: "post",
-            //         data:
-            //         {
-            //             "UserName": data.userName,
-            //             "UserPasss": data.password,
-            //             "Imei": "1"
-            //         },
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //         },
-            //     }).then(function (response) {
+             const form = new FormData();
+
+             form.append("username",data.userName);
+             form.append("password",  data.password);
+           
+             axios(
+                {
+                    url:"http://82.115.24.35:8000/auth/token",
+                    method: "post",
+                    data:form,                   
+                    headers: {
+                        "Content-Type": "multipart/form-data" 
+                    },
+                }).then(function (response) {
+
                    
-            //         console.log("response: ")
-            //         console.log(response);
-            //         console.log(response.data.access_token)
+                    console.log("response: ")
+                    console.log(response);
+                    console.log(response.data.access_token)
 
-            //         sessionStorage.setItem("LoginTocken", JSON.stringify({
-            //             userFirstName: response.data.userFName,
-            //             userLastName: response.data.userLName,
-            //             UserId: response.data.userId,
-            //             userTocken: response.data.access_token,
-            //             lastMohitID: response.data.lastMohitID
-            //         }));
-
-            //         console.log("login token")
-            //         console.log(sessionStorage.getItem("LoginTocken"))
-
-
-            //         const date = new DateObject({ calendar: persian })
-            //         console.log(date.year)
-            //         sessionStorage.setItem("SalMali",date.year);
-
-                  
+                    sessionStorage.setItem("LoginTocken", JSON.stringify({
+                        userFirstName: data.userName,
+                        userLastName: data.password,
+                        userTocken: response.data.access_token,
+                        
+                    }));
 
                     
+                    
 
-            //         if (response.data.access_token != null) {
-            //             //  window.location = '/blog-overview'
-            //             //  this.props.history.replace('/blog-overview')
-            //             console.log("acess tocken")
-            //             console.log(response.data.access_token)
-            //             localStorage.setItem("access-tocken", response.data.access_token);
-            //            window.location.replace('/home2')
+                    if (response.data.access_token != null) {
+                        //  window.location = '/blog-overview'
+                        //  this.props.history.replace('/blog-overview')
+                        console.log("access tocken")
+                        console.log(response.data.access_token)
+                        localStorage.setItem("access-tocken", response.data.access_token);
+                      window.location.replace('/home2')
                    
 
-            //         } else {
-            //             setErrorFlag(true);
-            //         }
+                    } else {
+                        setErrorFlag(true);
+                    }
 
                   
 
-            //     }).catch(function (error) {
-            //         // handle error
-            //         setErrorFlag(true);
-            //         console.log("axois error: " + error);
-            //         console.log(ErrorFlag);
-            //         localStorage.clear();
-            //     })
+                }).catch(function (error) {
+                    // handle error
+                    setErrorFlag(true);
+                    console.log("axois error: " + error);
+                    console.log(ErrorFlag);
+                    localStorage.clear();
+                })
        
         }
     });

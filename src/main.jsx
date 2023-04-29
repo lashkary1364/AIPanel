@@ -53,7 +53,7 @@ export const main = () => {
                 alt="Waterfall"
               />
               <div className="card-body">
-                <a className="card-title text-primarry" href="/repchart">داشبورد</a>
+                <a className="card-title text-primarry" href="/barchart">داشبورد</a>
              
                 {/* <p className="card-text">
                   Some quick example text to build on the card title and make up the bulk
@@ -73,7 +73,7 @@ export const main = () => {
                 alt="Sunset Over the Sea"
               />
               <div className="card-body">
-                <a className="card-title text-primary" href="/repchart">واتیف</a>
+                <a className="card-title text-primary" href="/barchart">واتیف</a>
                 {/* <p className="card-text">
                   Some quick example text to build on the card title and make up the bulk
                   of the card's content.

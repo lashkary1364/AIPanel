@@ -152,7 +152,6 @@ export const ExpenceDetail = () => {
         formik.setFieldValue("tarikhDetail", date.format("YYYY/MM/DD"));
     }
 
-
     const handleChangePrice = (value) => {
         formik.setFieldValue("price", value);
     }

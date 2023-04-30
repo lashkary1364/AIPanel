@@ -52,6 +52,7 @@ export const BarChart = () => {
 
     const changeAnalytics = (value) => {
         setIsChartVisible(false)
+       
         setX("")
         setY("")
 

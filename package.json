@@ -6,6 +6,7 @@
   "dependencies": {
     "@autocomplete/material-ui": "^0.0.17",
     "@fdefelici/react-bootstrap-combobox": "^1.13.0",
+    "@fontsource/roboto": "^4.5.8",
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free": "^6.3.0",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
@@ -59,6 +60,7 @@
     "react-toast-notifications": "^2.5.1",
     "react-toastify": "^9.1.1",
     "reactstrap": "^9.1.5",
+    "rsuite": "^5.33.0",
     "set-default-browser": "^1.1.2",
     "shards-react": "^1.0.0",
     "shortid": "^2.2.14",

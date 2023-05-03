@@ -17,7 +17,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 export const RepChart = () => {
 
-    const [sliderValue, setSliderValue] = useState(0);
+const [sliderValue, setSliderValue] = useState(0);
 
 
     //chart 1

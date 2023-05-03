@@ -25,6 +25,7 @@
     font-size: 11px;
 }
 
+
 @media only screen and (max-width: 500px) {
     .ag-root-wrapper.ag-layout-normal {
         height: 90%;

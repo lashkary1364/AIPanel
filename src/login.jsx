@@ -28,10 +28,9 @@ const Login = () => {
     
     const validationSchema = Yup.object().shape({
         userName: Yup.string().required('فیلد نام کاربری اجباری است'),       
-        password: Yup.string()
-            .required('فیلد پسورد الزامی است')
-            .min(1, 'Password must be at least 6 characters'),
-       
+        email: Yup.string().required('').email('فیلد پست الکترونیکی اجباری است'),
+        password: Yup.string().required('فیلد پسورد الزامی است')
+            .min(8, 'فیلد پسورد حداقل 8 کاراکتر میباشد')       
     });
 
     const formik = useFormik({
@@ -61,19 +60,15 @@ const Login = () => {
                 }).then(function (response) {
 
                    
-                    console.log("response: ")
+                    console.log("response: ");
                     console.log(response);
-                    console.log(response.data.access_token)
+                    console.log(response.data.access_token);
 
                     sessionStorage.setItem("LoginTocken", JSON.stringify({
                         userFirstName: data.userName,
                         userLastName: data.password,
-                        userTocken: response.data.access_token,
-                        
+                        userTocken: response.data.access_token,                        
                     }));
-
-                    
-                    
 
                     if (response.data.access_token != null) {
                         //  window.location = '/blog-overview'
@@ -83,12 +78,9 @@ const Login = () => {
                         localStorage.setItem("access-tocken", response.data.access_token);
                       window.location.replace('/home2')
                    
-
                     } else {
                         setErrorFlag(true);
                     }
-
-                  
 
                 }).catch(function (error) {
                     // handle error
@@ -96,8 +88,7 @@ const Login = () => {
                     console.log("axois error: " + error);
                     console.log(ErrorFlag);
                     localStorage.clear();
-                })
-       
+                })       
         }
     });
 
@@ -189,8 +180,9 @@ const Login = () => {
                                 :
                                 ''
                         }
-                        <div className="container-login100-form-btn" style={{ fontFamily: "IRANSans" }}>
-                            <button className="login100-form-btn" type='submit' style={{ height: "40px", width: "150px", fontFamily: "IRANSans" }}>ورود</button>
+                        <div className="container-login100-form-btn form-inline" style={{ fontFamily: "IRANSans" }}>
+                            <button className="login100-form-btn" type='submit' style={{ height: "40px", width: "150px", fontFamily: "IRANSans" ,   }}>ثبت نام</button>
+                            <button className="login100-form-btn" type='submit' style={{ height: "40px", width: "150px", fontFamily: "IRANSans" , marginLeft:"10px"}}>ورود</button>
                         </div>
 
                     </form>

@@ -69,7 +69,6 @@ export const Home2 = () => {
 
     return (
         <div style={{  fontSize: "13px", fontFamily: "IRANSans" }}>
-
             <Container fluid className="main-content-container px-4" >
                 <Row></Row>
                 {/* Page Header */}
@@ -82,15 +81,13 @@ export const Home2 = () => {
                 <Row>
                     {PostsListOne.map((post, idx) => (
                         <Col lg="4" md="6" sm="12" className="mb-4" key={idx} >
-                            <Card small className="card-post card-post--1" >
+                            <Card small className="card-post card-post--1"   >
                                 <div
                                     className="card-post__image" 
-                                    style={{ backgroundImage: `url(${post.backgroundImage})` , height:"300px" }}
-                                >
+                                    style={{ backgroundImage: `url(${post.backgroundImage})` , height:"300px" }}>
                                     <Badge
                                         pill
-                                        className={`card-post__category bg-${post.categoryTheme}`}
-                                    >
+                                        className={`card-post__category bg-${post.categoryTheme}`}>
                                         {post.category}
                                     </Badge>
                                     {/* <div className="card-post__author d-flex">
@@ -103,13 +100,13 @@ export const Home2 = () => {
                                         </a>
                                     </div> */}
                                 </div>
-                                <CardBody dir="rtl" >
+                                <CardBody dir="rtl" style={{height:"400px"}} >
                                     <h5 className="card-title" >
                                         <a href="#" className="text-fiord-blue"  >
                                             {post.title}
                                         </a>
                                     </h5>
-                                    <p className="card-text d-inline-block mb-3" style={{minHeight:"250px"}}>{post.body}</p>
+                                    <p className="card-text d-inline-block mb-3"  >{post.body}</p>
                                     <span className="text-muted">{post.date}</span>
                                 </CardBody>
                                 <CardFooter dir="rtl" className="text-muted border-top py-3">

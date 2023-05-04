@@ -202,7 +202,7 @@ textarea:focus, input:focus {
   /*------------------------------------------------------------------
   [  ]*/
   .limiter .login100-form {
-    width: 290px;
+    /* width: 290px; */
   }
   
   .limiter .login100-form-title {

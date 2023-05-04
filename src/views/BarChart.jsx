@@ -9,7 +9,7 @@ import ReactECharts from 'echarts-for-react';
 import ReactLoading from 'react-loading';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import '../assets/slider.css'
-
+import { Spinner } from 'react-bootstrap';
 export const BarChart = () => {
 
   const accessToken = localStorage.getItem("access-tocken");
@@ -27,7 +27,7 @@ export const BarChart = () => {
   const [isChartVisible, setIsChartVisible] = useState(false);
 
   useEffect(() => {
-    
+
     setOption({
       xAxis: {
         type: 'category',
@@ -42,8 +42,8 @@ export const BarChart = () => {
           type: 'bar'
         }
       ]
-    });   
-  }, [x,y,setX,setY]);
+    });
+  }, [x, y, setX, setY]);
 
   const bbn_brandwagen = [
 
@@ -198,8 +198,8 @@ export const BarChart = () => {
         const arr = JSON.parse(itemsArray)
         console.log(arr)
 
-         setX([]);
-         setY([]);
+        setX([]);
+        setY([]);
 
         if (shakhes == "rsi_change") {
           arr.map((item, index) => {
@@ -226,7 +226,7 @@ export const BarChart = () => {
         setIsLoadingVisible(false);
         setIsChartVisible(true);
 
-       
+
 
         console.log(x);
         console.log(y);
@@ -326,7 +326,7 @@ export const BarChart = () => {
 
 
   const bbn_brandwagen_handleChange = (event, newValue, activeThumb) => {
-    
+
     setIsChartVisible(false)
     setChartName("نمودار رفتار توده ای")
     setX([])
@@ -360,7 +360,7 @@ export const BarChart = () => {
   }
 
   const bbn_total_index_handleChange = (event, newValue, activeThumb) => {
-   
+
     setIsChartVisible(false)
     setChartName("نمودار شاخص کل")
     setX([])
@@ -399,7 +399,7 @@ export const BarChart = () => {
   }
 
   const bbn_attitude_handleChange = (event, newValue, activeThumb) => {
-    
+
     setIsChartVisible(false)
     setChartName("نمودار نگرش")
     setX([])
@@ -440,7 +440,7 @@ export const BarChart = () => {
   }
 
   const bbn_news_handleChange = (event, newValue, activeThumb) => {
-   
+
     setIsChartVisible(false)
     setChartName("نمودار اخبار")
     setX([])
@@ -470,7 +470,6 @@ export const BarChart = () => {
         form.append("target", shakhes);
         setChart(form);
         return newValue;
-
       default:
         form.append("var_value", "positive");
         form.append("target", shakhes);
@@ -481,7 +480,7 @@ export const BarChart = () => {
   }
 
   const bbn_mood_handleChange = (event, newValue, activeThumb) => {
-    
+
     setIsChartVisible(false)
     setChartName("نمودار حالت")
     setX([])
@@ -526,7 +525,7 @@ export const BarChart = () => {
   }
 
   const bbn_decision_handleChange = (event, newValue, activeThumb) => {
-    
+
     setIsChartVisible(false)
     setChartName("نمودار تصمیم")
     setX([])
@@ -569,7 +568,7 @@ export const BarChart = () => {
   }
 
   const bbn_sentiment_handleChange = (event, newValue, activeThumb) => {
-   
+
     setIsChartVisible(false)
     setChartName("نمودار احساسات")
     setX([])
@@ -609,7 +608,7 @@ export const BarChart = () => {
   }
 
   const rsi_change_handleChange = (event, newValue, activeThumb) => {
-  
+
     setIsChartVisible(false)
     setChartName("نمودار شاخص rsi")
     setX([])
@@ -647,7 +646,7 @@ export const BarChart = () => {
   }
 
   const change_handleChange = (event, newValue, activeThumb) => {
-    
+
     setIsChartVisible(false)
     setChartName("نمودار قیمت")
     setX([])
@@ -851,8 +850,15 @@ export const BarChart = () => {
           </Col>
 
           <Col md="6">
-            {isLoadingVisible ? <ReactLoading type="bars" color="black" height={100} width={100} className="d-flex justify-content-center" /> : ''}
-            {isChartVisible ? <label className='text-center d-flex justify-content-center' style={{ color: "rgb(63, 81, 181)", paddingTop: "10px", textDecoration: "underline" }}>{chartName}</label>
+            {isLoadingVisible && <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+              {/* <Spinner animation="border" role="status" ></Spinner> */}
+              <Spinner animation="grow" size="sm" variant="primary"/>            
+              <Spinner animation="grow" variant="primary"/>             
+              <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+            </div>
+            }
+            {/* // <ReactLoading type="bars" color="black" height={100} width={100} className="d-flex justify-content-center" /> : ''} */}
+            {isChartVisible ? <label className='text-center d-flex justify-content-center' style={{ color: "rgb(63, 81, 181)", paddingTop: "10px", textDecoration: "underline", margin: "auto", width: "50%", padding: "auto" }}>{chartName}</label>
               : ''}
             {isChartVisible ? <ReactECharts option={option} /> : ""}
           </Col>

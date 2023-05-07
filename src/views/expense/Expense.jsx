@@ -437,7 +437,6 @@ export const Expense = () => {
             <span className="breadcrumb-item active">مدیریت صورت هزینه ها</span>          
           </nav>
         </Col>
-
         <Col lg="12" >
           <Card small className="mb-2">
             <ListGroup flush>
@@ -512,8 +511,6 @@ export const Expense = () => {
                       {tarikhError == true ? <div style={{ marginTop: "0.25rem", fontSize: "80%", color: "#c4183c", fontFamily: 'IRANSans', }}>فیلد تاریخ اجباری است</div> : ''}
                     </Col>
                   </Row>
-
-
                   <Row>
                     <Col md="4" className="form-group">
                       <label htmlFor="sharh">شرح*:</label>
@@ -545,11 +542,11 @@ export const Expense = () => {
                       </div>
                     </Col>
                   </Row>
-
                   <Row>
                     <Col className="form-group">
                       <div className='form-inline'>
-                        {operation == "add" ?
+                        {
+                        operation == "add" ?
                           <Button theme="primary" className="mb-2 mr-1" type="submit" disabled={isAction == true ? true : false} >
                             <span className='form-inline'>
                               ثبت

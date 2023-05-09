@@ -12,7 +12,7 @@ import {
 } from "shards-react";
 // import PageTitle from './components/common/PageTitle';
 //import '../src/images/home/'
-export const Home2 = () => {
+export const Home = () => {
 
 
     const [PostsListOne] = useState([

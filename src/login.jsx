@@ -6,11 +6,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 
-
-
-
 const Login = () => {
-
 
     const [ErrorFlag, setErrorFlag] = useState(false);
 
@@ -59,7 +55,7 @@ const Login = () => {
                         console.log("access tocken")
                         console.log(response.data.access_token)
                         localStorage.setItem("access-tocken", response.data.access_token);
-                        window.location.replace('/home2')
+                        window.location.replace('/home')
 
                     } else {
                         setErrorFlag(true);

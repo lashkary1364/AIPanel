@@ -687,11 +687,18 @@ export const BarChart = () => {
   return (
 
     <Container fluid className="main-content-container px-4">
+     <Row className="page-header mt-2 ">
+                <Col lg="12" dir="rtl"  >
+                    <nav className="breadcrumb">
+                        <a className="breadcrumb-item" href="/home">خانه</a>
+                        <a className="breadcrumb-item" href="/main">صفحه قبلی</a>
+                        <span className="breadcrumb-item active">نمودار واتیف</span>
+                    </nav>
+                </Col>
+            </Row>
       <div style={{ borderRadius: "8px", border: "2px solid #dbd7d9", padding: "5px", marginTop: "20px" }}>
         <Row>
-
           <Col md="6" >
-
             <Col>
               <ToggleButtonGroup className='d-flex justify-content-center'
                 color="primary"
@@ -814,39 +821,7 @@ export const BarChart = () => {
                   marks={bbn_sentiment}
                 />
               </Box>
-            </Col>
-
-            <Col className="form-inline">
-              <label style={{ marginRight: "10px", width: 200 }}>شاخص rsi</label>
-              <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                <Slider
-                  // aria-label="Restricted values"
-                  defaultValue={0}
-                  valueLabelFormat={rsi_change_Format}
-                  getAriaValueText={rsi_change_Text}
-                  onChange={rsi_change_handleChange}
-                  step={null}
-                  // valueLabelDisplay="auto"
-                  marks={rsi_change}
-                />
-              </Box>
-            </Col>
-
-            <Col className="form-inline">
-              <label style={{ marginRight: "10px", width: 200 }}>قیمت </label>
-              <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                <Slider
-                  // aria-label="Restricted values"
-                  defaultValue={0}
-                  valueLabelFormat={change_Format}
-                  getAriaValueText={change_Text}
-                  onChange={change_handleChange}
-                  step={null}
-                  // valueLabelDisplay="auto"
-                  marks={change}
-                />
-              </Box>
-            </Col>
+            </Col>           
           </Col>
 
           <Col md="6">

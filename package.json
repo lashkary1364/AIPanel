@@ -65,8 +65,7 @@
     "rsuite": "^5.33.0",
     "set-default-browser": "^1.1.2",
     "shards-react": "^1.0.0",
-    "shortid": "^2.2.14",
-    "stimulsoft-reports-js": "^2023.2.1",
+    "shortid": "^2.2.14",   
     "yup": "^0.32.11"
   },
   "scripts": {

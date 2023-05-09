@@ -21,6 +21,7 @@ import { chart1 } from "./views/chart1";
 import { BarChart } from "./views/BarChart";
 import { RepChart } from "./RepChart";
 import { loading } from "./views/loading";
+import { Register } from "./Register";
 
 // import { ToastProvider } from 'react-toast-notifications'
 
@@ -57,7 +58,7 @@ export default () => (
       <Route path="/chart1" key={100009} exact component={chart1} />
       <Route path="/repchart" key={100010} exact component={RepChart} />
       <Route path="/load" key={100011} exact component={loading} />
- 
+      <Route path="/register" key={100012} exact component={Register} />
 
 {/* </ToastProvider> */}
 {/* </ToastProvider> */}

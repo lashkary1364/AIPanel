@@ -8,7 +8,7 @@ import Slider from '@material-ui/core/Slider';
 import ReactECharts from 'echarts-for-react';
 import ReactLoading from 'react-loading';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
-import '../assets/slider.css'
+import './assets/slider.css'
 import { Spinner } from 'react-bootstrap';
 export const BarChart = () => {
 

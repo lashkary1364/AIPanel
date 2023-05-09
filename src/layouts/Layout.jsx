@@ -1,7 +1,11 @@
 import React from 'react'
 
-export const Home = () => {
+ export  const Layout = () => {
   return (
     <div></div>
   )
 }
+
+
+
+export default Layout;

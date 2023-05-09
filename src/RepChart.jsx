@@ -17,7 +17,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 export const RepChart = () => {
 
-const [sliderValue, setSliderValue] = useState(0);
+    const [sliderValue, setSliderValue] = useState(0);
 
 
     //chart 1
@@ -138,31 +138,28 @@ const [sliderValue, setSliderValue] = useState(0);
 
     const optionGauage = {
         tooltip: {
-          formatter: '{a} <br/>{b} : {c}%'
+            formatter: '{a} <br/>{b} : {c}%'
         },
         series: [
-          {
-            name: 'Pressure',
-            type: 'gauge',
-            progress: {
-              show: true
-            },
-            detail: {
-              valueAnimation: true,
-              formatter: '{value}'
-            },
-            data: [
-              {
-                value: 50,
-                name: 'SCORE'
-              }
-            ]
-          }
+            {
+                name: 'Pressure',
+                type: 'gauge',
+                progress: {
+                    show: true
+                },
+                detail: {
+                    valueAnimation: true,
+                    formatter: '{value}'
+                },
+                data: [
+                    {
+                        value: 50,
+                        name: 'SCORE'
+                    }
+                ]
+            }
         ]
-      };
-
-
-
+    };
 
     return (
 
@@ -174,41 +171,39 @@ const [sliderValue, setSliderValue] = useState(0);
                         <span className="breadcrumb-item active">نمودارهای داشبورد و واتیف</span>
                     </nav>
                 </Col>
-              </Row>
-
-
-                        <Card small className="h-100">
-                            <CardBody className="pt-0">
-                                {/* <ListGroup flush>
+            </Row>
+            <Card small className="h-100">
+                <CardBody className="pt-0">
+                    {/* <ListGroup flush>
                             <ListGroupItem> */}
-                                <Row>
-                                    <Col lg="6">
-                                        <ReactECharts id="" option={option} />
-                                    </Col>
-                                    <Col lg="6">
-                                        <ReactSlider min={0} max={3}
-                                            className="horizontal-slider"
-                                            thumbClassName="example-thumb"
-                                            trackClassName="example-track"
-                                            renderThumb={(props, state) => <div {...props}>{setSliderValue(state.valueNow)}</div>}
-                                        />
-                                    </Col>
-                                </Row>
-                                <hr/>
-                                <Row>
-                                    <Col lg="6">
-                                        <ReactECharts id="" option={optionGauage} />
-                                    </Col>
-                                    <Col lg="6">
-                                    <textarea type="text" className='form-control'  placeholder="متن خبری" row='10' />  
-                                   
-                    
-                                    </Col>
-                                </Row>
-                                {/* </ListGroupItem>
+                    <Row>
+                        <Col lg="6">
+                            <ReactECharts id="" option={option} />
+                        </Col>
+                        <Col lg="6">
+                            <ReactSlider min={0} max={3}
+                                className="horizontal-slider"
+                                thumbClassName="example-thumb"
+                                trackClassName="example-track"
+                                renderThumb={(props, state) => <div {...props}>{setSliderValue(state.valueNow)}</div>}
+                            />
+                        </Col>
+                    </Row>
+                    <hr />
+                    <Row>
+                        <Col lg="6">
+                            <ReactECharts id="" option={optionGauage} />
+                        </Col>
+                        <Col lg="6">
+                            <textarea type="text" className='form-control' placeholder="متن خبری" row='10' />
+
+
+                        </Col>
+                    </Row>
+                    {/* </ListGroupItem>
                         </ListGroup> */}
-                            </CardBody>
-                        </Card>
+                </CardBody>
+            </Card>
 
 
 

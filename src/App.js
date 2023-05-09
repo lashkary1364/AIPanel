@@ -11,17 +11,10 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 import '../src/login/css/fontiran.css'
 import './assets/ag-grid.css'
 import PrivateRoute from "./PrivateRoute";
-import { echart1 } from "./echart1";
-import { echart2 } from "./chart2";
-import { echart3 } from "./chart3";
-import { main } from "./main";
-
-
-import { chart1 } from "./views/chart1";
-import { BarChart } from "./views/BarChart";
-import { RepChart } from "./RepChart";
-import { loading } from "./views/loading";
+import { main } from "./Main";
 import { Register } from "./Register";
+import { Dashboard } from "./Dashboard";
+import { BarChart } from "./BarChart";
 
 // import { ToastProvider } from 'react-toast-notifications'
 
@@ -50,16 +43,10 @@ export default () => (
 })} */}
 
       <Route path="/" key={100000} exact component={Login} />    
-      <Route path="/main" key={100002} exact component={main} />     
-      <Route path="/chart" key={100004} exact component={echart1} />
-      <Route path="/chart2" key={100005} exact component={echart2} />
-      <Route path="/chart3" key={100006} exact component={echart3} />      
-      <Route path="/barchart" key={100008} exact component={BarChart} />
-      <Route path="/chart1" key={100009} exact component={chart1} />
-      <Route path="/repchart" key={100010} exact component={RepChart} />
-      <Route path="/load" key={100011} exact component={loading} />
+      {/* <Route path="/main" key={100002} exact component={main} />    
+      {/* <Route path="/barchart" key={100008} exact component={BarChart} />  */}   
+      {/* <Route path="/dashboard" key={100013} exact component={Dashboard} /> */}
       <Route path="/register" key={100012} exact component={Register} />
-
 {/* </ToastProvider> */}
 {/* </ToastProvider> */}
 

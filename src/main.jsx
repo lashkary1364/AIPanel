@@ -1,16 +1,5 @@
 import React from 'react'
-import {
-    Container,
-    Row,
-    Col,
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Badge,ListGroup,ListGroupItem,Progress,
-    Button
-} from "shards-react";
-export const main = () => {
+export const Main = () => {
   return (
  
 <div
@@ -40,8 +29,7 @@ export const main = () => {
       <span class="visually-hidden">Next</span>
     </button> */}
  
-  <div className="carousel-inner py-4">
- 
+  <div className="carousel-inner py-4"> 
     <div className="carousel-item active ">
       <div className="container">
         <div className="row ">
@@ -53,7 +41,7 @@ export const main = () => {
                 alt="Waterfall"
               />
               <div className="card-body">
-                <a className="card-title text-primarry" href="/barchart">داشبورد</a>
+                <a className="card-title text-primarry" href="/dashboard">داشبورد</a>
              
                 {/* <p className="card-text">
                   Some quick example text to build on the card title and make up the bulk

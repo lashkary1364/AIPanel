@@ -5,13 +5,13 @@ import React, { useState } from "react";
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
-import { Register } from './Register';
+
 
 
 
 const Login = () => {
 
-    const [showModal, setShowModal] = useState(false)
+
     const [ErrorFlag, setErrorFlag] = useState(false);
 
     const validationSchema = Yup.object().shape({
@@ -27,12 +27,11 @@ const Login = () => {
             password: '',
         },
         validationSchema,
-        // validateOnChange: false,
-        // validateOnBlur: false,
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (data) => {
 
             const form = new FormData();
-
             form.append("username", data.userName);
             form.append("password", data.password);
 
@@ -46,7 +45,6 @@ const Login = () => {
                     },
                 }).then(function (response) {
 
-
                     console.log("response: ");
                     console.log(response);
                     console.log(response.data.access_token);
@@ -58,8 +56,6 @@ const Login = () => {
                     }));
 
                     if (response.data.access_token != null) {
-                        //  window.location = '/blog-overview'
-                        //  this.props.history.replace('/blog-overview')
                         console.log("access tocken")
                         console.log(response.data.access_token)
                         localStorage.setItem("access-tocken", response.data.access_token);
@@ -81,12 +77,7 @@ const Login = () => {
 
     const handleRegister = () => {
         window.location.replace('/register')
-        // setShowModal(true);
     }
-
-    const handleClick = () => {
-        setShowModal(false);
-    };
 
 
     return (

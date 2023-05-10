@@ -15,6 +15,7 @@ import { main } from "./Main";
 import { Register } from "./Register";
 import { Dashboard } from "./Dashboard";
 import { BarChart } from "./BarChart";
+import { NotFound } from "./NotFound";
 
 // import { ToastProvider } from 'react-toast-notifications'
 
@@ -47,6 +48,7 @@ export default () => (
       {/* <Route path="/barchart" key={100008} exact component={BarChart} />  */}   
       {/* <Route path="/dashboard" key={100013} exact component={Dashboard} /> */}
       <Route path="/register" key={100012} exact component={Register} />
+      <Route path="*" component={NotFound} />
 {/* </ToastProvider> */}
 {/* </ToastProvider> */}
 

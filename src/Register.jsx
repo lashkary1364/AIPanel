@@ -102,9 +102,15 @@ export const Register = ({ showLogin, handleClick }) => {
             {
                 url: "http://82.115.24.35:8000/auth/register",
                 method: "post",
-                data: form,
+                data:JSON.stringify({ "username": "shabnam4",
+                "email": "shabnam4@example.com",
+                "password": "shabnam4"})
+                //JSON.stringify(
+                    //{"username":data.username , "email":data.email ,"password":data.password }
+                  //  )
+                    ,
                 headers: {
-                    "Content-Type": "multipart/form-data"
+                    "Content-Type": "application/json"
                 },
             }).then(function (response) {
 

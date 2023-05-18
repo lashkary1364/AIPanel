@@ -9,7 +9,7 @@ export const NotFound = () => {
         <h2>404 </h2>
         {/* <h3>خطای 404</h3> */}
         <p>صفحه مورد نظر یافت نشد</p>
-        <Link type="button" className="btn btn-primary" to="/">&larr; برگشت به صفحه لاگین</Link>
+        <Link type="button" className="btn btn-primary" to="/Login">&larr; برگشت به صفحه لاگین</Link>
       </div>
     </div>
   </Container>

@@ -5,8 +5,20 @@ import React, { useState } from "react";
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
+import { useEffect } from 'react';
+import { Environment } from 'ag-grid-community';
 
 const Login = () => {
+
+    const serverAddress=process.env.REACT_APP_SERVER_ADRESS;
+
+    useEffect(() => {
+        sessionStorage.clear();
+        localStorage.clear();
+        console.log("env variable")
+        console.log(serverAddress+"auth/token")
+    }, [])
+    
 
     const [ErrorFlag, setErrorFlag] = useState(false);
 
@@ -33,7 +45,8 @@ const Login = () => {
 
             axios(
                 {
-                    url: "http://82.115.24.35:8000/auth/token",
+                   // http://sentisense.xyz:8500/
+                    url: serverAddress+"auth/token",
                     method: "post",
                     data: form,
                     headers: {

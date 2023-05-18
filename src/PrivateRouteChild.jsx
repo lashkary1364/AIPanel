@@ -4,15 +4,15 @@ import { Redirect, Route, useLocation } from 'react-router-dom'
 import routes from "./routes";
 import withTracker from "./withTracker";
 
-const PrivateRoute = () => {
+const PrivateRouteChild = () => {
     //const location = useLocation()
     //localStorage.setItem('user','1234')
     const location = window.location.pathname;
     // const currentURL = window.location.href
-    console.log("Current Location:")
-    console.log(location)
+    console.log("Current Location:");
+    console.log(location);
     console.log("access-tocken");
-    console.log(localStorage.getItem("access-tocken"))
+    console.log(localStorage.getItem("access-tocken"));
     // const [isAuth = false
     // if (localStorage.getItem("access-tocken")==null){
 
@@ -34,10 +34,11 @@ const PrivateRoute = () => {
                             exact={route.exact}
                             component={withTracker(props => {
                                 return (
-                                    <Route {...props}>
-                                        {/* //  <Component {...props} /> */}
-                                        <route.component {...props} />
-                                    </Route>
+                                   <Route {...props}>
+                                          <route.layout {...props}>
+                                            <route.component {...props} />
+                                        </route.layout>
+                                </Route>
                                 );
                             })}></Route>
 
@@ -53,4 +54,4 @@ const PrivateRoute = () => {
 
 
 
-export default PrivateRoute;
+export default PrivateRouteChild;

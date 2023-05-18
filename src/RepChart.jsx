@@ -209,7 +209,7 @@ export const RepChart = () => {
 
 
 
-        // </Container>
+        </Container>
 
         // <div class="container" >
         //     <h2>Card Header and Footer</h2>

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // import routes from "./routes";
 // import withTracker from "./withTracker";
@@ -11,22 +11,41 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 import '../src/login/css/fontiran.css'
 import './assets/ag-grid.css'
 import PrivateRoute from "./PrivateRoute";
-import { main } from "./Main";
+import PrivateRouteChild from "./PrivateRouteChild";
+import { Main, main } from "./Main";
 import { Register } from "./Register";
 import { Dashboard } from "./Dashboard";
 import { BarChart } from "./BarChart";
 import { NotFound } from "./NotFound";
+import { Home } from "./home";
+import { TransactionKpI } from "./TransactionKpI";
 
 // import { ToastProvider } from 'react-toast-notifications'
 
 export default () => (
-
+  // }
   <Router basename={process.env.REACT_APP_BASENAME || ""}>
-    <div>
+    <Switch>
+      {/* <PrivateRoute></PrivateRoute> */}
+      <Route path="/login" key={10000} exact component={Login} />
+      {/* <Route path="/menu" key={100010} component={TransactionKpI} />
+      <PrivateRoute exact path="/home" component={Home}  /> 
+      <PrivateRoute exact path="/main" component={Main}  /> 
+      <PrivateRoute exact path="/barchart" component={BarChart}  />  */}
+      <PrivateRouteChild></PrivateRouteChild>
+      {/* <Route path="/home" key={100001} exact component={Home} />
+      <Route path="/main" key={100002} exact component={Main} />
+      <Route path="/barchart" key={100003} exact component={BarChart} /> */}
+      {/* <Route path="/main" key={100002} exact component={main} />    
+      {/* <Route path="/barchart" key={100008} exact component={BarChart} />  */}
+      {/* <Route path="/dashboard" key={100013} exact component={Dashboard} /> */}
+      <Route path="/register" key={10004} exact component={Register} />
+      <Route path="/404" key={10005} component={NotFound} />
+      <Route path="*" component={NotFound} />
+    </Switch>
+    {/* <div> */}
     {/* <ToastProvider> */}
-      <PrivateRoute></PrivateRoute>
-
-      {/* {routes.map((route, index) => {
+    {/* {routes.map((route, index) => {
   return (
     <PrivateRoute
       key={index}
@@ -43,17 +62,12 @@ export default () => (
   );
 })} */}
 
-      <Route path="/" key={100000} exact component={Login} />    
-      {/* <Route path="/main" key={100002} exact component={main} />    
-      {/* <Route path="/barchart" key={100008} exact component={BarChart} />  */}   
-      {/* <Route path="/dashboard" key={100013} exact component={Dashboard} /> */}
-      <Route path="/register" key={100012} exact component={Register} />
-      <Route path="*" component={NotFound} />
-{/* </ToastProvider> */}
-{/* </ToastProvider> */}
+
+    {/* </ToastProvider> */}
+    {/* </ToastProvider> */}
 
 
-    </div>
+    {/* </div> */}
 
   </Router>
 );

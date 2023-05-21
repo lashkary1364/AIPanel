@@ -196,18 +196,12 @@ export const RepChart = () => {
                         </Col>
                         <Col lg="6">
                             <textarea type="text" className='form-control' placeholder="متن خبری" row='10' />
-
-
                         </Col>
                     </Row>
                     {/* </ListGroupItem>
                         </ListGroup> */}
                 </CardBody>
             </Card>
-
-
-
-
 
         </Container>
 

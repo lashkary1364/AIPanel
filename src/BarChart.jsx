@@ -17,7 +17,7 @@ export const BarChart = () => {
   const accessToken = localStorage.getItem("access-tocken");
   const [shakhes, setShakhes] = React.useState('rsi_change');
   const [chartName, setChartName] = React.useState("");
-  
+
   const handleChange = (event, newShakhes) => {
     setShakhes(newShakhes);
   };
@@ -31,7 +31,7 @@ export const BarChart = () => {
 
   const [isLoadingVisible, setIsLoadingVisible] = useState(false);
   const [isChartVisible, setIsChartVisible] = useState(false);
-  const [isDivVisible,setIsDivVisible]=useState("hidden")
+  const [isDivVisible, setIsDivVisible] = useState("hidden")
   useEffect(() => {
 
     setOption({
@@ -68,10 +68,10 @@ export const BarChart = () => {
           name: 'Access From',
           type: 'pie',
           radius: '50%',
-          data:dataChart,
-            // [
-            //   data.map((item, index) => { { value = item.x, name = item.y } })
-            // ],
+          data: dataChart,
+          // [
+          //   data.map((item, index) => { { value = item.x, name = item.y } })
+          // ],
 
           //{ value: 735, name: 'Direct' },
           // { value: 580, name: 'Email' },
@@ -90,7 +90,7 @@ export const BarChart = () => {
       ]
     });
 
-  }, [x, y, setX, setY , dataChart , setDataChart]);
+  }, [x, y, setX, setY, dataChart, setDataChart]);
 
   const bbn_brandwagen = [
 
@@ -193,9 +193,9 @@ export const BarChart = () => {
 
     if (accessToken == null)
       window.location.replace('/')
-    
-      setIsLoadingVisible(true)
-      setIsDivVisible("visible") 
+
+    setIsLoadingVisible(true)
+    setIsDivVisible("visible")
     console.log("form:")
     console.log(form)
 
@@ -247,12 +247,12 @@ export const BarChart = () => {
 
           });
         }
-        
+
         console.log("data of charts ...")
         console.log(dataChart);
         setIsLoadingVisible(false);
         setIsChartVisible(true);
-        setIsDivVisible("visible") 
+        setIsDivVisible("visible")
 
         console.log(x);
         console.log(y);
@@ -275,7 +275,7 @@ export const BarChart = () => {
         console.log(error)
         setIsLoadingVisible(false)
         setIsChartVisible(false)
-        setIsDivVisible("hidden") 
+        setIsDivVisible("hidden")
       });
   }
 
@@ -418,7 +418,7 @@ export const BarChart = () => {
     setChartName("نمودار نگرش")
     setX([])
     setY([])
-    setDataChart([]);    
+    setDataChart([]);
     setOption({});
     setOption1({});
 
@@ -817,8 +817,8 @@ export const BarChart = () => {
                 </div>
               </Col>
               <Col md="8" >
-               
-                <div style={{ borderRadius: "5px", border: "2px solid #dbd7d9", padding: "20px",visibility:isDivVisible }}>
+
+                <div style={{ borderRadius: "5px", border: "2px solid #dbd7d9", padding: "20px", visibility: isDivVisible }}>
 
                   {isLoadingVisible && <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
                     {/* <Spinner animation="border" role="status" ></Spinner> */}
@@ -833,9 +833,9 @@ export const BarChart = () => {
                   }
                   {isChartVisible ? <ReactECharts option={option} /> : ""}
                 </div>
-                <div style={{ borderRadius: "5px", border: "2px solid #dbd7d9", padding: "20px", marginTop: "5px" , visibility:isDivVisible }}>
+                <div style={{ borderRadius: "5px", border: "2px solid #dbd7d9", padding: "20px", marginTop: "5px", visibility: isDivVisible }}>
 
-                {isLoadingVisible && <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+                  {isLoadingVisible && <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
                     {/* <Spinner animation="border" role="status" ></Spinner> */}
                     <Spinner animation="grow" size="sm" variant="primary" />
                     <Spinner animation="grow" variant="primary" />

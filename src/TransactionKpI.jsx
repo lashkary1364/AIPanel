@@ -6,6 +6,7 @@ import {
   Card,
   CardHeader,
   CardBody,
+  Button
 } from "shards-react";
 import axios from 'axios'
 import "../src/shards-dashboard/styles/slider-style.css"
@@ -13,13 +14,15 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { Flag } from '@material-ui/icons';
+import { Spinner } from 'react-bootstrap';
 
 export const TransactionKpI = () => {
 
   const accessToken = localStorage.getItem("access-tocken");
 
   const [option, setOption] = useState({});
-  const [option1, setOption1] = useState({});
+  const [isLoading, setIsLoading] = useState(false)
+  const [disabled,setDisabled]=useState("")
 
 
   const [revenueJun, setRevenueJun] = useState([]);
@@ -352,8 +355,9 @@ export const TransactionKpI = () => {
     console.log("variable June ...")
     console.log(variableOctober)
 
-  }, [flag, setFlag, revenueOct , setRevenueOct, revenueYearOct, setRevenueYearOct])
-//December month ...
+  }, [flag, setFlag, revenueOct, setRevenueOct, revenueYearOct, setRevenueYearOct])
+
+  //December month ...
   useEffect(() => {
 
     revenueYearDec.map((item, index) => {
@@ -371,7 +375,7 @@ export const TransactionKpI = () => {
     console.log("variable June ...")
     console.log(variableDecember)
 
-  }, [flag, setFlag, revenueDec , setRevenueDec, revenueYearDec, setRevenueYearDec])
+  }, [flag, setFlag, revenueDec, setRevenueDec, revenueYearDec, setRevenueYearDec])
 
   //Novamber month ...
   useEffect(() => {
@@ -391,7 +395,7 @@ export const TransactionKpI = () => {
     console.log("variable Novamber ...")
     console.log(variableNovamber)
 
-  }, [flag, setFlag, revenueDec , setRevenueNov, revenueYearNov, setRevenueYearNov])
+  }, [flag, setFlag, revenueNov, setRevenueNov, revenueYearNov, setRevenueYearNov])
 
   useEffect(() => {
     setOption({
@@ -408,16 +412,13 @@ export const TransactionKpI = () => {
           variableMay,
           variableJune,
           variableJuly,
-          variableAugust ,
-          variableSeptember ,
-          variableOctober ,
+          variableAugust,
+          variableSeptember,
+          variableOctober,
           variableNovamber,
           variableDecember
 
-          // { product: 'Matcha Latte', "2015": "43.3", "2016": "85.8", "2017": "93.7" },
-          // { product: 'Milk Tea', 2015: 83.1, 2016: 73.4, 2017: 55.1 },
-          // { product: 'Cheese Cocoa', 2015: 86.4, 2016: 65.2, 2017: 82.5 },
-          // { product: 'Walnut Brownie', 2015: 72.4, 2016: 53.9, 2017: 39.1 }
+
         ]
       },
       xAxis: { type: 'category' },
@@ -429,9 +430,13 @@ export const TransactionKpI = () => {
 
     })
 
-  }, [variableMarch, variableJun, variableFeb, variableApr, variableMay, variableJune, variableJuly , variableNovamber , variableAugust, variableDecember  , variableSeptember , variableAugust ])
+    setIsLoading(false)
+    setDisabled("")
+  }, [variableMarch, variableJun, variableFeb, variableApr, variableMay, variableJune, variableJuly, variableNovamber, variableAugust, variableDecember, variableSeptember, variableAugust])
 
   const getTransactionKPI = () => {
+    setIsLoading(true)
+    setDisabled("disabled")
     axios(
       {
         url: "http://82.115.24.35:8000/get_transaction_kpis",
@@ -443,7 +448,7 @@ export const TransactionKpI = () => {
         },
       }).then(function (response) {
 
-       
+
         const resultItems = response.data;
         const itemsArray = resultItems.result;
         console.log("itemsArray")
@@ -501,42 +506,38 @@ export const TransactionKpI = () => {
 
           } else if (item.month == 9) {
 
-            setRevenueYearAugust(revenueYearAugust => [...revenueYearAugust, item.year])
-            setRevenueAugust(revenueAugust => [...revenueAugust, item.Revenue])
+            setRevenueYearSept(revenueYearSept => [...revenueYearSept, item.year])
+            setRevenueSept(revenueSept => [...revenueSept, item.Revenue])
 
           } else if (item.month == 10) {
-          
+
             setRevenueYearOct(revenueYearOct => [...revenueYearOct, item.year])
             setRevenueOct(revenueOct => [...revenueOct, item.Revenue])
 
           } else if (item.month == 11) {
-          
-            setRevenueYearDec(revenueYearDec => [...revenueYearDec, item.year])
-            setRevenueNov(revenueDec => [...revenueDec, item.Revenue])
 
-          } else {
-          
             setRevenueYearNov(revenueYearNov => [...revenueYearNov, item.year])
             setRevenueNov(revenueNov => [...revenueNov, item.Revenue])
 
+
+          } else {
+
+            setRevenueYearDec(revenueYearDec => [...revenueYearDec, item.year])
+            setRevenueDec(revenueDec => [...revenueDec, item.Revenue])
+
+
           }
 
-          //const obj={revenue:monthName , }
-          //{ revenue: 'Matcha Latte', 2015: 43.3, 2016: 85.8, 2017: 93.7 }
-          //setRevenue(revenue=>[...revenue , { revenue:monthName, item.year}])
 
         });
 
         setFlag(true);
 
-        //       console.log(year)
-        //       const y=year.filter((x, i, a) => a.indexOf(x) == i);
-        //       console.log(y)
-        // setNewY(y);
-        //   console.log("new year")
-        // console.log(newY)
+
       }).catch(function (error) {
         console.log("axois error: " + error);
+        setIsLoading(false);
+        setDisabled("")
       })
 
 
@@ -559,10 +560,18 @@ export const TransactionKpI = () => {
       <Card small className="h-100">
         <CardHeader>نمودار درآمد محصول  به تفکیک سال و ماه</CardHeader>
         <CardBody className="pt-0">
-          <button them="secondary" type='button' onClick={getTransactionKPI}>generate</button>
-          <ReactECharts option={option} />
-          <hr />
-          <ReactECharts option={option1} />
+          <Button type="button"  className='btn btn-secondary'  disabled={disabled}   onClick={getTransactionKPI}>محاسبه</Button>
+
+          {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+            {/* <Spinner animation="border" role="status" ></Spinner> */}
+            <Spinner animation="grow" size="sm" variant="primary" />
+            <Spinner animation="grow" variant="primary" />
+            <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+          </div> :
+            <ReactECharts option={option} />
+          }
+
+
         </CardBody>
       </Card>
 

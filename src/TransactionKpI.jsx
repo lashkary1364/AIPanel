@@ -19,24 +19,55 @@ export const TransactionKpI = () => {
   const accessToken = localStorage.getItem("access-tocken");
 
   const [option, setOption] = useState({});
+  const [option1, setOption1] = useState({});
+
 
   const [revenueJun, setRevenueJun] = useState([]);
   const [revenueFeb, setRevenueFeb] = useState([]);
   const [revenueApr, setRevenueApr] = useState([]);
   const [revenueMay, setRevenueMay] = useState([]);
   const [revenueJune, setRevenueJune] = useState([]);
-  const [revenueJul, setRevenueJul] = useState([]);
-  const [revenueAug, setRevenueAug] = useState([]);
-  const [revenueSept, setRevenueSep] = useState([]);
+  const [revenueJuly, setRevenueJuly] = useState([]);
+  const [revenueAugust, setRevenueAugust] = useState([]);
+  const [revenueSept, setRevenueSept] = useState([]);
   const [revenueOct, setRevenueOct] = useState([]);
   const [revenueNov, setRevenueNov] = useState([]);
   const [revenueDec, setRevenueDec] = useState([]);
   const [revenueMarch, setRevenueMarch] = useState([]);
+
   const [revenueYear, setRevenueYear] = useState([]);
-  const [year, setYear] = useState(["revenue"]);
+  const [revenueYearJun, setRevenueYearJun] = useState([]);
+  const [revenueYearFeb, setRevenueYearFeb] = useState([]);
+  const [revenueYearApr, setRevenueYearApr] = useState([]);
+  const [revenueYearMay, setRevenueYearMay] = useState([]);
+  const [revenueYearJune, setRevenueYearJune] = useState([]);
+  const [revenueYearJuly, setRevenueYearJuly] = useState([]);
+  const [revenueYearAugust, setRevenueYearAugust] = useState([]);
+  const [revenueYearOct, setRevenueYearOct] = useState([]);
+  const [revenueYearNov, setRevenueYearNov] = useState([]);
+  const [revenueYearDec, setRevenueYearDec] = useState([]);
+  const [revenueYearSept, setRevenueYearSept] = useState([]);
+
+  const [year, setYear] = useState(["product"]);
   const [newY, setNewY] = useState([]);
   const [flag, setFlag] = useState(false);
-  const [variable, setVariable] = useState({});
+  const [seri, setSeri] = useState([]);
+
+  const [variableMarch, setVariableMarch] = useState({ product: "March" });
+  const [variableJun, setVariableJun] = useState({ product: "Junuary" });
+  const [variableFeb, setVariableFeb] = useState({ product: "Februray" });
+  const [variableApr, setVariableApr] = useState({ product: "April" });
+  const [variableMay, setVariableMay] = useState({ product: "May" });
+  const [variableJune, setVariableJune] = useState({ product: "June" });
+  const [variableJuly, setVariableJuly] = useState({ product: "July" });
+  const [variableAugust, setVariableAugust] = useState({ product: "August" });
+  const [variableSeptember, setVariableSeptember] = useState({ product: "September" });
+  const [variableOctober, setVariableOctober] = useState({ product: "October" });
+  const [variableDecember, setVariableDecember] = useState({ product: "December" });
+  const [variableNovamber, setVariableNovamber] = useState({ product: "Novamber" });
+
+
+
   useEffect(() => {
 
     console.log(year);
@@ -47,59 +78,343 @@ export const TransactionKpI = () => {
   }, [year, setYear]);
 
 
-
-  // useEffect(() => {
-
-  //   console.log("revenueMarch")
-  //   console.log(revenueMarch);
-
-
-  // }, [revenueMarch, setRevenueMarch]);
-
-
   useEffect(() => {
-    console.log("revenue march ....")
-    console.log(revenueMarch)
-    JSON.stringify()
-    //const newEmployees = revenueMarch.filter(revenueMarch => revenueMarch !== "{");
-    console.log("newEmployees")
-    console.log(revenueMarch.toString())
-    //     return () => {
+    setSeri([]);
+    for (let i = 1; i < newY.length; i++) {
+      setSeri(seri => [...seri, { type: "bar" }])
+    }
+  }, [newY, setNewY])
 
-    console.log("revenueYear")
-    console.log(revenueYear)
-
+  /// March month ...
+  useEffect(() => {
 
     revenueYear.map((item, index) => {
-      console.log(item)
-      console.log(revenueYear[index] + ":" + revenueMarch[index])
+      const updatedValue = { [revenueYear[index]]: revenueMarch[index] };
 
-      const x = revenueYear[index];
-      const y = revenueMarch[index];
-
-
-      const updatedValue = {[revenueYear[index]]: revenueMarch[index] };
-      setVariable({
-        ...variable,
+      setVariableMarch({
+        ...variableMarch,
         ...updatedValue
       });
 
-
-      console.log(variable)
+      console.log(variableMarch)
     })
 
 
+    console.log("variable march ...")
+    console.log(variableMarch)
 
 
+
+    // setOption1({
+
+    //   legend: {},
+    //   tooltip: {},
+    //   dataset: {
+    //     dimensions: ['product', 2015, 2016, 2017],
+    //     source: [
+    //       //   variable
+    //       { 2015: 43.3, 2016: 85.8, 2017: 93.7, product: 'Matcha Latte' },
+    //      { product: 'Milk Tea', 2015: 83.1, 2016: 73.4, 2017: 55.1 },
+    //       // { product: 'Cheese Cocoa', 2015: 86.4, 2016: 65.2, 2017: 82.5 },
+    //       // { product: 'Walnut Brownie', 2015: 72.4, 2016: 53.9, 2017: 39.1 }
+    //     ]
+    //   },
+    //   xAxis: { type: 'category' },
+    //   yAxis: {},
+    //   // Declare several bar series, each will be mapped
+    //   // to a column of dataset.source by default.
+    //   series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+
+    // })
+
+
+    // console.log("option ....")
+    // console.log(option)
+
+    // console.log("option1 .....")
+    // console.log(option1)
+
+  }, [flag, setFlag, revenueMarch, setRevenueMarch, revenueYear, setRevenueYear])
+
+  /// Jun month ...
+  useEffect(() => {
+    console.log("revenue year ...")
+    console.log(revenueYear)
+    revenueYearJun.map((item, index) => {
+      const updatedValue = { [revenueYearJun[index]]: revenueJun[index] };
+
+      setVariableJun({
+        ...variableJun,
+        ...updatedValue
+      });
+      console.log(variableJun)
+    })
+
+    console.log("variable jun ....")
+    console.log(variableJun)
+  }, [flag, setFlag, revenueJun, setRevenueJun, revenueYearJun, setRevenueYear])
+
+  /// Feb month ...
+  useEffect(() => {
+
+    revenueYearFeb.map((item, index) => {
+      const updatedValue = { [revenueYearFeb[index]]: revenueFeb[index] };
+
+      setVariableFeb({
+        ...variableFeb,
+        ...updatedValue
+      });
+
+      console.log(variableFeb)
+    })
+
+
+    console.log("variable march ...")
+    console.log(variableMarch)
+
+  }, [flag, setFlag, revenueFeb, setRevenueFeb, revenueYearFeb, setRevenueYearFeb])
+
+  /// Apr month ...
+  useEffect(() => {
+
+    revenueYearApr.map((item, index) => {
+      const updatedValue = { [revenueYearApr[index]]: revenueApr[index] };
+
+      setVariableApr({
+        ...variableApr,
+        ...updatedValue
+      });
+
+      console.log(variableApr)
+    })
+
+
+    console.log("variable march ...")
+    console.log(variableApr)
+
+  }, [flag, setFlag, revenueApr, setRevenueApr, revenueYearApr, setRevenueYearApr])
+
+  /// May month ...
+  useEffect(() => {
+
+    revenueYearMay.map((item, index) => {
+      const updatedValue = { [revenueYearMay[index]]: revenueMay[index] };
+
+      setVariableMay({
+        ...variableMay,
+        ...updatedValue
+      });
+
+      console.log(variableMay)
+    })
+
+
+    console.log("variable march ...")
+    console.log(variableMay)
+
+  }, [flag, setFlag, revenueMay, setRevenueMay, revenueYearMay, setRevenueYearMay])
+
+  /// June month ...
+  useEffect(() => {
+
+    revenueYearJune.map((item, index) => {
+      const updatedValue = { [revenueYearJune[index]]: revenueJune[index] };
+
+      setVariableJune({
+        ...variableJune,
+        ...updatedValue
+      });
+
+      console.log(variableJune)
+    })
+
+
+    console.log("variable June ...")
+    console.log(variableJune)
+
+  }, [flag, setFlag, revenueJune, setRevenueJune, revenueYearJune, setRevenueYearJune])
+
+  /// July month ...
+  useEffect(() => {
+
+    revenueYearJuly.map((item, index) => {
+      const updatedValue = { [revenueYearJuly[index]]: revenueJuly[index] };
+
+      setVariableJuly({
+        ...variableJuly,
+        ...updatedValue
+      });
+
+      console.log(variableJuly)
+    })
+
+
+    console.log("variable June ...")
+    console.log(variableJune)
+
+  }, [flag, setFlag, revenueJuly, setRevenueJuly, revenueYearJuly, setRevenueYearJuly])
+
+  ///  August month ...
+  useEffect(() => {
+
+    revenueYearAugust.map((item, index) => {
+      const updatedValue = { [revenueYearAugust[index]]: revenueAugust[index] };
+
+      setVariableAugust({
+        ...variableAugust,
+        ...updatedValue
+      });
+
+      console.log(variableAugust)
+    })
+
+
+    console.log("variable August ...")
+    console.log(variableAugust)
+
+  }, [flag, setFlag, revenueAugust, setRevenueAugust, revenueYearAugust, setRevenueYearAugust])
+
+  ///  September month ...
+  useEffect(() => {
+
+    revenueYearSept.map((item, index) => {
+      const updatedValue = { [revenueYearSept[index]]: revenueSept[index] };
+
+      setVariableSeptember({
+        ...variableSeptember,
+        ...updatedValue
+      });
+
+      console.log(variableSeptember)
+    })
+
+
+    console.log("variable september ...")
+    console.log(variableSeptember)
+
+  }, [flag, setFlag, revenueSept, setRevenueSept, revenueYearSept, setRevenueYearSept])
+
+  /// June month ...
+  useEffect(() => {
+
+    revenueYearJune.map((item, index) => {
+      const updatedValue = { [revenueYearJune[index]]: revenueJune[index] };
+
+      setVariableJune({
+        ...variableJune,
+        ...updatedValue
+      });
+
+      console.log(variableJune)
+    })
+
+
+    console.log("variable June ...")
+    console.log(variableJune)
+
+  }, [flag, setFlag, revenueJune, setRevenueJune, revenueYearJune, setRevenueYearJune])
+
+  ///July month ...
+  useEffect(() => {
+
+    revenueYearJuly.map((item, index) => {
+      const updatedValue = { [revenueYearJuly[index]]: revenueJuly[index] };
+
+      setVariableJuly({
+        ...variableJuly,
+        ...updatedValue
+      });
+
+      console.log(variableJuly)
+    })
+
+
+    console.log("variable June ...")
+    console.log(variableJuly)
+
+  }, [flag, setFlag, revenueJuly, setRevenueJuly, revenueYearJuly, setRevenueYearJuly])
+
+  ///October month ...
+  useEffect(() => {
+
+    revenueYearOct.map((item, index) => {
+      const updatedValue = { [revenueYearOct[index]]: revenueOct[index] };
+
+      setVariableOctober({
+        ...variableOctober,
+        ...updatedValue
+      });
+
+      console.log(variableOctober)
+    })
+
+
+    console.log("variable June ...")
+    console.log(variableOctober)
+
+  }, [flag, setFlag, revenueOct , setRevenueOct, revenueYearOct, setRevenueYearOct])
+//December month ...
+  useEffect(() => {
+
+    revenueYearDec.map((item, index) => {
+      const updatedValue = { [revenueYearDec[index]]: revenueDec[index] };
+
+      setVariableDecember({
+        ...variableDecember,
+        ...updatedValue
+      });
+
+      console.log(variableDecember)
+    })
+
+
+    console.log("variable June ...")
+    console.log(variableDecember)
+
+  }, [flag, setFlag, revenueDec , setRevenueDec, revenueYearDec, setRevenueYearDec])
+
+  //Novamber month ...
+  useEffect(() => {
+
+    revenueYearNov.map((item, index) => {
+      const updatedValue = { [revenueYearNov[index]]: revenueNov[index] };
+
+      setVariableNovamber({
+        ...variableNovamber,
+        ...updatedValue
+      });
+
+      console.log(variableNovamber)
+    })
+
+
+    console.log("variable Novamber ...")
+    console.log(variableNovamber)
+
+  }, [flag, setFlag, revenueDec , setRevenueNov, revenueYearNov, setRevenueYearNov])
+
+  useEffect(() => {
     setOption({
-
       legend: {},
       tooltip: {},
       dataset: {
-        dimensions: ['product', 2015, 2016, 2017],
+        dimensions: newY,// ['product', 2015, 2016, 2017],
         source: [
 
-          { product: 'Matcha Latte', "2015": "43.3", "2016": "85.8", "2017": "93.7" },
+          variableJun,
+          variableFeb,
+          variableMarch,
+          variableApr,
+          variableMay,
+          variableJune,
+          variableJuly,
+          variableAugust ,
+          variableSeptember ,
+          variableOctober ,
+          variableNovamber,
+          variableDecember
+
+          // { product: 'Matcha Latte', "2015": "43.3", "2016": "85.8", "2017": "93.7" },
           // { product: 'Milk Tea', 2015: 83.1, 2016: 73.4, 2017: 55.1 },
           // { product: 'Cheese Cocoa', 2015: 86.4, 2016: 65.2, 2017: 82.5 },
           // { product: 'Walnut Brownie', 2015: 72.4, 2016: 53.9, 2017: 39.1 }
@@ -109,92 +424,12 @@ export const TransactionKpI = () => {
       yAxis: {},
       // Declare several bar series, each will be mapped
       // to a column of dataset.source by default.
-      series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+      series: seri//[{ type: 'bar' }, { type: 'bar' }, { type: 'bar' },{ type: 'bar' }, { type: 'bar' }, { type: 'bar' },{ type: 'bar' }, { type: 'bar' }] 
+      //[{ type:'bar'}, { type:'bar'}, {type: 'bar'}]
 
     })
 
-
-
-  }, [flag, setFlag, revenueMarch, setRevenueMarch, revenueYear, setRevenueYear])
-
-  // useEffect(() => {
-  //   console.log("year ..............................");
-  //   console.log(option);
-  //   setOption(  {
-  //     xAxis: {
-  //       type: 'category',
-  //       data: year
-  //     },
-  //     yAxis: {
-  //       type: 'value'
-  //     },
-  //     series: [
-  //       {
-  //         data: revenue,
-  //         type: 'bar',
-  //         showBackground: true,
-  //         backgroundStyle: {
-  //           color: 'rgba(180, 180, 180, 0.2)'
-  //         }
-  //       }
-  //     ]
-  //   })
-
-  // }, [year , revenue]);
-
-
-  // const option2 = {
-  //   legend: {},
-  //   tooltip: {},
-  //   dataset: {
-  //     dimensions:['product', 2015, 2016, 2017],
-  //     source: [
-  //       { product: 'Matcha Latte', 2015: 43.3, 2016: 85.8, 2017: 93.7 },
-  //       { product: 'Milk Tea', 2015: 83.1, 2016: 73.4, 2017: 55.1 },
-  //       { product: 'Cheese Cocoa', 2015: 86.4, 2016: 65.2, 2017: 82.5 },
-  //       { product: 'Walnut Brownie', 2015: 72.4, 2016: 53.9, 2017: 39.1 }
-  //     ]
-  //   },
-  //   xAxis: { type: 'category' },
-  //   yAxis: {},
-  //   // Declare several bar series, each will be mapped
-  //   // to a column of dataset.source by default.
-  //   series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
-  // };
-
-  //  useEffect(() => {
-  //   // setYear(year.filter((x, i, a) => a.indexOf(x) == i));
-  //   setOption({
-  //     legend: {},
-  //     tooltip: {},
-  //     dataset: {
-  //       dimensions: [year],     //['revenue', 2015, 2016, 2017],
-  //       source: [
-  //         // revenueJun,
-  //         // revenueFeb,
-  //         revenueMarch,
-  //         // revenueApr,
-  //         // revenueMay,
-  //         // revenueJune,
-  //         // revenueJul,
-  //         // revenueAug
-
-  //         // { revenue: 'Matcha Latte', 2015: 43.3, 2016: 85.8, 2017: 93.7 },
-  //         // { revenue: 'Milk Tea', 2015: 83.1, 2016: 73.4, 2017: 55.1 },
-  //         // { revenue: 'Cheese Cocoa', 2015: 86.4, 2016: 65.2, 2017: 82.5 },
-  //         // { revenue: 'Walnut Brownie', 2015: 72.4, 2016: 53.9, 2017: 39.1 }
-  //       ]
-  //     },
-  //     xAxis: { type: 'category' },
-  //     yAxis: {},
-  //     // Declare several bar series, each will be mapped
-  //     // to a column of dataset.source by default.
-  //     series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
-  //   });
-
-  //   console.log("optiiiiion:")
-  //   console.log(option)
-  //  }, [year,setYear , revenueMarch, setRevenueMarch])
+  }, [variableMarch, variableJun, variableFeb, variableApr, variableMay, variableJune, variableJuly , variableNovamber , variableAugust, variableDecember  , variableSeptember , variableAugust ])
 
   const getTransactionKPI = () => {
     axios(
@@ -208,13 +443,13 @@ export const TransactionKpI = () => {
         },
       }).then(function (response) {
 
-        var monthName;
+       
         const resultItems = response.data;
-        //console.log(resultItems.result);
         const itemsArray = resultItems.result;
         console.log("itemsArray")
         console.log(itemsArray)
         const arr = JSON.parse(itemsArray)
+
         console.log(arr)
 
         arr.map(item => {
@@ -223,44 +458,67 @@ export const TransactionKpI = () => {
 
 
           if (item.month == 1) {
-            monthName = "January";
-            // setRevenueJun(revenueJun => [...revenueJun, { 'revenue': "January", year: rev }])
-          } else if (item.month == 2) {
-            monthName = "February"
-            // setRevenueFeb(revenueFeb => [...revenueFeb, { 'revenue': "February", year: rev }])
-          } else if (item.month == 3) {
-            monthName = "March"
-            setRevenueYear(revenueYear => [...revenueYear, item.year])
 
+            setRevenueYearJun(revenueYearJun => [...revenueYearJun, item.year])
+            setRevenueJun(revenueJun => [...revenueJun, item.Revenue])
+
+          } else if (item.month == 2) {
+
+            setRevenueYearFeb(revenueYearFeb => [...revenueYearFeb, item.year])
+            setRevenueFeb(revenueFeb => [...revenueFeb, item.Revenue])
+
+          } else if (item.month == 3) {
+
+            setRevenueYear(revenueYear => [...revenueYear, item.year])
             setRevenueMarch(revenueMarch => [...revenueMarch, item.Revenue])
-            //setRevenueMarch(revenueMarch => [...revenueMarch, { [item.year]: item.Revenue }])
+
           } else if (item.month == 4) {
-            monthName = "April"
-            // setRevenueApr(revenueApr => [...revenueApr, { 'revenue': "April", year: rev }])
+
+            setRevenueYearApr(revenueYearApr => [...revenueYearApr, item.year])
+            setRevenueApr(revenueApr => [...revenueApr, item.Revenue])
+
           } else if (item.month == 5) {
-            monthName = "May"
-            // setRevenueMay(revenueMay => [...revenueMay, { 'revenue': "May", year: rev }])
+
+            setRevenueYearMay(revenueYearMay => [...revenueYearMay, item.year])
+            setRevenueMay(revenueMay => [...revenueMay, item.Revenue])
+
+
           } else if (item.month == 6) {
-            monthName = "June"
-            // setRevenueJune(revenueJune => [...revenueJune, { 'revenue': "June", year: rev }])
+
+            setRevenueYearJune(revenueYearJune => [...revenueYearJune, item.year])
+            setRevenueJune(revenueJune => [...revenueJune, item.Revenue])
+
           } else if (item.month == 7) {
-            monthName = "July"
-            // setRevenueJul(revenueJul => [...revenueJul, { 'revenue': "July", year: rev }])
+
+            setRevenueYearJuly(revenueYearJuly => [...revenueYearJuly, item.year])
+            setRevenueJuly(revenueJuly => [...revenueJuly, item.Revenue])
+
           } else if (item.month == 8) {
-            monthName = "August"
-            // setRevenueAug(revenueAug => [...revenueAug, { 'revenue': "August", year: rev }])
+
+
+            setRevenueYearAugust(revenueYearAugust => [...revenueYearAugust, item.year])
+            setRevenueAugust(revenueAugust => [...revenueAugust, item.Revenue])
+
           } else if (item.month == 9) {
-            monthName = "September"
-            // setRevenueSep(revenueSep => [...revenueSep, { 'revenue': "September", year: rev }])
+
+            setRevenueYearAugust(revenueYearAugust => [...revenueYearAugust, item.year])
+            setRevenueAugust(revenueAugust => [...revenueAugust, item.Revenue])
+
           } else if (item.month == 10) {
-            monthName = "October"
-            // setRevenueOct(revenueOct => [...revenueOct, { 'revenue': "October", year: rev }])
+          
+            setRevenueYearOct(revenueYearOct => [...revenueYearOct, item.year])
+            setRevenueOct(revenueOct => [...revenueOct, item.Revenue])
+
           } else if (item.month == 11) {
-            monthName = "Novamber"
-            //  setRevenueNov(revenueNov => [...revenueNov, { 'revenue': "Novamber", year: rev }])
+          
+            setRevenueYearDec(revenueYearDec => [...revenueYearDec, item.year])
+            setRevenueNov(revenueDec => [...revenueDec, item.Revenue])
+
           } else {
-            monthName = "December"
-            // setRevenueDec(revenueDec => [...revenueDec, { 'revenue': "December", year: rev }])
+          
+            setRevenueYearNov(revenueYearNov => [...revenueYearNov, item.year])
+            setRevenueNov(revenueNov => [...revenueNov, item.Revenue])
+
           }
 
           //const obj={revenue:monthName , }
@@ -301,11 +559,10 @@ export const TransactionKpI = () => {
       <Card small className="h-100">
         <CardHeader>نمودار درآمد محصول  به تفکیک سال و ماه</CardHeader>
         <CardBody className="pt-0">
-          {newY}
-          <hr />
-          {year}
           <button them="secondary" type='button' onClick={getTransactionKPI}>generate</button>
           <ReactECharts option={option} />
+          <hr />
+          <ReactECharts option={option1} />
         </CardBody>
       </Card>
 

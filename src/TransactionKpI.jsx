@@ -15,14 +15,15 @@ import { useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { Flag } from '@material-ui/icons';
 import { Spinner } from 'react-bootstrap';
+import { CustomerKPI } from './CustomerKPI';
 
 export const TransactionKpI = () => {
 
   const accessToken = localStorage.getItem("access-tocken");
 
   const [option, setOption] = useState({});
-  const [isLoading, setIsLoading] = useState(false)
-  const [disabled,setDisabled]=useState("")
+  const [isLoading, setIsLoading] = useState(false);
+  const [disabled, setDisabled] = useState("");
 
 
   const [revenueJun, setRevenueJun] = useState([]);
@@ -68,11 +69,10 @@ export const TransactionKpI = () => {
   const [variableOctober, setVariableOctober] = useState({ product: "October" });
   const [variableDecember, setVariableDecember] = useState({ product: "December" });
   const [variableNovamber, setVariableNovamber] = useState({ product: "Novamber" });
-
+  const [styleVar , setStyleVar]=useState({visibility:'collapse'});
 
 
   useEffect(() => {
-
     console.log(year);
     const y = year.filter((x, i, a) => a.indexOf(x) == i);
     console.log(y);
@@ -86,7 +86,7 @@ export const TransactionKpI = () => {
     for (let i = 1; i < newY.length; i++) {
       setSeri(seri => [...seri, { type: "bar" }])
     }
-  }, [newY, setNewY])
+  }, [newY, setNewY]);
 
   /// March month ...
   useEffect(() => {
@@ -137,7 +137,7 @@ export const TransactionKpI = () => {
     // console.log("option1 .....")
     // console.log(option1)
 
-  }, [flag, setFlag, revenueMarch, setRevenueMarch, revenueYear, setRevenueYear])
+  }, [flag, setFlag, revenueMarch, setRevenueMarch, revenueYear, setRevenueYear]);
 
   /// Jun month ...
   useEffect(() => {
@@ -155,7 +155,7 @@ export const TransactionKpI = () => {
 
     console.log("variable jun ....")
     console.log(variableJun)
-  }, [flag, setFlag, revenueJun, setRevenueJun, revenueYearJun, setRevenueYear])
+  }, [flag, setFlag, revenueJun, setRevenueJun, revenueYearJun, setRevenueYear]);
 
   /// Feb month ...
   useEffect(() => {
@@ -175,7 +175,7 @@ export const TransactionKpI = () => {
     console.log("variable march ...")
     console.log(variableMarch)
 
-  }, [flag, setFlag, revenueFeb, setRevenueFeb, revenueYearFeb, setRevenueYearFeb])
+  }, [flag, setFlag, revenueFeb, setRevenueFeb, revenueYearFeb, setRevenueYearFeb]);
 
   /// Apr month ...
   useEffect(() => {
@@ -195,7 +195,7 @@ export const TransactionKpI = () => {
     console.log("variable march ...")
     console.log(variableApr)
 
-  }, [flag, setFlag, revenueApr, setRevenueApr, revenueYearApr, setRevenueYearApr])
+  }, [flag, setFlag, revenueApr, setRevenueApr, revenueYearApr, setRevenueYearApr]);
 
   /// May month ...
   useEffect(() => {
@@ -215,7 +215,7 @@ export const TransactionKpI = () => {
     console.log("variable march ...")
     console.log(variableMay)
 
-  }, [flag, setFlag, revenueMay, setRevenueMay, revenueYearMay, setRevenueYearMay])
+  }, [flag, setFlag, revenueMay, setRevenueMay, revenueYearMay, setRevenueYearMay]);
 
   /// June month ...
   useEffect(() => {
@@ -235,7 +235,7 @@ export const TransactionKpI = () => {
     console.log("variable June ...")
     console.log(variableJune)
 
-  }, [flag, setFlag, revenueJune, setRevenueJune, revenueYearJune, setRevenueYearJune])
+  }, [flag, setFlag, revenueJune, setRevenueJune, revenueYearJune, setRevenueYearJune]);
 
   /// July month ...
   useEffect(() => {
@@ -255,7 +255,7 @@ export const TransactionKpI = () => {
     console.log("variable June ...")
     console.log(variableJune)
 
-  }, [flag, setFlag, revenueJuly, setRevenueJuly, revenueYearJuly, setRevenueYearJuly])
+  }, [flag, setFlag, revenueJuly, setRevenueJuly, revenueYearJuly, setRevenueYearJuly]);
 
   ///  August month ...
   useEffect(() => {
@@ -275,7 +275,7 @@ export const TransactionKpI = () => {
     console.log("variable August ...")
     console.log(variableAugust)
 
-  }, [flag, setFlag, revenueAugust, setRevenueAugust, revenueYearAugust, setRevenueYearAugust])
+  }, [flag, setFlag, revenueAugust, setRevenueAugust, revenueYearAugust, setRevenueYearAugust]);
 
   ///  September month ...
   useEffect(() => {
@@ -295,7 +295,7 @@ export const TransactionKpI = () => {
     console.log("variable september ...")
     console.log(variableSeptember)
 
-  }, [flag, setFlag, revenueSept, setRevenueSept, revenueYearSept, setRevenueYearSept])
+  }, [flag, setFlag, revenueSept, setRevenueSept, revenueYearSept, setRevenueYearSept]);
 
   /// June month ...
   useEffect(() => {
@@ -315,7 +315,7 @@ export const TransactionKpI = () => {
     console.log("variable June ...")
     console.log(variableJune)
 
-  }, [flag, setFlag, revenueJune, setRevenueJune, revenueYearJune, setRevenueYearJune])
+  }, [flag, setFlag, revenueJune, setRevenueJune, revenueYearJune, setRevenueYearJune]);
 
   ///July month ...
   useEffect(() => {
@@ -335,7 +335,7 @@ export const TransactionKpI = () => {
     console.log("variable June ...")
     console.log(variableJuly)
 
-  }, [flag, setFlag, revenueJuly, setRevenueJuly, revenueYearJuly, setRevenueYearJuly])
+  }, [flag, setFlag, revenueJuly, setRevenueJuly, revenueYearJuly, setRevenueYearJuly]);
 
   ///October month ...
   useEffect(() => {
@@ -355,7 +355,7 @@ export const TransactionKpI = () => {
     console.log("variable June ...")
     console.log(variableOctober)
 
-  }, [flag, setFlag, revenueOct, setRevenueOct, revenueYearOct, setRevenueYearOct])
+  }, [flag, setFlag, revenueOct, setRevenueOct, revenueYearOct, setRevenueYearOct]);
 
   //December month ...
   useEffect(() => {
@@ -375,7 +375,7 @@ export const TransactionKpI = () => {
     console.log("variable June ...")
     console.log(variableDecember)
 
-  }, [flag, setFlag, revenueDec, setRevenueDec, revenueYearDec, setRevenueYearDec])
+  }, [flag, setFlag, revenueDec, setRevenueDec, revenueYearDec, setRevenueYearDec]);
 
   //Novamber month ...
   useEffect(() => {
@@ -432,11 +432,12 @@ export const TransactionKpI = () => {
 
     setIsLoading(false)
     setDisabled("")
-  }, [variableMarch, variableJun, variableFeb, variableApr, variableMay, variableJune, variableJuly, variableNovamber, variableAugust, variableDecember, variableSeptember, variableAugust])
+  }, [variableMarch, variableJun, variableFeb, variableApr, variableMay, variableJune, variableJuly, variableNovamber, variableAugust, variableDecember, variableSeptember, variableAugust]);
 
   const getTransactionKPI = () => {
-    setIsLoading(true)
-    setDisabled("disabled")
+    setStyleVar({visibility:'visible'});
+    setIsLoading(true);
+    setDisabled("disabled");
     axios(
       {
         url: "http://82.115.24.35:8000/get_transaction_kpis",
@@ -500,7 +501,6 @@ export const TransactionKpI = () => {
 
           } else if (item.month == 8) {
 
-
             setRevenueYearAugust(revenueYearAugust => [...revenueYearAugust, item.year])
             setRevenueAugust(revenueAugust => [...revenueAugust, item.Revenue])
 
@@ -538,12 +538,8 @@ export const TransactionKpI = () => {
         console.log("axois error: " + error);
         setIsLoading(false);
         setDisabled("")
-      })
-
-
-
+      });
   }
-
 
 
   return (
@@ -560,7 +556,7 @@ export const TransactionKpI = () => {
       <Card small className="h-100">
         <CardHeader>نمودار درآمد محصول  به تفکیک سال و ماه</CardHeader>
         <CardBody className="pt-0">
-          <Button type="button"  className='btn btn-secondary'  disabled={disabled}   onClick={getTransactionKPI}>محاسبه</Button>
+          <Button type="button" className='btn btn-secondary' disabled={disabled} onClick={getTransactionKPI}>محاسبه</Button>
 
           {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
             {/* <Spinner animation="border" role="status" ></Spinner> */}
@@ -568,13 +564,14 @@ export const TransactionKpI = () => {
             <Spinner animation="grow" variant="primary" />
             <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
           </div> :
-            <ReactECharts option={option} />
+            <ReactECharts option={option} style={styleVar} />
           }
-
 
         </CardBody>
       </Card>
-
+      <hr />
+      <CustomerKPI></CustomerKPI>
+      <hr/>
     </Container>
   )
 }

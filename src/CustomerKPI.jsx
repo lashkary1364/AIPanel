@@ -18,7 +18,6 @@ import { Spinner } from 'react-bootstrap';
 import { setInlineStyles } from 'rsuite/esm/List/helper/utils';
 
 
-
 export const CustomerKPI = () => {
 
     const accessToken = localStorage.getItem("access-tocken");
@@ -89,7 +88,6 @@ export const CustomerKPI = () => {
 
         setIsLoading(false);
     }, [yearList, oldRevenueList, newRevenueList]);
-
 
     const getTransactionCustomerKPI = () => {
 
@@ -166,7 +164,6 @@ export const CustomerKPI = () => {
             });
 
     }
-
 
     return (
         <Card small className="h-100">

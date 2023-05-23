@@ -8,6 +8,8 @@ import { BarChart } from "./BarChart";
 import { Main } from "./Main";
 import { TransactionKpI } from "./TransactionKpI";
 import DefaultLayout from "./layouts/Default";
+import { GrowthMonth } from "./GrowthMonth";
+import { CustomerDashboard } from "./CustomerDashboard";
 
 
 export default [
@@ -30,6 +32,16 @@ export default [
     path: "/kpi",
    layout: DefaultLayout,
     component: TransactionKpI
+  },
+  {
+    path: "/customer",
+   layout: DefaultLayout,
+    component: CustomerDashboard
+  },
+  {
+    path: "/growth",
+   layout: DefaultLayout,
+    component: GrowthMonth
   },
  
 ];

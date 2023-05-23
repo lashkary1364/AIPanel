@@ -15,7 +15,11 @@ import { useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { Flag } from '@material-ui/icons';
 import { Spinner } from 'react-bootstrap';
-import { CustomerKPI } from './CustomerKPI';
+
+import {  RevenueMonth } from './RevenueMonth';
+import { GrowthMonth } from './GrowthMonth';
+import { AvgOrderMonth } from './AvgOrderMonth';
+import { OrderValueMonth } from './OrderValueMonth';
 
 export const TransactionKpI = () => {
 
@@ -445,7 +449,7 @@ export const TransactionKpI = () => {
         headers:
         {
           Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "multipart/form-data"
+         // "Content-Type": "multipart/form-data"
         },
       }).then(function (response) {
 
@@ -553,13 +557,13 @@ export const TransactionKpI = () => {
           </nav>
         </Col>
       </Row>
-      <Card small className="h-100">
+      {/* <Card small className="h-100">
         <CardHeader>نمودار درآمد محصول  به تفکیک سال و ماه</CardHeader>
         <CardBody className="pt-0">
           <Button type="button" className='btn btn-secondary' disabled={disabled} onClick={getTransactionKPI}>محاسبه</Button>
 
           {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-            {/* <Spinner animation="border" role="status" ></Spinner> */}
+       
             <Spinner animation="grow" size="sm" variant="primary" />
             <Spinner animation="grow" variant="primary" />
             <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
@@ -568,10 +572,19 @@ export const TransactionKpI = () => {
           }
 
         </CardBody>
-      </Card>
+      </Card> 
       <hr />
       <CustomerKPI></CustomerKPI>
-      <hr/>
+      <hr/>*/}
+    
+     <RevenueMonth />
+     <hr/>
+     <GrowthMonth/>
+     <hr/>
+     <AvgOrderMonth></AvgOrderMonth>
+     <hr/>
+     <OrderValueMonth></OrderValueMonth>
+     <hr/>
     </Container>
   )
 }

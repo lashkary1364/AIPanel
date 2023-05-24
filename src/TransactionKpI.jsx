@@ -552,7 +552,8 @@ export const TransactionKpI = () => {
       <Row className="page-header mt-2 ">
         <Col lg="12"  >
           <nav className="breadcrumb">
-            <a className="breadcrumb-item" href="#">خانه</a>
+            <a className="breadcrumb-item" href="/home">خانه</a>
+            <a className="breadcrumb-item" href="/main">صفحه قبلی</a>
             <span className="breadcrumb-item active">داشبورد شاخص های کلیدی عملکرد</span>
           </nav>
         </Col>

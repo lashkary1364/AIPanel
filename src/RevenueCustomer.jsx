@@ -20,11 +20,13 @@ export const RevenueCustomer = () => {
     const [date, setDate] = useState([]);
     const [revenueNew, setRrevenueNew] = useState([]);
     const [revenueOld, setRrevenueOld] = useState([]);
-    const [styleVar, setStyleVar] = useState({ visibility: 'collapse' });
+    const [styleVar, setStyleVar] = useState({ visibility: 'collapse' , height:"0px" });
     const [isLoading, setIsLoading] = useState(false);
     const accessToken = localStorage.getItem("access-tocken");
     const [seri,setSeri]=useState([])
     const [newDate,setNewDate]=useState([])
+    const [divChart, setDivChart] = useState({ border: "0px" })
+
 
     useEffect(() => {
 
@@ -122,8 +124,9 @@ export const RevenueCustomer = () => {
       
 
     const getRevenueCustomer = () => {
-
-        setStyleVar({ visibility: 'visible' });
+        
+        setDivChart({ border: "2px solid ", color: "#9b9797" , borderRadius:"10px", marginTop: "8px" });
+        setStyleVar({ visibility: 'visible' , height:"600px" });
         setIsLoading(true);
 
         console.log("....................");
@@ -144,7 +147,7 @@ export const RevenueCustomer = () => {
                 console.log(itemsArray);
                 const arr = JSON.parse(itemsArray);
                 console.log(arr);
-                
+           
 
                 const newList = arr.filter(employee => {
                     return (
@@ -186,8 +189,10 @@ export const RevenueCustomer = () => {
 
                 console.log("axois error: " + error);
                 setIsLoading(false);
-                setInlineStyles()
-
+                setInlineStyles();
+                sessionStorage.clear();
+                localStorage.clear();
+                window.location.replace('/login');
             });
 
     }
@@ -198,15 +203,16 @@ export const RevenueCustomer = () => {
 
         <Card small className="h-100">
             <CardHeader>درآمدماهانه مشتریان جدید و قدیم</CardHeader>
-            <CardBody className="pt-0">
-                <Button type="button" className='btn btn-secondary' disabled={disabled} onClick={getRevenueCustomer}>محاسبه</Button>
+           
+            <CardBody className="pt-0" class="collapse" id="collapseExample">
+            <Button type="button" className='btn btn-secondary' disabled={disabled} onClick={getRevenueCustomer}   >محاسبه</Button>
 
                 {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >                 
                     <Spinner animation="grow" size="sm" variant="primary" />
                     <Spinner animation="grow" variant="primary" />
                     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
                 </div> :
-                  <ReactECharts option={option} style={styleVar} />
+                  <div style={divChart}  ><ReactECharts option={option} style={styleVar} /></div>
                 }
 
             </CardBody>

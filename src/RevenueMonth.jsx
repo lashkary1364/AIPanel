@@ -17,10 +17,10 @@ export const RevenueMonth = () => {
     const [option, setOption] = useState({});
     const [revenue,setRevenue]=useState([]);
     const [date, setDate] = useState([]);
-    const [styleVar, setStyleVar] = useState({ visibility: 'collapse' });
+    const [styleVar, setStyleVar] = useState({ visibility: 'collapse' , height:"0px" });
     const [isLoading, setIsLoading] = useState(false);
     const accessToken = localStorage.getItem("access-tocken");
-         
+    const [divChart, setDivChart] = useState({ border: "0px" }) 
 
     useEffect(() => {
 
@@ -53,7 +53,8 @@ export const RevenueMonth = () => {
 
     const getGrowth = () => {
 
-        setStyleVar({ visibility: 'visible' });
+        setDivChart({ border: "2px solid ", color: "#9b9797" , borderRadius:"10px", marginTop: "8px" });
+        setStyleVar({ visibility: 'visible' , height:"600px"});
         setIsLoading(true);
 
         console.log("....................");
@@ -98,7 +99,9 @@ export const RevenueMonth = () => {
                 console.log("axois error: " + error);
                 setIsLoading(false);
                 setInlineStyles()
-
+                sessionStorage.clear();
+                localStorage.clear();
+                window.location.replace('/login');
             });
 
     }
@@ -116,7 +119,7 @@ export const RevenueMonth = () => {
                     <Spinner animation="grow" variant="primary" />
                     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
                 </div> :
-                    <ReactECharts option={option} style={styleVar} />
+                   <div style={divChart}  ><ReactECharts option={option} style={styleVar} /></div> 
                 }
 
             </CardBody>

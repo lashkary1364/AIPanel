@@ -17,9 +17,10 @@ export const GrowthMonth = () => {
     const [option, setOption] = useState({});
     const [growth, setGrowth] = useState([]);
     const [date, setDate] = useState([]);
-    const [styleVar, setStyleVar] = useState({ visibility: 'collapse' ,height:"1500px" });
+    const [styleVar, setStyleVar] = useState({ visibility: 'collapse' ,height:"0px" });
     const [isLoading, setIsLoading] = useState(false);
     const accessToken = localStorage.getItem("access-tocken");
+    const [divChart, setDivChart] = useState({ border: "0px" })
 
     const labelRight = {
         position: 'right'
@@ -58,18 +59,7 @@ export const GrowthMonth = () => {
                 axisTick: { show: false },
                 splitLine: { show: false },
                 data: date
-                //    [
-                //     'ten',
-                //     'nine',
-                //     'eight',
-                //     'seven',
-                //     'six',
-                //     'five',
-                //     'four',
-                //     'three',
-                //     'two',
-                //     'one'
-                //   ]
+               
             },
             series: [
                 {
@@ -81,18 +71,7 @@ export const GrowthMonth = () => {
                         formatter: '{b}'
                     },
                     data: growth
-                    //  [
-                    //   { value: -0.07, label: labelRight },
-                    //   { value: -0.09, label: labelRight },
-                    //   0.2,
-                    //   0.44,
-                    //   { value: -0.23, label: labelRight },
-                    //   0.08,
-                    //   { value: -0.17, label: labelRight },
-                    //   0.47,
-                    //   { value: -0.36, label: labelRight },
-                    //   0.18
-                    // ]
+                    
                 }
             ]
         })
@@ -104,6 +83,7 @@ export const GrowthMonth = () => {
 
     const getGrowth = () => {
 
+        setDivChart({ border: "2px solid ", color: "#9b9797" , borderRadius:"10px", marginTop: "8px" });
         setStyleVar({ visibility: 'visible',height:"1500px" });
         setIsLoading(true);
 
@@ -142,7 +122,7 @@ export const GrowthMonth = () => {
                             setGrowth(growth => [...growth, item.monthly_growth])
                         }
 
-                        // { value: -0.07, label: labelRight }
+                    
 
                     }
 
@@ -155,7 +135,10 @@ export const GrowthMonth = () => {
 
                 console.log("axois error: " + error);
                 setIsLoading(false);
-                setInlineStyles()
+                setInlineStyles();
+                sessionStorage.clear();
+                localStorage.clear();
+                window.location.replace('/login');
 
             });
 
@@ -175,7 +158,7 @@ export const GrowthMonth = () => {
                 <Spinner animation="grow" variant="primary" />
                 <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
             </div> :
-                <ReactECharts option={option} style={styleVar} />
+               <div style={divChart}  > <ReactECharts option={option} style={styleVar} /></div>
             }
         </div>
 

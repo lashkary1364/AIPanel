@@ -71,14 +71,7 @@ export const Main = () => {
                         alt="Waterfall"
                       />
                       <div className="card-body">
-                        <a className="card-title text-primarry" href="/dashboard">داشبورد</a>
-
-                        {/* <p className="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" className="btn btn-primary">Button</a> */}
-
+                        <a className="card-title text-primarry" href="/kpi">داشبورد</a>
                       </div>
                     </div>
                   </div>

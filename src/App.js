@@ -20,6 +20,7 @@ import { NotFound } from "./NotFound";
 import { Home } from "./home";
 import { TransactionKpI } from "./TransactionKpI";
 
+
 // import { ToastProvider } from 'react-toast-notifications'
 
 export default () => (
@@ -42,6 +43,7 @@ export default () => (
       <Route path="/register" key={10004} exact component={Register} />
       <Route path="/404" key={10005} component={NotFound} />
       <Route path="*" component={NotFound} />
+      
     </Switch>
     {/* <div> */}
     {/* <ToastProvider> */}

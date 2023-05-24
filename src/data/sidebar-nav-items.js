@@ -12,13 +12,13 @@ export default function () {
       title: " شاخص های کلیدی عملکرد مشتریان",
       htmlBefore: '<i class="material-icons">account_circle</i>',
         // '<i class="material-icons">error</i>',
-      to: "/kpi",
+      to: "/customer",
     },
     {
       title: " شاخص های کلیدی عملکرد محصول",
       htmlBefore: '<i class="material-icons">dashboard</i>',
         // '<i class="material-icons">error</i>',
-      to: "/kpi",
+      to: "/product",
     },
     
   ];

@@ -10,6 +10,8 @@ import { TransactionKpI } from "./TransactionKpI";
 import DefaultLayout from "./layouts/Default";
 import { GrowthMonth } from "./GrowthMonth";
 import { CustomerDashboard } from "./CustomerDashboard";
+import { ProductDashboard } from "./ProductDashboard";
+
 
 
 export default [
@@ -39,9 +41,9 @@ export default [
     component: CustomerDashboard
   },
   {
-    path: "/growth",
+    path: "/product",
    layout: DefaultLayout,
-    component: GrowthMonth
+    component: ProductDashboard
   },
- 
+  
 ];

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import {
-  Container, Row, Col, ListGroup, ListGroupItem, Card
+  Container, Row, Col, ListGroup, ListGroupItem, Card , Button
 } from "shards-react";
 import Box from '@material-ui/core/Box';
 import Slider from '@material-ui/core/Slider';
@@ -11,6 +11,8 @@ import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import './assets/slider.css'
 import { Spinner } from 'react-bootstrap';
 import { Visibility } from '@material-ui/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleExclamation, faTriangleExclamation, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 export const BarChart = () => {
 
@@ -32,6 +34,14 @@ export const BarChart = () => {
   const [isLoadingVisible, setIsLoadingVisible] = useState(false);
   const [isChartVisible, setIsChartVisible] = useState(false);
   const [isDivVisible, setIsDivVisible] = useState("hidden")
+  
+  const signOut=()=>{
+    sessionStorage.clear();
+    localStorage.clear();
+    window.location.replace('/login');
+   }
+
+  
   useEffect(() => {
 
     setOption({
@@ -675,11 +685,14 @@ export const BarChart = () => {
     <Container fluid className="main-content-container px-4">
       <Row className="page-header mt-2 ">
         <Col lg="12" dir="rtl"  >
-          <nav className="breadcrumb">
+          <nav className="breadcrumb"  style={{float:"right"}} >
             <a className="breadcrumb-item" href="/home">خانه</a>
             <a className="breadcrumb-item" href="/main">صفحه قبلی</a>
-            <span className="breadcrumb-item active">نمودار واتیف</span>
+            <span className="breadcrumb-item active">نمودار واتیف</span>           
           </nav>
+          <Button type="button" theme="secondary" onClick={signOut} style={{float:"left"}}  >
+                                <FontAwesomeIcon icon={faRightFromBracket} />
+                            </Button>
         </Col>
       </Row>
 

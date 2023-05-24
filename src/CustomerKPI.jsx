@@ -27,7 +27,7 @@ export const CustomerKPI = () => {
     const [option, setOption] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [styleVar, setStyleVar] = useState({ visibility: 'collapse' });
-
+    const [divChart, setDivChart] = useState({ border: "0px" })
     useEffect(() => {
 
 
@@ -91,6 +91,7 @@ export const CustomerKPI = () => {
 
     const getTransactionCustomerKPI = () => {
 
+        setDivChart({ border: "2px solid ", color: "#9b9797" , borderRadius:"10px", marginTop: "8px" });
         setStyleVar({ visibility: 'visible' });
         setIsLoading(true);
         console.log("....................");
@@ -141,7 +142,7 @@ export const CustomerKPI = () => {
 
                 console.log(newRevenue);
 
-                setNewRevenueList(newRevenue);            
+                setNewRevenueList(newRevenue);
 
                 const oldGroupYeraList = oldList.reduce((a, b) => {
                     if (!a.find((item) => item.year === b.year)) {
@@ -166,6 +167,8 @@ export const CustomerKPI = () => {
     }
 
     return (
+
+
         <Card small className="h-100">
             <CardHeader>فروش محصول به تفکیک مشتریان جدید و قدیم به تفکیک سال</CardHeader>
             <CardBody className="pt-0">
@@ -176,11 +179,12 @@ export const CustomerKPI = () => {
                         <Spinner animation="grow" variant="primary" />
                         <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
                     </div> :
-                        <ReactECharts option={option} style={styleVar} />
+                       <div style={divChart}  ><ReactECharts option={option} style={styleVar} /></div> 
                 }
 
 
             </CardBody>
         </Card>
+
     )
 }

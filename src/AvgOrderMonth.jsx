@@ -78,7 +78,7 @@ export const AvgOrderMonth = () => {
 
     axios(
       {
-        url: "http://82.115.24.35:8000/get_transaction_kpis",
+        url: "http://82.115.24.35:8001/get_transaction_kpis",
         method: "get",
         headers:
         {

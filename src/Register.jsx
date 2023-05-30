@@ -100,7 +100,7 @@ export const Register = ({ showLogin, handleClick }) => {
         console.log(form)
         axios(
             {
-                url: "http://82.115.24.35:8000/auth/register",
+                url: "http://82.115.24.35:8001/auth/register",
                 method: "post",
                 data:JSON.stringify({ "username": "shabnam4",
                 "email": "shabnam4@example.com",

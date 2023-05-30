@@ -98,7 +98,7 @@ export const CustomerKPI = () => {
 
         axios(
             {
-                url: "http://82.115.24.35:8000/get_customer_kpis",
+                url: "http://82.115.24.35:8001/get_customer_kpis",
                 method: "get",
                 headers:
                 {

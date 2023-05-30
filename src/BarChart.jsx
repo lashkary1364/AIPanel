@@ -211,7 +211,7 @@ export const BarChart = () => {
 
     axios(
       {
-        url: 'http://82.115.24.35:8000/bbn_query',
+        url: 'http://82.115.24.35:8001/bbn_query',
         method: "post",
         headers:
         {

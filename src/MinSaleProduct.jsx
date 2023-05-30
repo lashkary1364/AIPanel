@@ -74,7 +74,7 @@ export const MinSaleProduct = () => {
 
         axios(
             {
-                url: "http://82.115.24.35:8000/get_product_kpis",
+                url: "http://82.115.24.35:8001/get_product_kpis",
                 method: "get",
                 headers:
                 {
@@ -102,7 +102,7 @@ export const MinSaleProduct = () => {
 
 
 
-
+const maxList=arr.filter(g=>g.ProductID>avg)
 
                 arr.map((item) => {
                     if (item.Revenue >= avg) {

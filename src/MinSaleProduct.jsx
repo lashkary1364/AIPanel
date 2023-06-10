@@ -12,6 +12,7 @@ import { setInlineStyles } from 'rsuite/esm/List/helper/utils';
 import ReactECharts from 'echarts-for-react';
 
 export const MinSaleProduct = () => {
+    const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
     const [disabled, setDisabled] = useState("");
     const [option, setOption] = useState({});
     const [revenue, setRevenue] = useState([]);
@@ -74,7 +75,7 @@ export const MinSaleProduct = () => {
 
         axios(
             {
-                url: "http://82.115.24.35:8001/get_product_kpis",
+                url: serverAddress+"get_product_kpis",
                 method: "get",
                 headers:
                 {

@@ -20,7 +20,7 @@ export const AvgOrderMonth = () => {
   const [isLoading, setIsLoading] = useState(false);
   const accessToken = localStorage.getItem("access-tocken");
   const [divChart, setDivChart] = useState({ border: "0px" })
-
+  const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
 
   useEffect(() => {
 
@@ -78,7 +78,7 @@ export const AvgOrderMonth = () => {
 
     axios(
       {
-        url: "http://82.115.24.35:8001/get_transaction_kpis",
+        url: serverAddress+"get_transaction_kpis",
         method: "get",
         headers:
         {

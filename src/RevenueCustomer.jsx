@@ -15,6 +15,7 @@ import ReactECharts from 'echarts-for-react';
 
 export const RevenueCustomer = () => {
 
+  const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
     const [disabled, setDisabled] = useState("");
     const [option, setOption] = useState({});
     const [date, setDate] = useState([]);
@@ -133,7 +134,7 @@ export const RevenueCustomer = () => {
 
         axios(
             {
-                url: "http://82.115.24.35:8001/get_customer_kpis",
+                url: serverAddress+"get_customer_kpis",
                 method: "get",
                 headers:
                 {

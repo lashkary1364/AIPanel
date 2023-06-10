@@ -16,6 +16,7 @@ import ReactECharts from 'echarts-for-react';
 
 export const OrderValueMonth = () => {
 
+    const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
     const [disabled, setDisabled] = useState("");
     const [option, setOption] = useState({});
     const [order, setOrder] = useState([]);
@@ -77,7 +78,7 @@ export const OrderValueMonth = () => {
 
         axios(
             {
-                url: "http://82.115.24.35:8001/get_transaction_kpis",
+                url:serverAddress+"get_transaction_kpis",
                 method: "get",
                 headers:
                 {

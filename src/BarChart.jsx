@@ -31,6 +31,7 @@ export const BarChart = () => {
   const [x, setX] = useState([]);
   const [y, setY] = useState([]);
 
+  const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
   const [isLoadingVisible, setIsLoadingVisible] = useState(false);
   const [isChartVisible, setIsChartVisible] = useState(false);
   const [isDivVisible, setIsDivVisible] = useState("hidden")
@@ -211,7 +212,7 @@ export const BarChart = () => {
 
     axios(
       {
-        url: 'http://82.115.24.35:8001/bbn_query',
+        url: serverAddress+'bbn_query',
         method: "post",
         headers:
         {

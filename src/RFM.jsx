@@ -26,9 +26,7 @@ export const RFM = () => {
 
   useEffect(() => {
 
-
     setOption({
-
       xAxis: {
         type: 'category',
         data: xDataList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']

@@ -13,190 +13,190 @@ import ReactECharts from 'echarts-for-react';
 
 
 
-export const RevenueCustomer = () => {
+export const RevenueCustomer = ({optionRevenue , isLoading}) => {
 
-  const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
-    const [disabled, setDisabled] = useState("");
-    const [option, setOption] = useState({});
-    const [date, setDate] = useState([]);
-    const [revenueNew, setRrevenueNew] = useState([]);
-    const [revenueOld, setRrevenueOld] = useState([]);
-    const [styleVar, setStyleVar] = useState({ visibility: 'collapse' , height:"0px" });
-    const [isLoading, setIsLoading] = useState(false);
-    const accessToken = localStorage.getItem("access-tocken");
-    const [seri,setSeri]=useState([])
-    const [newDate,setNewDate]=useState([])
-    const [divChart, setDivChart] = useState({ border: "0px" })
+  //const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
+    // const [disabled, setDisabled] = useState("");
+    // const [option, setOption] = useState({});
+    // const [date, setDate] = useState([]);
+    // const [revenueNew, setRrevenueNew] = useState([]);
+    // const [revenueOld, setRrevenueOld] = useState([]);
+    // const [styleVar, setStyleVar] = useState({ visibility: 'collapse' , height:"0px" });
+    // const [isLoading, setIsLoading] = useState(false);
+    // const accessToken = localStorage.getItem("access-tocken");
+    // const [seri,setSeri]=useState([])
+    // const [newDate,setNewDate]=useState([])
+    // const [divChart, setDivChart] = useState({ border: "0px" })
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        console.log(date)
-        console.log(revenueNew)
-        console.log(revenueOld)
+    //     console.log(date)
+    //     console.log(revenueNew)
+    //     console.log(revenueOld)
        
-        setOption(
-             {
-                // title: {
-                //   text: 'Rainfall vs Evaporation',
-                //   //subtext: 'Fake Data'
-                // },
-                tooltip: {
-                  trigger: 'axis'
-                },
-                legend: {
-                  data: ['مشتریان جدید', 'مشتریان قدیم']
-                },
-                toolbox: {
-                  show: true,
-                  feature: {
-                    // dataView: { show: true, readOnly: false },
-                    // magicType: { show: true, type: ['line', 'bar'] },
-                    // restore: { show: true },
-                   // saveAsImage: { show: true }
-                  }
-                },
-                calculable: true,
-                xAxis: [
-                  {
-                    type: 'category',
-                    // prettier-ignore
-                    data:newDate
-                  }
-                ],
-                yAxis: [
-                  {
-                    type: 'value'
-                  }
-                ],
-                series: [
-                  {
-                    name: 'مشتریان جدید',
-                    type: 'bar',
-                    data: revenueNew ,
-                    markPoint: {
-                      data: [
-                        { type: 'max', name: 'Max' },
-                        { type: 'min', name: 'Min' }
-                      ]
-                    },
-                    markLine: {
-                      data: [{ type: 'average', name: 'Avg' }]
-                    }
-                  },
-                  {
-                    name: 'مشتریان قدیم',
-                    type: 'bar',
-                    data: revenueOld ,
-                    markPoint: {
-                      data: [
-                        { name: 'Max', value: 182.2, xAxis: 7, yAxis: 183 },
-                        { name: 'Min', value: 2.3, xAxis: 11, yAxis: 3 }
-                      ]
-                    },
-                    markLine: {
-                      data: [{ type: 'average', name: 'Avg' }]
-                    }
-                  }
-                ]
-              }
-        )
+    //     setOption(
+    //          {
+    //             // title: {
+    //             //   text: 'Rainfall vs Evaporation',
+    //             //   //subtext: 'Fake Data'
+    //             // },
+    //             tooltip: {
+    //               trigger: 'axis'
+    //             },
+    //             legend: {
+    //               data: ['مشتریان جدید', 'مشتریان قدیم']
+    //             },
+    //             toolbox: {
+    //               show: true,
+    //               feature: {
+    //                 // dataView: { show: true, readOnly: false },
+    //                 // magicType: { show: true, type: ['line', 'bar'] },
+    //                 // restore: { show: true },
+    //                // saveAsImage: { show: true }
+    //               }
+    //             },
+    //             calculable: true,
+    //             xAxis: [
+    //               {
+    //                 type: 'category',
+    //                 // prettier-ignore
+    //                 data:newDate
+    //               }
+    //             ],
+    //             yAxis: [
+    //               {
+    //                 type: 'value'
+    //               }
+    //             ],
+    //             series: [
+    //               {
+    //                 name: 'مشتریان جدید',
+    //                 type: 'bar',
+    //                 data: revenueNew ,
+    //                 markPoint: {
+    //                   data: [
+    //                     { type: 'max', name: 'Max' },
+    //                     { type: 'min', name: 'Min' }
+    //                   ]
+    //                 },
+    //                 markLine: {
+    //                   data: [{ type: 'average', name: 'Avg' }]
+    //                 }
+    //               },
+    //               {
+    //                 name: 'مشتریان قدیم',
+    //                 type: 'bar',
+    //                 data: revenueOld ,
+    //                 markPoint: {
+    //                   data: [
+    //                     { name: 'Max', value: 182.2, xAxis: 7, yAxis: 183 },
+    //                     { name: 'Min', value: 2.3, xAxis: 11, yAxis: 3 }
+    //                   ]
+    //                 },
+    //                 markLine: {
+    //                   data: [{ type: 'average', name: 'Avg' }]
+    //                 }
+    //               }
+    //             ]
+    //           }
+    //     )
 
-        console.log(option)
-    }, [newDate, setNewDate, revenueNew, setRrevenueNew , revenueOld,setRrevenueOld , seri , setSeri])
+    //     console.log(option)
+    // }, [newDate, setNewDate, revenueNew, setRrevenueNew , revenueOld,setRrevenueOld , seri , setSeri])
 
    
-    useEffect(() => {
-        console.log(date);
+    // useEffect(() => {
+    //     console.log(date);
        
-        setNewDate( date.filter((x, i, a) => a.indexOf(x) == i))
+    //     setNewDate( date.filter((x, i, a) => a.indexOf(x) == i))
     
-      }, [date, setDate]);
+    //   }, [date, setDate]);
 
 
-      useEffect(() => {
+    //   useEffect(() => {
       
-        setSeri([]);
-        for (let i = 1; i < newDate.length; i++) {
-          setSeri(seri => [...seri, { type: "bar" }])
-        }
+    //     setSeri([]);
+    //     for (let i = 1; i < newDate.length; i++) {
+    //       setSeri(seri => [...seri, { type: "bar" }])
+    //     }
 
-      }, [newDate, setNewDate])
+    //   }, [newDate, setNewDate])
       
 
-    const getRevenueCustomer = () => {
+    // const getRevenueCustomer = () => {
         
-        setDivChart({ border: "2px solid ", color: "#9b9797" , borderRadius:"10px", marginTop: "8px" });
-        setStyleVar({ visibility: 'visible' , height:"600px" });
-        setIsLoading(true);
+    //     setDivChart({ border: "2px solid ", color: "#9b9797" , borderRadius:"10px", marginTop: "8px" });
+    //     setStyleVar({ visibility: 'visible' , height:"600px" });
+    //     setIsLoading(true);
 
-        console.log("....................");
+    //     console.log("....................");
 
-        axios(
-            {
-                url: serverAddress+"get_customer_kpis",
-                method: "get",
-                headers:
-                {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }).then(function (response) {
+    //     axios(
+    //         {
+    //             url: serverAddress+"get_customer_kpis",
+    //             method: "get",
+    //             headers:
+    //             {
+    //                 Authorization: `Bearer ${accessToken}`,
+    //             },
+    //         }).then(function (response) {
 
-                const resultItems = response.data;
-                const itemsArray = resultItems.result;
-                console.log("itemsArray");
-                console.log(itemsArray);
-                const arr = JSON.parse(itemsArray);
-                console.log(arr);
+    //             const resultItems = response.data;
+    //             const itemsArray = resultItems.result;
+    //             console.log("itemsArray");
+    //             console.log(itemsArray);
+    //             const arr = JSON.parse(itemsArray);
+    //             console.log(arr);
            
 
-                const newList = arr.filter(employee => {
-                    return (
-                        employee.customer_type == "new"
-                    );
-                });
+    //             const newList = arr.filter(employee => {
+    //                 return (
+    //                     employee.customer_type == "new"
+    //                 );
+    //             });
 
-                const oldList = arr.filter(employee => {
-                    return (
-                        employee.customer_type == "old"
-                    );
-                });
+    //             const oldList = arr.filter(employee => {
+    //                 return (
+    //                     employee.customer_type == "old"
+    //                 );
+    //             });
 
 
-                newList.map((item, index) => {
+    //             newList.map((item, index) => {
                    
-                    setRrevenueNew(revenueNew => [...revenueNew, item.Revenue]);
+    //                 setRrevenueNew(revenueNew => [...revenueNew, item.Revenue]);
                  
-                });
+    //             });
 
-                oldList.map((item, index) => {
+    //             oldList.map((item, index) => {
                                      
-                    setRrevenueOld(revenueOld => [...revenueOld, item.Revenue]);
+    //                 setRrevenueOld(revenueOld => [...revenueOld, item.Revenue]);
 
-                });
+    //             });
 
-                arr.map((item, index) => {
-                    console.log(item.year + " , " + item.month)
-                    const date1 = item.year + " , " + item.month;
-                    setDate(date => [...date, date1]);
-                    setRrevenueNew(revenueNew => [...revenueNew, item.Revenue]);
-                    setRrevenueOld(revenueOld => [...revenueOld, item.Revenue]);
-                });
+    //             arr.map((item, index) => {
+    //                 console.log(item.year + " , " + item.month)
+    //                 const date1 = item.year + " , " + item.month;
+    //                 setDate(date => [...date, date1]);
+    //                 setRrevenueNew(revenueNew => [...revenueNew, item.Revenue]);
+    //                 setRrevenueOld(revenueOld => [...revenueOld, item.Revenue]);
+    //             });
 
-                setIsLoading(false);
-                setDisabled("");
+    //             setIsLoading(false);
+    //             setDisabled("");
 
-            }).catch(function (error) {
+    //         }).catch(function (error) {
 
-                console.log("axois error: " + error);
-                setIsLoading(false);
-                setInlineStyles();
-                sessionStorage.clear();
-                localStorage.clear();
-                window.location.replace('/login');
-            });
+    //             console.log("axois error: " + error);
+    //             setIsLoading(false);
+    //             setInlineStyles();
+    //             sessionStorage.clear();
+    //             localStorage.clear();
+    //             window.location.replace('/login');
+    //         });
 
-    }
+    // }
 
 
 
@@ -206,14 +206,14 @@ export const RevenueCustomer = () => {
             <CardHeader>درآمدماهانه مشتریان جدید و قدیم</CardHeader>
            
             <CardBody className="pt-0" class="collapse" id="collapseExample">
-            <Button type="button" className='btn btn-secondary' disabled={disabled} onClick={getRevenueCustomer}   >محاسبه</Button>
+         
 
                 {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >                 
                     <Spinner animation="grow" size="sm" variant="primary" />
                     <Spinner animation="grow" variant="primary" />
                     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
                 </div> :
-                  <div style={divChart}  ><ReactECharts option={option} style={styleVar} /></div>
+                   optionRevenue!=undefined ? <ReactECharts option={optionRevenue}  />:''
                 }
 
             </CardBody>

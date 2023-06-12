@@ -5,31 +5,22 @@ import {
 import "../src/shards-dashboard/styles/slider-style.css"
 import { CustomerActivity } from './CustomerActivity';
 import { RevenueCustomer } from './RevenueCustomer';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { CustomerKPI } from './CustomerKPI';
 import axios from 'axios'
 import "../src/shards-dashboard/styles/slider-style.css"
-import { useEffect } from 'react';
-import { useState } from 'react';
-import ReactECharts from 'echarts-for-react';
-import { Flag } from '@material-ui/icons';
-import { Spinner } from 'react-bootstrap';
+import { useEffect ,useState } from 'react';
 import { setInlineStyles } from 'rsuite/esm/List/helper/utils';
 
 
 export const CustomerDashboard = () => {
  
-  const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
- const accessToken = localStorage.getItem("access-tocken");
+    const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
+    const accessToken = localStorage.getItem("access-tocken");
     const [yearList, setYearList] = useState([]);
     const [oldRevenueList, setOldRevenueList] = useState([]);
     const [newRevenueList, setNewRevenueList] = useState([]);
     const [option, setOption] = useState({});
     const [isLoading, setIsLoading] = useState(false);
-    
-
-
-    const [disabled, setDisabled] = useState("");
     const [optionRevenue, setOptionRevenue] = useState({});
     const [date, setDate] = useState([]);
     const [revenueNew, setRrevenueNew] = useState([]);
@@ -288,7 +279,7 @@ useEffect(() => {
   
   
   return (
-    <Container fluid className="main-content-container px-4" dir="rtl" >
+    <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
       <Row className="page-header mt-2 ">
         <Col lg="12"  >
           <nav className="breadcrumb">

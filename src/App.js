@@ -1,8 +1,5 @@
 import React from "react";
 import { BrowserRouter, BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-// import routes from "./routes";
-// import withTracker from "./withTracker";
 import Login from "./login"
 import "bootstrap-v4-rtl/dist/css/bootstrap-rtl.min.css";
 import "./shards-dashboard/styles/shards-dashboards.1.1.0.css";
@@ -10,18 +7,10 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import '../src/login/css/fontiran.css'
 import './assets/ag-grid.css'
-import PrivateRoute from "./PrivateRoute";
 import PrivateRouteChild from "./PrivateRouteChild";
-import { Main, main } from "./Main";
 import { Register } from "./Register";
-import { Dashboard } from "./Dashboard";
-import { BarChart } from "./BarChart";
 import { NotFound } from "./NotFound";
-import { Home } from "./home";
-import { TransactionKpI } from "./TransactionKpI";
 
-
-// import { ToastProvider } from 'react-toast-notifications'
 
 export default () => (
   // }

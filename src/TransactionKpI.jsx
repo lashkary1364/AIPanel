@@ -346,8 +346,8 @@ export const TransactionKpI = () => {
 
   return (
 
-    <Container fluid className="main-content-container px-4" dir="rtl" >
-      <Row className="page-header mt-2 ">
+    <Container fluid className="main-content-container px-4 mt-3" dir="rtl"  >
+      {/* <Row className="page-header mt-2 ">
         <Col lg="12"  >
           <nav className="breadcrumb">
             <a className="breadcrumb-item" href="/home">خانه</a>
@@ -355,7 +355,7 @@ export const TransactionKpI = () => {
             <span className="breadcrumb-item active">داشبورد شاخص های کلیدی عملکرد</span>
           </nav>
         </Col>
-      </Row>
+      </Row> */}
 
       <RevenueMonth optionRevenueMonth={optionRevenueMonth} isLoading={isLoading} />
       <hr />

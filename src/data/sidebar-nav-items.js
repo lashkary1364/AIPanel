@@ -20,6 +20,18 @@ export default function () {
         // '<i class="material-icons">error</i>',
       to: "/product",
     },
+    {
+      title: "پیش بینی مشتریان",
+      htmlBefore: '<i class="material-icons">dashboard</i>',
+        // '<i class="material-icons">error</i>',
+      to: "/customer-predicted",
+    },
+    {
+      title: "اطلاعات مشتری",
+      htmlBefore: '<i class="material-icons">dashboard</i>',
+        // '<i class="material-icons">error</i>',
+      to: "/customer-info",
+    },
     
   ];
 }

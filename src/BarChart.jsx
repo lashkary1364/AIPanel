@@ -6,13 +6,10 @@ import {
 import Box from '@material-ui/core/Box';
 import Slider from '@material-ui/core/Slider';
 import ReactECharts from 'echarts-for-react';
-import ReactLoading from 'react-loading';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import './assets/slider.css'
 import { Spinner } from 'react-bootstrap';
-import { Visibility } from '@material-ui/icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleExclamation, faTriangleExclamation, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+
 
 export const BarChart = () => {
 
@@ -684,7 +681,7 @@ export const BarChart = () => {
   return (
 
     <Container fluid className="main-content-container px-4">
-      <Row className="page-header mt-2 ">
+      {/* <Row className="page-header mt-2 ">
         <Col lg="12" dir="rtl"  >
           <nav className="breadcrumb"  style={{float:"right"}} >
             <a className="breadcrumb-item" href="/home">خانه</a>
@@ -695,7 +692,7 @@ export const BarChart = () => {
                                 <FontAwesomeIcon icon={faRightFromBracket} />
                             </Button>
         </Col>
-      </Row>
+      </Row> */}
 
       <Card small className="mb-2">
         <ListGroup flush>

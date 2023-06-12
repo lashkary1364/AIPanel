@@ -20,9 +20,7 @@ export const AvgOrderMonth = ({ optionAvgOrderMonth, isLoading }) => {
           <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
         </div> :
           optionAvgOrderMonth != undefined ? <ReactECharts option={optionAvgOrderMonth} /> : ''
-
         }
-
       </CardBody>
     </Card>
   )

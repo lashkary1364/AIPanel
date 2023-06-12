@@ -5,22 +5,10 @@ import {
 import "../src/shards-dashboard/styles/slider-style.css"
 import { MinSaleProduct } from './MinSaleProduct'
 import { MaxSaleProduct } from './MaxSaleProduct'
-import { RFM } from './RFM'
-import { RFMPurchase } from './RFMPurchase'
-import { RFMPrice } from './RFMPrice'
-import { CustomerChurn } from './CustomerChurn';
-import { CustomerSegmentation } from './CustomerSegmentation';
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Button
-} from "shards-react";
-import { Spinner } from 'react-bootstrap';
 import { setInlineStyles } from 'rsuite/esm/List/helper/utils';
-import ReactECharts from 'echarts-for-react';
+
 export const ProductDashboard = () => {
 
   const serverAddress = process.env.REACT_APP_SERVER_ADRESS;

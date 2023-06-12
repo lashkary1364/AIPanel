@@ -1,21 +1,13 @@
 import React from 'react'
 import {
-    Container,
-    Row,
-    Col,
     Card,
     CardHeader,
-    CardBody,
-    Button
+    CardBody   
 } from "shards-react";
-import axios from 'axios'
 import "../src/shards-dashboard/styles/slider-style.css"
-import { useEffect } from 'react';
-import { useState } from 'react';
 import ReactECharts from 'echarts-for-react';
-import { Flag } from '@material-ui/icons';
 import { Spinner } from 'react-bootstrap';
-import { setInlineStyles } from 'rsuite/esm/List/helper/utils';
+
 
 
 export const CustomerKPI = ({option,isLoading}) => {

@@ -26,9 +26,7 @@ export const CustomerChurn = () => {
 
   useEffect(() => {
 
-
     setOption({
-
       xAxis: {
         type: 'category',
         data: xDataList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -101,7 +99,6 @@ export const CustomerChurn = () => {
           </div> :
             <div style={divChart}  ><ReactECharts option={option} style={styleVar} /></div>
         }
-
 
       </CardBody>
     </Card>

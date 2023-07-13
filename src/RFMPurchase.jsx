@@ -12,8 +12,8 @@ import { useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { Spinner } from 'react-bootstrap';
 
-export const RFMPurchase = ({optionPurchase ,isLoading}) => {
-    
+export const RFMPurchase = ({ optionPurchase, isLoading }) => {
+
     // const accessToken = localStorage.getItem("access-tocken");
     // const [option, setOption] = useState({});
     // const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +28,7 @@ export const RFMPurchase = ({optionPurchase ,isLoading}) => {
 
 
     //     setOption({
-                      
+
     //             xAxis: {
     //               type: 'category',
     //               data:xDataList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -47,13 +47,13 @@ export const RFMPurchase = ({optionPurchase ,isLoading}) => {
     //                 }
     //               }
     //             ]
-              
+
     //     })
 
     //     setIsLoading(false);
     // }, [xDataList, setXDataList, seriDataList , setSeriDatalist]);
 
-    
+
     // const getTransactionCustomerKPI = () => {
 
     //     setDivChart({ border: "2px solid ", color: "#9b9797" , borderRadius:"10px", marginTop: "8px" });
@@ -76,7 +76,7 @@ export const RFMPurchase = ({optionPurchase ,isLoading}) => {
 
     //            setXDataList(itemsArray.map(m=>m.predicted_purchases)) ;
     //            setSeriDatalist(itemsArray.map(m=>m.Frequency));
-              
+
     //         }).catch(function (error) {
 
     //             console.log("axois error: " + error);
@@ -87,24 +87,23 @@ export const RFMPurchase = ({optionPurchase ,isLoading}) => {
     // }
 
 
-  return (
-    <Card small className="h-100">
-    <CardHeader>نمودار فراوانی  تعداد خرید</CardHeader>
-    <CardBody className="pt-0">
-       
-        {
-            isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                <Spinner animation="grow" size="sm" variant="primary" />
-                <Spinner animation="grow" variant="primary" />
-                <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-            </div> :
-               <ReactECharts option={optionPurchase}  />
-        }
+    return (
+        <Card small className="h-100">
+            <CardHeader>نمودار فراوانی  تعداد خرید</CardHeader>
+            <CardBody className="pt-0">
+                {
+                    isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+                        <Spinner animation="grow" size="sm" variant="primary" />
+                        <Spinner animation="grow" variant="primary" />
+                        <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+                    </div> :
+                        <ReactECharts option={optionPurchase} />
+                }
 
 
-    </CardBody>
-</Card>
+            </CardBody>
+        </Card>
 
-  )
+    )
 }
 

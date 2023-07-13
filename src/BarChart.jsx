@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import {
-  Container, Row, Col, ListGroup, ListGroupItem, Card , Button
+  Container, Row, Col, ListGroup, ListGroupItem, Card, Button
 } from "shards-react";
 import Box from '@material-ui/core/Box';
 import Slider from '@material-ui/core/Slider';
@@ -9,7 +9,8 @@ import ReactECharts from 'echarts-for-react';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import './assets/slider.css'
 import { Spinner } from 'react-bootstrap';
-
+import MainNavbar from './components/layout/MainNavbar/MainNavbar';
+import { NavbarWatif } from './components/NavbarWatif';
 
 export const BarChart = () => {
 
@@ -32,17 +33,18 @@ export const BarChart = () => {
   const [isLoadingVisible, setIsLoadingVisible] = useState(false);
   const [isChartVisible, setIsChartVisible] = useState(false);
   const [isDivVisible, setIsDivVisible] = useState("hidden")
-  
-  const signOut=()=>{
+
+  const signOut = () => {
     sessionStorage.clear();
     localStorage.clear();
     window.location.replace('/login');
-   }
+  }
 
-  
+
   useEffect(() => {
 
     setOption({
+      color:"rgb(182, 94, 223)",
       xAxis: {
         type: 'category',
         data: x
@@ -59,6 +61,7 @@ export const BarChart = () => {
     });
 
     setOption1({
+      color:["rgb(107, 54, 132)" , "rgb(173, 15, 240)" , "rgb(213, 124, 251)" ],
       // title: {
       //  // text: chartName,
       //   //subtext: 'Fake Data',
@@ -209,7 +212,7 @@ export const BarChart = () => {
 
     axios(
       {
-        url: serverAddress+'bbn_query',
+        url: serverAddress + 'bbn_query',
         method: "post",
         headers:
         {
@@ -219,7 +222,7 @@ export const BarChart = () => {
         data: form
       }).then(function (response) {
 
-        console.log("response:");
+        console.log("bbn_query response:");
         console.log(response.data);
 
         const resultItems = response.data;
@@ -345,13 +348,13 @@ export const BarChart = () => {
 
   const bbn_brandwagen_handleChange = (event, newValue, activeThumb) => {
 
-    setIsChartVisible(false)
-    setChartName("نمودار رفتار توده ای")
-    setX([])
-    setY([])
+    setIsChartVisible(false);
+    setChartName("نمودار رفتار توده ای");
+    setX([]);
+    setY([]);
     setDataChart([]);
-    setOption({})
-    setOption1({})
+    setOption({});
+    setOption1({});
     console.log("handleChange_bbn_brandwagen")
     console.log(newValue);
     const form = new FormData();
@@ -679,194 +682,179 @@ export const BarChart = () => {
   };
 
   return (
+    <div>
+      {/* <NavbarWatif></NavbarWatif> */}
+      <MainNavbar></MainNavbar>
+      <Container fluid className="main-content-container px-4" style={{marginTop:"50px"}}>
+          <Card small className="mb-2">
+          <ListGroup flush>
+            <ListGroupItem >
+              <Row>
+                <Col md="4" >
+                      <Col>
+                        <ToggleButtonGroup className='d-flex justify-content-center'
+                          color="primary"
+                          value={shakhes}
+                          exclusive
+                          onChange={handleChange}
+                          aria-label="Platform">
+                          <ToggleButton  className="btn-watif" value="rsi_change btn-watif" >شاخص rsi</ToggleButton>
+                          <ToggleButton value="change" className="btn-watif">قیمت</ToggleButton>
+                        </ToggleButtonGroup>
+                      </Col>
+                      <Col >
+                        <label className='lable-watif'>رفتار توده ای</label>
+                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                          <Slider style={{ fontFamily: "iransans", fontSize: "11px" }}
+                            aria-label="Restricted values"
+                            defaultValue={0}
+                            valueLabelFormat={bbn_brandwagen_Format}
+                            getAriaValueText={bbn_brandwagenText}
+                            step={null}
+                            onChange={bbn_brandwagen_handleChange}
+                            // valueLabelDisplay="auto"
+                            marks={bbn_brandwagen}
+                          />
+                        </Box>
+                      </Col>
 
-    <Container fluid className="main-content-container px-4">
-      {/* <Row className="page-header mt-2 ">
-        <Col lg="12" dir="rtl"  >
-          <nav className="breadcrumb"  style={{float:"right"}} >
-            <a className="breadcrumb-item" href="/home">خانه</a>
-            <a className="breadcrumb-item" href="/main">صفحه قبلی</a>
-            <span className="breadcrumb-item active">نمودار واتیف</span>           
-          </nav>
-          <Button type="button" theme="secondary" onClick={signOut} style={{float:"left"}}  >
-                                <FontAwesomeIcon icon={faRightFromBracket} />
-                            </Button>
-        </Col>
-      </Row> */}
+                      <Col >
+                        <label className='lable-watif'>شاخص کل</label>
+                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                          <Slider
+                            // aria-label="Restricted values"
+                            defaultValue={0}
+                            valueLabelFormat={bbn_total_index_Format}
+                            getAriaValueText={bbn_total_index_Text}
+                            onChange={bbn_total_index_handleChange}
+                            step={null}
+                            // valueLabelDisplay="auto"
+                            marks={bbn_total_index}
+                          />
+                        </Box>
+                      </Col>
 
-      <Card small className="mb-2">
-        <ListGroup flush>
-          <ListGroupItem >
-            <Row>
-              <Col md="4" >
-                <div style={{ borderLeft: "5px solid #dbd7d9", paddingTop: "10px", paddingRight: "10px", paddingBottom: "10px", paddingLeft: "3px" }}>
-                  <div style={{ borderLeft: "3px solid #dbd7d9", padding: "5px" }}>
-                    <Col>
-                      <ToggleButtonGroup className='d-flex justify-content-center'
-                        color="primary"
-                        value={shakhes}
-                        exclusive
-                        onChange={handleChange}
-                        aria-label="Platform">
-                        <ToggleButton value="rsi_change" style={{ fontFamily: "iransans", fontSize: "11px" }}>شاخص rsi</ToggleButton>
-                        <ToggleButton value="change" style={{ fontFamily: "iransans", fontSize: "11px" }}>قیمت</ToggleButton>
-                      </ToggleButtonGroup>
-                    </Col>
+                      <Col >
+                        <label className='lable-watif'>نگرش</label>
+                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                          <Slider
+                            // aria-label="Restricted values"
+                            defaultValue={0}
+                            valueLabelFormat={bbn_attitude_Format}
+                            getAriaValueText={bbn_attitude_Text}
+                            onChange={bbn_attitude_handleChange}
+                            step={null}
+                            // valueLabelDisplay="auto"
+                            marks={bbn_attitude}
+                          />
+                        </Box>
+                      </Col>
 
-                    <Col className="form-inline">
-                      <label style={{ marginRight: "10px", width: 200 }}>رفتار توده ای</label>
-                      <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                        <Slider style={{ fontFamily: "iransans", fontSize: "11px" }}
-                          aria-label="Restricted values"
-                          defaultValue={0}
-                          valueLabelFormat={bbn_brandwagen_Format}
-                          getAriaValueText={bbn_brandwagenText}
-                          step={null}
-                          onChange={bbn_brandwagen_handleChange}
-                          // valueLabelDisplay="auto"
-                          marks={bbn_brandwagen}
-                        />
-                      </Box>
-                    </Col>
+                      <Col >
+                        <label className='lable-watif'>اخبار</label>
+                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                          <Slider
+                            // aria-label="Restricted values"
+                            defaultValue={0}
+                            valueLabelFormat={bbn_news_Format}
+                            getAriaValueText={bbn_news_Text}
+                            onChange={bbn_news_handleChange}
+                            step={null}
+                            // valueLabelDisplay="auto"
+                            marks={bbn_news}
+                          />
+                        </Box>
+                      </Col>
 
-                    <Col className="form-inline">
-                      <label style={{ marginRight: "10px", width: 200 }}>شاخص کل</label>
-                      <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                        <Slider
-                          // aria-label="Restricted values"
-                          defaultValue={0}
-                          valueLabelFormat={bbn_total_index_Format}
-                          getAriaValueText={bbn_total_index_Text}
-                          onChange={bbn_total_index_handleChange}
-                          step={null}
-                          // valueLabelDisplay="auto"
-                          marks={bbn_total_index}
-                        />
-                      </Box>
-                    </Col>
+                      <Col >
+                        <label className='lable-watif'>حالت</label>
+                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                          <Slider
+                            // aria-label="Restricted values"
+                            defaultValue={0}
+                            valueLabelFormat={bbn_mood_Format}
+                            getAriaValueText={bbn_mood_Text}
+                            onChange={bbn_mood_handleChange}
+                            step={null}
+                            // valueLabelDisplay="auto"
+                            marks={bbn_mood}
+                          />
+                        </Box>
+                      </Col>
 
-                    <Col className="form-inline">
-                      <label style={{ marginRight: "10px", width: 200 }}>نگرش</label>
-                      <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                        <Slider
-                          // aria-label="Restricted values"
-                          defaultValue={0}
-                          valueLabelFormat={bbn_attitude_Format}
-                          getAriaValueText={bbn_attitude_Text}
-                          onChange={bbn_attitude_handleChange}
-                          step={null}
-                          // valueLabelDisplay="auto"
-                          marks={bbn_attitude}
-                        />
-                      </Box>
-                    </Col>
+                      <Col >
+                        <label className='lable-watif'>تصمیم</label>
+                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                          <Slider
+                            // aria-label="Restricted values"
+                            defaultValue={0}
+                            valueLabelFormat={bbn_decision_Format}
+                            getAriaValueText={bbn_decision_Text}
+                            onChange={bbn_decision_handleChange}
+                            step={null}
+                            // valueLabelDisplay="auto"
+                            marks={bbn_decision}
+                          />
+                        </Box>
+                      </Col>
 
-                    <Col className="form-inline">
-                      <label style={{ marginRight: "10px", width: 200 }}>اخبار</label>
-                      <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                        <Slider
-                          // aria-label="Restricted values"
-                          defaultValue={0}
-                          valueLabelFormat={bbn_news_Format}
-                          getAriaValueText={bbn_news_Text}
-                          onChange={bbn_news_handleChange}
-                          step={null}
-                          // valueLabelDisplay="auto"
-                          marks={bbn_news}
-                        />
-                      </Box>
-                    </Col>
+                      <Col>
+                        <label className='lable-watif'>احساسات</label>
+                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                          <Slider
+                            // aria-label="Restricted values"
+                            defaultValue={0}
+                            valueLabelFormat={bbn_sentiment_Format}
+                            getAriaValueText={bbn_sentiment_Text}
+                            onChange={bbn_sentiment_handleChange}
+                            step={null}
+                            // valueLabelDisplay="auto"
+                            marks={bbn_sentiment}
+                          />
+                        </Box>
+                      </Col>
+                 
+                </Col>
+                <Col md="8" >
 
-                    <Col className="form-inline">
-                      <label style={{ marginRight: "10px", width: 200 }}>حالت</label>
-                      <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                        <Slider
-                          // aria-label="Restricted values"
-                          defaultValue={0}
-                          valueLabelFormat={bbn_mood_Format}
-                          getAriaValueText={bbn_mood_Text}
-                          onChange={bbn_mood_handleChange}
-                          step={null}
-                          // valueLabelDisplay="auto"
-                          marks={bbn_mood}
-                        />
-                      </Box>
-                    </Col>
+                  <div style={{ borderRadius: "5px", border: "2px solid #dbd7d9", padding: "20px", visibility: isDivVisible }}>
 
-                    <Col className="form-inline">
-                      <label style={{ marginRight: "10px", width: 200 }}>تصمیم</label>
-                      <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                        <Slider
-                          // aria-label="Restricted values"
-                          defaultValue={0}
-                          valueLabelFormat={bbn_decision_Format}
-                          getAriaValueText={bbn_decision_Text}
-                          onChange={bbn_decision_handleChange}
-                          step={null}
-                          // valueLabelDisplay="auto"
-                          marks={bbn_decision}
-                        />
-                      </Box>
-                    </Col>
-
-                    <Col className="form-inline">
-                      <label style={{ marginRight: "10px", width: 200 }}>احساسات</label>
-                      <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                        <Slider
-                          // aria-label="Restricted values"
-                          defaultValue={0}
-                          valueLabelFormat={bbn_sentiment_Format}
-                          getAriaValueText={bbn_sentiment_Text}
-                          onChange={bbn_sentiment_handleChange}
-                          step={null}
-                          // valueLabelDisplay="auto"
-                          marks={bbn_sentiment}
-                        />
-                      </Box>
-                    </Col>
+                    {isLoadingVisible && <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+                      {/* <Spinner animation="border" role="status" ></Spinner> */}
+                      <Spinner animation="grow" size="sm" variant="secondary" />
+                      <Spinner animation="grow" variant="secondary" />
+                      <div className='text-secondary text-center' dir="rtl">در حال بارگزاری...</div>
+                    </div>
+                    }
+                    {/* // <ReactLoading type="bars" color="black" height={100} width={100} className="d-flex justify-content-center" /> : ''} */}
+                    {isChartVisible ? <label className='text-center d-flex justify-content-center chart-title' >{chartName}</label>
+                      : ''
+                    }
+                    {isChartVisible ? <ReactECharts option={option} /> : ""}
                   </div>
-                </div>
-              </Col>
-              <Col md="8" >
+                  <div style={{ borderRadius: "5px", border: "2px solid #dbd7d9", padding: "20px", marginTop: "5px", visibility: isDivVisible }}>
 
-                <div style={{ borderRadius: "5px", border: "2px solid #dbd7d9", padding: "20px", visibility: isDivVisible }}>
+                    {isLoadingVisible && <div className="text-center"  >
+                      {/* <Spinner animation="border" role="status" ></Spinner> */}
+                      <Spinner animation="grow" size="sm" variant="secondary" />
+                      <Spinner animation="grow" variant="secondary" />
+                      <div className='text-secondary text-center' dir="rtl">در حال بارگزاری...</div>
+                    </div>
+                    }
+                    {/* // <ReactLoading type="bars" color="black" height={100} width={100} className="d-flex justify-content-center" /> : ''} */}
+                    {isChartVisible ? <label className='text-center d-flex justify-content-center chart-title' >{chartName}</label>
+                      : ''
+                    }
+                    {isChartVisible ? <ReactECharts option={option1} /> : ""}
 
-                  {isLoadingVisible && <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                    {/* <Spinner animation="border" role="status" ></Spinner> */}
-                    <Spinner animation="grow" size="sm" variant="primary" />
-                    <Spinner animation="grow" variant="primary" />
-                    <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
                   </div>
-                  }
-                  {/* // <ReactLoading type="bars" color="black" height={100} width={100} className="d-flex justify-content-center" /> : ''} */}
-                  {isChartVisible ? <label className='text-center d-flex justify-content-center' style={{ color: "rgb(63, 81, 181)", paddingTop: "10px", textDecoration: "underline", margin: "auto", width: "50%", padding: "auto" }}>{chartName}</label>
-                    : ''
-                  }
-                  {isChartVisible ? <ReactECharts option={option} /> : ""}
-                </div>
-                <div style={{ borderRadius: "5px", border: "2px solid #dbd7d9", padding: "20px", marginTop: "5px", visibility: isDivVisible }}>
 
-                  {isLoadingVisible && <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                    {/* <Spinner animation="border" role="status" ></Spinner> */}
-                    <Spinner animation="grow" size="sm" variant="primary" />
-                    <Spinner animation="grow" variant="primary" />
-                    <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-                  </div>
-                  }
-                  {/* // <ReactLoading type="bars" color="black" height={100} width={100} className="d-flex justify-content-center" /> : ''} */}
-                  {isChartVisible ? <label className='text-center d-flex justify-content-center' style={{ color: "rgb(63, 81, 181)", paddingTop: "10px", textDecoration: "underline", margin: "auto", width: "50%", padding: "auto" }}>{chartName}</label>
-                    : ''
-                  }
-                  {isChartVisible ? <ReactECharts option={option1} /> : ""}
-
-                </div>
-
-              </Col>
-            </Row>
-          </ListGroupItem>
-        </ListGroup>
-      </Card>
-    </Container>
-
+                </Col>
+              </Row>
+            </ListGroupItem>
+          </ListGroup>
+        </Card>
+      </Container>
+    </div>
   )
 }

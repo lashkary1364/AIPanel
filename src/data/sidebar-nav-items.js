@@ -1,7 +1,12 @@
 
 export default function () {
   return [
-       
+    {
+      title: "واتیف",
+      htmlBefore: '<i class="material-icons">dashboard</i>',
+        // '<i class="material-icons">error</i>',
+      to: "/barchart",
+    },
     {
       title: " شاخص های کلیدی عملکرد تراکنش ها",
       htmlBefore: '<i class="material-icons"> 	compare_arrows</i>',
@@ -32,6 +37,29 @@ export default function () {
         // '<i class="material-icons">error</i>',
       to: "/customer-info",
     },
-    
+    {
+      title: "تاب آوری",
+      htmlBefore: '<i class="material-icons">dashboard</i>',
+        // '<i class="material-icons">error</i>',
+      to: "/test",
+    },
+    {
+      title: "نقدینگی",
+      htmlBefore: '<i class="material-icons">dashboard</i>',
+        // '<i class="material-icons">error</i>',
+      to: "/naghdineghi",
+    },
+    {
+      title: "پرداخت دیون بر اساس سال",
+      htmlBefore: '<i class="material-icons">dashboard</i>',
+        // '<i class="material-icons">error</i>',
+      to: "/dion",
+    },
+    {
+      title: "سودآوری  بر اساس سال",
+      htmlBefore: '<i class="material-icons">dashboard</i>',
+        // '<i class="material-icons">error</i>',
+      to: "/soodavari",
+    },
   ];
 }

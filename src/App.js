@@ -10,6 +10,9 @@ import './assets/ag-grid.css'
 import PrivateRouteChild from "./PrivateRouteChild";
 import { Register } from "./Register";
 import { NotFound } from "./NotFound";
+import { Resiliency } from "./Resiliency";
+import { LoginTest } from "./LoginTest";
+import { Login1 } from "./Login1";
 
 
 export default () => (
@@ -17,7 +20,7 @@ export default () => (
   <Router basename={process.env.REACT_APP_BASENAME || ""}>
     <Switch>
       {/* <PrivateRoute></PrivateRoute> */}
-      <Route path="/login" key={10000} exact component={Login} />
+      <Route path="/login" key={10000} exact component={Login1} />
       {/* <Route path="/menu" key={100010} component={TransactionKpI} />
       <PrivateRoute exact path="/home" component={Home}  /> 
       <PrivateRoute exact path="/main" component={Main}  /> 
@@ -28,11 +31,10 @@ export default () => (
       <Route path="/barchart" key={100003} exact component={BarChart} /> */}
       {/* <Route path="/main" key={100002} exact component={main} />    
       {/* <Route path="/barchart" key={100008} exact component={BarChart} />  */}
-      {/* <Route path="/dashboard" key={100013} exact component={Dashboard} /> */}
+  
       <Route path="/register" key={10004} exact component={Register} />
       <Route path="/404" key={10005} component={NotFound} />
-      <Route path="*" component={NotFound} />
-      
+      <Route path="*" component={NotFound} />      
     </Switch>
     {/* <div> */}
     {/* <ToastProvider> */}

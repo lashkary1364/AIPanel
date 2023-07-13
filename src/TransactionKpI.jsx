@@ -23,6 +23,7 @@ export const TransactionKpI = () => {
   const [revenue, setRevenue] = useState([]);
   const [date, setDate] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   //----------------------------------------------------------------------
 
   const [optionGrowthMonth, setOptionGrowthMonth] = useState({});
@@ -30,6 +31,7 @@ export const TransactionKpI = () => {
   const labelRight = {
     position: 'right'
   };
+
   //----------------------------------------------------------------------
 
   const [optionAvgOrderMonth, setOptionAvgOrderMonth] = useState({});
@@ -78,8 +80,8 @@ export const TransactionKpI = () => {
 
   useEffect(() => {
 
-      console.log(date)
-      console.log(countcustomer)
+      console.log(date);
+      console.log(countcustomer);
 
       setOptionActivityCustomer(
           {
@@ -360,10 +362,8 @@ export const TransactionKpI = () => {
       <RevenueMonth optionRevenueMonth={optionRevenueMonth} isLoading={isLoading} />
       <hr />
       <GrowthMonth optionGrowthMonth={optionGrowthMonth} isLoading={isLoading} />
-
       <hr />
       <AvgOrderMonth optionAvgOrderMonth={optionAvgOrderMonth} isLoading={isLoading}></AvgOrderMonth>
-
       <hr />
       <OrderValueMonth option={option} isLoading={isLoading}></OrderValueMonth>
       <hr />

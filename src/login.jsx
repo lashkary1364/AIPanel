@@ -8,6 +8,9 @@ import axios from 'axios'
 import { useEffect } from 'react';
 import { Environment } from 'ag-grid-community';
 
+
+
+
 const Login = () => {
 
     const serverAddress=process.env.REACT_APP_SERVER_ADRESS;
@@ -113,7 +116,7 @@ const Login = () => {
                         </div>
                         {
                             ErrorFlag == true ?
-                                <div style={{ direction: "rtl", color: "red", textAlign: "right" }}><i className='fa fa-warning pl-2'></i><span>نام کاربری یا رمز عبور اشتباه میباشد</span></div>
+                                <div className='errormessage'><i className='fa fa-warning pl-2'></i><span>نام کاربری یا رمز عبور اشتباه میباشد</span></div>
                                 :
                                 ''
                         }

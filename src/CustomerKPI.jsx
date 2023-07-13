@@ -164,8 +164,7 @@ export const CustomerKPI = ({option,isLoading}) => {
 
         <Card small className="h-100">
             <CardHeader>فروش محصول به تفکیک مشتریان جدید و قدیم به تفکیک سال</CardHeader>
-            <CardBody className="pt-0">
-             
+            <CardBody className="pt-0">             
                 {
                     isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
                         <Spinner animation="grow" size="sm" variant="primary" />
@@ -174,7 +173,6 @@ export const CustomerKPI = ({option,isLoading}) => {
                     </div> :
                        option !=undefined ? <ReactECharts option={option}  /> :'' 
                 }
-
 
             </CardBody>
         </Card>

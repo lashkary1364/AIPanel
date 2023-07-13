@@ -113,12 +113,8 @@ export const Register = ({ showLogin, handleClick }) => {
                     "Content-Type": "application/json"
                 },
             }).then(function (response) {
-
-
                 console.log("response: ");
                 console.log(response);
-
-
             }).catch(function (error) {
                 console.log("axois error: " + error);
             })

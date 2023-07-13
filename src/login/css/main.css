@@ -327,8 +327,7 @@ textarea:focus, input:focus {
     line-height: 1.5;
     color: #fff;
     text-transform: uppercase;
-  
-    width: 100%;
+    width: 50%;
     height: 50px;
     border-radius: 25px;
     background: #57b846;
@@ -339,8 +338,7 @@ textarea:focus, input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 25px;
-  
+    padding: 0 25px;  
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;

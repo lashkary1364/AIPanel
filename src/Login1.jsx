@@ -4,6 +4,8 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 import { useEffect } from 'react';
+import Swal from 'sweetalert2'
+
 
 
 export const Login1 = () => {
@@ -69,12 +71,23 @@ export const Login1 = () => {
             window.location.replace('/home')
 
           } else {
-            setErrorFlag(true);
+            Swal.fire(
+              'خطا',
+              "نام کاربری یا رمز عبور اشتباه میباشد",
+              'error'
+            );
+            //alert("نام کاربری یا رمز عبور اشتباه میباشد");
+           // setErrorFlag(true);
           }
 
         }).catch(function (error) {
           // handle error
-          setErrorFlag(true);
+          // setErrorFlag(true);
+          Swal.fire(
+            'خطا',
+            "نام کاربری یا رمز عبور اشتباه میباشد",
+            'error'
+          );
           console.log("axois error: " + error);
           console.log(ErrorFlag);
           localStorage.clear();
@@ -105,13 +118,13 @@ export const Login1 = () => {
             <button className="login100-form-btn" type='submit' style={{ marginLeft: "20px" }}>ورود</button>
             <button className="login100-form-btn" type='submit'  onClick={handleRegister} >ثبت نام</button>
           </div>
-          {
+          {/* {
             ErrorFlag == true ?
               <div className='error-message'><i className='fa fa-warning pr-2'></i><span>نام کاربری یا رمز عبور اشتباه میباشد</span></div>
               :
               ''
-          }
-          <div style={{ textAlign: "center", marginTop: "20px", fontFamily: "cinema", }}>
+          } */}
+          <div style={{ textAlign: "center", marginTop: "30px", fontFamily: "cinema", }}>
             <a style={{ color: "#8c11c5", textDecoration: "bottom", fontSize: "12pt" }} href="#" >فراموشی رمز عبور</a>
           </div>
         </form>

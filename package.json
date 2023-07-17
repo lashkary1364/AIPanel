@@ -6,7 +6,7 @@
   "dependencies": {
     "@autocomplete/material-ui": "^0.0.17",
     "@emotion/react": "^11.11.0",
-    "@emotion/styled": "^11.11.0",   
+    "@emotion/styled": "^11.11.0",
     "@fdefelici/react-bootstrap-combobox": "^1.13.0",
     "@fontsource/roboto": "^4.5.8",
     "@fortawesome/fontawesome": "^1.1.8",
@@ -71,12 +71,13 @@
     "set-default-browser": "^1.1.2",
     "shards-react": "^1.0.0",
     "shortid": "^2.2.14",
+    "sweetalert2": "^11.7.16",
     "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build:prod": "cross-env REACT_APP_BASENAME=/demo/shards-dashboard-lite-react REACT_APP_GAID=UA-115105611-1 npm run build",
-    "build": "cross-env REACT_APP_BASENAME=/demo/shards-dashboard-lite-react react-scripts build",
+    "build:prod": "cross-env   npm run build",
+    "build": "cross-env  react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start-sw": "http-server ./build"

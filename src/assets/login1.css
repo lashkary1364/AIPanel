@@ -328,3 +328,58 @@ input[type=text] {
   width: 100px!important;
   color:white!important;
 }
+
+.div-img-back{
+  display: flex;
+  justify-content: center;
+  height: 800px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px; */
+  /* height: 800px; */
+  /* position: relative;
+  background: red; */
+}
+
+.img-back
+{
+  width: 60%;
+  height: 500px;
+  /* width: 80%;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  height: 500px; */
+  /* width: 80%;
+  position: absolute;
+  height: 500px; */
+  /* width: 60%;
+  height: 500px; */
+
+
+  /* margin:auto;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+  position: fixed;
+  left:60%;
+  align-items: center;
+  justify-content: center; */
+}
+
+.div-img-back{
+  /* height: 800px; */
+  /* height: 100%; */
+  position: relative;
+  background: red;
+}
+
+.img-back{
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

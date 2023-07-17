@@ -131,6 +131,7 @@ export const Resiliency = () => {
                 const arr = JSON.parse(itemsArray);
                 console.log(arr);
                 console.log(arr[0].name);
+                
                 arr.map(item => {
                     var temp = [];
                     setNames(names => [...names, item.name]);
@@ -161,16 +162,10 @@ export const Resiliency = () => {
 
     }
 
-
-
-
-
-
     return (
-
         <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
             <Card small className="h-100">
-                <CardHeader>بهره وری بر اساس سال</CardHeader>
+                <CardHeader>تاب آوری بر اساس سال</CardHeader>
                 <CardBody className="pt-0">
                     {
                         isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
@@ -180,8 +175,6 @@ export const Resiliency = () => {
                         </div> :
                             option != undefined ? <ReactECharts option={option} /> : ''
                     }
-
-
                 </CardBody>
             </Card>
             

@@ -1,12 +1,12 @@
 
 export default function () {
   return [
-    {
-      title: "واتیف",
-      htmlBefore: '<i class="material-icons">dashboard</i>',
-        // '<i class="material-icons">error</i>',
-      to: "/barchart",
-    },
+    // {
+    //   title: "واتیف",
+    //   htmlBefore: '<i class="material-icons">dashboard</i>',
+    //     // '<i class="material-icons">error</i>',
+    //   to: "/barchart",
+    // },
     {
       title: " شاخص های کلیدی عملکرد تراکنش ها",
       htmlBefore: '<i class="material-icons"> 	compare_arrows</i>',
@@ -39,6 +39,12 @@ export default function () {
     },
     {
       title: "تاب آوری",
+      htmlBefore: '<i class="material-icons">dashboard</i>',
+        // '<i class="material-icons">error</i>',
+      to: "/test",
+    },
+    {
+      title: "بهره وری",
       htmlBefore: '<i class="material-icons">dashboard</i>',
         // '<i class="material-icons">error</i>',
       to: "/test",

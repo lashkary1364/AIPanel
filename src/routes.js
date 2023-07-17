@@ -13,8 +13,15 @@ import { NaghdinegiSal } from "./NaghdinegiSal";
 import { Dion } from "./Dion";
 import { SoodavariSal } from "./SoodavariSal";
 import Default1Layout from "./layouts/Default1";
-
-
+import {MainOmde} from "./MainOmde"
+import {MainZanjire} from "./MainZanjire"
+import {MainSaham} from "./MainSaham"
+import {WathiOmde} from "./WathiOmde"
+import {WatifSaham} from "./WatifSaham"
+import {WatifZanjire} from "./WatifZanjire"
+import { DashboardOmde} from "./DashboardOmde"
+import {DashboardSaham} from "./DashboardSaham"
+import {DasboardZanjire} from "./DasboardZanjire"
 
 export default [
   {
@@ -28,15 +35,25 @@ export default [
     component: BarChart
   },
   {
-    path: "/main",
+    path: "/mainomde",
     layout: DefaulCustomeLayout,
-    component: Main
+    component: MainOmde
   },
   {
-    path: "/kpi",
-    layout: DefaultLayout,
-    component: TransactionKpI
+    path: "/mainzanjire",
+    layout: DefaulCustomeLayout,
+    component: MainZanjire
   },
+  {
+    path: "/mainsaham",
+    layout: DefaulCustomeLayout,
+    component: MainSaham
+  },
+  // {
+  //   path: "/kpi",
+  //   layout: DefaultLayout,
+  //   component: TransactionKpI
+  // },
   {
     path: "/customer",
     layout: DefaultLayout,
@@ -76,5 +93,35 @@ export default [
     path: "/soodavari",
     layout: DefaultLayout,
     component: SoodavariSal
+  },
+  {
+    path: "/watifomde",
+    layout: DefaulCustomeLayout,
+    component: WathiOmde
+  },
+  {
+    path: "/watifsaham",
+    layout: DefaulCustomeLayout,
+    component: WatifSaham
+  },
+  {
+    path: "/watifzanjire",
+    layout: DefaulCustomeLayout,
+    component: WatifZanjire
+  },
+  {
+    path: "/dashboardomde",
+    layout: DefaultLayout,
+    component: DashboardOmde
+  },
+  {
+    path: "/dashboardsaham",
+    layout: DefaultLayout,
+    component: DashboardSaham
+  },
+  {
+    path: "/dashboardzanjire",
+    layout: DefaultLayout,
+    component: DasboardZanjire
   },
 ];

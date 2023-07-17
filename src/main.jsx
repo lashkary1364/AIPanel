@@ -11,19 +11,22 @@ import {
 } from "shards-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation, faTriangleExclamation, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import MainNavbar from './components/layout/MainNavbar/MainNavbar';
 
 export const Main = () => {
+  const queryParameters = new URLSearchParams(window.location.search);
+  const id = queryParameters.get("id");
+  // const signOut = () => {
+  //   sessionStorage.clear();
+  //   localStorage.clear();
+  //   window.location.replace('/login');
+  // }
 
-
-  const signOut = () => {
-    sessionStorage.clear();
-    localStorage.clear();
-    window.location.replace('/login');
-  }
   return (
     <div>
+      <MainNavbar></MainNavbar>
       <Container fluid className="main-content-container" >
-        <div style={{ marginTop: "5px" }}>
+        {/* <div style={{ marginTop: "5px" }}>
           <Row>
             <Col lg="4" md="6" sm="12" className="mb-4" >
               <Button type="button" theme="secondary" onClick={signOut}  >
@@ -31,7 +34,7 @@ export const Main = () => {
               </Button>
             </Col>
           </Row>
-        </div>
+        </div> */}
         <div
           id="carouselMultiItemExample"
           style={{ fontWeight: "500", fontSize: "18", fontFamily: "IRANSans" }}

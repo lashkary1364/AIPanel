@@ -20,7 +20,7 @@ export default () => (
   <Router basename={process.env.REACT_APP_BASENAME || ""}>
     <Switch>
       {/* <PrivateRoute></PrivateRoute> */}
-      <Route path="/login" key={10000} exact component={Login1} />
+      <Route path="/" key={10000} exact component={Login1} />
       {/* <Route path="/menu" key={100010} component={TransactionKpI} />
       <PrivateRoute exact path="/home" component={Home}  /> 
       <PrivateRoute exact path="/main" component={Main}  /> 

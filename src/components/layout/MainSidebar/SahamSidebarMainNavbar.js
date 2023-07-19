@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Navbar, NavbarBrand } from "shards-react";
 import { Dispatcher, Constants } from "../../../flux";
 
-class SidebarMainNavbar extends React.Component {
+class SahamSidebarMainNavbar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -96,7 +96,7 @@ class SidebarMainNavbar extends React.Component {
               /> */}
               {!hideLogoText && (
                 <span className="d-none d-md-inline ml-1" style={{fontFamily:"cinema" , fontSize:"16pt" , color:"#530c8e"}}>
-             داشبورد عمده فروشی
+             داشبورد سهام
                 </span>
               )}
             </div>
@@ -113,15 +113,15 @@ class SidebarMainNavbar extends React.Component {
   }
 }
 
-SidebarMainNavbar.propTypes = {
+SahamSidebarMainNavbar.propTypes = {
   /**
    * Whether to hide the logo text, or not.
    */
   hideLogoText: PropTypes.bool
 };
 
-SidebarMainNavbar.defaultProps = {
+SahamSidebarMainNavbar.defaultProps = {
   hideLogoText: false
 };
 
-export default SidebarMainNavbar;
+export default SahamSidebarMainNavbar;

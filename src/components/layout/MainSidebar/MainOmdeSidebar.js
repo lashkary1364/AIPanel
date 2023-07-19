@@ -4,18 +4,18 @@ import classNames from "classnames";
 import { Col } from "shards-react";
 import SidebarMainNavbar from "./SidebarMainNavbar";
 import SidebarSearch from "./SidebarSearch";
-import SidebarNavItems from "./SidebarNavItems";
+import SidebarNavItems from "./SidebarNavOmdeItems";
 import { Store } from "../../../flux";
 
 
 
-class MainSidebar1 extends React.Component {
+class MainOmdeSidebar extends React.Component {
     constructor(props) {
     super(props);
 
     this.state = {
       menuVisible: false,
-      sidebarNavItems: Store.getSidebarItems()
+      sidebarNavItems: Store.getSidebarOmdeItems()
     };
 
     this.onChange = this.onChange.bind(this);
@@ -33,7 +33,7 @@ class MainSidebar1 extends React.Component {
     this.setState({
       ...this.state,
       menuVisible: Store.getMenuState(),
-      sidebarNavItems: Store.getSidebarItems()
+      sidebarNavItems: Store.getSidebarOmdeItems()
     });
   }
 
@@ -59,15 +59,16 @@ class MainSidebar1 extends React.Component {
   }
 }
 
-MainSidebar1.propTypes = {
+MainOmdeSidebar.propTypes = {
   /**
    * Whether to hide the logo text, or not.
    */
   hideLogoText: PropTypes.bool
 };
 
-MainSidebar1.defaultProps = {
+MainOmdeSidebar.defaultProps = {
   hideLogoText: false
 };
 
-export default MainSidebar1;
+export default MainOmdeSidebar;
+

@@ -11,7 +11,7 @@ import {
 } from "shards-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation, faTriangleExclamation, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-import MainNavbar from './components/layout/MainNavbar/MainNavbar';
+import MainNavbar from '../components/layout/MainNavbar/MainNavbar';
 
 export const Main = () => {
   const queryParameters = new URLSearchParams(window.location.search);

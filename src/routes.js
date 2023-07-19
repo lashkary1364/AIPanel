@@ -1,27 +1,29 @@
 import { Home } from "./home";
-import DefaulCustomeLayout from "./layouts/DefaultCustome";
-import { BarChart } from "./BarChart";
-import { Main } from "./Main";
-import { TransactionKpI } from "./TransactionKpI";
+import { BarChart } from "./Omde/BarChart";
+import { TransactionKpI } from "./Omde/TransactionKpI";
+import { CustomerDashboard } from "./Omde/CustomerDashboard";
+import { ProductDashboard } from "./Omde/ProductDashboard";
+import { CustomerPredicted } from "./Omde/CustomerPredicted";
+import { CustomerInfo } from "./Omde/CustomerInfo";
+import { Resiliency } from "./Saham/Resiliency";
+import { NaghdinegiSal } from "./Saham/NaghdinegiSal";
+import { Dion } from "./Saham/Dion";
+import { MainOmde } from "./MainOmde"
+import { MainZanjire } from "./MainZanjire"
+import { MainSaham } from "./MainSaham"
+import { WathiOmde } from "./Omde/WathiOmde"
+import { WatifSaham } from "./Saham/WatifSaham"
+import { WatifZanjire } from "./Zanjire/WatifZanjire"
+import { DashboardOmde } from "./Omde/DashboardOmde"
+import { DashboardSaham } from "./Saham/DashboardSaham"
+import { DasboardZanjire } from "./Zanjire/DasboardZanjire"
+import { TahlilGeymat } from "./Saham/TahlilGeymat";
+import { Productivity } from "./Saham/Productivity";
+import { Profitability } from "./Saham/Profitability"
 import DefaultLayout from "./layouts/Default";
-import { CustomerDashboard } from "./CustomerDashboard";
-import { ProductDashboard } from "./ProductDashboard";
-import { CustomerPredicted } from "./CustomerPredicted";
-import { CustomerInfo } from "./CustomerInfo";
-import { Resiliency } from "./Resiliency";
-import { NaghdinegiSal } from "./NaghdinegiSal";
-import { Dion } from "./Dion";
-import { SoodavariSal } from "./SoodavariSal";
-import Default1Layout from "./layouts/Default1";
-import {MainOmde} from "./MainOmde"
-import {MainZanjire} from "./MainZanjire"
-import {MainSaham} from "./MainSaham"
-import {WathiOmde} from "./WathiOmde"
-import {WatifSaham} from "./WatifSaham"
-import {WatifZanjire} from "./WatifZanjire"
-import { DashboardOmde} from "./DashboardOmde"
-import {DashboardSaham} from "./DashboardSaham"
-import {DasboardZanjire} from "./DasboardZanjire"
+import DefaulCustomeLayout from "./layouts/DefaultCustome";
+import SahamLayout from "./layouts/SahamLayout";
+import OmdeLayout from "./layouts/OmdeLayout";
 
 export default [
   {
@@ -31,7 +33,7 @@ export default [
   },
   {
     path: "/barchart",
-    layout: DefaulCustomeLayout,
+    layout: OmdeLayout,
     component: BarChart
   },
   {
@@ -49,50 +51,50 @@ export default [
     layout: DefaulCustomeLayout,
     component: MainSaham
   },
-  // {
-  //   path: "/kpi",
-  //   layout: DefaultLayout,
-  //   component: TransactionKpI
-  // },
+  {
+    path: "/kpi",
+    layout: OmdeLayout,
+    component: TransactionKpI
+  },
   {
     path: "/customer",
-    layout: DefaultLayout,
+    layout: OmdeLayout,
     component: CustomerDashboard
   },
   {
     path: "/product",
-    layout: DefaultLayout,
+    layout: OmdeLayout,
     component: ProductDashboard
   },
   {
     path: "/customer-predicted",
-    layout: DefaultLayout,
+    layout: OmdeLayout,
     component: CustomerPredicted
   },
   {
     path: "/customer-info",
-    layout: DefaultLayout,
+    layout: OmdeLayout,
     component: CustomerInfo
   },
   {
-    path: "/test",
-    layout: DefaultLayout,
+    path: "/resiliency",
+    layout: SahamLayout,
     component: Resiliency
   },
   {
     path: "/naghdineghi",
-    layout: DefaultLayout,
+    layout: SahamLayout,
     component: NaghdinegiSal
   },
   {
     path: "/dion",
-    layout: DefaultLayout,
+    layout: SahamLayout,
     component: Dion
   },
   {
-    path: "/soodavari",
-    layout: DefaultLayout,
-    component: SoodavariSal
+    path: "/profitability",
+    layout: SahamLayout,
+    component: Profitability
   },
   {
     path: "/watifomde",
@@ -111,17 +113,27 @@ export default [
   },
   {
     path: "/dashboardomde",
-    layout: DefaultLayout,
+    layout: OmdeLayout,
     component: DashboardOmde
   },
   {
     path: "/dashboardsaham",
-    layout: DefaultLayout,
+    layout: SahamLayout,
     component: DashboardSaham
   },
   {
     path: "/dashboardzanjire",
     layout: DefaultLayout,
     component: DasboardZanjire
+  },
+  {
+    path: "/tahlilgeymat",
+    layout: SahamLayout,
+    component: TahlilGeymat
+  },
+  {
+    path: "/productivity",
+    layout: SahamLayout,
+    component: Productivity
   },
 ];

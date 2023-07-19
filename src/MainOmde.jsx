@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation, faTriangleExclamation, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import MainNavbar from './components/layout/MainNavbar/MainNavbar';
 import "./assets/main.css"
+
 export const MainOmde = () => {
     const queryParameters = new URLSearchParams(window.location.search);
     const id = queryParameters.get("id");

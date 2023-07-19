@@ -1,4 +1,5 @@
 import React ,{ useState } from 'react'
+import "./assets/css/fontiran.css"
 import "./assets/login1.css"
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -111,7 +112,7 @@ export const Login1 = () => {
             <input type="text" id="userName" name="userName" value={formik.values.userName} onChange={formik.handleChange} placeholder='نام کاربری' />
           </div>
           <div>
-            <input type="text" id="password" name="password" value={formik.values.password} onChange={formik.handleChange} placeholder='پسورد' />
+            <input type="password" id="password" name="password" value={formik.values.password} onChange={formik.handleChange} placeholder='پسورد' />
           </div>
           <div className='form-inline'>
 

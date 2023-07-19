@@ -24,7 +24,8 @@ const PrivateRouteChild = () => {
     //     userTocken: response.data.access_token,
     // }));
     return (
-        <div>
+        <>
+        {/* // <div> */}
             {
                 localStorage.getItem("access-tocken") != null ? routes.map((route, index) => {
                     return (
@@ -47,8 +48,8 @@ const PrivateRouteChild = () => {
 
                     : <Redirect to="/login"   ></Redirect>
             }
-        </div>
-
+        {/* // </div> */}
+</>
     )
 }
 

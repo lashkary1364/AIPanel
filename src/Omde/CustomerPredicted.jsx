@@ -18,10 +18,15 @@ export const CustomerPredicted = () => {
     const accessToken = localStorage.getItem("access-tocken");
     const [optionRFM, setOptionRFM] = useState({});
     const [isLoading, setIsLoading] = useState(false);
-    const [xDataList, setXDataList] = useState([]);
-    const [seriDataList, setSeriDatalist] = useState([]);
+    // const [xDataList, setXDataList] = useState([]);
+    // const [seriDataList, setSeriDatalist] = useState([]);
 
-    const [purchaseList, setPurchaseList] = useState([])
+    const [purchaseList, setPurchaseList] = useState([]);
+    const [frequencyList, setFrequencyList] = useState([]);
+    const [predictedPurchaseList, setPredictedPurchaseList]=useState([]);
+    const [monetoryList, setMonetoryList] = useState([]);
+    const [recencyList, setRecencyList] = useState([]);
+    
     const [optionPurchase, setOptionPurchase] = useState({});
 
     const [optionPrice,setOptionPrice]=useState({});
@@ -31,18 +36,18 @@ export const CustomerPredicted = () => {
     const[optiobCustSegment,setOptionCustSegment]=useState({});
      
     useEffect(() => {
-
+// نمودار فراوانی تازگی خرید
         setOptionRFM({
             xAxis: {
                 type: 'category',
-                data: xDataList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: recencyList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
             },
             yAxis: {
                 type: 'value'
             },
             series: [
                 {
-                    data: seriDataList,
+                    data: frequencyList,
                     //[120, 200, 150, 80, 70, 110, 130],
                     type: 'bar',
                     showBackground: true,
@@ -55,23 +60,23 @@ export const CustomerPredicted = () => {
         })
 
         setIsLoading(false);
-    }, [xDataList, setXDataList, seriDataList, setSeriDatalist]);
+    }, [recencyList, frequencyList]);
 
     useEffect(() => {
 
-
+// نمودار تعداد خرید
         setOptionPurchase({
 
             xAxis: {
                 type: 'category',
-                data: purchaseList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: predictedPurchaseList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
             },
             yAxis: {
                 type: 'value'
             },
             series: [
                 {
-                    data: seriDataList,
+                    data: frequencyList,
                     //[120, 200, 150, 80, 70, 110, 130],
                     type: 'bar',
                     showBackground: true,
@@ -84,24 +89,24 @@ export const CustomerPredicted = () => {
         })
 
         setIsLoading(false);
-    }, [purchaseList, setPurchaseList, seriDataList, setSeriDatalist]);
+    }, [predictedPurchaseList, frequencyList]);
 
     
     useEffect(() => {
 
-
+// نمودار فراوانی مبلغ خرید
         setOptionPrice({
                       
                 xAxis: {
                   type: 'category',
-                  data:priceList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                  data:monetoryList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
                 },
                 yAxis: {
                   type: 'value'
                 },
                 series: [
                   {
-                    data: seriDataList,
+                    data: frequencyList,
                     //[120, 200, 150, 80, 70, 110, 130],
                     type: 'bar',
                     showBackground: true,
@@ -114,7 +119,7 @@ export const CustomerPredicted = () => {
         })
 
         setIsLoading(false);
-    }, [priceList, setPriceList, seriDataList , setSeriDatalist]);
+    }, [monetoryList, frequencyList]);
     
     
     useEffect(() => {
@@ -156,10 +161,9 @@ export const CustomerPredicted = () => {
 
     const getCustomerPredicted = () => {
 
-        // setDivChart({ border: "2px solid ", color: "#9b9797", borderRadius: "10px", marginTop: "8px" });
-        // setStyleVar({ visibility: 'visible' });
+      
         setIsLoading(true);
-        console.log("....................");
+        console.log("......getCustomerPredicted..............");
 
         axios(
             {
@@ -170,19 +174,29 @@ export const CustomerPredicted = () => {
                     Authorization: `Bearer ${accessToken}`,
                 },
             }).then(function (response) {
-
+                console.log("response for ===>getCustomerPredicted");
+                console.log(response.date);
                 const resultItems = response.data;
                 const itemsArray = resultItems.result;
+                const arr = JSON.parse(itemsArray);
+                console.log("resultItems.....");
+                console.log(resultItems);
+                console.log("itemsArray...");
                 console.log(itemsArray);
-                setXDataList(itemsArray.map(m => m.reRecency));
-                setSeriDatalist(itemsArray.map(m => m.Frequency));
-                setPurchaseList(itemsArray.map(m => m.predicted_purchases));
-                setXDataList(itemsArray.map(m=>m.monetary_value)) ;
+console.log("arr.....");
+console.log(arr);
+                // arr.map((item,index)=>{
+                //     console.log(item.Recency);
+                // });
+                setRecencyList(arr.map(m => m.Recency));//تازگی خرید
+                setFrequencyList(arr.map(m => m.Frequency));
+                setPredictedPurchaseList(arr.map(m => m.predicted_purchases)); // تعداد خرید
+                setMonetoryList(arr.map(m=>m.monetary_value)) ;
 
                 var countMedium=0;
                 var countHight=0;
                 var countLow=0;
-                itemsArray.map((item,index)=>{
+                arr.map((item,index)=>{
                     if(item.Profile=="medium value"){
                         countMedium++;
                     }else if (item.Profile=="high value"){
@@ -215,14 +229,7 @@ export const CustomerPredicted = () => {
              <hr/> 
              <RFMPrice optionPrice={optionPrice} isLoading={isLoading}></RFMPrice>
              <hr/>
-             <CustomerSegmentation  optiobCustSegment={optiobCustSegment} isLoading={isLoading} />
-             {/* 
-           */}
-             
-            
-             
-             
-             
+             <CustomerSegmentation  optiobCustSegment={optiobCustSegment} isLoading={isLoading} />            
         </Container>
        
     )

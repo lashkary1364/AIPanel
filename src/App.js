@@ -2,20 +2,17 @@ import React from "react";
 import { BrowserRouter, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap-v4-rtl/dist/css/bootstrap-rtl.min.css";
 import "./shards-dashboard/styles/shards-dashboards.1.1.0.css";
-// import 'ag-grid-community/styles/ag-grid.css';
-// import 'ag-grid-community/styles/ag-theme-alpine.css';
-// import '../login/css/fontiran.css'
-// import './assets/ag-grid.css'
 import PrivateRouteChild from "./PrivateRouteChild";
 import { NotFound } from "./NotFound";
 import { Login1 } from "./Login1";
 
 
 export default () => (
-  // }
+ 
   <Router basename={process.env.REACT_APP_BASENAME || ""}>
     <Switch>    
-      <Route path="/login" key={10000} exact component={Login1} />      
+      <Route path="/" key={10000} exact component={Login1} />   
+      <Route path="/login" key={10002} exact component={Login1} />    
       <PrivateRouteChild></PrivateRouteChild>      
       <Route path="/404" key={10005} component={NotFound} />
       <Route path="*" component={NotFound} />      

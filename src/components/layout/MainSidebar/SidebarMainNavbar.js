@@ -96,7 +96,7 @@ class SidebarMainNavbar extends React.Component {
               /> */}
               {!hideLogoText && (
                 <span className="d-none d-md-inline ml-1" style={{fontFamily:"cinema" , fontSize:"16pt" , color:"#530c8e"}}>
-             داشبورد عمده فروشی
+               داشبورد تحلیل مشتریان
                 </span>
               )}
             </div>

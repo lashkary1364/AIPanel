@@ -10,11 +10,11 @@ import {
 export default () => (
   <Form className="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
     <InputGroup seamless className="ml-3">
-      {/* <InputGroupAddon type="prepend">
+      <InputGroupAddon type="prepend">
         <InputGroupText>
           <i className="material-icons">جستجو ...</i>
         </InputGroupText>
-      </InputGroupAddon> */}
+      </InputGroupAddon>
       <FormInput
         className="navbar-search"
         placeholder="جستجو..."

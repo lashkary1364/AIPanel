@@ -166,8 +166,8 @@ export const ProductDashboard = () => {
 
 
   return (
-    <Container fluid className="main-content-container px-4" dir="rtl" >
-      <Row className="page-header mt-2 ">
+    <Container fluid className="main-content-container px-4 mt-2" dir="rtl" >
+      {/* <Row className="page-header mt-2 ">
         <Col lg="12"  >
           <nav className="breadcrumb">
             <a className="breadcrumb-item" href="/home">خانه</a>
@@ -175,7 +175,7 @@ export const ProductDashboard = () => {
             <span className="breadcrumb-item active">داشبورد شاخص های کلیدی عملکرد محصول</span>
           </nav>
         </Col>
-      </Row>
+      </Row> */}
       <MinSaleProduct optionMin={optionMin} isLoading={isLoading}></MinSaleProduct>
       <hr />
       <MaxSaleProduct optionMax={optionMax} isLoading={isLoading}></MaxSaleProduct>

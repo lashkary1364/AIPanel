@@ -18,9 +18,9 @@ export const RevenueMonth = ({optionRevenueMonth , isLoading}) => {
    
 
     {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-      <Spinner animation="grow" size="sm" variant="primary" />
-      <Spinner animation="grow" variant="primary" />
-      <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+      <Spinner animation="grow" size="sm"  className='color-spinner'   />
+      <Spinner animation="grow"   className='color-spinner'  />
+      <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
     </div> :
      optionRevenueMonth !=undefined ?<ReactECharts option={optionRevenueMonth}  />:''
     }

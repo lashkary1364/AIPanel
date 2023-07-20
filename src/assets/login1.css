@@ -6,9 +6,26 @@
 
 }
 
+@font-face {
+  font-family: b nazanin;
+  font-style: normal;
+  font-weight: bold;
+  src: url('./font/B Nazanin.ttf');
+}
 
+@font-face {
+  font-family: b nazanin bold;
+  font-style: normal;
+  font-weight: bold;
+  src: url('./font/B Nazanin Bold.ttf');
+}
 
-
+@font-face {
+  font-family: b nazanin outline;
+  font-style: normal;
+  font-weight: bold;
+  src: url('./font/B Nazanin Outline.ttf');
+}
 
 body {
   font-size: 14px;
@@ -38,7 +55,6 @@ form {
   left: -191px;
   z-index: 99;
 }
-
 
 .image-2 {
   position: absolute;
@@ -393,4 +409,59 @@ input[type=text], input[type=password] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.navbar-nav .nav-link:focus , .navbar-nav .nav-link:hover{
+  cursor: pointer
+}
+.card-header{
+  font-family: cinema;
+  font-size: 16pt;
+  color:rgb(140, 17, 197);
+  background-color:rgb(219, 222, 238);
+  /* rgb(244, 210, 75); */
+  /* #cbd1cc */
+  /* rgb(244, 210, 75); */
+}
+.box-font
+{
+
+  font-size:15pt; 
+  margin-right: 2px; 
+  margin-left: 2px; 
+  font-family: "b nazanin bold";
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-top: 10px;  
+}
+.yes{
+   color: #236354;
+}
+
+.no{ 
+  color: #eb3455;  
+}
+
+.div-box{
+  width: 200px;
+  text-align: center;
+  border: 2px solid;
+  background-color:rgb(187, 202, 230);
+  /* rgb(219, 222, 238); */
+  /* rgb(244, 210, 75); */
+   /* #cbd1cc; */
+  /* rgb(244, 210, 75); */
+  border-radius: 15px;
+}
+
+.color-spinner{
+  color:rgb(140, 17, 197);
+}
+.loading-text{
+  font-family:IRANSans;
+  /* "b nazanin bold";  */
+  /* cinema; */
+}
+label{
+  font-size: 12pt;
 }

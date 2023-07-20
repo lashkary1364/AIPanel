@@ -347,27 +347,27 @@ export const DashboardOmde = () => {
 
 
   return (
+<></>
+    // <Container fluid className="main-content-container px-4 mt-3" dir="rtl"  >
+    //   {/* <Row className="page-header mt-2 ">
+    //     <Col lg="12"  >
+    //       <nav className="breadcrumb">
+    //         <a className="breadcrumb-item" href="/home">خانه</a>
+    //         <a className="breadcrumb-item" href="/main">صفحه قبلی</a>
+    //         <span className="breadcrumb-item active">داشبورد شاخص های کلیدی عملکرد</span>
+    //       </nav>
+    //     </Col>
+    //   </Row> */}
 
-    <Container fluid className="main-content-container px-4 mt-3" dir="rtl"  >
-      {/* <Row className="page-header mt-2 ">
-        <Col lg="12"  >
-          <nav className="breadcrumb">
-            <a className="breadcrumb-item" href="/home">خانه</a>
-            <a className="breadcrumb-item" href="/main">صفحه قبلی</a>
-            <span className="breadcrumb-item active">داشبورد شاخص های کلیدی عملکرد</span>
-          </nav>
-        </Col>
-      </Row> */}
-
-      <RevenueMonth optionRevenueMonth={optionRevenueMonth} isLoading={isLoading} />
-      <hr />
-      <GrowthMonth optionGrowthMonth={optionGrowthMonth} isLoading={isLoading} />
-      <hr />
-      <AvgOrderMonth optionAvgOrderMonth={optionAvgOrderMonth} isLoading={isLoading}></AvgOrderMonth>
-      <hr />
-      <OrderValueMonth option={option} isLoading={isLoading}></OrderValueMonth>
-      <hr />
-      <CustomerActivity optionActivityCustomer ={optionActivityCustomer} isLoading={isLoading}></CustomerActivity>
-    </Container>
+    //   <RevenueMonth optionRevenueMonth={optionRevenueMonth} isLoading={isLoading} />
+    //   <hr />
+    //   <GrowthMonth optionGrowthMonth={optionGrowthMonth} isLoading={isLoading} />
+    //   <hr />
+    //   <AvgOrderMonth optionAvgOrderMonth={optionAvgOrderMonth} isLoading={isLoading}></AvgOrderMonth>
+    //   <hr />
+    //   <OrderValueMonth option={option} isLoading={isLoading}></OrderValueMonth>
+    //   <hr />
+    //   <CustomerActivity optionActivityCustomer ={optionActivityCustomer} isLoading={isLoading}></CustomerActivity>
+    // </Container>
   )
 }

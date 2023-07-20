@@ -821,9 +821,9 @@ export const BarChart = () => {
 
                     {isLoadingVisible && <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
                       {/* <Spinner animation="border" role="status" ></Spinner> */}
-                      <Spinner animation="grow" size="sm" variant="secondary" />
-                      <Spinner animation="grow" variant="secondary" />
-                      <div className='text-secondary text-center' dir="rtl">در حال بارگزاری...</div>
+                      <Spinner animation="grow" size="sm"  className='color-spinner'  />
+                      <Spinner animation="grow"  className='color-spinner'  />
+                      <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
                     </div>
                     }
                     {/* // <ReactLoading type="bars" color="black" height={100} width={100} className="d-flex justify-content-center" /> : ''} */}
@@ -836,9 +836,9 @@ export const BarChart = () => {
 
                     {isLoadingVisible && <div className="text-center"  >
                       {/* <Spinner animation="border" role="status" ></Spinner> */}
-                      <Spinner animation="grow" size="sm" variant="secondary" />
-                      <Spinner animation="grow" variant="secondary" />
-                      <div className='text-secondary text-center' dir="rtl">در حال بارگزاری...</div>
+                      <Spinner animation="grow" size="sm"  className='color-spinner'  />
+                      <Spinner animation="grow"  className='color-spinner'  />
+                      <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
                     </div>
                     }
                     {/* // <ReactLoading type="bars" color="black" height={100} width={100} className="d-flex justify-content-center" /> : ''} */}

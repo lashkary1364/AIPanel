@@ -21,9 +21,9 @@ export const MinSaleProduct = ({optionMin , isLoading}) => {
                 <div >
                     
                     {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                        <Spinner animation="grow" size="sm" variant="primary" />
-                        <Spinner animation="grow" variant="primary" />
-                        <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+                        <Spinner animation="grow" size="sm"  className='color-spinner'  />
+                        <Spinner animation="grow"  className='color-spinner'  />
+                        <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
                     </div> :
                      optionMin!=undefined ?   <ReactECharts option={optionMin}  /> :''
                     }

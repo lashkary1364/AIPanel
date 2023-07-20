@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOut, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { Link } from "react-router-dom";
 import {
@@ -57,13 +59,14 @@ export default class UserActions extends React.Component {
     return (
       <NavItem>
           <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
-          <img onClick={handleLogout}
+          <FontAwesomeIcon icon={faSignOutAlt } style={{fontSize:"16pt" , color:"#6f0a9d"}} />  
+          {/* <img onClick={handleLogout}
             className="user-avatar rounded-circle mr-2"
             src={require("./../../../../images/avatars/download.jpg")}
             alt="خروج از سیستم"
             title="خروج از سیستم"
            // tag={Link} to="/"
-          />
+          /> */}
           <span className="d-none d-md-inline-block">{ JSON.parse(sessionStorage.getItem("LoginTocken")).userFirstName } { JSON.parse(sessionStorage.getItem("LoginTocken")).userLastName }</span>
         </DropdownToggle>
         {/* <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">

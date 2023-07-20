@@ -11,14 +11,14 @@ import ReactECharts from 'echarts-for-react';
 
 export const CustomerActivity = ({ optionActivityCustomer, isLoading }) => {
     return (
-        <Card small className="h-100"  style={{width:"83%"}}>
+        <Card small className="h-100 mb-2"  style={{width:"83%"}}>
             <CardHeader>مشتریان فعال</CardHeader>
             <CardBody className="pt-0">
                 {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
                     {/* <Spinner animation="border" role="status" ></Spinner> */}
-                    <Spinner animation="grow" size="sm" variant="primary" />
-                    <Spinner animation="grow" variant="primary" />
-                    <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+                    <Spinner animation="grow color-spinner" size="sm" />
+                    <Spinner animation="grow color-spinner"  />
+                    <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
                 </div> :
                     <ReactECharts option={optionActivityCustomer} />
                 }

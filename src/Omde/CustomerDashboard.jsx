@@ -25,7 +25,6 @@ export const CustomerDashboard = () => {
   const [revenueNew, setRrevenueNew] = useState([]);
   const [revenueOld, setRrevenueOld] = useState([]);
   const [styleVar, setStyleVar] = useState({ visibility: 'collapse', height: "0px" });
-
   const [seri, setSeri] = useState([])
   const [newDate, setNewDate] = useState([])
   const [divChart, setDivChart] = useState({ border: "0px" })
@@ -57,7 +56,7 @@ export const CustomerDashboard = () => {
       },
       series: [
         {
-          color: "red",
+          color: "#f54257",
           name: 'مشتریان جدید',
           type: 'bar',
           stack: 'total',
@@ -71,7 +70,7 @@ export const CustomerDashboard = () => {
           data: newRevenueList//[320, 302, 301, 334, 390, 330, 320]
         },
         {
-          color: "green",
+          color: "#029e6f",
           name: 'مشتریان قدیمی',
           type: 'bar',
           stack: 'total',
@@ -118,12 +117,19 @@ export const CustomerDashboard = () => {
       },
       toolbox: {
         show: true,
-        feature: {
+        // feature: {
+        //   magicType: {
+        //     type: ['stack']
+        //   },
+        //   dataView: {show: true},
+        //   saveAsImage: {
+        //     pixelRatio: 2
+        //   }
           // dataView: { show: true, readOnly: false },
           // magicType: { show: true, type: ['line', 'bar'] },
           // restore: { show: true },
           // saveAsImage: { show: true }
-        }
+        //}
       },
       calculable: true,
       xAxis: [
@@ -140,6 +146,7 @@ export const CustomerDashboard = () => {
       ],
       series: [
         {
+          color:"#f54257",
           name: 'مشتریان جدید',
           type: 'bar',
           data: revenueNew,
@@ -154,6 +161,7 @@ export const CustomerDashboard = () => {
           }
         },
         {
+          color:"#029e6f",
           name: 'مشتریان قدیم',
           type: 'bar',
           data: revenueOld,

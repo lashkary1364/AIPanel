@@ -30,8 +30,8 @@ export const MainOmde = () => {
     return (
         <div>
             <MainNavbar></MainNavbar>
-            <Container fluid className="main-content-container" >
-                <div
+            <Container fluid className="main-content-container" style={{margin:"auto"}} >
+                <div 
                     id="carouselMultiItemExample"
                     style={{ fontWeight: "500", fontSize: "18", fontFamily: "IRANSans" }}
                     className="carousel slide carousel-dark text-center "

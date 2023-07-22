@@ -66,17 +66,17 @@ export const Home = () => {
             //  date: "29 February 2019"
             href: "/mainomde"
         },
-        
+
     ])
 
     return (
         <div>
             <MainNavbar></MainNavbar>
             <div style={{ fontSize: "13px", fontFamily: "IRANSans" }}>
-                <Container fluid className="main-content-container" >
-                   <Row>
+                <Container fluid className="main-content-container" style={{ marginTop: "70px" }} >
+                    <Row>
                         {PostsListOne.map((post, idx) => (
-                            <Col lg="4" md="6" sm="12" className="mb-4" key={idx} >
+                            <Col lg="4" md="6" sm="12" key={idx} >
                                 <Card small className="card-post card-post--1"   >
                                     <div
                                         className="card-post__image"
@@ -86,7 +86,7 @@ export const Home = () => {
                                             className={`card-post__category bg-${post.categoryTheme}`}>
                                             {post.category}
                                         </Badge>
-                                       </div>
+                                    </div>
                                     <CardBody dir="rtl" style={{ height: "400px" }} >
                                         <h5 className="card-title" >
                                             <a href="#" className="text-fiord-blue"  >
@@ -98,17 +98,17 @@ export const Home = () => {
                                     </CardBody>
                                     <CardFooter dir="rtl" className="text-muted border-top py-3">
                                         <span className="d-inline-block">
-
                                             <a className="text-primary" href={post.href}>
                                                 ورود به سیستم
-                                            </a>                                         
+                                            </a>
                                         </span>
                                     </CardFooter>
                                 </Card>
                             </Col>
                         ))}
+
                     </Row>
-                </Container>               
+                </Container>
             </div>
         </div>
     )

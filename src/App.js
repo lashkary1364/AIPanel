@@ -5,6 +5,7 @@ import "./shards-dashboard/styles/shards-dashboards.1.1.0.css";
 import PrivateRouteChild from "./PrivateRouteChild";
 import { NotFound } from "./NotFound";
 import { Login1 } from "./Login1";
+import { Register } from "./Register";
 
 
 export default () => (
@@ -13,6 +14,7 @@ export default () => (
     <Switch>    
       <Route path="/" key={10000} exact component={Login1} />   
       <Route path="/login" key={10002} exact component={Login1} />    
+      <Route path="/register" key={10003} exact component={Register} />    
       <PrivateRouteChild></PrivateRouteChild>      
       <Route path="/404" key={10005} component={NotFound} />
       <Route path="*" component={NotFound} />      

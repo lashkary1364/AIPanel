@@ -36,7 +36,7 @@ body {
   background-size: cover;
 }
 
-form {
+.form {
   left: 205px;
   border-top-right-radius: 30px;
   padding: 40px;
@@ -464,4 +464,9 @@ input[type=text], input[type=password] {
 }
 label{
   font-size: 12pt;
+}
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import {
     Card,
-    CardHeader,Col,
-    CardBody ,ListGroup , ListGroupItem  
+    CardHeader, Col,
+    CardBody, ListGroup, ListGroupItem
 } from "shards-react";
 import "../shards-dashboard/styles/slider-style.css"
 import ReactECharts from 'echarts-for-react';
@@ -10,7 +10,7 @@ import { Spinner } from 'react-bootstrap';
 
 
 
-export const CustomerKPI = ({option,isLoading}) => {
+export const CustomerKPI = ({ option, isLoading }) => {
 
     // const accessToken = localStorage.getItem("access-tocken");
     // const [yearList, setYearList] = useState([]);
@@ -20,7 +20,7 @@ export const CustomerKPI = ({option,isLoading}) => {
     // const [isLoading, setIsLoading] = useState(false);
     // const [styleVar, setStyleVar] = useState({ visibility: 'collapse' });
     // const [divChart, setDivChart] = useState({ border: "0px" })
-    
+
     // useEffect(() => {
 
 
@@ -161,27 +161,19 @@ export const CustomerKPI = ({option,isLoading}) => {
 
     return (
 
-        
-      
-        <Card small className="h-100 mb-2"  style={{width:"83%"}}>
+        <Card small className="h-100 mb-2" style={{ width: "83%" }}>
             <CardHeader>فروش محصول به تفکیک مشتریان جدید و قدیم به تفکیک سال</CardHeader>
-            <CardBody className="pt-0"> 
-            <ListGroup flush>
-              <ListGroupItem >            
+            <CardBody className="pt-0">
                 {
                     isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                        <Spinner animation="grow" size="sm"  className='color-spinner'  />
-                        <Spinner animation="grow"  className='color-spinner' />
+                        <Spinner animation="grow" size="sm" className='color-spinner' />
+                        <Spinner animation="grow" className='color-spinner' />
                         <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
                     </div> :
-                       option !=undefined ? <ReactECharts option={option}  /> :'' 
+                        option != undefined ? <ReactECharts option={option} /> : ''
                 }
-
-</ListGroupItem>
-</ListGroup>
             </CardBody>
         </Card>
-     
 
     )
 }

@@ -11,9 +11,7 @@ const DefaulCustomeLayout = ({ children, noNavbar, noFooter }) => (
         lg={{ size: 12 }}
         md={{ size:12 }}
         sm="12"
-        tag="main"
-      >
-     
+        tag="main">     
         {/* {!noNavbar && <MainNavbar />} */}
         {children}
         {/* {!noFooter && <MainFooter />} */}

@@ -12,7 +12,7 @@ import ReactECharts from 'echarts-for-react';
 export const CustomerActivity = ({ optionActivityCustomer, isLoading }) => {
     return (
         <Card small className="h-100 mb-2"  style={{width:"83%"}}>
-            <CardHeader>مشتریان فعال</CardHeader>
+            <CardHeader>تعداد مشتریان فعال در ماه</CardHeader>
             <CardBody className="pt-0">
                 {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
                     {/* <Spinner animation="border" role="status" ></Spinner> */}

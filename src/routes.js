@@ -24,6 +24,7 @@ import DefaultLayout from "./layouts/Default";
 import DefaulCustomeLayout from "./layouts/DefaultCustome";
 import SahamLayout from "./layouts/SahamLayout";
 import OmdeLayout from "./layouts/OmdeLayout";
+import { Register } from "./Register";
 
 export default [
   {
@@ -136,4 +137,9 @@ export default [
     layout: SahamLayout,
     component: Productivity
   },
+  // {
+  //   path: "/register",
+  //  // layout: DefaulCustomeLayout,
+  //   component:Register
+  // },
 ];

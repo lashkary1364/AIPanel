@@ -105,7 +105,7 @@ export const Login1 = () => {
     <div class="wrapper">
       <div class="inner">
         <img src={require("./images/login/img-b1.png")} alt="" class="image-1" />
-        <form action="#" method="post" dir="rtl" onSubmit={formik.handleSubmit}>
+        <form action="#" method="post" dir="rtl" onSubmit={formik.handleSubmit} className="form">
           <img src={require("./images/login/3.png")} alt="" class="image-2" />
           <div style={{ fontFamily: "cinema", fontSize: "25px" }}>ورود به سامانه</div>
           <div>

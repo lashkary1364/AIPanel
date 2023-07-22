@@ -203,7 +203,7 @@ export const RevenueCustomer = ({optionRevenue , isLoading}) => {
     return (
 
         <Card small className="h-100"  style={{width:"83%"}}>
-            <CardHeader>درآمدماهانه مشتریان جدید و قدیم</CardHeader>
+            <CardHeader>درآمد ماهانه مشتریان جدید و قدیم</CardHeader>
            
             <CardBody className="pt-0" class="collapse" id="collapseExample">
          

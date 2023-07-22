@@ -12,7 +12,7 @@ export const GrowthMonth = ({ optionGrowthMonth, isLoading }) => {
 
     return (
         <Card className="h-100" style={{width:"83%"}}>
-            <CardHeader>رشد ماهانه</CardHeader>
+            <CardHeader>رشد سالانه</CardHeader>
             <CardBody className="pt-0" >
                 <div >
                     {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >

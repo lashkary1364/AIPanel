@@ -26,8 +26,6 @@ export const TransactionKpI = () => {
   const [year,setYear]=useState([]);
   const [revenueYear,setRevenueYear]=useState([]); 
  
-
-
   //----------------------------------------------------------------------
 
   const [optionGrowthMonth, setOptionGrowthMonth] = useState({});

@@ -20,11 +20,9 @@ const Login = () => {
         localStorage.clear();
         console.log("env variable")
         console.log(serverAddress+"auth/token")
-    }, [])
-    
+    }, []);    
 
     const [ErrorFlag, setErrorFlag] = useState(false);
-
     const validationSchema = Yup.object().shape({
         userName: Yup.string().required('فیلد نام کاربری اجباری است'),
         password: Yup.string().required('فیلد پسورد الزامی است')
@@ -48,7 +46,6 @@ const Login = () => {
 
             axios(
                 {
-                   // http://sentisense.xyz:8500/
                     url: serverAddress+"auth/token",
                     method: "post",
                     data: form,

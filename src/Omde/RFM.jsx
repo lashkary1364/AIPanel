@@ -83,7 +83,7 @@ export const RFM = ({ optionRFM, isLoading }) => {
 
   return (
     
-      <Card small className="h-100"  style={{width:"83%"}}>
+      <Card small className="h-100"  >
         <CardHeader>نمودار فراوانی تازگی خرید</CardHeader>
         <CardBody className="pt-0">
           {

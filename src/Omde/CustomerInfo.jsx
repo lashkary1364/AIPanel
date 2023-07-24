@@ -4,15 +4,10 @@ import {
   CardHeader,
   CardBody, Container, Col, FormSelect, Row
 } from "shards-react";
-import DatePicker, { DateObject } from "react-multi-date-picker";
-import persian from "react-date-object/calendars/persian";
-import persian_en from "react-date-object/locales/persian_en";
 import axios from 'axios'
 import { useEffect, useState } from 'react';
-import { BackHand } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDolly, faUserAlt, faObjectGroup, faUserCog, faSortAlphaDown, faCheck, faThumbsUp, faThumbsDown } from "@fortawesome/fontawesome-free-solid";
-import { faHome, faReply, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp, faThumbsDown } from "@fortawesome/fontawesome-free-solid";
 import { Spinner } from 'react-bootstrap';
 
 export const CustomerInfo = () => {
@@ -36,7 +31,6 @@ export const CustomerInfo = () => {
   }, [])
 
   const getCustomers = () => {
-
 
     console.log("....................");
 
@@ -65,20 +59,6 @@ export const CustomerInfo = () => {
         setCustomerItems(arr.map(m => m.CustomerID));
         setIsLoading(false);
 
-
-
-        // const sumPredictedPurchases = arr.map(item => item.predicted_purchases).reduce((prev, curr) => prev + curr, 0);
-        // console.log("sumPredictedPurchases");
-        // console.log(sumPredictedPurchases);
-        //sumPredictedPurchases.map()
-
-        // setRecencyList(arr.map(m => m.Recency));//تازگی خرید
-        // setFrequencyList(arr.map(m => m.Frequency));
-        // setPredictedPurchaseList(arr.map(m => m.predicted_purchases)); // تعداد خرید
-        // setMonetoryList(arr.map(m => m.monetary_value));
-
-
-
       }).catch(function (error) {
 
         console.log("axois error: " + error);
@@ -88,22 +68,28 @@ export const CustomerInfo = () => {
 
 
   const changeCustomer = (value) => {
-    console.log(value)
-    const customerList = array.filter(m => m.CustomerID == value);
-    if (customerList.length == 1) {
-      setChurn(customerList[0].churn);
-     // setSumMonetory(customerList[0].monetary_value);
-      //setSumPredictedPurchases(customerList[0].predicted_purchases);
-      console.log(customerList[0].predicted_purchases);
-     // setProfile(customerList[0].Profile);
+    console.log(value);
+    setProfile("ارزش");
+    setSumPredictedPurchases(0);
+    setSumMonetory(0);
+    
 
-      if (customerList[0].Profile == 'low value') {
+    const customerList = array.filter(m => m.CustomerID == value);
+
+    if (customerList.length == 1) {
+
+      setChurn(customerList[0].churn);
+      console.log(customerList[0].predicted_purchases);
+
+      if (customerList[0].Profile == 'low value') 
+      {
         setProfile("ارزش پایین");
       } else if (customerList[0].Profile == "medium value") {
         setProfile("ارزش متوسط");
       } else {
         setProfile("ارزش بالا");
       }
+
       if (customerList[0].predicted_purchases == null) {
         setSumPredictedPurchases(0);
       } else {
@@ -111,19 +97,13 @@ export const CustomerInfo = () => {
       }
 
       if (customerList[0].monetary_value == null) {
-        setSumPredictedPurchases(0);
+        setSumMonetory(0);
       } else {
-        setSumPredictedPurchases(customerList[0].predicted_purchases);
+        setSumMonetory(customerList[0].monetary_value);
       }
-    } else {
-      const arr = JSON.parse(customerList);
-      const sumPredictedPurchases = arr.map(item => item.predicted_purchases).reduce((prev, curr) => prev + curr, 0);
-      setSumPredictedPurchases(sumPredictedPurchases);
-
     }
 
-
-    console.log(customerList);
+ 
     //arr.map(item => item.predicted_purchases).reduce((prev, curr) => prev + curr, 0);
 
   }
@@ -132,10 +112,26 @@ export const CustomerInfo = () => {
     console.log(value);
     const customerList = array.filter(m => m.Cluster == value);
     console.log(customerList);
+    var countPredictedPurchase = customerList.map(item => item.predicted_purchases).length;
+    console.log("count predicted purchase");
+    console.log(countPredictedPurchase);
     const sumPredictedPurchases = customerList.map(item => item.predicted_purchases).reduce((prev, curr) => prev + curr, 0);
     const sumMentoryValue = customerList.map(item => item.monetary_value).reduce((prev, curr) => prev + curr, 0);
-    setSumPredictedPurchases1(sumPredictedPurchases.toLocaleString());
-    setSumMonetory1(sumMentoryValue.toLocaleString());
+
+    var avgPredictedPurchase = sumPredictedPurchases / countPredictedPurchase;
+    console.log("avg predicted purchase ...");
+    console.log(avgPredictedPurchase);
+
+    var countMonetory = customerList.map(item => item.monetary_value).length;
+    console.log("count monetory");
+    console.log(countMonetory);
+    var avgMonetory = sumMentoryValue / countMonetory;
+    console.log("avg mnetory");
+    console.log(avgMonetory);
+
+    setSumPredictedPurchases1(avgPredictedPurchase.toLocaleString());
+    setSumMonetory1(avgMonetory.toLocaleString());
+    
     // const number = 123456.789;
     // console.log(number.toLocaleString("de-DE"));
     // // → 123.456,789    
@@ -146,6 +142,8 @@ export const CustomerInfo = () => {
     // console.log(number.toLocaleString("en-IN"));
     // console.log(sumMentoryValue.toLocaleString());
     // → 1,23,456.789
+
+
   }
 
 
@@ -153,7 +151,7 @@ export const CustomerInfo = () => {
 
   return (
     <Container fluid className="main-content-container px-4 mt-3" dir="rtl"  >
-      <Card small className="h-100" style={{ width: "83%" }}>
+      <Card small className="h-100" >
         <CardHeader> اطلاعات مشتری</CardHeader>
         <CardBody className="pt-0">
           {isLoading == true ? <div className="text-center " style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
@@ -163,22 +161,22 @@ export const CustomerInfo = () => {
           </div> :
             <>
               <Row>
-              <Col md="6" className="form-group">
-                <div className="form-inline mt-3">
-                  <label htmlFor="customer" > فیلتر مشتری</label>
-                  <FormSelect className="form-control" id="tankhah" name="tankhah" onChange={(e) => changeCustomer(e.target.value)}>
-                    <option value={""}>یک موردانتخاب کنید</option>
-                    {
-                      customerItems.map((item, index) => (
-                        <option key={index}
-                          value={item}>
-                          {item}
-                        </option>
-                      ))
-                    }
-                  </FormSelect>
-                </div>
-              </Col>
+                <Col md="6" className="form-group">
+                  <div className="form-inline mt-3">
+                    <label htmlFor="customer" > فیلتر مشتری</label>
+                    <FormSelect className="form-control" id="tankhah" name="tankhah" onChange={(e) => changeCustomer(e.target.value)}>
+                      <option value={""}>یک موردانتخاب کنید</option>
+                      {
+                        customerItems.map((item, index) => (
+                          <option key={index}
+                            value={item}>
+                            {item}
+                          </option>
+                        ))
+                      }
+                    </FormSelect>
+                  </div>
+                </Col>
               </Row>
               <Row>
                 <Col md="3">

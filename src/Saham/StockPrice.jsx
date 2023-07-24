@@ -102,7 +102,7 @@ export const StockPrice = () => {
 
 
   return (
-    <Card small className="h-100" style={{marginTop:"20px" ,width:"83%"}}>
+    <Card small className="h-100 mt-20" >
     <CardHeader>تحلیل قیمت زر</CardHeader>
     <CardBody className="pt-0">
         {

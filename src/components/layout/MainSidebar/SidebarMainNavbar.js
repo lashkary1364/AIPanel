@@ -95,7 +95,8 @@ class SidebarMainNavbar extends React.Component {
                 alt="مدیریت تنخواه"
               /> */}
               {!hideLogoText && (
-                <span className="d-none d-md-inline ml-1" style={{fontFamily:"cinema" , fontSize:"16pt" , color:"#530c8e"}}>
+                // <span className="d-none d-md-inline ml-1 logo-navbar" >
+                <span className="d-md-inline ml-1 logo-navbar" >
                داشبورد تحلیل مشتریان
                 </span>
               )}

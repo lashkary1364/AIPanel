@@ -11,7 +11,7 @@ import ReactECharts from 'echarts-for-react';
 export const GrowthMonth = ({ optionGrowthMonth, isLoading }) => {
 
     return (
-        <Card className="h-100" style={{width:"83%"}}>
+        <Card className="h-100" >
             <CardHeader>رشد سالانه</CardHeader>
             <CardBody className="pt-0" >
                 <div >

@@ -20,7 +20,7 @@ export const MaxSaleProduct = ({optionMax , isLoading}) => {
  }, [optionMax])
  
   return (
-    <Card className="h-100" style={{width:"83%"}}>
+    <Card className="h-100" >
       <CardHeader>پر فروش ترین محصولات</CardHeader>
       <CardBody className="pt-0">
         <div >

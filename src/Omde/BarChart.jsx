@@ -683,10 +683,9 @@ export const BarChart = () => {
 
   return (
     <div>
-      {/* <NavbarWatif></NavbarWatif> */}
       <MainNavbar></MainNavbar>
       <Container fluid className="main-content-container px-4" style={{marginTop:"50px"}}>
-          <Card small className="mb-2"  style={{width:"83%"}}>
+          <Card small className="mb-2"  >
           <ListGroup flush>
             <ListGroupItem >
               <Row>

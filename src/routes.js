@@ -12,6 +12,7 @@ import { MainOmde } from "./MainOmde"
 import { MainZanjire } from "./MainZanjire"
 import { MainSaham } from "./MainSaham"
 import { WathiOmde } from "./Omde/WathiOmde"
+import { MainOmde1 } from "./MainOmde1"
 import { WatifSaham } from "./Saham/WatifSaham"
 import { WatifZanjire } from "./Zanjire/WatifZanjire"
 import { DashboardOmde } from "./Omde/DashboardOmde"
@@ -25,12 +26,13 @@ import DefaulCustomeLayout from "./layouts/DefaultCustome";
 import SahamLayout from "./layouts/SahamLayout";
 import OmdeLayout from "./layouts/OmdeLayout";
 import { Register } from "./Register";
+import { home1 } from "./home1";
 
 export default [
   {
     path: "/home",
     layout: DefaulCustomeLayout,
-    component: Home
+    component: home1
   },
   {
     path: "/barchart",
@@ -40,7 +42,7 @@ export default [
   {
     path: "/mainomde",
     layout: DefaulCustomeLayout,
-    component: MainOmde
+    component: MainOmde1
   },
   {
     path: "/mainzanjire",

@@ -6,6 +6,7 @@ import PrivateRouteChild from "./PrivateRouteChild";
 import { NotFound } from "./NotFound";
 import { Login1 } from "./Login1";
 import { Register } from "./Register";
+import { MainOmde1 } from "./MainOmde1";
 
 
 export default () => (

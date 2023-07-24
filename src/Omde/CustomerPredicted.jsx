@@ -7,7 +7,7 @@ import { RFM } from './RFM';
 import { RFMPurchase } from './RFMPurchase';
 import { RFMPrice } from './RFMPrice';
 import { CustomerSegmentation } from './CustomerSegmentation';
-import {Container} from "shards-react"
+import { Container } from "shards-react"
 
 
 
@@ -23,20 +23,20 @@ export const CustomerPredicted = () => {
 
     const [purchaseList, setPurchaseList] = useState([]);
     const [frequencyList, setFrequencyList] = useState([]);
-    const [predictedPurchaseList, setPredictedPurchaseList]=useState([]);
+    const [predictedPurchaseList, setPredictedPurchaseList] = useState([]);
     const [monetoryList, setMonetoryList] = useState([]);
     const [recencyList, setRecencyList] = useState([]);
-    
+
     const [optionPurchase, setOptionPurchase] = useState({});
 
-    const [optionPrice,setOptionPrice]=useState({});
-    const [priceList,setPriceList]=useState([]);
+    const [optionPrice, setOptionPrice] = useState({});
+    const [priceList, setPriceList] = useState([]);
 
-    const[segmentList,setSegmentList]=useState([]);
-    const[optiobCustSegment,setOptionCustSegment]=useState({});
-     
+    const [segmentList, setSegmentList] = useState([]);
+    const [optiobCustSegment, setOptionCustSegment] = useState({});
+
     useEffect(() => {
-// نمودار فراوانی تازگی خرید
+        // نمودار فراوانی تازگی خرید
         setOptionRFM({
             xAxis: {
                 type: 'category',
@@ -64,7 +64,7 @@ export const CustomerPredicted = () => {
 
     useEffect(() => {
 
-// نمودار تعداد خرید
+        // نمودار تعداد خرید
         setOptionPurchase({
 
             xAxis: {
@@ -91,69 +91,69 @@ export const CustomerPredicted = () => {
         setIsLoading(false);
     }, [predictedPurchaseList, frequencyList]);
 
-    
+
     useEffect(() => {
 
-// نمودار فراوانی مبلغ خرید
+        // نمودار فراوانی مبلغ خرید
         setOptionPrice({
-                      
-                xAxis: {
-                  type: 'category',
-                  data:monetoryList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                },
-                yAxis: {
-                  type: 'value'
-                },
-                series: [
-                  {
+
+            xAxis: {
+                type: 'category',
+                data: monetoryList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
                     data: frequencyList,
                     //[120, 200, 150, 80, 70, 110, 130],
                     type: 'bar',
                     showBackground: true,
                     backgroundStyle: {
-                      color: 'rgba(180, 180, 180, 0.2)'
+                        color: 'rgba(180, 180, 180, 0.2)'
                     }
-                  }
-                ]
-              
+                }
+            ]
+
         })
 
         setIsLoading(false);
     }, [monetoryList, frequencyList]);
-    
-    
+
+
     useEffect(() => {
 
         console.log("segment list ...");
         console.log(segmentList);
 
         setOptionCustSegment({
-    
-          xAxis: {
-            type: 'category',
-            data: ['ارزش پایین' , 'ارزش متوسط' , 'ارزش بالا'] //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-          },
-          yAxis: {
-            type: 'value'
-          },
-          series: [
-            {
-              data: segmentList,
-              //[120, 200, 150, 80, 70, 110, 130],
-              type: 'bar',
-              showBackground: true,
-              backgroundStyle: {
-                color: 'rgba(180, 180, 180, 0.2)'
-              }
-            }
-          ]
-    
+
+            xAxis: {
+                type: 'category',
+                data: ['ارزش پایین', 'ارزش متوسط', 'ارزش بالا'] //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    data: segmentList,
+                    //[120, 200, 150, 80, 70, 110, 130],
+                    type: 'bar',
+                    showBackground: true,
+                    backgroundStyle: {
+                        color: 'rgba(180, 180, 180, 0.2)'
+                    }
+                }
+            ]
+
         })
-    
+
         setIsLoading(false);
-      }, [ segmentList]);
-    
-    
+    }, [segmentList]);
+
+
     useEffect(() => {
         getCustomerPredicted();
     }, []);
@@ -161,10 +161,9 @@ export const CustomerPredicted = () => {
 
     const getCustomerPredicted = () => {
 
-      
         setIsLoading(true);
         console.log("......getCustomerPredicted..............");
-
+        
         axios(
             {
                 url: serverAddress + "get_customer_predicted",
@@ -183,35 +182,32 @@ export const CustomerPredicted = () => {
                 console.log(resultItems);
                 console.log("itemsArray...");
                 console.log(itemsArray);
-console.log("arr.....");
-console.log(arr);
+                console.log("arr.....");
+                console.log(arr);
                 // arr.map((item,index)=>{
                 //     console.log(item.Recency);
                 // });
                 setRecencyList(arr.map(m => m.Recency));//تازگی خرید
                 setFrequencyList(arr.map(m => m.Frequency));
                 setPredictedPurchaseList(arr.map(m => m.predicted_purchases)); // تعداد خرید
-                setMonetoryList(arr.map(m=>m.monetary_value)) ;
+                setMonetoryList(arr.map(m => m.monetary_value));
 
-                var countMedium=0;
-                var countHight=0;
-                var countLow=0;
-                arr.map((item,index)=>{
-                    if(item.Profile=="medium value"){
+                var countMedium = 0;
+                var countHight = 0;
+                var countLow = 0;
+                arr.map((item, index) => {
+                    if (item.Profile == "medium value") {
                         countMedium++;
-                    }else if (item.Profile=="high value"){
+                    } else if (item.Profile == "high value") {
                         countHight++;
-                    }else if (item.Profile=="low value"){
+                    } else if (item.Profile == "low value") {
                         countLow++;
-                    }else{
-        
+                    } else {
+
                     }
                 });
-        
-        
-        
-              
-                setSegmentList([countLow, countMedium , countHight]);
+
+                setSegmentList([countLow, countMedium, countHight]);
             }).catch(function (error) {
 
                 console.log("axois error: " + error);
@@ -220,17 +216,17 @@ console.log(arr);
 
             });
     }
-    
+
     return (
         <Container fluid className="main-content-container px-4 mt-3" dir="rtl"  >
-             <RFM optionRFM={optionRFM} isLoading={isLoading} />
-             <hr/>
-              <RFMPurchase  optionPurchase={optionPurchase} isLoading={isLoading} ></RFMPurchase>
-             <hr/> 
-             <RFMPrice optionPrice={optionPrice} isLoading={isLoading}></RFMPrice>
-             <hr/>
-             <CustomerSegmentation  optiobCustSegment={optiobCustSegment} isLoading={isLoading} />            
+            <RFM optionRFM={optionRFM} isLoading={isLoading} />
+            <hr />
+            <RFMPurchase optionPurchase={optionPurchase} isLoading={isLoading} ></RFMPurchase>
+            <hr />
+            <RFMPrice optionPrice={optionPrice} isLoading={isLoading}></RFMPrice>
+            <hr />
+            <CustomerSegmentation optiobCustSegment={optiobCustSegment} isLoading={isLoading} />
         </Container>
-       
+
     )
 }

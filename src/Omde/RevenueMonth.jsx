@@ -11,7 +11,7 @@ import ReactECharts from 'echarts-for-react';
 export const RevenueMonth = ({optionRevenueMonth , isLoading}) => {
   return (
    
-       <Card small className="h-100 mt-2" style={{width:"83%"}}>
+       <Card small className="h-100 mt-2" >
     
     <CardHeader>درآمد ماهانه</CardHeader>
   <CardBody className="pt-0">

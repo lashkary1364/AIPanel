@@ -13,9 +13,9 @@ const OmdeLayout = ({ children, noNavbar, noFooter }) => (
       <Col
          className="main-content p-0"
          lg={{ size: 12, offset: 2 }}
-        md={{ size: 12, offset: 3 }}
-        sm="12"
-        tag="main"
+         md={{ size: 12, offset: 3 }}
+         sm="12"
+         tag="main"
       >     
         {!noNavbar && <MainNavbar />}
         {children}

@@ -89,7 +89,7 @@ export const RFMPrice = ({optionPrice, isLoading}) => {
 
 
   return (
-    <Card small className="h-100"  style={{width:"83%"}}>
+    <Card small className="h-100">
     <CardHeader>نمودار فراوانی  مبلغ خرید</CardHeader>
     <CardBody className="pt-0">
        

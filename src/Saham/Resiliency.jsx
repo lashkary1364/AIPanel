@@ -164,7 +164,7 @@ export const Resiliency = () => {
 
     return (
         <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
-            <Card small className="h-100" style={{width:"83%"}}>
+            <Card small className="h-100" >
                 <CardHeader>تاب آوری بر اساس سال</CardHeader>
                 <CardBody className="pt-0">
                     {

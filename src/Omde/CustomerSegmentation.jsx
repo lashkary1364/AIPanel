@@ -112,7 +112,7 @@ export const CustomerSegmentation = ({optiobCustSegment , isLoading}) => {
 
   return (
     
-    <Card small className="h-100"  style={{width:"83%"}}>
+    <Card small className="h-100"  >
       <CardHeader>بخش بندی مشتریان</CardHeader>
       <CardBody className="pt-0">
            {

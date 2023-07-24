@@ -12,7 +12,7 @@ import ReactECharts from 'echarts-for-react';
 export const OrderValueMonth = ({option , isLoading}) => {
 
     return (
-        <Card small className="h-100"  style={{width:"83%"}}>
+        <Card small className="h-100">
             <CardHeader >مقدار سفارشات در ماه </CardHeader>
             <CardBody className="pt-0">
                

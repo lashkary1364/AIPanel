@@ -161,7 +161,7 @@ export const CustomerKPI = ({ option, isLoading }) => {
 
     return (
 
-        <Card small className="h-100 mb-2" style={{ width: "83%" }}>
+        <Card small className="h-100 mb-2" >
             <CardHeader>فروش محصول به تفکیک مشتریان جدید و قدیم به تفکیک سال</CardHeader>
             <CardBody className="pt-0">
                 {

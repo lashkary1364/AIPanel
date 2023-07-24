@@ -87,7 +87,7 @@ export const CustomerChurn = () => {
 
 
   return (
-    <Card small className="h-100" style={{width:"83%"}}>
+    <Card small className="h-100" >
       <CardHeader>نمودار ریزش مشتریان</CardHeader>
       <CardBody className="pt-0">
         <Button type="button" className='btn btn-secondary' onClick={getTransactionCustomerKPI}>محاسبه</Button>

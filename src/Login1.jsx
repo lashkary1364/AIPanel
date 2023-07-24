@@ -7,8 +7,6 @@ import axios from 'axios'
 import { useEffect } from 'react';
 import Swal from 'sweetalert2'
 
-
-
 export const Login1 = () => {
 
   const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
@@ -18,7 +16,7 @@ export const Login1 = () => {
     localStorage.clear();
     console.log("env variable")
     console.log(serverAddress + "auth/token")
-  }, [])
+  }, []);
 
 
   const [ErrorFlag, setErrorFlag] = useState(false);
@@ -112,19 +110,13 @@ export const Login1 = () => {
             <input type="text" id="userName" name="userName" value={formik.values.userName} onChange={formik.handleChange} placeholder='نام کاربری' />
           </div>
           <div>
-            <input type="password" id="password" name="password" value={formik.values.password} onChange={formik.handleChange} placeholder='پسورد' />
+            <input type="password" id="password" name="password" value={formik.values.password} onChange={formik.handleChange} placeholder='رمز عبور' />
           </div>
           <div className='form-inline'>
 
             <button className="login100-form-btn" type='submit' style={{ marginLeft: "20px" }}>ورود</button>
             <button className="login100-form-btn" type='submit'  onClick={handleRegister} >ثبت نام</button>
-          </div>
-          {/* {
-            ErrorFlag == true ?
-              <div className='error-message'><i className='fa fa-warning pr-2'></i><span>نام کاربری یا رمز عبور اشتباه میباشد</span></div>
-              :
-              ''
-          } */}
+          </div>          
           <div style={{ textAlign: "center", marginTop: "30px", fontFamily: "cinema", }}>
             <a style={{ color: "#8c11c5", textDecoration: "bottom", fontSize: "12pt" }} href="#" >فراموشی رمز عبور</a>
           </div>

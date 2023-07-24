@@ -102,7 +102,7 @@ export const TotalPrice = () => {
 
 
   return (
-    <Card small className="h-100" style={{width:"83%"}}>
+    <Card small className="h-100" >
     <CardHeader>تحلیل قیمت شاخص کل</CardHeader>
     <CardBody className="pt-0">
         {

@@ -71,7 +71,7 @@ export const Mohit = () => {
         <NavLink
           className="nav-link-icon text-center" onClick={handleLogout}>
           <div className="nav-link-icon__wrapper text-nowrap px-3 mt-2">
-            <span style={{ fontSize: "16pt", color: "#6f0a9d", fontFamily: "cinema", marginRight: "2px" }}>شبنم لشکری</span>
+            <span style={{ fontSize: "16pt", color: "#6f0a9d", fontFamily: "b nazanin bold", marginRight: "2px" }}>شبنم لشکری</span>
             <FontAwesomeIcon icon={faSignOutAlt} style={{ fontSize: "16pt", color: "#6f0a9d" }} />
           </div>
         </NavLink>

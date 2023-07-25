@@ -284,17 +284,6 @@ export const CustomerDashboard = () => {
   return (
 
     <Container fluid className="main-content-container px-4 mt-3" >
-      {/* <Row className="page-header mt-2 ">
-        <Col lg="12"  >
-          <nav className="breadcrumb">
-            <a className="breadcrumb-item" href="#">خانه</a>
-            <span className="breadcrumb-item active">داشبورد شاخص های کلیدی عملکرد مشتریان</span>
-          </nav>
-        </Col>
-      </Row> */}
-
-      {/* <CustomerActivity style={{ marginTop: "30px" }}></CustomerActivity>
-      <hr /> */}
       <CustomerKPI option={option} isLoading={isLoading}></CustomerKPI>
       <RevenueCustomer optionRevenue={optionRevenue} isLoading={isLoading} ></RevenueCustomer>
       <hr />

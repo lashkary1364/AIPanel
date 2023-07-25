@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { Spinner } from 'react-bootstrap';
+import Loading from '../Loading';
 
 export const CustomerChurn = () => {
 
@@ -92,11 +93,13 @@ export const CustomerChurn = () => {
       <CardBody className="pt-0">
         <Button type="button" className='btn btn-secondary' onClick={getTransactionCustomerKPI}>محاسبه</Button>
         {
-          isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-            <Spinner animation="grow" size="sm"  className='color-spinner'  />
-            <Spinner animation="grow"  className='color-spinner'  />
-            <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
-          </div> :
+          isLoading == true ? <Loading></Loading>
+          // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+          //   <Spinner animation="grow" size="sm"  className='color-spinner'  />
+          //   <Spinner animation="grow"  className='color-spinner'  />
+          //   <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
+          // </div> 
+          :
             <div style={divChart}  ><ReactECharts option={option} style={styleVar} /></div>
         }
 

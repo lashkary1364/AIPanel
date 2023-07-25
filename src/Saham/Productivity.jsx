@@ -9,6 +9,8 @@ import ReactECharts from 'echarts-for-react';
 import { Spinner } from 'react-bootstrap';
 import axios from 'axios'
 import { useEffect, useState } from 'react';
+import Loading from '../Loading';
+import Swal from 'sweetalert2';
 
 export const Productivity = () => {
 
@@ -92,11 +94,7 @@ export const Productivity = () => {
             // ]
         });
 
-
-
-
     }, [dataSeries, names]);
-
 
 
     useEffect(() => {
@@ -124,10 +122,10 @@ export const Productivity = () => {
                 const itemsArray = resultItems.result;
                 console.log("itemsArray");
                 console.log(itemsArray);
-
                 const arr = JSON.parse(itemsArray);
                 console.log(arr);
                 console.log(arr[0].name);
+                
                 arr.map(item => {
                     var temp = [];
                     setNames(names => [...names, item.name]);
@@ -144,15 +142,19 @@ export const Productivity = () => {
                     console.log(dataSeries);
                     temp = [];
                 });
+
                 setIsLoading(false);
 
                 console.log("data series ...");
                 console.log(dataSeries);
 
             }).catch(function (error) {
-
+                setIsLoading(false);
                 console.log("axois error: " + error);
-
+                Swal.fire(
+                    'خطا',
+                    error.message,
+                    'error' );
             });
 
     }
@@ -168,11 +170,13 @@ export const Productivity = () => {
     <CardHeader> بهره وری بر اساس سال</CardHeader>
     <CardBody className="pt-0">
         {
-            isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                <Spinner animation="grow" size="sm" variant="primary" />
-                <Spinner animation="grow" variant="primary" />
-                <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-            </div> :
+            isLoading == true ? <Loading></Loading>
+            // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+            //     <Spinner animation="grow" size="sm" variant="primary" />
+            //     <Spinner animation="grow" variant="primary" />
+            //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+            // </div> 
+            :
                 option != undefined ? <ReactECharts option={option} /> : ''
         }
 

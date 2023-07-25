@@ -9,7 +9,8 @@ import ReactECharts from 'echarts-for-react';
 import { Spinner } from 'react-bootstrap';
 import axios from 'axios'
 import { useEffect, useState } from 'react';
-
+import Loading from '../Loading';
+import Swal from 'sweetalert2';
 
 export const SoodavariSal = () => {
  
@@ -113,9 +114,13 @@ export const SoodavariSal = () => {
 
                 console.log("data series ...");
                 console.log(dataSeries);
-
+                setIsLoading(false);
             }).catch(function (error) {
-
+                setIsLoading(false);
+                Swal.fire(
+                    'خطا',
+                    error.message,
+                    'error' );
                 console.log("axois error: " + error);
 
             });
@@ -128,11 +133,13 @@ export const SoodavariSal = () => {
             <CardHeader> پرداخت دیون بر اساس سال</CardHeader>
             <CardBody className="pt-0">
                 {
-                    isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                        <Spinner animation="grow" size="sm" variant="primary" />
-                        <Spinner animation="grow" variant="primary" />
-                        <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-                    </div> :
+                    isLoading == true ? <Loading></Loading>
+                    // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+                    //     <Spinner animation="grow" size="sm" variant="primary" />
+                    //     <Spinner animation="grow" variant="primary" />
+                    //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+                    // </div> 
+                    :
                         option != undefined ? <ReactECharts option={option} /> : ''
                 }
 

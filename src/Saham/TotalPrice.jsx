@@ -9,6 +9,8 @@ import ReactECharts from 'echarts-for-react';
 import { Spinner } from 'react-bootstrap';
 import axios from 'axios'
 import { useEffect, useState } from 'react';
+import Loading from '../Loading';
+import Swal from 'sweetalert2';
 
 export const TotalPrice = () => {
 
@@ -94,8 +96,12 @@ export const TotalPrice = () => {
 
                 }).catch(function (error) {
 
+                    setIsLoading(false);
                     console.log("axois error: " + error);
-
+                    Swal.fire(
+                        'خطا',
+                        error.message,
+                        'error' );
                 });
 
             }
@@ -106,11 +112,13 @@ export const TotalPrice = () => {
     <CardHeader>تحلیل قیمت شاخص کل</CardHeader>
     <CardBody className="pt-0">
         {
-            isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                <Spinner animation="grow" size="sm" variant="primary" />
-                <Spinner animation="grow" variant="primary" />
-                <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-            </div> :
+            isLoading == true ? <Loading></Loading>
+            // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+            //     <Spinner animation="grow" size="sm" variant="primary" />
+            //     <Spinner animation="grow" variant="primary" />
+            //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+            // </div> 
+            :
                 option != undefined ? <ReactECharts option={option} /> : ''
         }
 

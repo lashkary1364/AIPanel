@@ -7,6 +7,7 @@ import {
 import "../shards-dashboard/styles/slider-style.css"
 import ReactECharts from 'echarts-for-react';
 import { Spinner } from 'react-bootstrap';
+import Loading from '../Loading';
 
 
 
@@ -165,11 +166,13 @@ export const CustomerKPI = ({ option, isLoading }) => {
             <CardHeader>فروش محصول به تفکیک مشتریان جدید و قدیم به تفکیک سال</CardHeader>
             <CardBody className="pt-0">
                 {
-                    isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                        <Spinner animation="grow" size="sm" className='color-spinner' />
-                        <Spinner animation="grow" className='color-spinner' />
-                        <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
-                    </div> :
+                    isLoading == true ? <Loading></Loading>
+                    //  <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+                    //     <Spinner animation="grow" size="sm" className='color-spinner' />
+                    //     <Spinner animation="grow" className='color-spinner' />
+                    //     <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
+                    // </div> 
+                    :
                         option != undefined ? <ReactECharts option={option} /> : ''
                 }
             </CardBody>

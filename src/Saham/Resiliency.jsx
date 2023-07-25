@@ -9,12 +9,16 @@ import ReactECharts from 'echarts-for-react';
 import { Spinner } from 'react-bootstrap';
 import axios from 'axios'
 import { useEffect, useState } from 'react';
+import Loading from '../Loading';
+import Swal from 'sweetalert2';
+
+
 export const Resiliency = () => {
 
     const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
     const accessToken = localStorage.getItem("access-tocken");
     const [option, setOption] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [dataSeries, setDataSeries] = useState([]);
     const [names, setNames] = useState([]);
 
@@ -22,7 +26,6 @@ export const Resiliency = () => {
 
     useEffect(() => {
         tabAvary();
-
     }, [])
 
 
@@ -97,8 +100,6 @@ export const Resiliency = () => {
         });
 
 
-
-
     }, [dataSeries, names]);
 
 
@@ -113,6 +114,7 @@ export const Resiliency = () => {
     const tabAvary = () => {
 
         console.log("tab avari ...");
+       
         axios(
             {
                 url: serverAddress + "industry_resiliency",
@@ -122,7 +124,7 @@ export const Resiliency = () => {
                     Authorization: `Bearer ${accessToken}`,
                 },
             }).then(function (response) {
-
+               
                 const resultItems = response.data;
                 console.log(resultItems);
                 const itemsArray = resultItems.result;
@@ -152,11 +154,14 @@ export const Resiliency = () => {
 
                 console.log("data series ...");
                 console.log(dataSeries);
-
+                setIsLoading(false);
             }).catch(function (error) {
-
+                setIsLoading(false);
                 console.log("axois error: " + error);
-
+                Swal.fire(
+                    'خطا',
+                    error.message,
+                    'error' );
 
             });
 
@@ -168,11 +173,13 @@ export const Resiliency = () => {
                 <CardHeader>تاب آوری بر اساس سال</CardHeader>
                 <CardBody className="pt-0">
                     {
-                        isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                            <Spinner animation="grow" size="sm" variant="primary" />
-                            <Spinner animation="grow" variant="primary" />
-                            <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-                        </div> :
+                        isLoading == true ? <Loading></Loading>
+                        //  <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+                        //     <Spinner animation="grow" size="sm" variant="primary" />
+                        //     <Spinner animation="grow" variant="primary" />
+                        //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+                        // </div> 
+                        :
                             option != undefined ? <ReactECharts option={option} /> : ''
                     }
                 </CardBody>

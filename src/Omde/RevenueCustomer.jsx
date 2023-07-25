@@ -10,6 +10,7 @@ import {
 import { Spinner } from 'react-bootstrap';
 import { setInlineStyles } from 'rsuite/esm/List/helper/utils';
 import ReactECharts from 'echarts-for-react';
+import Loading from '../Loading';
 
 
 
@@ -205,14 +206,15 @@ export const RevenueCustomer = ({optionRevenue , isLoading}) => {
         <Card small className="h-100">
             <CardHeader>درآمد ماهانه مشتریان جدید و قدیم</CardHeader>
            
-            <CardBody className="pt-0" class="collapse" id="collapseExample">
-         
+            <CardBody className="pt-0" class="collapse" id="collapseExample">         
 
-                {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >                 
-                    <Spinner animation="grow" size="sm" className='color-spinner'  />
-                    <Spinner animation="grow" className='color-spinner'  />
-                    <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
-                </div> :
+                {isLoading == true ? <Loading></Loading>
+                //  <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >                 
+                //     <Spinner animation="grow" size="sm" className='color-spinner'  />
+                //     <Spinner animation="grow" className='color-spinner'  />
+                //     <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
+                // </div> 
+                :
                    optionRevenue!=undefined ? <ReactECharts option={optionRevenue}  />:''
                 }
 

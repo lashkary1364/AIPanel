@@ -10,7 +10,8 @@ import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import '../assets/slider.css'
 import { Spinner } from 'react-bootstrap';
 import MainNavbar from '../components/layout/MainNavbar/MainNavbar';
-
+import Swal from 'sweetalert2';
+import Loading from '../Loading';
  
 
 export const WatifSaham = () => {
@@ -820,12 +821,13 @@ export const WatifSaham = () => {
 
                   <div style={{ borderRadius: "5px", border: "2px solid #dbd7d9", padding: "20px", visibility: isDivVisible }}>
 
-                    {isLoadingVisible && <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                      {/* <Spinner animation="border" role="status" ></Spinner> */}
-                      <Spinner animation="grow" size="sm" variant="secondary" />
-                      <Spinner animation="grow" variant="secondary" />
-                      <div className='text-secondary text-center' dir="rtl">در حال بارگزاری...</div>
-                    </div>
+                    {isLoadingVisible && <Loading></Loading>
+                    // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+                    //   {/* <Spinner animation="border" role="status" ></Spinner> */}
+                    //   <Spinner animation="grow" size="sm" variant="secondary" />
+                    //   <Spinner animation="grow" variant="secondary" />
+                    //   <div className='text-secondary text-center' dir="rtl">در حال بارگزاری...</div>
+                    // </div>
                     }
                     {/* // <ReactLoading type="bars" color="black" height={100} width={100} className="d-flex justify-content-center" /> : ''} */}
                     {isChartVisible ? <label className='text-center d-flex justify-content-center chart-title' >{chartName}</label>

@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faThumbsDown } from "@fortawesome/fontawesome-free-solid";
 import { Spinner } from 'react-bootstrap';
+import Loading from '../Loading';
 
 export const CustomerInfo = () => {
 
@@ -154,11 +155,13 @@ export const CustomerInfo = () => {
       <Card small className="h-100" >
         <CardHeader> اطلاعات مشتری</CardHeader>
         <CardBody className="pt-0">
-          {isLoading == true ? <div className="text-center " style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-            <Spinner animation="grow" size="sm" className='color-spinner' />
-            <Spinner animation="grow" className='color-spinner' />
-            <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
-          </div> :
+          {isLoading == true ? <Loading></Loading>
+          // <div className="text-center " style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+          //   <Spinner animation="grow" size="sm" className='color-spinner' />
+          //   <Spinner animation="grow" className='color-spinner' />
+          //   <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
+          // </div> 
+          :
             <>
               <Row>
                 <Col md="6" className="form-group">

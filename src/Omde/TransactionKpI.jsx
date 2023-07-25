@@ -1,9 +1,6 @@
 import React from 'react'
 import {
-  Container,
-  Row,
-  Col,
-
+  Container,  
 } from "shards-react";
 import axios from 'axios'
 import "../shards-dashboard/styles/slider-style.css"
@@ -131,6 +128,7 @@ export const TransactionKpI = () => {
 
 
   //-------------------------------------------------------------------------
+  
   useEffect(() => {
     getTransactionKpi();
   }, []);
@@ -329,6 +327,7 @@ console.log(revenueYear);
     var growth2022=0;
     var growth2023=0;
     var growth2024=0;
+
     axios(
       {
         url: serverAddress + "get_transaction_kpis",
@@ -440,7 +439,7 @@ console.log(revenueYear);
         setRevenueYear(revenueYear => [...revenueYear, revenue2022]);
         setRevenueYear(revenueYear => [...revenueYear, revenue2023]);
         setRevenueYear(revenueYear => [...revenueYear, revenue2024]);
-
+        
         setGrowth(revenueYear => [...revenueYear, growth2017]);
         setGrowth(revenueYear => [...revenueYear, growth2018]);
         setGrowth(revenueYear => [...revenueYear, growth2019]);

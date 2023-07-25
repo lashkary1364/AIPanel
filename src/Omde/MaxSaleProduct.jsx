@@ -10,6 +10,7 @@ import {
 import { Spinner } from 'react-bootstrap';
 import { setInlineStyles } from 'rsuite/esm/List/helper/utils';
 import ReactECharts from 'echarts-for-react';
+import Loading from '../Loading';
 
 
 export const MaxSaleProduct = ({optionMax , isLoading}) => {
@@ -24,11 +25,13 @@ export const MaxSaleProduct = ({optionMax , isLoading}) => {
       <CardHeader>پر فروش ترین محصولات</CardHeader>
       <CardBody className="pt-0">
         <div >
-          {isLoading == true ? <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-            <Spinner animation="grow" size="sm"  className='color-spinner'  />
-            <Spinner animation="grow"  className='color-spinner'  />
-            <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
-          </div> :
+          {isLoading == true ? <Loading></Loading>
+          // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+          //   <Spinner animation="grow" size="sm"  className='color-spinner'  />
+          //   <Spinner animation="grow"  className='color-spinner'  />
+          //   <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
+          // </div>
+           :
           optionMax!=undefined ?  <ReactECharts option={optionMax} />:''
           }
         </div>

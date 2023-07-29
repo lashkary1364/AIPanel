@@ -34,6 +34,7 @@
     "chart.js": "^2.7.3",
     "chrome": "^0.1.0",
     "classnames": "^2.2.6",
+    "compress-create-react-app": "^1.4.2",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "dateformat": "^3.0.3",
@@ -76,8 +77,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build:prod": "cross-env   npm run build",
-    "build": "cross-env  react-scripts build",
+    "build:prod": "cross-env   npm run build",    
+    "build": "react-scripts build && compress-cra",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start-sw": "http-server ./build"
@@ -92,6 +93,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
     "http-server": "^14.1.1"
   }
 }

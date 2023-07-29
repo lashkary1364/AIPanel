@@ -2,7 +2,6 @@ import React , {useCallback, useState} from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Container, Navbar } from "shards-react";
-
 import NavbarSearch from "./NavbarSearch";
 import NavbarNav from "./NavbarNav/NavbarNav";
 import NavbarToggle from "./NavbarToggle";
@@ -43,38 +42,23 @@ const MainNavbar = ({ layout, stickyTop }) => {
     "main-navbar",
     "bg-white",
     stickyTop && "sticky-top"
-  );
-
-  
+  );  
 
   return (
-    <div className={classes}> 
-   <div className="p-0">
-   <Navbar type="light" className="align-items-stretch flex-md-nowrap p-0">       
-        {/* <NavbarSearch /> */}
-        <NavbarNav />
-        <NavbarToggle />
-      </Navbar>
-   </div>
-    {/* <Container className="p-0" >      
-      <Navbar type="light" className="align-items-stretch flex-md-nowrap p-0">       
-       <NavbarSearch />
-        <NavbarNav />
-        <NavbarToggle />
-      </Navbar>
-    </Container> */}
-  </div>
- 
-    // <div className="form-inline">
-       /* <a onClick={() =>   Dispatcher.dispatch({ actionType: Constants.TOGGLE_SIDEBAR })}
-       className="toggle-sidebar d-sm-inline d-md-none d-lg-none" 
-       >
-        <i className="material-icons" >&#xE5C4;</i>
-         dashboard
-         </a> */
 
-     
-    // </div>
+   
+    <div className={classes}>
+    <Container className="p-0">
+      <Navbar type="light" className="align-items-stretch flex-md-nowrap p-0">
+        <NavbarSearch />
+        <NavbarNav />
+        <NavbarToggle />
+      </Navbar>
+    </Container>
+  </div>
+   
+   
+
   
   );
 };

@@ -17,10 +17,22 @@ export default class UserActions extends React.Component {
     super(props);
 
     this.state = {
-      visible: false
+      visible: false,
+      firstName:"",
+      lastName:""
     };
 
-    this.toggleUserActions = this.toggleUserActions.bind(this);
+    this.toggleUserActions = this.toggleUserActions.bind(this);   
+    
+    // sessionStorage.setItem("LoginTocken", JSON.stringify({
+    //   userFirstName: data.userName,
+    //   userLastName: data.password,
+    //   userTocken: response.data.access_token,
+    // }));
+
+    const user = JSON.parse(sessionStorage.getItem("LoginTocken"))
+    this.state.firstName=user.userFirstName;
+    this.state.lastName=user.userLastName;
   }
 
   toggleUserActions() {
@@ -33,73 +45,36 @@ export default class UserActions extends React.Component {
 
   render() {
 
-    const handleLogout = () => {
-      console.log("log out")
-      const user = JSON.parse(sessionStorage.getItem("LoginTocken"))
-      
-      console.log("user:");
-      console.log(JSON.parse(sessionStorage.getItem("LoginTocken")))
-      
-      
-      console.log(user.userFirstName);
-      console.log(user.userLastName);
-      sessionStorage.clear();
-      localStorage.clear();
-      console.log("user")
-      console.log(sessionStorage.getItem("LoginTocken"))
-
-     
-      window.location.replace('/n')
-      window.location.clear()
-
-     //  window.location.href='http://localhost:3000/'
-     //  window.location.assign('http://localhost:3000/')
-       //window.open('http://localhost:3000/blog-overview')
-    }
+  
     return (
-      <NavItem>
-          <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
-          <FontAwesomeIcon icon={faSignOutAlt } style={{fontSize:"16pt" , color:"#6f0a9d"}} />  
-          {/* <img onClick={handleLogout}
-            className="user-avatar rounded-circle mr-2"
-            src={require("./../../../../images/avatars/download.jpg")}
-            alt="خروج از سیستم"
-            title="خروج از سیستم"
-           // tag={Link} to="/"
-          /> */}
-          <span className="d-none d-md-inline-block">{ JSON.parse(sessionStorage.getItem("LoginTocken")).userFirstName } { JSON.parse(sessionStorage.getItem("LoginTocken")).userLastName }</span>
-        </DropdownToggle>
-        {/* <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
-          <img onClick={handleLogout}
-            className="user-avatar rounded-circle mr-2"
-            src={require("./../../../../images/avatars/download.jpg")}
-            alt="خروج از سیستم"
-          />{" "}
-          <span className="d-none d-md-inline-block">{ JSON.parse(sessionStorage.getItem("LoginTocken")).userFirstName } { JSON.parse(sessionStorage.getItem("LoginTocken")).userLastName }</span>
-        </DropdownToggle> */}
-        {/* <Collapse tag={DropdownMenu} right small open={this.state.visible}> */}
-          {/* <DropdownItem tag={Link} to="user-profile">
-            <i className="material-icons">&#xE7FD;</i> Profile
-          </DropdownItem>
-          <DropdownItem tag={Link} to="edit-user-profile">
-            <i className="material-icons">&#xE8B8;</i> Edit Profile
-          </DropdownItem>
-          <DropdownItem tag={Link} to="file-manager-list">
-            <i className="material-icons">&#xE2C7;</i> Files
-          </DropdownItem>
-          <DropdownItem tag={Link} to="transaction-history">
-            <i className="material-icons">&#xE896;</i> Transactions
-          </DropdownItem>
-          <DropdownItem divider /> */}
-          {/* <DropdownItem className="text-danger" onClick={handleLogout} tag={Link} to="/">
-            <i className="material-icons text-danger">&#xE879;</i> خروج
-          </DropdownItem> */}
-          {/* <DropdownItem tag={Link} to="/" className="text-danger" >
-            <i className="material-icons text-danger">&#xE879;</i> Logout
-          </DropdownItem> */}
-        {/* </Collapse> */}
-        
-      </NavItem>
+      <NavItem tag={Dropdown} caret toggle={this.toggleUserActions}>
+      <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
+        <img
+          className="user-avatar rounded-circle mr-2"
+          src={require("../../../../images/navbar/images3.png")}
+          alt="User Avatar"
+        />{" "}
+        <span className="d-none d-md-inline-block">{this.state.lastName + " " +this.state.firstName }  </span>
+      </DropdownToggle>
+      <Collapse tag={DropdownMenu} right small open={this.state.visible} style={{fontFamily:"b nazanin bold" , fontWeight:"bold"}}>
+        <DropdownItem tag={Link} to="user-profile">
+          <i className="material-icons">&#xE7FD;</i> تغییر رمز عبور
+        </DropdownItem>
+        {/* <DropdownItem tag={Link} to="edit-user-profile">
+          <i className="material-icons">&#xE8B8;</i> Edit Profile
+        </DropdownItem>
+        <DropdownItem tag={Link} to="file-manager-list">
+          <i className="material-icons">&#xE2C7;</i> Files
+        </DropdownItem>
+        <DropdownItem tag={Link} to="transaction-history">
+          <i className="material-icons">&#xE896;</i> Transactions
+        </DropdownItem> */}
+        <DropdownItem divider />
+        <DropdownItem tag={Link} to="/" className="text-danger">
+          <i className="material-icons text-danger">&#xE879;</i> خروج
+        </DropdownItem>
+      </Collapse>
+    </NavItem>
     );
   }
 }

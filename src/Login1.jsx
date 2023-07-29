@@ -100,11 +100,11 @@ export const Login1 = () => {
 
 
   return (
-    <div class="wrapper">
-      <div class="inner">
-        <img src={require("./images/login/img-b1.png")} alt="" class="image-1" />
+    <div className="wrapper">
+      <div className="inner">
+        <img src={require("./images/login/img-b1.png")} alt="" className="image-1" />
         <form action="#" method="post" dir="rtl" onSubmit={formik.handleSubmit} className="form">
-          <img src={require("./images/login/3.png")} alt="" class="image-2" />
+          <img src={require("./images/login/3.png")} alt="" className="image-2" />
           <div style={{ fontFamily: "cinema", fontSize: "25px" }}>ورود به سامانه</div>
           <div>
             <input type="text" id="userName" name="userName" value={formik.values.userName} onChange={formik.handleChange} placeholder='نام کاربری' />

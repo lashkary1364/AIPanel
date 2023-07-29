@@ -1,13 +1,13 @@
-body {
+/* body {
   font-size: 14px;
   margin: 0;
   color: #999;
   /* background-image: url("../images/login/new.png") !important; */
-  background-repeat: no-repeat;
-  background-position: 50% 0;
-  background-size: cover;
-  margin-bottom: 100px;
-}
+  /* background-repeat: no-repeat; */
+  /* background-position: 50% 0; */
+  /* background-size: cover; */
+  /* margin-bottom: 100px; */
+/* }  */
 
 .main-center {
  margin: auto;

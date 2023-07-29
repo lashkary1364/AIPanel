@@ -31,9 +31,10 @@ body {
   font-size: 14px;
   margin: 0;
   color: #999;
-  background-image: url("../images/login/bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  Background-image: linear-gradient(to left, #a76ec6, #540d7b )!important;
+  /* background-image: url("../images/login/bg.png"); */
+  /* background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 .form {
@@ -101,7 +102,7 @@ a {
   align-items: center;
   justify-content: center;
   background-image: url("../images/login/bg.png");
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   /* background-position: 50% 0; */
   background-size: cover;
 }
@@ -588,9 +589,11 @@ body {
   border-radius: 30px;
   font-family: cinema;
   font-size: 15pt;
-  background-color: #540d7b;
+  /* background-color: #540d7b; */
   color: #fff;
   margin-left: 40px;
+
+  background-image:linear-gradient(to left, #a76ec6, #540d7b )
 }
 
 .table-home {

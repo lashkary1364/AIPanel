@@ -1,11 +1,11 @@
 import React from "react";
 import { NavItem, NavLink, Badge, Collapse, DropdownItem } from "shards-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowAltCircleLeft, faArrowLeft, faArrowLeftLong, faArrowLeftRotate, faArrowsAlt, faBackwardStep, faHomeAlt } from '@fortawesome/free-solid-svg-icons'
+import { faArrowAltCircleLeft, faArrowLeft, faHomeAlt } from '@fortawesome/free-solid-svg-icons'
 import { faReply } from "@fortawesome/fontawesome-free-solid";
 import { history, withRouter } from 'react-router-dom';
 
-export default class Notifications extends React.Component {
+export default class HomePage extends React.Component {
 
   constructor(props) {
     super(props);
@@ -30,15 +30,13 @@ export default class Notifications extends React.Component {
 
   render() {
     return (
-      <NavItem className="border-right border-left dropdown notifications">
+      <NavItem className="border-right dropdown notifications">
         <NavLink
-          className="nav-link-icon text-center"
+          className="nav-link-icon text-center "
           onClick={this.toggleNotifications}>
-          <div className="nav-link-icon__wrapper ">
-          <FontAwesomeIcon  className="text-center"  icon={faArrowLeftRotate} style={{ fontSize: "16pt", color: "#530c8e" , marginTop:"7px" }} title="برگشت" onClick={this.handleBack} />
+          <div className="nav-link-icon__wrapper">
+            <FontAwesomeIcon icon={faHomeAlt} style={{ fontSize: "16pt", color: "#530c8e", marginTop: "7px" }} title="خانه" onClick={this.handleBack} />
 
-       
-          
             {/* color: "#6f0a9d" */}
             {/* <FontAwesomeIcon icon={faArrowAltCircleLeft} /> */}
             {/* <i className="material-icons">&#xE7F4;</i> */}
@@ -47,7 +45,6 @@ export default class Notifications extends React.Component {
             </Badge> */}
 
           </div>
-         
         </NavLink>
         {/* <Collapse
           open={this.state.visible}

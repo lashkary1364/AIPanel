@@ -31,7 +31,7 @@ body {
   font-size: 14px;
   margin: 0;
   color: #999;
-  Background-image: linear-gradient(to left, #a76ec6, #540d7b )!important;
+  Background-image: linear-gradient(to left, #a76ec6, #540d7b) !important;
   /* background-image: url("../images/login/bg.png"); */
   /* background-repeat: no-repeat;
   background-size: cover; */
@@ -209,88 +209,67 @@ h3 {
 
 }
 
-@media (max-width: 767px) {
-  .card{
+
+
+@media (min-height: 1100px) {
+  .table-omde {
+   
+    margin-top: 400px!important;
+   
+  }
+  
+  .table-dashboard {
+   
+    margin-bottom: 300px!important;
+    
+  }
+}
+
+@media (max-width: 500) and (orientation: portrait) {
+  .card {
     width: 100% !important;
   }
-  .img-omde-dashboard1 {
-    display: none;
-  }
-
-  .img-omde-dashboard2 {
-    display: none;
-  }
-
-  .img-omde-watif1 {
-    display: none;
-  }
-
-  .img-omde-watif2 {
-    display: none;
-  }
+ 
+.table-watif-mobile {
+  text-align: center;
+}
+.table-dashboard-mobile{
+  text-align: center;
+}
 
   .btn-watif1 {
     align-items: center;
     justify-content: center;
-    margin: auto;
+    margin-left: 100px;
+    background-image: linear-gradient(to left, #a76ec6, #540d7b);
+    color: #fff !important;
   }
 
   .btn-dashboard1 {
     align-items: center;
     justify-content: center;
-    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 100px;
   }
 
-  .table-omde {
-    margin-left: 0px !important;
+  
+  
+}
 
-  }
-
-  .btn-watif1 {
-
-    margin: auto !important;
-    margin-left: 0px !important;
-    background-color: #540d7b !important;
-    color: #fff !important;
-
-  }
-
-  .table-img {
-    width: 250px !important;
-    height: 250px !important;
-
-  }
-
-  .table-dashboard {
-    margin: auto !important;
-  }
-
-  .inner {
-    width: 90%;
-    left: 0;
-  }
-
-  .image-1,
-  .image-2 {
-    display: none;
-  }
-
-  form {
-
-    border-radius: 30px;
-    border-color: rgb(140, 17, 197);
-    /* box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -ms-box-shadow: none;
-    -o-box-shadow: none; */
-  }
-
-  .wrapper {
-    background: rgb(140, 17, 197);
-    ;
-
-  }
+.img-watif-mobile{
+  width: 200px;
+  height: 200px;
+}
+.img-dashboard-mobile{
+  width: 200px;
+  height: 200px;
+}
+.table-watif-mobile{
+  text-align: center;
+}
+.table-dashboard-mobile{
+  text-align: center;
 }
 
 input[type=text],
@@ -513,6 +492,7 @@ body {
   top: 50%;
   transform: translate(0, -50%);
   right: 0px;
+  left: 50%;
 }
 
 .container1 img {
@@ -593,7 +573,7 @@ body {
   color: #fff;
   margin-left: 40px;
 
-  background-image:linear-gradient(to left, #a76ec6, #540d7b )
+  background-image: linear-gradient(to left, #a76ec6, #540d7b)
 }
 
 .table-home {
@@ -632,10 +612,11 @@ body {
 }
 
 .table-omde {
-  margin-left: 150px;
+  margin-left: 200px;
   position: absolute;
   z-index: 2;
   margin-top: 200px;
+  text-align: right;
 }
 
 .table-dashboard {
@@ -643,6 +624,7 @@ body {
   position: absolute;
   z-index: 2;
   margin-bottom: 160px;
+  text-align: left;
 }
 
 .img-omde-dashboard1 {
@@ -655,7 +637,7 @@ body {
 .img-omde-dashboard2 {
   width: 200px;
   height: 200px;
-  margin-left: -50px;
+ margin-right: 100px;
 }
 
 .img-omde-watif1 {
@@ -664,6 +646,7 @@ body {
 
 .img-omde-watif2 {
   width: 200px;
+  height: 200px;
 }
 
 .logo-navbar {
@@ -672,6 +655,17 @@ body {
   color: #530c8e !important;
 }
 
-.card{
+.card {
   width: 83%;
+}
+
+.btn-watif-mobile , .btn-dashboard-mobile{
+  width: 200px;
+  margin: 10px;
+  border-radius: 30px;
+  font-family: cinema;
+  font-size: 15pt;
+  background-color: #fff; 
+  color: #540d7b;;
+  margin-left: 40px;
 }

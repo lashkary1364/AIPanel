@@ -35,7 +35,14 @@ export default function () {
         htmlBefore: '<i class="material-icons">dashboard</i>',
           // '<i class="material-icons">error</i>',
         to: "/tahlilgeymat",
-      }
+      }, 
+      {
+        title: "بورس",
+        htmlBefore: '<i class="material-icons">dashboard</i>',
+          // '<i class="material-icons">error</i>',
+        to: "/bours",
+      },
+    
     ];
   }
   

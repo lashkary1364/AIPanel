@@ -12,26 +12,14 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation, faTriangleExclamation, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import MainNavbar from './components/layout/MainNavbar/MainNavbar';
-import "./assets/main.css"
 
-export const MainOmde = () => {
-    const queryParameters = new URLSearchParams(window.location.search);
-    const id = queryParameters.get("id");
-
-
-    const handleWatif = (e) => {
-        e.preventDefault();
-        window.location.replace('/barchart')
-    }
-    const handleDashboard = (e) => {
-        e.preventDefault();
-        window.location.replace('/kpi')
-    }
+export const MainSaham1 = () => {
+   
     return (
         <div>
             <MainNavbar></MainNavbar>
-            <Container fluid className="main-content-container" style={{margin:"auto"}} >
-                <div 
+            <Container fluid className="main-content-container" >
+                <div
                     id="carouselMultiItemExample"
                     style={{ fontWeight: "500", fontSize: "18", fontFamily: "IRANSans" }}
                     className="carousel slide carousel-dark text-center "
@@ -50,7 +38,7 @@ export const MainOmde = () => {
                                                 alt="Waterfall"
                                             />
                                             <div className="card-body">
-                                                <a className="card-title text-primarry" href="/dashboardomde">داشبورد</a>
+                                                <a className="card-title text-primarry" href="/dashboardsaham">داشبورد</a>
                                             </div>
                                         </div>
                                     </div>
@@ -63,7 +51,7 @@ export const MainOmde = () => {
                                                 alt="Sunset Over the Sea"
                                             />
                                             <div className="card-body">
-                                                <a className="card-title text-primary" href="/whatif-omde">واتیف</a>
+                                                <a className="card-title text-primary" href="/whatif-saham">واتیف</a>
                                             </div>
                                         </div>
                                     </div>

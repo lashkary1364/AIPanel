@@ -380,6 +380,9 @@ input[type=password] {
   margin-right: 10px !important;
   width: 100px !important;
   color: white !important;
+  padding: 8px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .btn-watif:active,
@@ -666,6 +669,17 @@ body {
   font-family: cinema;
   font-size: 15pt;
   background-color: #fff; 
-  color: #540d7b;;
+  color: #540d7b;
   margin-left: 40px;
+}
+.css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
+  color: #540d7b !important;
+}
+
+.css-ahj2mt-MuiTypography-root {
+  font-family: IRANSans ! important;
+}
+
+.combo{
+  font-family: "B Nazanin"
 }

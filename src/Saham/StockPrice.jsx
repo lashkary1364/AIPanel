@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 export const StockPrice = () => {
     const accessToken = localStorage.getItem("access-tocken");
     const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
-    const [option,setOption]=useState();
+    const [option, setOption] = useState();
     const [lastPrice, setLastPrice] = useState([]);
     const [date, setDate] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -36,20 +36,17 @@ export const StockPrice = () => {
             xAxis: {
                 type: 'category',
                 data: date
-              },
-              yAxis: {
+            },
+            yAxis: {
                 type: 'value'
-              },
-              series: [
+            },
+            series: [
                 {
-                  data:lastPrice,
-                  type: 'line'
+                    data: lastPrice,
+                    type: 'line'
                 }
-              ]       
+            ]
         });
-
-
-
 
     }, [date, lastPrice]);
 
@@ -73,7 +70,7 @@ export const StockPrice = () => {
                 },
             }).then(function (response) {
 
-               console.log("get stock price ....")
+                console.log("get stock price ....")
                 const resultItems = response.data;
                 console.log(resultItems);
                 const itemsArray = resultItems.result;
@@ -83,10 +80,10 @@ export const StockPrice = () => {
                 console.log(arr);
                 setDate([]);
                 setLastPrice([]);
-                
+
 
                 arr.map((item) => {
-                    
+
                     setDate(date => [...date, item.date]);
                     setLastPrice(lastPrice => [...lastPrice, item.last_price]);
 
@@ -94,35 +91,33 @@ export const StockPrice = () => {
 
                 setIsLoading(false);
 
-                }).catch(function (error) {
-                    setIsLoading(false);
-                    console.log("axois error: " + error);
-                    Swal.fire(
-                        'خطا',
-                        error.message,
-                        'error' );
-                });
+            }).catch(function (error) {
+                setIsLoading(false);
+                console.log("axois error: " + error);
+                Swal.fire(
+                    'خطا',
+                    error.message,
+                    'error');
+            });
 
-            }
+    }
 
+    return (
+        <Card small className="h-100 mt-20" >
+            <CardHeader>تحلیل قیمت زر</CardHeader>
+            <CardBody className="pt-0">
+                {
+                    isLoading == true ? <Loading></Loading>
+                        // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+                        //     <Spinner animation="grow" size="sm" variant="primary" />
+                        //     <Spinner animation="grow" variant="primary" />
+                        //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+                        // </div>
+                        :
+                        option != undefined ? <ReactECharts option={option} /> : ''
+                }
 
-
-  return (
-    <Card small className="h-100 mt-20" >
-    <CardHeader>تحلیل قیمت زر</CardHeader>
-    <CardBody className="pt-0">
-        {
-            isLoading == true ? <Loading></Loading>
-            // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-            //     <Spinner animation="grow" size="sm" variant="primary" />
-            //     <Spinner animation="grow" variant="primary" />
-            //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-            // </div>
-             :
-                option != undefined ? <ReactECharts option={option} /> : ''
-        }
-
-    </CardBody>
-</Card>
-  )
+            </CardBody>
+        </Card>
+    )
 }

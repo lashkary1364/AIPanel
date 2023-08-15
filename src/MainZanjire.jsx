@@ -33,7 +33,7 @@ export const MainZanjire = () => {
                         <div className="carousel-item active ">
                             <div className="container">
                                 <div className="row ">
-                                    <div className="col-lg-6">
+                                    {/* <div className="col-lg-12">
                                         <div className="card">
                                             <img
                                                 src={require("../src/images/avatars/dashboard.jpg")}
@@ -44,7 +44,7 @@ export const MainZanjire = () => {
                                                 <a className="card-title text-primarry" href="/dashboardzanjire">داشبورد</a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <div className="col-lg-6 d-none d-lg-block">
                                         <div className="card">
@@ -54,7 +54,7 @@ export const MainZanjire = () => {
                                                 alt="Sunset Over the Sea"
                                             />
                                             <div className="card-body">
-                                                <a className="card-title text-primary" href="/watifzanjire">واتیف</a>
+                                                <a className="card-title text-primary" href="/whatif-chain">واتیف</a>
                                             </div>
                                         </div>
                                     </div>

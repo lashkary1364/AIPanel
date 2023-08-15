@@ -11,6 +11,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { TotalPrice } from './TotalPrice';
 import { StockPrice } from './StockPrice';
+import { PriceVsShakhes } from './PriceVsShakhes';
 
 
 
@@ -49,9 +50,6 @@ export const TahlilGeymat = () => {
     //             }
     //           ]       
     //     });
-
-
-
 
     // }, [date, value]);
 
@@ -111,7 +109,11 @@ export const TahlilGeymat = () => {
     return (
         <Container fluid className="main-content-container px-4 mt-3" dir="rtl"  >
             <TotalPrice></TotalPrice>
+            <hr/>
             <StockPrice></StockPrice>
+            <hr/>
+            <PriceVsShakhes></PriceVsShakhes>
+            <hr></hr>
         </Container>
     )
 }

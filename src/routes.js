@@ -24,9 +24,14 @@ import { Profitability } from "./Saham/Profitability"
 import DefaultLayout from "./layouts/Default";
 import DefaulCustomeLayout from "./layouts/DefaultCustome";
 import SahamLayout from "./layouts/SahamLayout";
+import SahamWhatifLayout from "./layouts/SahamWhatifLayout";
 import OmdeLayout from "./layouts/OmdeLayout";
 import { Register } from "./Register";
 import { home1 } from "./home1";
+import { WordCloudPos } from "./Saham/WordCloudPos";
+import OmdeWhatifLayout from "./layouts/OmdeWhatifLayout";
+import ZanjireWhatifLayout from "./layouts/ZanjireWhatifLayout";
+import { RSI } from "./Saham/RSI";
 
 export default [
   {
@@ -95,23 +100,28 @@ export default [
     component: Dion
   },
   {
+    path: "/whatif-saham",
+    layout: SahamWhatifLayout,
+    component: WatifSaham
+  },
+  {
     path: "/profitability",
     layout: SahamLayout,
     component: Profitability
   },
   {
-    path: "/watifomde",
-    layout: DefaulCustomeLayout,
+    path: "/whatif-omde",
+    layout: OmdeWhatifLayout,
     component: WathiOmde
   },
+  // {
+  //   path: "/watifsaham",
+  //   layout: DefaulCustomeLayout,
+  //   component: WatifSaham
+  // },
   {
-    path: "/watifsaham",
-    layout: DefaulCustomeLayout,
-    component: WatifSaham
-  },
-  {
-    path: "/watifzanjire",
-    layout: DefaulCustomeLayout,
+    path: "/whatif-chain" ,
+    layout: ZanjireWhatifLayout,
     component: WatifZanjire
   },
   {
@@ -139,6 +149,12 @@ export default [
     layout: SahamLayout,
     component: Productivity
   },
+  {
+    path: "/bours",
+    layout: SahamLayout,
+    component: WordCloudPos
+  },
+
   // {
   //   path: "/register",
   //  // layout: DefaulCustomeLayout,

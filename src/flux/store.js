@@ -1,16 +1,21 @@
 import { EventEmitter } from "events";
-
 import Dispatcher from "./dispatcher";
 import Constants from "./constants";
 import getSidebarNavItems from "../data/sidebar-nav-items";
 import getOmdeSidebarNavItems from "../data/sidebar-nav-items-omde";
-import getSahamSidebarNavItems from "../data/sidebar-nav-items-saham"
+import getOmdeWhatifSidebarNavItems from "../data/sidebar-nav-items-omde-whatif";
+import getSahamSidebarNavItems from "../data/sidebar-nav-items-saham";
+import getSahamWhatifSidebarNavItems from "../data/sidebar-nav-items-saham-whatif";
+import getZanjireWhatifSidebarNavItems from "../data/sidebar-nav-items-zanjire-whatif";
 
 let _store = {
   menuVisible: false,
   navItems: getSidebarNavItems(),
   navOmdeItems:getOmdeSidebarNavItems(),
-  navSahamItems:getSahamSidebarNavItems()
+  navOmdeWhatifItems:getOmdeWhatifSidebarNavItems(),
+  navSahamItems:getSahamSidebarNavItems(),
+  navSahamWhatifItems:getSahamWhatifSidebarNavItems(),
+  navZanjireWhatifItems:getZanjireWhatifSidebarNavItems()
 };
 
 class Store extends EventEmitter {
@@ -44,14 +49,26 @@ class Store extends EventEmitter {
   getSidebarItems() {
     return _store.navItems;
   }
+
   getSidebarSahamItems() {
     return _store.navSahamItems;
+  }
+
+  getSidebarSahamWhatifItems() {
+    return _store.navSahamWhatifItems;
+  }
+
+  getSidebarZanjireWhatifItems() {
+    return _store.navZanjireWhatifItems;
   }
 
   getSidebarOmdeItems() {
     return _store.navOmdeItems;
   }
   
+  getSidebarOmdeWhatifItems() {
+    return _store.navOmdeWhatifItems;
+  }
 
   addChangeListener(callback) {
     this.on(Constants.CHANGE, callback);

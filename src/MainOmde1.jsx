@@ -10,7 +10,7 @@ export const MainOmde1 = () => {
 
     const handleWatif = (e) => {
         e.preventDefault();
-        window.location.replace('/watifomde')
+        window.location.replace('/whatif-omde')
     }
     const handleDashboard = (e) => {
         e.preventDefault();

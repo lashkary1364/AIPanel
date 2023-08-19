@@ -31,9 +31,15 @@ export const Dion = () => {
         console.log(dataSeries);
 
         setOption({
-            title: {
-                text: 'پرداخت دیون  بر اساس سال'
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
             },
+            // title: {
+            //     text: 'پرداخت دیون  بر اساس سال'
+            // },
             tooltip: {
                 trigger: 'axis'
             },
@@ -122,7 +128,7 @@ export const Dion = () => {
                 Swal.fire(
                     'خطا',
                     error.message,
-                    'error' );
+                    'error');
             });
 
     }
@@ -130,15 +136,15 @@ export const Dion = () => {
 
     return (
         <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
-        <Card small className="h-100">
-            <CardHeader> پرداخت دیون بر اساس سال</CardHeader>
-            <CardBody className="pt-0">
-                {
-                    isLoading == true ? <Loading></Loading>                  
-                    :  option != undefined ? <ReactECharts option={option} /> : ''
-                }
-            </CardBody>
-        </Card>
+            <Card small className="h-100">
+                <CardHeader> پرداخت دیون بر اساس سال</CardHeader>
+                <CardBody className="pt-0">
+                    {
+                        isLoading == true ? <Loading></Loading>
+                            : option != undefined ? <ReactECharts option={option} /> : ''
+                    }
+                </CardBody>
+            </Card>
         </Container>
     )
 

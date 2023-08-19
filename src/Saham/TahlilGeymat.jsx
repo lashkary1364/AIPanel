@@ -83,23 +83,14 @@ export const TahlilGeymat = () => {
     //             console.log(arr);
     //             setDate([]);
     //             setValue([]);
-
-
     //             arr.map((item) => {
-
     //                 setDate(date => [...date, item.date]);
     //                 setValue(value => [...value, item.value]);
-
     //             });
-
     //             setIsLoading(false);
-
     //             }).catch(function (error) {
-
     //                 console.log("axois error: " + error);
-
     //             });
-
     //         }
 
 
@@ -109,11 +100,11 @@ export const TahlilGeymat = () => {
     return (
         <Container fluid className="main-content-container px-4 mt-3" dir="rtl"  >
             <TotalPrice></TotalPrice>
-            <hr/>
+            <br/>
             <StockPrice></StockPrice>
-            <hr/>
+            <br/>
             <PriceVsShakhes></PriceVsShakhes>
-            <hr></hr>
+            <br />
         </Container>
     )
 }

@@ -38,6 +38,12 @@ export const CustomerPredicted = () => {
     useEffect(() => {
         // نمودار فراوانی تازگی خرید
         setOptionRFM({
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
+            },
             xAxis: {
                 type: 'category',
                 data: recencyList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -66,7 +72,12 @@ export const CustomerPredicted = () => {
 
         // نمودار تعداد خرید
         setOptionPurchase({
-
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
+            },
             xAxis: {
                 type: 'category',
                 data: predictedPurchaseList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -96,7 +107,12 @@ export const CustomerPredicted = () => {
 
         // نمودار فراوانی مبلغ خرید
         setOptionPrice({
-
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
+            },
             xAxis: {
                 type: 'category',
                 data: monetoryList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -128,7 +144,12 @@ export const CustomerPredicted = () => {
         console.log(segmentList);
 
         setOptionCustSegment({
-
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
+            },
             xAxis: {
                 type: 'category',
                 data: ['ارزش پایین', 'ارزش متوسط', 'ارزش بالا'] //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -220,11 +241,11 @@ export const CustomerPredicted = () => {
     return (
         <Container fluid className="main-content-container px-4 mt-3" dir="rtl"  >
             <RFM optionRFM={optionRFM} isLoading={isLoading} />
-            <hr />
+            <br />
             <RFMPurchase optionPurchase={optionPurchase} isLoading={isLoading} ></RFMPurchase>
-            <hr />
+            <br />
             <RFMPrice optionPrice={optionPrice} isLoading={isLoading}></RFMPrice>
-            <hr />
+            <br />
             <CustomerSegmentation optiobCustSegment={optiobCustSegment} isLoading={isLoading} />
         </Container>
 

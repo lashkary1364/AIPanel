@@ -82,6 +82,12 @@ export const RepChart = () => {
     }
 
     const option = {
+        textStyle: {
+            fontFamily: 'b yekan',
+            fontSize: 13,
+            fontStyle: 'normal',
+            fontWeight: 'bold'
+        },
         xAxis: {
             max: 'dataMax'
         },
@@ -137,6 +143,12 @@ export const RepChart = () => {
 
 
     const optionGauage = {
+        textStyle: {
+            fontFamily: 'b yekan',
+            fontSize: 13,
+            fontStyle: 'normal',
+            fontWeight: 'bold'
+        },
         tooltip: {
             formatter: '{a} <br/>{b} : {c}%'
         },

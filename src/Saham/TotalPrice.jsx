@@ -33,6 +33,12 @@ export const TotalPrice = () => {
 
 
         setOption({
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
+            },
             xAxis: {
                 type: 'category',
                 data: date

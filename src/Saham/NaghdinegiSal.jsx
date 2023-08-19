@@ -31,8 +31,14 @@ export const NaghdinegiSal = () => {
         console.log(dataSeries);
 
         setOption({
-            title: {
-                text: 'نقدینگی  بر اساس سال'
+            // title: {
+            //     text: 'نقدینگی  بر اساس سال'
+            // },
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
             },
             tooltip: {
                 trigger: 'axis'

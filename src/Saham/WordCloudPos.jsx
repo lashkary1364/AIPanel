@@ -100,9 +100,9 @@ export const WordCloudPos = () => {
                 }
                 </CardBody>
             </Card>
-            <hr />
+            <br />
             <WordCloudNeg1></WordCloudNeg1>
-            <hr/>
+            <br/>
             {/* <WordCloudReact></WordCloudReact> */}
             {/* <WordCloudTest></WordCloudTest> */}
         </Container>

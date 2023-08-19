@@ -37,6 +37,12 @@ export const ProductDashboard = () => {
       // title: {
       //   text: 'World Population'
       // },
+      textStyle: {
+        fontFamily: 'b yekan',
+        fontSize: 13,
+        fontStyle: 'normal',
+        fontWeight: 'bold'
+    },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -72,6 +78,12 @@ export const ProductDashboard = () => {
       // title: {
       //   text: 'World Population'
       // },
+      textStyle: {
+        fontFamily: 'b yekan',
+        fontSize: 13,
+        fontStyle: 'normal',
+        fontWeight: 'bold'
+    },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -177,9 +189,9 @@ export const ProductDashboard = () => {
         </Col>
       </Row> */}
       <MinSaleProduct optionMin={optionMin} isLoading={isLoading}></MinSaleProduct>
-      <hr />
+      <br />
       <MaxSaleProduct optionMax={optionMax} isLoading={isLoading}></MaxSaleProduct>
-      <hr />
+      <br />
       {/* <RFM />
       <hr />
       <RFMPurchase />

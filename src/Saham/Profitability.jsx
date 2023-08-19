@@ -32,9 +32,15 @@ export const Profitability = () => {
         console.log(dataSeries);
 
         setOption({
-            title: {
-                text: 'تاب آوری بر اساس سال'
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
             },
+            // title: {
+            //     text: 'تاب آوری بر اساس سال'
+            // },
             tooltip: {
                 trigger: 'axis'
             },
@@ -61,7 +67,7 @@ export const Profitability = () => {
                 type: 'value'
             },
             series: dataSeries
-            
+
         });
 
 
@@ -100,7 +106,7 @@ export const Profitability = () => {
                 const arr = JSON.parse(itemsArray);
                 console.log(arr);
                 console.log(arr[0].name);
-             
+
                 arr.map(item => {
                     var temp = [];
                     setNames(names => [...names, item.name]);
@@ -126,11 +132,11 @@ export const Profitability = () => {
 
                 console.log("axois error: " + error);
                 setIsLoading(false);
-                
+
                 Swal.fire(
                     'خطا',
                     error.message,
-                    'error' );
+                    'error');
 
             });
 
@@ -141,25 +147,25 @@ export const Profitability = () => {
 
 
 
-  return (
-    <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
-    <Card small className="h-100" >
-    <CardHeader> بهره وری بر اساس سال</CardHeader>
-    <CardBody className="pt-0">
-        {
-            isLoading == true ? <Loading></Loading>
-            // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-            //     <Spinner animation="grow" size="sm" variant="primary" />
-            //     <Spinner animation="grow" variant="primary" />
-            //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-            // </div>
-             :
-                option != undefined ? <ReactECharts option={option} /> : ''
-        }
+    return (
+        <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
+            <Card small className="h-100" >
+                <CardHeader> بهره وری بر اساس سال</CardHeader>
+                <CardBody className="pt-0">
+                    {
+                        isLoading == true ? <Loading></Loading>
+                            // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+                            //     <Spinner animation="grow" size="sm" variant="primary" />
+                            //     <Spinner animation="grow" variant="primary" />
+                            //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
+                            // </div>
+                            :
+                            option != undefined ? <ReactECharts option={option} /> : ''
+                    }
 
-    </CardBody>
-</Card>
-</Container>
-  )
+                </CardBody>
+            </Card>
+        </Container>
+    )
 }
 

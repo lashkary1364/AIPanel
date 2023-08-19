@@ -51,9 +51,15 @@ export const PriceVsShakhes = () => {
 
     setOption(
       {
-        title: {
-          text: 'Stacked Line'
-        },
+        textStyle: {
+          fontFamily: 'b yekan',
+          fontSize: 13,
+          fontStyle: 'normal',
+          fontWeight: 'bold'
+      },
+        // title: {
+        //   text: 'Stacked Line'
+        // },
         tooltip: {
           trigger: 'axis'
         },
@@ -121,6 +127,12 @@ export const PriceVsShakhes = () => {
   useEffect(() => {
     setOptionRsi((
       {
+        textStyle: {
+          fontFamily: 'b yekan',
+          fontSize: 13,
+          fontStyle: 'normal',
+          fontWeight: 'bold'
+      },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -230,7 +242,7 @@ export const PriceVsShakhes = () => {
           }
         </CardBody>
       </Card>
-      <hr />
+      <br />
       <Card small className="h-100 mt-20" >
         <CardHeader>نمودار شاخص RSI</CardHeader>
         <CardBody className="pt-0">
@@ -241,6 +253,7 @@ export const PriceVsShakhes = () => {
           }
         </CardBody>
       </Card>
+      <br/>
     </div>
 
   )

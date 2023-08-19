@@ -33,6 +33,12 @@ export const CustomerDashboard = () => {
   useEffect(() => {
 
     setOption({
+      textStyle: {
+        fontFamily: 'b yekan',
+        fontSize: 13,
+        fontStyle: 'normal',
+        fontWeight: 'bold'
+    },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -92,9 +98,7 @@ export const CustomerDashboard = () => {
 
 
   useEffect(() => {
-
     getCustomerKpis();
-
   }, []);
 
   useEffect(() => {
@@ -105,6 +109,12 @@ export const CustomerDashboard = () => {
     console.log(revenueOld);
 
     setOptionRevenue({
+      textStyle: {
+        fontFamily: 'b yekan',
+        fontSize: 13,
+        fontStyle: 'normal',
+        fontWeight: 'bold'
+    },
       // title: {
       //   text: 'Rainfall vs Evaporation',
       //   //subtext: 'Fake Data'
@@ -286,7 +296,7 @@ export const CustomerDashboard = () => {
     <Container fluid className="main-content-container px-4 mt-3" >
       <CustomerKPI option={option} isLoading={isLoading}></CustomerKPI>
       <RevenueCustomer optionRevenue={optionRevenue} isLoading={isLoading} ></RevenueCustomer>
-      <hr />
+      <br />
     </Container>
   )
 }

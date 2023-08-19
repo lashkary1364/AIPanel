@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Container,  
+  Container,
 } from "shards-react";
 import axios from 'axios'
 import "../shards-dashboard/styles/slider-style.css"
@@ -20,9 +20,9 @@ export const TransactionKpI = () => {
   const [revenue, setRevenue] = useState([]);
   const [date, setDate] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [year,setYear]=useState([]);
-  const [revenueYear,setRevenueYear]=useState([]); 
- 
+  const [year, setYear] = useState([]);
+  const [revenueYear, setRevenueYear] = useState([]);
+
   //----------------------------------------------------------------------
 
   const [optionGrowthMonth, setOptionGrowthMonth] = useState({});
@@ -43,10 +43,14 @@ export const TransactionKpI = () => {
 
 
   useEffect(() => {
-
-
     setOption(
       {
+        textStyle: {
+          fontFamily: 'b yekan',
+          fontSize: 13,
+          fontStyle: 'normal',
+          fontWeight: 'bold'
+        },
         xAxis: {
           tooltip: { show: true },
           type: 'category',
@@ -84,6 +88,12 @@ export const TransactionKpI = () => {
 
     setOptionActivityCustomer(
       {
+        textStyle: {
+          fontFamily: 'b yekan',
+          fontSize: 13,
+          fontStyle: 'normal',
+          fontWeight: 'bold'
+        },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -128,18 +138,24 @@ export const TransactionKpI = () => {
 
 
   //-------------------------------------------------------------------------
-  
+
   useEffect(() => {
     getTransactionKpi();
   }, []);
 
   //------------------------------------------------------------------------
- //درآمد ماهانه
+  //درآمد ماهانه
   useEffect(() => {
 
 
     setOptionRevenueMonth(
       {
+        textStyle: {
+          fontFamily: 'b yekan',
+          fontSize: 13,
+          fontStyle: 'normal',
+          fontWeight: 'bold'
+        },
         xAxis: {
           tooltip: { show: true },
           type: 'category',
@@ -171,6 +187,12 @@ export const TransactionKpI = () => {
       // title: {
       //     text: 'Bar Chart with Negative Value'
       // },
+      textStyle: {
+        fontFamily: 'b yekan',
+        fontSize: 13,
+        fontStyle: 'normal',
+        fontWeight: 'bold'
+      },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -196,7 +218,7 @@ export const TransactionKpI = () => {
         axisLabel: { show: false },
         axisTick: { show: false },
         splitLine: { show: false },
-        data: [2017,2018,2019,2020,2021,2022,2023,2024],
+        data: [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
 
       },
       series: [
@@ -220,10 +242,10 @@ export const TransactionKpI = () => {
   //---------------------------------------------------------------
   //متوسط سفارش در ماه
   useEffect(() => {
-console.log("year------------------");
-console.log(year);
-console.log("revenue year-----------------");
-console.log(revenueYear);
+    console.log("year------------------");
+    console.log(year);
+    console.log("revenue year-----------------");
+    console.log(revenueYear);
 
     // setOptionAvgOrderMonth(
     //   {
@@ -266,6 +288,12 @@ console.log(revenueYear);
 
     setOptionAvgOrderMonth(
       {
+        textStyle: {
+          fontFamily: 'b yekan',
+          fontSize: 13,
+          fontStyle: 'normal',
+          fontWeight: 'bold'
+        },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -281,7 +309,7 @@ console.log(revenueYear);
         xAxis: [
           {
             type: 'category',
-            data: [2017,2018,2019,2020,2021,2022,2023,2024],
+            data: [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
             axisTick: {
               alignWithLabel: true
             }
@@ -303,30 +331,30 @@ console.log(revenueYear);
       })
 
 
-  }, [year,revenueYear])
+  }, [year, revenueYear])
 
   //---------------------------------------------------------------
 
   const getTransactionKpi = () => {
 
     setIsLoading(true);
-    var revenue2017=0;
-    var revenue2018=0;
-    var revenue2019=0;
-    var revenue2020=0;
-    var revenue2021=0;
-    var revenue2022=0;
-    var revenue2023=0;
-    var revenue2024=0;
-    
-    var growth2017=0;
-    var growth2018=0;
-    var growth2019=0;
-    var growth2020=0;
-    var growth2021=0;
-    var growth2022=0;
-    var growth2023=0;
-    var growth2024=0;
+    var revenue2017 = 0;
+    var revenue2018 = 0;
+    var revenue2019 = 0;
+    var revenue2020 = 0;
+    var revenue2021 = 0;
+    var revenue2022 = 0;
+    var revenue2023 = 0;
+    var revenue2024 = 0;
+
+    var growth2017 = 0;
+    var growth2018 = 0;
+    var growth2019 = 0;
+    var growth2020 = 0;
+    var growth2021 = 0;
+    var growth2022 = 0;
+    var growth2023 = 0;
+    var growth2024 = 0;
 
     axios(
       {
@@ -353,47 +381,47 @@ console.log(revenueYear);
         setOrder([]);
         setCountCustomer([]);
 
-        
-      //   images.map(img => {
-      //     if (uniqueTags.indexOf(img.tag) === -1) {
-      //         uniqueTags.push(img.tag)
-      //     }
-      // });
+
+        //   images.map(img => {
+        //     if (uniqueTags.indexOf(img.tag) === -1) {
+        //         uniqueTags.push(img.tag)
+        //     }
+        // });
         arr.map((item) => {
-        //   if (year.indexOf(item.year) === -1) {
-        //     year.push(item.year);
-        // }
+          //   if (year.indexOf(item.year) === -1) {
+          //     year.push(item.year);
+          // }
 
- if(item.year==2017){
-  revenue2017+=item.Revenue;
-  growth2017+=item.monthly_growth;
- }else if (item.year==2018){
-  revenue2018+=item.Revenue;
-  growth2018+=item.monthly_growth;
- }else if (item.year==2019){
-  revenue2019+=item.Revenue;
-  growth2019+=item.monthly_growth;
-}else if (item.year==2020){
-  revenue2020+=item.Revenue;
-  growth2020+=item.monthly_growth; 
- }else if (item.year==2021){
-  revenue2021+=item.Revenue;
-  growth2021+=item.monthly_growth;
- }else if (item.year==2022){
-  revenue2022+=item.Revenue;
-  growth2022+=item.monthly_growth;
- }else if (item.year==2023){
-  revenue2023+=item.Revenue;
-  growth2023+=item.monthly_growth;
- }else if (item.year==2024){
-  revenue2024+=item.Revenue;
-  growth2024+=item.monthly_growth;
- }
+          if (item.year == 2017) {
+            revenue2017 += item.Revenue;
+            growth2017 += item.monthly_growth;
+          } else if (item.year == 2018) {
+            revenue2018 += item.Revenue;
+            growth2018 += item.monthly_growth;
+          } else if (item.year == 2019) {
+            revenue2019 += item.Revenue;
+            growth2019 += item.monthly_growth;
+          } else if (item.year == 2020) {
+            revenue2020 += item.Revenue;
+            growth2020 += item.monthly_growth;
+          } else if (item.year == 2021) {
+            revenue2021 += item.Revenue;
+            growth2021 += item.monthly_growth;
+          } else if (item.year == 2022) {
+            revenue2022 += item.Revenue;
+            growth2022 += item.monthly_growth;
+          } else if (item.year == 2023) {
+            revenue2023 += item.Revenue;
+            growth2023 += item.monthly_growth;
+          } else if (item.year == 2024) {
+            revenue2024 += item.Revenue;
+            growth2024 += item.monthly_growth;
+          }
 
-        console.log(year);
+          console.log(year);
           setYear(item.year);
           console.log(item.year + " , " + item.month)
-          const date1 = item.year+ " , " + item.month;
+          const date1 = item.year + " , " + item.month;
           setDate(date => [...date, date1]);
           setCountCustomer(countcustomer => [...countcustomer, item.active_customers]);
 
@@ -430,7 +458,7 @@ console.log(revenueYear);
         });
 
         const sumMentoryValue = arr.map(item => item.Revenue).reduce((prev, curr) => prev + curr, 0);
-        
+
         setRevenueYear(revenueYear => [...revenueYear, revenue2017]);
         setRevenueYear(revenueYear => [...revenueYear, revenue2018]);
         setRevenueYear(revenueYear => [...revenueYear, revenue2019]);
@@ -439,7 +467,7 @@ console.log(revenueYear);
         setRevenueYear(revenueYear => [...revenueYear, revenue2022]);
         setRevenueYear(revenueYear => [...revenueYear, revenue2023]);
         setRevenueYear(revenueYear => [...revenueYear, revenue2024]);
-        
+
         setGrowth(revenueYear => [...revenueYear, growth2017]);
         setGrowth(revenueYear => [...revenueYear, growth2018]);
         setGrowth(revenueYear => [...revenueYear, growth2019]);
@@ -458,7 +486,7 @@ console.log(revenueYear);
 
         sessionStorage.clear();
         localStorage.clear();
-       // window.location.replace('/login');
+        // window.location.replace('/login');
       });
 
   }
@@ -469,13 +497,14 @@ console.log(revenueYear);
     <Container fluid className="main-content-container" >
       <RevenueMonth optionRevenueMonth={optionRevenueMonth} isLoading={isLoading} />
       <br />
-      <GrowthMonth optionGrowthMonth={optionGrowthMonth} isLoading={isLoading}  />
+      <GrowthMonth optionGrowthMonth={optionGrowthMonth} isLoading={isLoading} />
       <br />
       <AvgOrderMonth optionAvgOrderMonth={optionAvgOrderMonth} isLoading={isLoading} />
       <br />
       <OrderValueMonth option={option} isLoading={isLoading} />
       <br />
       <CustomerActivity optionActivityCustomer={optionActivityCustomer} isLoading={isLoading} />
+      <br />
     </Container>
   )
 }

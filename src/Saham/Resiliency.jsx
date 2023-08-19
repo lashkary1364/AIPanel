@@ -36,9 +36,15 @@ export const Resiliency = () => {
         console.log(dataSeries);
 
         setOption({
-            title: {
-                text: 'بهره وری بر اساس سال'
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
             },
+            // title: {
+            //     text: 'بهره وری بر اساس سال'
+            // },textStyle: fontFamily: Microsoft YaHeifontSize: 12fontStyle: normalfontWeight: normal
             tooltip: {
                 trigger: 'axis'
             },
@@ -104,7 +110,6 @@ export const Resiliency = () => {
 
 
     useEffect(() => {
-
 
         console.log("option ....")
         console.log(option);
@@ -180,7 +185,7 @@ export const Resiliency = () => {
                         //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
                         // </div> 
                         :
-                            option != undefined ? <ReactECharts option={option} /> : ''
+                            option != undefined ? <ReactECharts option={option}  /> : ''
                     }
                 </CardBody>
             </Card>

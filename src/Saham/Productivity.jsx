@@ -31,8 +31,14 @@ export const Productivity = () => {
         console.log(dataSeries);
 
         setOption({
-            title: {
-                text: 'بهره وری  بر اساس سال'
+            // title: {
+            //     text: 'بهره وری  بر اساس سال'
+            // },
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
             },
             tooltip: {
                 trigger: 'axis'

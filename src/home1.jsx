@@ -9,19 +9,18 @@ export const home1 = () => {
                     <tbody>
                         <tr>
                             <td style={{ textAlign: "center" }}>
-                                <a href="/mainomde">
-
+                                <a href="/mainomde" style={{ textAlign: "center" }}>
                                     <img src={require("./images/home/3.png")} className='table-img' ></img>
                                 </a>
                             </td>
                             <td style={{ textAlign: "center" }}>
-                                <a href="/mainsaham">
+                                <a href="/mainsaham" style={{ textAlign: "center" }}>
 
                                     <img src={require("./images/home/2.png")} className='table-img'></img>
                                 </a>
                             </td>
                             <td style={{ textAlign: "center" }}>
-                                <a href="/mainzanjire">
+                                <a href="/home-chain" style={{ textAlign: "center" }}>
 
                                     <img src={require("./images/home/4.png")} className='table-img'></img>
                                 </a>

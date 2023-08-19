@@ -12,13 +12,14 @@ import { useEffect, useState } from 'react';
 import Loading from '../Loading';
 import Swal from 'sweetalert2';
 import ReactWordcloud from 'react-wordcloud';
-import { WordCloudNeg } from './WordCloudNeg';
-
+import { WordCloudNeg1 } from './WordCloudNeg1';
+import { WordCloudTest } from './WordCloudTest';
+import { WordCloudReact } from './WordCloudReact';
 export const WordCloudPos = () => {
 
     const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
     const accessToken = localStorage.getItem("access-tocken");    
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [dataSeries, setDataSeries] = useState([]);   
     const [words, setWords] = useState([]);
 
@@ -78,30 +79,32 @@ export const WordCloudPos = () => {
     //   }
     const options = {
         rotations: 2,
+        fontFamily: "cinema",
         rotationAngles: [-90, 0],
     };
-    const size = [2000, 1500];
+    const size = [1200, 500];
+    const fontSizes= [50, 30];
 
     return (
 
         <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
             <Card small className="h-100">
                 <CardHeader>ابر کلمات مثبت</CardHeader>
-                <CardBody className="pt-0">
-                    {/* {
-                isLoading == true ? <Loading></Loading>                  
-                :  option != undefined ? <ReactECharts option={option} /> : ''
-            } */}
-                    <div >
+                <CardBody className="pt-0">                  
+                {
+                    isLoading == true ? <Loading></Loading>: 
                         <ReactWordcloud words={words}
                             options={options}
-                            size={size} />
-                    </div>
-
+                            size={size} 
+                            fontSizes={fontSizes} />                            
+                }
                 </CardBody>
             </Card>
             <hr />
-            <WordCloudNeg></WordCloudNeg>
+            <WordCloudNeg1></WordCloudNeg1>
+            <hr/>
+            {/* <WordCloudReact></WordCloudReact> */}
+            {/* <WordCloudTest></WordCloudTest> */}
         </Container>
 
     )

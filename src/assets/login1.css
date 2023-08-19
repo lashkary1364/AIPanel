@@ -3,7 +3,6 @@
   font-style: normal;
   font-weight: bold;
   src: url('./font/cinema.ttf');
-
 }
 
 @font-face {
@@ -35,7 +34,10 @@ body {
   /* background-image: url("../images/login/bg.png"); */
   /* background-repeat: no-repeat;
   background-size: cover; */
+  height: 100%;
+  margin: 0;
 }
+
 
 .form {
   left: 205px;
@@ -209,33 +211,28 @@ h3 {
 
 }
 
-
-
 @media (min-height: 1100px) {
   .table-omde {
-   
-    margin-top: 400px!important;
-   
+
+    margin-top: 400px !important;
+
   }
-  
+
   .table-dashboard {
-   
-    margin-bottom: 300px!important;
-    
+
+    margin-bottom: 300px !important;
+
   }
 }
 
-@media (max-width: 500) and (orientation: portrait) {
-  .card {
-    width: 100% !important;
+@media (min-width: 576) {
+ .table-watif-mobile {
+    text-align: center;
   }
- 
-.table-watif-mobile {
-  text-align: center;
-}
-.table-dashboard-mobile{
-  text-align: center;
-}
+
+  .table-dashboard-mobile {
+    text-align: center;
+  }
 
   .btn-watif1 {
     align-items: center;
@@ -251,24 +248,37 @@ h3 {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 100px;
-  }
+  }  
 
-  
-  
 }
 
-.img-watif-mobile{
-  width: 200px;
-  height: 200px;
+@media  only screen and (max-width:500px){
+.card{
+  width: 100% !important;
 }
-.img-dashboard-mobile{
-  width: 200px;
-  height: 200px;
-}
-.table-watif-mobile{
+.table-img {
+  width: 150px !important;
+  height: 150px !important;
   text-align: center;
 }
-.table-dashboard-mobile{
+}
+
+
+.img-watif-mobile {
+  width: 200px;
+  height: 200px;
+}
+
+.img-dashboard-mobile {
+  width: 200px;
+  height: 200px;
+}
+
+.table-watif-mobile {
+  text-align: center;
+}
+
+.table-dashboard-mobile {
   text-align: center;
 }
 
@@ -323,26 +333,27 @@ input[type=password] {
 
 .lable-watif {
   color: #6D0CE1;
-  margin-right: "10px";
-  width: 200;
   font-weight: bold;
+  margin-top: 35px;
 }
 
 .MuiSlider-markLabel {
 
-  background-color: #e0b6fd !important;
+  background-color: #f4e4ff  !important;
   border-radius: 10px !important;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  padding: 3px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
 
 }
 
-
 .MuiSlider-root {
-  color: #b53f3f !important;
+  color: #6c6565  !important;
   width: 100%;
   cursor: pointer;
   height: 2px;
@@ -485,10 +496,6 @@ label {
   justify-content: center;
 }
 
-body {
-  height: 100%;
-  margin: 0;
-}
 
 .container1 {
   position: absolute;
@@ -503,6 +510,9 @@ body {
   height: 700px;
   position: relative;
   z-index: 1;
+  border: 2px solid rgb(198, 196, 196); 
+  border-radius: 70px 0px 0px 70px;
+
 }
 
 
@@ -606,8 +616,8 @@ body {
 }
 
 .table-img {
-  width: 500px;
-  height: 500px;
+  width: 370px;
+  height: 300px;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -639,8 +649,8 @@ body {
 
 .img-omde-dashboard2 {
   width: 200px;
-  height: 200px;
- margin-right: 100px;
+  height: 170px;
+  margin-right: 100px;
 }
 
 .img-omde-watif1 {
@@ -648,8 +658,8 @@ body {
 }
 
 .img-omde-watif2 {
-  width: 200px;
-  height: 200px;
+  width: 170px;
+  height:190px;
 }
 
 .logo-navbar {
@@ -662,16 +672,18 @@ body {
   width: 83%;
 }
 
-.btn-watif-mobile , .btn-dashboard-mobile{
+.btn-watif-mobile,
+.btn-dashboard-mobile {
   width: 200px;
   margin: 10px;
   border-radius: 30px;
   font-family: cinema;
   font-size: 15pt;
-  background-color: #fff; 
+  background-color: #fff;
   color: #540d7b;
   margin-left: 40px;
 }
+
 .css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
   color: #540d7b !important;
 }
@@ -680,6 +692,6 @@ body {
   font-family: IRANSans ! important;
 }
 
-.combo{
+.combo {
   font-family: "B Nazanin"
 }

@@ -36,9 +36,6 @@ export default class Notifications extends React.Component {
           onClick={this.toggleNotifications}>
           <div className="nav-link-icon__wrapper ">
           <FontAwesomeIcon  className="text-center"  icon={faArrowLeftRotate} style={{ fontSize: "16pt", color: "#530c8e" , marginTop:"7px" }} title="برگشت" onClick={this.handleBack} />
-
-       
-          
             {/* color: "#6f0a9d" */}
             {/* <FontAwesomeIcon icon={faArrowAltCircleLeft} /> */}
             {/* <i className="material-icons">&#xE7F4;</i> */}

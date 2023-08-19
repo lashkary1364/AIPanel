@@ -124,14 +124,15 @@ export const WatifSaham = () => {
       value: 0,
       label: 'مثبت',
     },
+   
     {
       value: 50,
-      label: 'منفی',
+      label: 'خنثی',
     },
     {
       value: 100,
-      label: 'خنثی',
-    }
+      label: 'منفی',
+    },
   ]
 
   const bbn_attitude = [
@@ -141,11 +142,11 @@ export const WatifSaham = () => {
     },
     {
       value: 50,
-      label: 'منفی',
+      label: 'خنثی',
     },
     {
       value: 100,
-      label: 'خنثی',
+      label: 'منفی',
     }]
 
   const bbn_news = [{
@@ -154,11 +155,11 @@ export const WatifSaham = () => {
   },
   {
     value: 50,
-    label: 'منفی',
+    label: 'خنثی',
   },
   {
     value: 100,
-    label: 'خنثی',
+    label: 'منفی',
   }]
 
   const bbn_mood = [{
@@ -197,11 +198,11 @@ export const WatifSaham = () => {
   },
   {
     value: 50,
-    label: 'منفی',
+    label: 'خنثی',
   },
   {
     value: 100,
-    label: 'خنثی',
+    label: 'منفی',
   },]
 
   const setChart = (form) => {
@@ -453,7 +454,7 @@ export const WatifSaham = () => {
     form.append("asset_id", "14447");
     form.append("var_name", "bbn_attitude");
 
-    switch (newValue) {
+    switch (newValue) {      
       case 0:
         form.append("var_value", "positive");
         form.append("target", shakhes);
@@ -461,16 +462,17 @@ export const WatifSaham = () => {
         return newValue;
 
       case 50:
-        form.append("var_value", "negative");
+         form.append("var_value", "neutral");
         form.append("target", shakhes);
         setChart(form);
         return newValue;
 
       case 100:
-        form.append("var_value", "neutral");
-        form.append("target", shakhes);
-        setChart(form);
-        return newValue;
+      
+      form.append("var_value", "negative");
+      form.append("target", shakhes);
+      setChart(form);
+      return newValue;
 
       default:
         form.append("var_value", "positive");
@@ -517,7 +519,6 @@ export const WatifSaham = () => {
         setChart(form);
         return newValue;
     }
-
   }
 
   const bbn_mood_handleChange = (event, newValue, activeThumb) => {
@@ -652,9 +653,10 @@ export const WatifSaham = () => {
                 <Col>
                   <FormControl>
                     {/* <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel> */}
-                    <RadioGroup
+                    <RadioGroup  row
                       aria-labelledby="demo-controlled-radio-buttons-group"
                       name="controlled-radio-buttons-group" onChange={(e)=>handleChange(e)} value={shakhes} >
+                     
                       <FormControlLabel value="rsi_change" control={<Radio />} label="شاخص rsi" color="#540d7b" />
                       <FormControlLabel value="change" control={<Radio />} label="قیمت" color="#540d7b" />
                     </RadioGroup>
@@ -664,9 +666,9 @@ export const WatifSaham = () => {
                     <button className='btn-watif'    value="rsi_change" onClick={handleRsiChange}>شاخص rsi</button>
                     <button className="btn-watif" onClick={handleChange}>قیمت</button>
                   </Col> */}
-                <Col >
+                <Col>
                   <label className='lable-watif'>رفتار توده ای</label>
-                  <Box >
+                  <Box>
                     <Slider style={{ fontFamily: "iransans", fontSize: "11px" }}
                       aria-label="Restricted values"
                       defaultValue={0}
@@ -779,6 +781,7 @@ export const WatifSaham = () => {
           </ListGroup> */}
           </CardBody>
         </Card>
+        <br/>
       </Container>
     </div>
   )

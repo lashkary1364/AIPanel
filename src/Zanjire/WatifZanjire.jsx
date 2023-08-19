@@ -15,6 +15,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 export const WatifZanjire = () => {
 
     const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
+    const [visible, setVisible] = useState(false);
     const accessToken = localStorage.getItem("access-tocken");
     const [option, setOption] = useState({});
     const [optionSurplus, setOptionSurplus] = useState({});
@@ -43,17 +44,20 @@ export const WatifZanjire = () => {
     const [supplyLine, setSupplyLine] = React.useState(true);
     const [inventoryAdjustmentTime, setInventoryAdjustmentTime] = useState(1);
 
+    // : React.ChangeEvent<HTMLInputElement>
+    // : React.ChangeEvent<HTMLInputElement>
 
-    const handleChangeIgnoreBackorder = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeIgnoreBackorder = (event) => {
         setBackorder(event.target.checked);
         console.log(event.target.checked);
-      
+
     };
-    const handleChangeSupplyLine = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+    const handleChangeSupplyLine = (event) => {
         console.log("handleChangeSupplyLine");
         setSupplyLine(event.target.checked);
-         };
- 
+    };
+
 
     useEffect(() => {
 
@@ -72,7 +76,7 @@ export const WatifZanjire = () => {
                 trigger: 'axis'
             },
             legend: {
-                data: ["سفارش ارسال کارخانه",  "سفارش ارسال توزیع کننده", 'سفارش ارسال  عمده فروش', 'سفارش ارسال خرده فروش', 'سفارش ارسال مصرف کننده']
+                data: ["سفارش ارسال کارخانه", "سفارش ارسال توزیع کننده", 'سفارش ارسال  عمده فروش', 'سفارش ارسال خرده فروش', 'سفارش ارسال مصرف کننده']
             },
             grid: {
                 left: '3%',
@@ -180,7 +184,7 @@ export const WatifZanjire = () => {
                     data: wholesalerSurplus //[150, 232, 201, 154, 190, 330, 410]
                 },
                 {
-                    name:  'مازاد خرده فروش',
+                    name: 'مازاد خرده فروش',
                     type: 'line',
                     stack: 'Total',
                     data: retailerSurplus //[320, 332, 301, 334, 390, 330, 320]
@@ -223,13 +227,13 @@ export const WatifZanjire = () => {
             },
             series: [
                 {
-                    name:'کل هزینه خرده فروش',
+                    name: 'کل هزینه خرده فروش',
                     type: 'line',
                     stack: 'Total',
                     data: totalTetailerCost//[120, 132, 101, 134, 90, 230, 210]
                 },
                 {
-                    name: 'هزینه هدف گذاری خرده فروش' ,
+                    name: 'هزینه هدف گذاری خرده فروش',
                     type: 'line',
                     stack: 'Total',
                     data: targetRetailerCost //[220, 182, 191, 234, 290, 330, 310]
@@ -316,6 +320,7 @@ export const WatifZanjire = () => {
 
     const handleSearch = () => {
         setIsLoading(true);
+        setVisible(true);
         console.log("")
         const form = new FormData();
         if (backorder == true) {
@@ -355,7 +360,7 @@ export const WatifZanjire = () => {
                             <FormControlLabel required checked={supplyLine}
                                 onChange={handleChangeSupplyLine} control={<Switch />} label="اعمال حد تامین" />
                             <label htmlFor="time" className=' ml-5'>زمان تعدیل موجودی</label>
-                            <FormSelect className="form-control ml-3 combo"  onChange={(e) => inventoryTime(e.target.value)} >
+                            <FormSelect className="form-control ml-3 combo" onChange={(e) => inventoryTime(e.target.value)} >
                                 {
                                     comboItem.map((item, index) => (
                                         <option key={index}
@@ -370,37 +375,42 @@ export const WatifZanjire = () => {
                     </row>
                 </CardBody>
             </Card>
+            {visible ?
 
-            <hr />
-            <Card small className="h-100">
-                <CardHeader>نمودار سفارشات ارسالی</CardHeader>
-                <CardBody className="pt-0">
-                    {
-                        isLoading == true ? <Loading></Loading>
-                            : option != undefined ? <ReactECharts option={option} /> : ''
-                    }
-                </CardBody>
-            </Card>
-            <hr />
-            <Card small className="h-100">
-                <CardHeader>نمودار مازاد موجودی</CardHeader>
-                <CardBody className="pt-0">
-                    {
-                        isLoading == true ? <Loading></Loading>
-                            : option != undefined ? <ReactECharts option={optionSurplus} /> : ''
-                    }
-                </CardBody>
-            </Card>
-            <hr />
-            <Card small className="h-100 mb-3">
-                <CardHeader>نمودار هزینه زنجیره تامین</CardHeader>
-                <CardBody className="pt-0">
-                    {
-                        isLoading == true ? <Loading></Loading>
-                            : option != undefined ? <ReactECharts option={option2} /> : ''
-                    }
-                </CardBody>
-            </Card>
+                <div>
+                    <hr />
+                    <Card small className="h-100">
+                        <CardHeader>نمودار سفارشات ارسالی</CardHeader>
+                        <CardBody className="pt-0">
+                            {
+                                isLoading == true ? <Loading></Loading>
+                                    : option != undefined ? <ReactECharts option={option} /> : ''
+                            }
+                        </CardBody>
+                    </Card>
+                    <hr />
+                    <Card small className="h-100">
+                        <CardHeader>نمودار مازاد موجودی</CardHeader>
+                        <CardBody className="pt-0">
+                            {
+                                isLoading == true ? <Loading></Loading>
+                                    : option != undefined ? <ReactECharts option={optionSurplus} /> : ''
+                            }
+                        </CardBody>
+                    </Card>
+                    <hr />
+                    <Card small className="h-100 mb-3">
+                        <CardHeader>نمودار هزینه زنجیره تامین</CardHeader>
+                        <CardBody className="pt-0">
+                            {
+                                isLoading == true ? <Loading></Loading>
+                                    : option != undefined ? <ReactECharts option={option2} /> : ''
+                            }
+                        </CardBody>
+                    </Card>
+                </div>
+                : ''}
+
         </Container>
     )
 }

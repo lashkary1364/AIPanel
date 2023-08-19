@@ -11,27 +11,29 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import Loading from '../Loading';
 import Swal from 'sweetalert2';
-import ReactWordcloud from 'react-wordcloud';
-import 'tippy.js/dist/tippy.css';
-import 'tippy.js/animations/scale.css';
+import WordCloud from 'react-d3-cloud';
 
-export const WordCloudNeg = () => {
+
+export const WordCloudNeg1 = () => {
+   
     const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
     const accessToken = localStorage.getItem("access-tocken");
     const [option, setOption] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [dataSeries, setDataSeries] = useState([]);
     const [names, setNames] = useState([]);
-    const [words, setWords] = useState([]);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         worldCloud();
     }, []);
 
+
     useEffect(() => {
-        console.log("words ...");
-        console.log(words);
-    }, [words]);
+      console.log("data...");
+      console.log(data);
+    }, [data])
+    
 
     const worldCloud = () => {
         axios(
@@ -54,7 +56,7 @@ export const WordCloudNeg = () => {
                 console.log(arr);
                 arr.map(item => {
 
-                    setWords(words => [...words, { text: item.words, value: item.weights }])
+                    setData(data => [...data, { text: item.words, value: item.weights }])
                 });
 
 
@@ -72,37 +74,24 @@ export const WordCloudNeg = () => {
             });
     }
 
-    //   const callbacks = {
-    //     getWordColor: word => word.value > 50 ? "blue" : "red",
-    //     onWordClick: console.log,
-    //     onWordMouseOver: console.log,
-    //     getWordTooltip: word => `${word.text} (${word.value}) [${word.value > 50 ? "good" : "bad"}]`,
-    //   }
-    const options = {
-        rotations: 2,
-        fontFamily: "cinema",
-        rotationAngles: [-90, 0],
-    };
-    const size = [600, 400];  
-    const fontSizes= [400, 350];
     return (
-        // <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
-            <Card small className="h-100">
-                <CardHeader>ابر کلمات منفی</CardHeader>
-                <CardBody className="pt-0">
-                   {/* {
-                isLoading == true ? <Loading></Loading>                  
-                :  option != undefined ? <ReactECharts option={option} /> : ''
-            } */}
-                    <div>
-                        <ReactWordcloud words={words}
-                            options={options}
-                            size={size} 
-                            fontSizes={fontSizes}
-                            />
-                    </div>
-                </CardBody>
-            </Card>
-        // </Container>
+        <Card small className="h-100">
+            <CardHeader>ابر کلمات منفی</CardHeader>
+            <CardBody className="pt-0">
+                 {
+                    isLoading == true ? <Loading></Loading>:
+                    <WordCloud data={data} width={200}
+                    height={200}
+                    font="cinema"
+                    fontStyle="italic"
+                    fontWeight="bold"
+                    fontSize={(word) => Math.log2(word.value) * 2}
+                    spiral="rectangular"
+                    rotate={(word) => word.value % 360}
+                    padding={5}
+                    random={Math.random} />
+                }                
+            </CardBody>
+        </Card>
     )
 }

@@ -31,7 +31,8 @@ import { home1 } from "./home1";
 import { WordCloudPos } from "./Saham/WordCloudPos";
 import OmdeWhatifLayout from "./layouts/OmdeWhatifLayout";
 import ZanjireWhatifLayout from "./layouts/ZanjireWhatifLayout";
-import { RSI } from "./Saham/RSI";
+import { HomeChain } from "./Zanjire/HomeChain";
+
 
 export default [
   {
@@ -154,7 +155,11 @@ export default [
     layout: SahamLayout,
     component: WordCloudPos
   },
-
+  {
+    path: "/home-chain",
+    layout: ZanjireWhatifLayout,
+    component: HomeChain
+  },
   // {
   //   path: "/register",
   //  // layout: DefaulCustomeLayout,

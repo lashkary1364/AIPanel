@@ -32,7 +32,7 @@ export const ProductDashboard = () => {
   useEffect(() => {
 
     console.log("lllllllllllllllllllllll")
-    
+
     setOptionMax({
       // title: {
       //   text: 'World Population'
@@ -42,7 +42,7 @@ export const ProductDashboard = () => {
         fontSize: 13,
         fontStyle: 'normal',
         fontWeight: 'bold'
-    },
+      },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -83,7 +83,7 @@ export const ProductDashboard = () => {
         fontSize: 13,
         fontStyle: 'normal',
         fontWeight: 'bold'
-    },
+      },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -179,15 +179,7 @@ export const ProductDashboard = () => {
 
   return (
     <Container fluid className="main-content-container px-4 mt-2" dir="rtl" >
-      {/* <Row className="page-header mt-2 ">
-        <Col lg="12"  >
-          <nav className="breadcrumb">
-            <a className="breadcrumb-item" href="/home">خانه</a>
-            <a className="breadcrumb-item" href="/main">صفحه قبلی</a>
-            <span className="breadcrumb-item active">داشبورد شاخص های کلیدی عملکرد محصول</span>
-          </nav>
-        </Col>
-      </Row> */}
+
       <MinSaleProduct optionMin={optionMin} isLoading={isLoading}></MinSaleProduct>
       <br />
       <MaxSaleProduct optionMax={optionMax} isLoading={isLoading}></MaxSaleProduct>

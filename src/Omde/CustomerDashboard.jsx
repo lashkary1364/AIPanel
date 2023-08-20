@@ -295,6 +295,7 @@ export const CustomerDashboard = () => {
 
     <Container fluid className="main-content-container px-4 mt-3" >
       <CustomerKPI option={option} isLoading={isLoading}></CustomerKPI>
+      <br/>
       <RevenueCustomer optionRevenue={optionRevenue} isLoading={isLoading} ></RevenueCustomer>
       <br />
     </Container>

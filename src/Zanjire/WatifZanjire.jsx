@@ -12,6 +12,8 @@ import Loading from '../Loading';
 import Swal from 'sweetalert2';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
+
+
 export const WatifZanjire = () => {
 
     const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
@@ -44,13 +46,12 @@ export const WatifZanjire = () => {
     const [supplyLine, setSupplyLine] = React.useState(true);
     const [inventoryAdjustmentTime, setInventoryAdjustmentTime] = useState(1);
 
-    // : React.ChangeEvent<HTMLInputElement>
-    // : React.ChangeEvent<HTMLInputElement>
+    const [flag,setFlag]=useState(false);
+   
 
     const handleChangeIgnoreBackorder = (event) => {
         setBackorder(event.target.checked);
         console.log(event.target.checked);
-
     };
 
     const handleChangeSupplyLine = (event) => {
@@ -60,77 +61,105 @@ export const WatifZanjire = () => {
 
 
     useEffect(() => {
+        console.log("factorySendingOrder");
 
-        console.log(time);
         console.log(factorySendingOrder);
-        console.log(distributorSendingOrder);
-        console.log(wholesalerSendingOrder);
-        console.log(etailerSendingOrder);
-        console.log(consumerSendingOrder);
 
         setOption({
-            // title: {
-            //     text: 'Stacked Line'
-            // },
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                data: ["سفارش ارسال کارخانه", "سفارش ارسال توزیع کننده", 'سفارش ارسال  عمده فروش', 'سفارش ارسال خرده فروش', 'سفارش ارسال مصرف کننده']
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            toolbox: {
-                feature: {
-                    saveAsImage: {}
-                }
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: time//['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                    name: "سفارش ارسال کارخانه",
-                    type: 'line',
-                    stack: 'Total',
-                    data: factorySendingOrder//[120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name: "سفارش ارسال توزیع کننده",
-                    type: 'line',
-                    stack: 'Total',
-                    data: distributorSendingOrder //[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name: 'سفارش ارسال  عمده فروش',
-                    type: 'line',
-                    stack: 'Total',
-                    data: wholesalerSendingOrder //[150, 232, 201, 154, 190, 330, 410]
-                },
-                {
-                    name: 'سفارش ارسال خرده فروش',
-                    type: 'line',
-                    stack: 'Total',
-                    data: etailerSendingOrder //[320, 332, 301, 334, 390, 330, 320]
-                },
-                {
-                    name: 'سفارش ارسال مصرف کننده',
-                    type: 'line',
-                    stack: 'Total',
-                    data: consumerSendingOrder //[820, 932, 901, 934, 1290, 1330, 1320]
-                }
-            ]
-        });
-
+                    // title: {
+                    //     text: 'Stacked Line'
+                    // },
+                    textStyle: {
+                        fontFamily: 'b yekan',
+                        fontSize: 13,
+                        fontStyle: 'normal',
+                        fontWeight: 'bold'
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: ["سفارش ارسال کارخانه", "سفارش ارسال توزیع کننده", 'سفارش ارسال  عمده فروش', 'سفارش ارسال خرده فروش', 'سفارش ارسال مصرف کننده']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                      },
+                      toolbox: {
+                        feature: {
+                          saveAsImage: {}
+                        }
+                      },          
+                    
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: time//['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [
+                        {
+                            name: "سفارش ارسال کارخانه",
+                            type: 'line',
+                            areaStyle: {},
+                            emphasis: {
+                              focus: 'series'
+                            },
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            data: factorySendingOrder//[120, 132, 101, 134, 90, 230, 210]
+                        },
+                        {
+                            name: "سفارش ارسال توزیع کننده",
+                            type: 'line',
+                            areaStyle: {},
+                            emphasis: {
+                              focus: 'series'
+                            },
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                             data: distributorSendingOrder //[220, 182, 191, 234, 290, 330, 310]
+                        },
+                        {
+                            name: 'سفارش ارسال  عمده فروش',
+                            type: 'line',
+                            areaStyle: {},
+                            emphasis: {
+                              focus: 'series'
+                            },
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            data: wholesalerSendingOrder //[150, 232, 201, 154, 190, 330, 410]
+                        },
+                        {
+                            name: 'سفارش ارسال خرده فروش',
+                            type: 'line',
+                            areaStyle: {},
+                            emphasis: {
+                              focus: 'series'
+                            },
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            data: etailerSendingOrder //[320, 332, 301, 334, 390, 330, 320]
+                        },
+                        {
+                            name: 'سفارش ارسال مصرف کننده',
+                            type: 'line',
+                            areaStyle: {},
+                            emphasis: {
+                              focus: 'series'
+                            },
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            data: consumerSendingOrder //[820, 932, 901, 934, 1290, 1330, 1320]
+                        }
+                    ]
+                });
+       
     }, [factorySendingOrder, distributorSendingOrder, wholesalerSendingOrder, etailerSendingOrder, consumerSendingOrder]);
 
     useEffect(() => {
@@ -139,6 +168,12 @@ export const WatifZanjire = () => {
             // title: {
             //     text: 'Stacked Line'
             // },
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
+            },
             tooltip: {
                 trigger: 'axis'
             },
@@ -159,6 +194,7 @@ export const WatifZanjire = () => {
             xAxis: {
                 type: 'category',
                 boundaryGap: false,
+
                 data: time//['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
             },
             yAxis: {
@@ -166,27 +202,40 @@ export const WatifZanjire = () => {
             },
             series: [
                 {
-                    name: 'مازاد کارخانه',
-                    type: 'line',
-                    stack: 'Total',
+                    name: 'مازاد کارخانه',                  
+                    type: 'line',   
+                    seriesLayoutBy: 'row',   
+                    areaStyle: {},            
                     data: factorySurplus//[120, 132, 101, 134, 90, 230, 210]
                 },
                 {
                     name: 'مازاد پخش کننده',
-                    type: 'line',
-                    stack: 'Total',
+                    type: 'line', 
+                    seriesLayoutBy: 'row', 
+                    areaStyle: {},  
+                    emphasis: {
+                        focus: 'series'
+                      },              
                     data: distributorSurplus //[220, 182, 191, 234, 290, 330, 310]
                 },
                 {
                     name: 'مازاد عمده فروش',
-                    type: 'line',
-                    stack: 'Total',
+                    type: 'line',     
+                    seriesLayoutBy: 'row',  
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                      },             
                     data: wholesalerSurplus //[150, 232, 201, 154, 190, 330, 410]
                 },
                 {
                     name: 'مازاد خرده فروش',
-                    type: 'line',
-                    stack: 'Total',
+                    type: 'line',    
+                    seriesLayoutBy: 'row',  
+                    areaStyle: {},  
+                    emphasis: {
+                        focus: 'series'
+                      },           
                     data: retailerSurplus //[320, 332, 301, 334, 390, 330, 320]
                 },
 
@@ -200,6 +249,12 @@ export const WatifZanjire = () => {
             // title: {
             //     text: 'Stacked Line'
             // },
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
+            },
             tooltip: {
                 trigger: 'axis'
             },
@@ -228,26 +283,42 @@ export const WatifZanjire = () => {
             series: [
                 {
                     name: 'کل هزینه خرده فروش',
-                    type: 'line',
-                    stack: 'Total',
+                    type: 'line',  
+                    seriesLayoutBy: 'row', 
+                    areaStyle: {},    
+                    emphasis: {
+                        focus: 'series'
+                      },            
                     data: totalTetailerCost//[120, 132, 101, 134, 90, 230, 210]
                 },
                 {
                     name: 'هزینه هدف گذاری خرده فروش',
-                    type: 'line',
-                    stack: 'Total',
+                    type: 'line', 
+                    seriesLayoutBy: 'row', 
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                      },                  
                     data: targetRetailerCost //[220, 182, 191, 234, 290, 330, 310]
                 },
                 {
                     name: 'کل هزینه زنجیره تامین',
-                    type: 'line',
-                    stack: 'Total',
+                    type: 'line',   
+                    seriesLayoutBy: 'row',     
+                    areaStyle: {},   
+                    emphasis: {
+                        focus: 'series'
+                      },       
                     data: totalSupplyChainCost //[150, 232, 201, 154, 190, 330, 410]
                 },
                 {
                     name: 'هزینه زنجیره تامین هدف',
-                    type: 'line',
-                    stack: 'Total',
+                    type: 'line', 
+                    seriesLayoutBy: 'row',    
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                      },              
                     data: targetSupplyChainCost //[320, 332, 301, 334, 390, 330, 320]
                 },
 
@@ -279,10 +350,27 @@ export const WatifZanjire = () => {
 
                 const arr = JSON.parse(itemsArray);
                 console.log(arr);
+
+                setTime([]);
+                setFactorySendingOrder([]);
+                setDistributorSendingOrder([]);
+                setWholesalerSendingOrder([]);
+                setEtailerSendingOrder([]);
+                setConsumerSendingOrder([]);
+                setFactorySurplus([]);
+                setDistributorSurplus([]);
+                setWholesalerSurplus([]);
+                setRetailerSurplus([]);
+                setTotalTetailerCost([]);
+                setTargetRetailerCost([]);
+                setTotalSupplyChainCost([]);
+                setTargetSupplyChainCost([]);
                 arr.map(function (item, index) {
+
                     setTime(i => [...i, item.t]);
 
                     setFactorySendingOrder(i => [...i, item.factory_sending_order]);
+
                     setDistributorSendingOrder(i => [...i, item.distributor_sending_order]);
                     setWholesalerSendingOrder(i => [...i, item.wholesaler_sending_order]);
                     setEtailerSendingOrder(i => [...i, item.retailer_sending_order]);
@@ -301,6 +389,9 @@ export const WatifZanjire = () => {
 
                 });
 
+
+
+              
                 setIsLoading(false);
 
             }).catch(function (error) {

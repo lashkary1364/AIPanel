@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Card,
+    Card, Col,
     CardHeader,
     CardBody, Container
 } from "shards-react";
@@ -12,28 +12,22 @@ import { useEffect, useState } from 'react';
 import Loading from '../Loading';
 import Swal from 'sweetalert2';
 import WordCloud from 'react-d3-cloud';
-
+import { scaleOrdinal } from 'd3-scale';
+import { schemeCategory10 } from 'd3-scale-chromatic';
 
 export const WordCloudNeg1 = () => {
-   
+
     const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
     const accessToken = localStorage.getItem("access-tocken");
-    const [option, setOption] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    const [dataSeries, setDataSeries] = useState([]);
-    const [names, setNames] = useState([]);
     const [data, setData] = useState([]);
-
     useEffect(() => {
         worldCloud();
     }, []);
 
 
-    useEffect(() => {
-      console.log("data...");
-      console.log(data);
-    }, [data])
-    
+
+
 
     const worldCloud = () => {
         axios(
@@ -49,19 +43,12 @@ export const WordCloudNeg1 = () => {
                 const resultItems = response.data;
                 console.log(resultItems);
                 const itemsArray = resultItems.result;
-                console.log("itemsArray");
-                console.log(itemsArray);
-
                 const arr = JSON.parse(itemsArray);
-                console.log(arr);
                 arr.map(item => {
 
                     setData(data => [...data, { text: item.words, value: item.weights }])
                 });
 
-
-                console.log("data series ...");
-                console.log(dataSeries);
                 setIsLoading(false);
 
             }).catch(function (error) {
@@ -73,25 +60,34 @@ export const WordCloudNeg1 = () => {
                     'error');
             });
     }
-
+    const schemeCategory10ScaleOrdinal = scaleOrdinal(schemeCategory10);
     return (
-        <Card small className="h-100">
+
+        <div style={{ border: "1px solid", borderColor: "rgb(219, 222, 238)", borderRadius: "15px" }} >
             <CardHeader>ابر کلمات منفی</CardHeader>
-            <CardBody className="pt-0">
-                 {
-                    isLoading == true ? <Loading></Loading>:
-                    <WordCloud data={data} width={200}
-                    height={200}
-                    font="cinema"
-                    fontStyle="italic"
-                    fontWeight="bold"
-                    fontSize={(word) => Math.log2(word.value) * 2}
-                    spiral="rectangular"
-                    rotate={(word) => word.value % 360}
-                    padding={5}
-                    random={Math.random} />
-                }                
-            </CardBody>
-        </Card>
+            {
+
+                isLoading == true ? <Loading></Loading> :
+                    <WordCloud data={data} width={500}
+                        height={400}
+                        font="tahoma"
+                        fontSize={(word) => Math.log2(word.value) * 5}
+                        spiral="rectangular"
+                        rotate={(word) => word.value % 360}
+                        padding={5}
+                        random={Math.random}
+                        fill={(d, i) => schemeCategory10ScaleOrdinal(i)}
+                    />
+            }
+        </div>
+
+
+
+
+
+
+
+
+
     )
 }

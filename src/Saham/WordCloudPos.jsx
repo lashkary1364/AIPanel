@@ -2,35 +2,27 @@ import React from 'react'
 import {
     Card,
     CardHeader,
-    CardBody, Container
+    CardBody, Container, Col, Row
 } from "shards-react";
 import "../shards-dashboard/styles/slider-style.css"
-import ReactECharts from 'echarts-for-react';
-import { Spinner } from 'react-bootstrap';
 import axios from 'axios'
 import { useEffect, useState } from 'react';
 import Loading from '../Loading';
 import Swal from 'sweetalert2';
-import ReactWordcloud from 'react-wordcloud';
-import { WordCloudNeg1 } from './WordCloudNeg1';
-import { WordCloudTest } from './WordCloudTest';
-import { WordCloudReact } from './WordCloudReact';
+import WordCloud from 'react-d3-cloud';
+import { scaleOrdinal } from 'd3-scale';
+import { schemeCategory10 } from 'd3-scale-chromatic';
+import { WordCloudNeg1 } from "./WordCloudNeg1"
 export const WordCloudPos = () => {
 
     const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
-    const accessToken = localStorage.getItem("access-tocken");    
+    const accessToken = localStorage.getItem("access-tocken");
     const [isLoading, setIsLoading] = useState(true);
-    const [dataSeries, setDataSeries] = useState([]);   
-    const [words, setWords] = useState([]);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         worldCloud();
     }, []);
-
-    useEffect(() => {
-        console.log("words ...");
-        console.log(words);
-    }, [words]);
 
     const worldCloud = () => {
         axios(
@@ -52,13 +44,9 @@ export const WordCloudPos = () => {
                 const arr = JSON.parse(itemsArray);
                 console.log(arr);
                 arr.map(item => {
-
-                    setWords(words => [...words, { text: item.words, value: item.weights }])
+                    setData(data => [...data, { text: item.words, value: item.weights }])
                 });
 
-
-                console.log("data series ...");
-                console.log(dataSeries);
                 setIsLoading(false);
 
             }).catch(function (error) {
@@ -71,41 +59,45 @@ export const WordCloudPos = () => {
             });
     }
 
-    //   const callbacks = {
-    //     getWordColor: word => word.value > 50 ? "blue" : "red",
-    //     onWordClick: console.log,
-    //     onWordMouseOver: console.log,
-    //     getWordTooltip: word => `${word.text} (${word.value}) [${word.value > 50 ? "good" : "bad"}]`,
-    //   }
-    const options = {
-        rotations: 2,
-        fontFamily: "cinema",
-        rotationAngles: [-90, 0],
-    };
-    const size = [1200, 500];
-    const fontSizes= [50, 30];
+    const schemeCategory10ScaleOrdinal = scaleOrdinal(schemeCategory10);
 
     return (
 
         <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
-            <Card small className="h-100">
-                <CardHeader>ابر کلمات مثبت</CardHeader>
-                <CardBody className="pt-0">                  
-                {
-                    isLoading == true ? <Loading></Loading>: 
-                        <ReactWordcloud words={words}
-                            options={options}
-                            size={size} 
-                            fontSizes={fontSizes} />                            
-                }
-                </CardBody>
-            </Card>
-            <br />
-            <WordCloudNeg1></WordCloudNeg1>
-            <br/>
-            {/* <WordCloudReact></WordCloudReact> */}
-            {/* <WordCloudTest></WordCloudTest> */}
-        </Container>
+            <Row>
+                <Card className="h-100">
+                    <CardBody className="pt-10">
+                        <Row>
+                            <Col>
+                                <div style={{ border: "1px solid", borderColor: "rgb(219, 222, 238)", borderRadius: "15px" }} >
+                                    <CardHeader>ابر کلمات مثبت</CardHeader>
+                                    {
+                                        isLoading == true ? <Loading></Loading> :
+                                            <WordCloud data={data} width={500}
+                                                height={400}
+                                                font="tahoma"
+                                                fontSize={(word) => Math.log2(word.value) * 5}
+                                                spiral="rectangular"
+                                                rotate={(word) => word.value % 360}
+                                                padding={5}
+                                                random={Math.random}
+                                                fill={(d, i) => schemeCategory10ScaleOrdinal(i)}
+                                            />
+                                    }
+                                </div>
+                            </Col>
+                            <Col>
+                                <WordCloudNeg1></WordCloudNeg1>
+                            </Col>
+                        </Row>
+
+                    </CardBody>
+                </Card>
+
+            </Row>
+
+
+        </Container >
 
     )
 }

@@ -32,6 +32,7 @@ import { WordCloudPos } from "./Saham/WordCloudPos";
 import OmdeWhatifLayout from "./layouts/OmdeWhatifLayout";
 import ZanjireWhatifLayout from "./layouts/ZanjireWhatifLayout";
 import { HomeChain } from "./Zanjire/HomeChain";
+import { WatifCustomer } from "./Saham/WatifCustomer";
 
 
 export default [
@@ -113,7 +114,7 @@ export default [
   {
     path: "/whatif-omde",
     layout: OmdeWhatifLayout,
-    component: WathiOmde
+    component: WatifCustomer
   },
   // {
   //   path: "/watifsaham",
@@ -121,7 +122,7 @@ export default [
   //   component: WatifSaham
   // },
   {
-    path: "/whatif-chain" ,
+    path: "/whatif-chain",
     layout: ZanjireWhatifLayout,
     component: WatifZanjire
   },
@@ -160,6 +161,11 @@ export default [
     layout: ZanjireWhatifLayout,
     component: HomeChain
   },
+  // {
+  //   path: "/whatif-customer",
+  //   layout: SahamWhatifLayout,
+  //   component: WatifCustomer
+  // },
   // {
   //   path: "/register",
   //  // layout: DefaulCustomeLayout,

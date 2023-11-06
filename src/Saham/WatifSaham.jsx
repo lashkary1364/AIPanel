@@ -124,7 +124,7 @@ export const WatifSaham = () => {
       value: 0,
       label: 'مثبت',
     },
-   
+
     {
       value: 50,
       label: 'خنثی',
@@ -454,7 +454,7 @@ export const WatifSaham = () => {
     form.append("asset_id", "14447");
     form.append("var_name", "bbn_attitude");
 
-    switch (newValue) {      
+    switch (newValue) {
       case 0:
         form.append("var_value", "positive");
         form.append("target", shakhes);
@@ -462,17 +462,17 @@ export const WatifSaham = () => {
         return newValue;
 
       case 50:
-         form.append("var_value", "neutral");
+        form.append("var_value", "neutral");
         form.append("target", shakhes);
         setChart(form);
         return newValue;
 
       case 100:
-      
-      form.append("var_value", "negative");
-      form.append("target", shakhes);
-      setChart(form);
-      return newValue;
+
+        form.append("var_value", "negative");
+        form.append("target", shakhes);
+        setChart(form);
+        return newValue;
 
       default:
         form.append("var_value", "positive");
@@ -653,10 +653,9 @@ export const WatifSaham = () => {
                 <Col>
                   <FormControl>
                     {/* <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel> */}
-                    <RadioGroup  row
+                    <RadioGroup row
                       aria-labelledby="demo-controlled-radio-buttons-group"
-                      name="controlled-radio-buttons-group" onChange={(e)=>handleChange(e)} value={shakhes} >
-                     
+                      name="controlled-radio-buttons-group" onChange={(e) => handleChange(e)} value={shakhes} >
                       <FormControlLabel value="rsi_change" control={<Radio />} label="شاخص rsi" color="#540d7b" />
                       <FormControlLabel value="change" control={<Radio />} label="قیمت" color="#540d7b" />
                     </RadioGroup>
@@ -781,7 +780,7 @@ export const WatifSaham = () => {
           </ListGroup> */}
           </CardBody>
         </Card>
-        <br/>
+        <br />
       </Container>
     </div>
   )

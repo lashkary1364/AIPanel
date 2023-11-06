@@ -204,38 +204,38 @@ export const WatifZanjire = () => {
                 {
                     name: 'مازاد کارخانه',                  
                     type: 'line',   
-                    seriesLayoutBy: 'row',   
-                    areaStyle: {},            
+                    // seriesLayoutBy: 'row',   
+                    // areaStyle: {},            
                     data: factorySurplus//[120, 132, 101, 134, 90, 230, 210]
                 },
                 {
                     name: 'مازاد پخش کننده',
                     type: 'line', 
-                    seriesLayoutBy: 'row', 
-                    areaStyle: {},  
-                    emphasis: {
-                        focus: 'series'
-                      },              
+                    // seriesLayoutBy: 'row', 
+                    // areaStyle: {},  
+                    // emphasis: {
+                    //     focus: 'series'
+                    //   },              
                     data: distributorSurplus //[220, 182, 191, 234, 290, 330, 310]
                 },
                 {
                     name: 'مازاد عمده فروش',
                     type: 'line',     
-                    seriesLayoutBy: 'row',  
-                    areaStyle: {},
-                    emphasis: {
-                        focus: 'series'
-                      },             
+                    // seriesLayoutBy: 'row',  
+                    // areaStyle: {},
+                    // emphasis: {
+                    //     focus: 'series'
+                    //   },             
                     data: wholesalerSurplus //[150, 232, 201, 154, 190, 330, 410]
                 },
                 {
                     name: 'مازاد خرده فروش',
                     type: 'line',    
-                    seriesLayoutBy: 'row',  
-                    areaStyle: {},  
-                    emphasis: {
-                        focus: 'series'
-                      },           
+                    // seriesLayoutBy: 'row',  
+                    // areaStyle: {},  
+                    // emphasis: {
+                    //     focus: 'series'
+                    //   },           
                     data: retailerSurplus //[320, 332, 301, 334, 390, 330, 320]
                 },
 
@@ -284,41 +284,41 @@ export const WatifZanjire = () => {
                 {
                     name: 'کل هزینه خرده فروش',
                     type: 'line',  
-                    seriesLayoutBy: 'row', 
-                    areaStyle: {},    
-                    emphasis: {
-                        focus: 'series'
-                      },            
+                    // seriesLayoutBy: 'row', 
+                    // areaStyle: {},    
+                    // emphasis: {
+                    //     focus: 'series'
+                    //   },            
                     data: totalTetailerCost//[120, 132, 101, 134, 90, 230, 210]
                 },
                 {
                     name: 'هزینه هدف گذاری خرده فروش',
                     type: 'line', 
-                    seriesLayoutBy: 'row', 
-                    areaStyle: {},
-                    emphasis: {
-                        focus: 'series'
-                      },                  
+                    // seriesLayoutBy: 'row', 
+                    // areaStyle: {},
+                    // emphasis: {
+                    //     focus: 'series'
+                    //   },                  
                     data: targetRetailerCost //[220, 182, 191, 234, 290, 330, 310]
                 },
                 {
                     name: 'کل هزینه زنجیره تامین',
                     type: 'line',   
-                    seriesLayoutBy: 'row',     
-                    areaStyle: {},   
-                    emphasis: {
-                        focus: 'series'
-                      },       
+                    // seriesLayoutBy: 'row',     
+                    // areaStyle: {},   
+                    // emphasis: {
+                    //     focus: 'series'
+                    //   },       
                     data: totalSupplyChainCost //[150, 232, 201, 154, 190, 330, 410]
                 },
                 {
                     name: 'هزینه زنجیره تامین هدف',
                     type: 'line', 
-                    seriesLayoutBy: 'row',    
-                    areaStyle: {},
-                    emphasis: {
-                        focus: 'series'
-                      },              
+                    // seriesLayoutBy: 'row',    
+                    // areaStyle: {},
+                    // emphasis: {
+                    //     focus: 'series'
+                    //   },              
                     data: targetSupplyChainCost //[320, 332, 301, 334, 390, 330, 320]
                 },
 

@@ -52,10 +52,10 @@ export const WordCloudNeg = () => {
 
                 const arr = JSON.parse(itemsArray);
                 console.log(arr);
-                arr.map(item => {
+                // arr.map(item => {
 
-                    setWords(words => [...words, { text: item.words, value: item.weights }])
-                });
+                //     setWords(words => [...words, { text: item.words, value: item.weights }])
+                // });
 
 
                 console.log("data series ...");
@@ -83,26 +83,26 @@ export const WordCloudNeg = () => {
         fontFamily: "cinema",
         rotationAngles: [-90, 0],
     };
-    const size = [600, 400];  
-    const fontSizes= [400, 350];
+    const size = [600, 400];
+    const fontSizes = [400, 350];
     return (
         // <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
-            <Card small className="h-100">
-                <CardHeader>ابر کلمات منفی</CardHeader>
-                <CardBody className="pt-0">
-                   {/* {
+        <Card small className="h-100">
+            <CardHeader>ابر کلمات منفی</CardHeader>
+            <CardBody className="pt-0">
+                {/* {
                 isLoading == true ? <Loading></Loading>                  
                 :  option != undefined ? <ReactECharts option={option} /> : ''
             } */}
-                    <div>
+                {/* <div>
                         <ReactWordcloud words={words}
                             options={options}
                             size={size} 
                             fontSizes={fontSizes}
                             />
-                    </div>
-                </CardBody>
-            </Card>
+                    </div> */}
+            </CardBody>
+        </Card>
         // </Container>
     )
 }

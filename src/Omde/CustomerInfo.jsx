@@ -57,7 +57,7 @@ export const CustomerInfo = () => {
         console.log("arr.....");
         console.log(arr);
         setArray(arr);
-        setCustomerItems(arr.map(m => m.CustomerID));
+        setCustomerItems(arr.slice(0, 100).map(m => m.CustomerID));
         setIsLoading(false);
 
       }).catch(function (error) {
@@ -73,7 +73,7 @@ export const CustomerInfo = () => {
     setProfile("ارزش");
     setSumPredictedPurchases(0);
     setSumMonetory(0);
-    
+
 
     const customerList = array.filter(m => m.CustomerID == value);
 
@@ -82,8 +82,7 @@ export const CustomerInfo = () => {
       setChurn(customerList[0].churn);
       console.log(customerList[0].predicted_purchases);
 
-      if (customerList[0].Profile == 'low value') 
-      {
+      if (customerList[0].Profile == 'low value') {
         setProfile("ارزش پایین");
       } else if (customerList[0].Profile == "medium value") {
         setProfile("ارزش متوسط");
@@ -104,7 +103,7 @@ export const CustomerInfo = () => {
       }
     }
 
- 
+
     //arr.map(item => item.predicted_purchases).reduce((prev, curr) => prev + curr, 0);
 
   }
@@ -132,7 +131,7 @@ export const CustomerInfo = () => {
 
     setSumPredictedPurchases1(avgPredictedPurchase.toLocaleString());
     setSumMonetory1(avgMonetory.toLocaleString());
-    
+
     // const number = 123456.789;
     // console.log(number.toLocaleString("de-DE"));
     // // → 123.456,789    
@@ -156,12 +155,12 @@ export const CustomerInfo = () => {
         <CardHeader> اطلاعات مشتری</CardHeader>
         <CardBody className="pt-0">
           {isLoading == true ? <Loading></Loading>
-          // <div className="text-center " style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-          //   <Spinner animation="grow" size="sm" className='color-spinner' />
-          //   <Spinner animation="grow" className='color-spinner' />
-          //   <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
-          // </div> 
-          :
+            // <div className="text-center " style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
+            //   <Spinner animation="grow" size="sm" className='color-spinner' />
+            //   <Spinner animation="grow" className='color-spinner' />
+            //   <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
+            // </div> 
+            :
             <>
               <Row>
                 <Col md="6" className="form-group">

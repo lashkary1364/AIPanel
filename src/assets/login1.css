@@ -226,7 +226,7 @@ h3 {
 }
 
 @media (min-width: 576) {
- .table-watif-mobile {
+  .table-watif-mobile {
     text-align: center;
   }
 
@@ -248,19 +248,20 @@ h3 {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 100px;
-  }  
+  }
 
 }
 
-@media  only screen and (max-width:500px){
-.card{
-  width: 100% !important;
-}
-.table-img {
-  width: 150px !important;
-  height: 150px !important;
-  text-align: center;
-}
+@media only screen and (max-width:500px) {
+  .card {
+    width: 100% !important;
+  }
+
+  .table-img {
+    width: 150px !important;
+    height: 150px !important;
+    text-align: center;
+  }
 }
 
 
@@ -339,7 +340,7 @@ input[type=password] {
 
 .MuiSlider-markLabel {
 
-  background-color: #f4e4ff  !important;
+  background-color: #f4e4ff !important;
   border-radius: 10px !important;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -353,7 +354,7 @@ input[type=password] {
 }
 
 .MuiSlider-root {
-  color: #6c6565  !important;
+  color: #6c6565 !important;
   width: 100%;
   cursor: pointer;
   height: 2px;
@@ -510,7 +511,7 @@ label {
   height: 700px;
   position: relative;
   z-index: 1;
-  border: 2px solid rgb(198, 196, 196); 
+  border: 2px solid rgb(198, 196, 196);
   border-radius: 70px 0px 0px 70px;
 
 }
@@ -659,7 +660,7 @@ label {
 
 .img-omde-watif2 {
   width: 170px;
-  height:190px;
+  height: 190px;
 }
 
 .logo-navbar {
@@ -694,4 +695,8 @@ label {
 
 .combo {
   font-family: "B Nazanin"
+}
+
+.error-message {
+  color: red
 }

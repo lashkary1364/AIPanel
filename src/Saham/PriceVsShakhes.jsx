@@ -2,7 +2,7 @@ import React from 'react'
 import {
   Card,
   CardHeader,
-  CardBody, Container
+  CardBody, Container, Row, Col
 } from "shards-react";
 import "../shards-dashboard/styles/slider-style.css"
 import ReactECharts from 'echarts-for-react';
@@ -44,10 +44,6 @@ export const PriceVsShakhes = () => {
 
   useEffect(() => {
 
-    console.log("data series ...")
-    console.log(date);
-    console.log(price);
-    console.log(sentiment);
 
     setOption(
       {
@@ -56,7 +52,7 @@ export const PriceVsShakhes = () => {
           fontSize: 13,
           fontStyle: 'normal',
           fontWeight: 'bold'
-      },
+        },
         // title: {
         //   text: 'Stacked Line'
         // },
@@ -132,7 +128,7 @@ export const PriceVsShakhes = () => {
           fontSize: 13,
           fontStyle: 'normal',
           fontWeight: 'bold'
-      },
+        },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -171,16 +167,10 @@ export const PriceVsShakhes = () => {
   }, [date, rsi])
 
 
-  useEffect(() => {
 
-    console.log("option ....")
-    console.log(option);
-
-  }, [option])
 
   const getStockPredicted = () => {
 
-    console.log("مقایسه قیمت شاخص و احساسات ...");
 
     axios(
       {
@@ -192,14 +182,13 @@ export const PriceVsShakhes = () => {
         },
       }).then(function (response) {
 
-        console.log("get stock price ....")
+
         const resultItems = response.data;
-        console.log(resultItems);
+
         const itemsArray = resultItems.result;
-        console.log("itemsArray");
-        console.log(itemsArray);
+
         const arr = JSON.parse(itemsArray);
-        console.log(arr);
+
         setDate([]);
         setPrice([]);
         setSentiment([]);
@@ -217,7 +206,7 @@ export const PriceVsShakhes = () => {
 
       }).catch(function (error) {
         setIsLoading(false);
-        console.log("axois error: " + error);
+
         Swal.fire(
           'خطا',
           error.message,
@@ -231,30 +220,30 @@ export const PriceVsShakhes = () => {
 
 
   return (
-    <div>
-      <Card small className="h-100 mt-20" >
-        <CardHeader> مقایسه قیمت و شاخص احساسات</CardHeader>
-        <CardBody className="pt-0">
-          {
-            isLoading == true ? <Loading></Loading>
-              :
-              <ReactECharts option={option} />
-          }
-        </CardBody>
-      </Card>
-      <br />
-      <Card small className="h-100 mt-20" >
-        <CardHeader>نمودار شاخص RSI</CardHeader>
-        <CardBody className="pt-0">
-          {
-            isLoading == true ? <Loading></Loading>
-              :
-              <ReactECharts option={optionRsi} />
-          }
-        </CardBody>
-      </Card>
-      <br/>
-    </div>
+    <Row className="mt-3">
+      <Col>
+        <Card small className="h-100 mt-20" >
+          <CardHeader> مقایسه قیمت و شاخص احساسات</CardHeader>
+          <CardBody className="pt-0">
+            {
+              isLoading == true ? <Loading></Loading>
+                :
+                <ReactECharts option={option} />
+            }
+          </CardBody>
+        </Card></Col>
+      <Col>
+        <Card small className="h-100 mt-20" >
+          <CardHeader>نمودار شاخص RSI</CardHeader>
+          <CardBody className="pt-0">
+            {
+              isLoading == true ? <Loading></Loading>
+                :
+                <ReactECharts option={optionRsi} />
+            }
+          </CardBody>
+        </Card></Col>
+    </Row>
 
   )
 }

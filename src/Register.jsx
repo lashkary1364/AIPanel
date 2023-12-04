@@ -48,12 +48,12 @@ export const Register = () => {
         isInitialValid: true,
         onSubmit: (data) => {
 
-            console.log("data.....................")
-            console.log(data);
-            console.log("validateCaptcha(input)")
-            console.log(validateCaptcha(input));
-            console.log(input);
-           
+            // console.log("data.....................")
+            // console.log(data);
+            // console.log("validateCaptcha(input)")
+            // console.log(validateCaptcha(input));
+            // console.log(input);
+
             if (validateCaptcha(input) === true) {
                 //setValid(true);
                 regiter(data);
@@ -63,39 +63,39 @@ export const Register = () => {
                 setCaptchaError(true);
 
             setInput("");
-            console.log("submit register")
+            // console.log("submit register")
 
         }
     });
 
     const regiter = (data) => {
 
-        console.log("data.....................");
-        console.log(data);
+        // console.log("data.....................");
+        // console.log(data);
         const form = new FormData();
         form.append("username", data.username);
         form.append("email", data.email);
         form.append("password", data.password);
-        console.log("form..............");
-        console.log(form);
+        // console.log("form..............");
+        // console.log(form);
 
         axios(
             {
                 url: serverAddress + "auth/register",
                 method: "post",
-                data: 
-                JSON.stringify({
-                    "username":data.username,
-                    "email": data.email,
-                    "password": data.password
-                }) ,               
+                data:
+                    JSON.stringify({
+                        "username": data.username,
+                        "email": data.email,
+                        "password": data.password
+                    }),
                 headers: {
                     "Content-Type": "application/json"
                 },
             }).then(function (response) {
-                console.log("response: ");
-                console.log(response);
-                if(response.status==200){
+                // console.log("response: ");
+                // console.log(response);
+                if (response.status == 200) {
                     // Swal.fire(
                     //     'موفقیت آمیز',
                     //     'کاربر جدید با موفقیت ثبت شد',
@@ -106,11 +106,11 @@ export const Register = () => {
                         title: 'کاربر جدید با موفقیت ثبت شد',
                         showConfirmButton: false,
                         timer: 1000
-                      })
-                    window.setTimeout(()=>{
-                         window.location.replace("/");
-                    },1000);
-                   
+                    })
+                    window.setTimeout(() => {
+                        window.location.replace("/");
+                    }, 1000);
+
                 }
 
             }).catch(function (error) {
@@ -122,15 +122,15 @@ export const Register = () => {
     }
 
     const [input, setInput] = useState("");
-    
+
     useEffect(() => {
         loadCaptchaEnginge(6); //6 is tge number of characters
-        console.log("loading captcha...");
+        // console.log("loading captcha...");
     }, []);
 
     const handleChange = (event) => {
-        console.log("handle change .... ");
-        console.log(event.target.value);
+        // console.log("handle change .... ");
+        // console.log(event.target.value);
         setInput(event.target.value);
     };
 
@@ -149,7 +149,7 @@ export const Register = () => {
                     <form onSubmit={formik.handleSubmit}>
 
                         <div className="form-group">
-                            <label htmlFor="username">نام کاربری:</label>
+                            <label >نام کاربری:</label>
                             <input type="text" id="usename" name="username" className={(formik.errors.username && formik.touched.username ? ' is-invalid' : '')}
                                 onChange={formik.handleChange} value={formik.values.username} placeholder="نام کاربری" />
                             <div className="invalid-feedback">
@@ -161,7 +161,7 @@ export const Register = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="email" > پست الکترونیکی:</label>
+                            <label  > پست الکترونیکی:</label>
                             <input type="text" id="email" name="email" className={(formik.errors.email && formik.touched.email ? ' is-invalid' : '')}
                                 onChange={formik.handleChange} value={formik.values.email} placeholder="پست الکترونیکی" />
                             <div className="invalid-feedback">
@@ -173,7 +173,7 @@ export const Register = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="password">رمز عبور:</label>
+                            <label >رمز عبور:</label>
                             <input type="password" id="password" name="password" className={(formik.errors.password && formik.touched.password ? ' is-invalid' : '')}
                                 onChange={formik.handleChange} value={formik.values.password} placeholder="رمزعبور" />
                             <div className="invalid-feedback">
@@ -185,7 +185,7 @@ export const Register = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="confirmPassword">تکرار رمز عبور:</label>
+                            <label >تکرار رمز عبور:</label>
                             <input type="password" id="confirmPassword" name="confirmPassword" className={(formik.errors.confirmPassword && formik.touched.confirmPassword ? ' is-invalid' : '')}
                                 onChange={formik.handleChange} value={formik.values.confirmPassword} placeholder="رمزعبور" />
                             <div className="invalid-feedback">
@@ -218,8 +218,6 @@ export const Register = () => {
                             </Col>
                         </Row>
                     </form>
-
-
                 </CardBody>
             </Card>
 

@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:400,700');
+
+@font-face {
+    font-family: cinema;
+    font-style: normal;
+    font-weight: bold;
+    src: url('./font/cinema.ttf');
+}
+
+@font-face {
+    font-family: b nazanin;
+    font-style: normal;
+    font-weight: bold;
+    src: url('./font/B Nazanin.ttf');
+}
+
+@font-face {
+    font-family: b nazanin bold;
+    font-style: normal;
+    font-weight: bold;
+    src: url('./font/B Nazanin Bold.ttf');
+}
+
+@font-face {
+    font-family: b nazanin outline;
+    font-style: normal;
+    font-weight: bold;
+    src: url('./font/B Nazanin Outline.ttf');
+}
+
+:root {
+    --text-color: rgba(38, 40, 45, 1);
+    --secondary-text-color: rgba(255, 255, 255, .65);
+    --hidden-text-color: rgba(38, 40, 45, 0);
+    --primary-color: white;
+    --secondary-color: rgb(86, 15, 125);
+    /* rgba(103, 118, 140, 1); */
+    --secondary-color-hover: rgb(197, 196, 200);
+    /* rgba(70, 146, 252, 1); */
+    --tertiary-color: rgba(215, 219, 230, 1);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--tertiary-color);
+    font-family: cinema;
+}
+
+.tabs {
+    font-weight: 400;
+    font-size: 13.3pt;
+
+}
+
+.tabs a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.tabs h2 {
+    font-size: 13pt;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    font-family: cinema;
+    direction: rtl;
+    float: right;
+}
+
+.tab {
+    padding: 14px 12px 14px 20px;
+    background-color: var(--secondary-color);
+    color: var(--secondary-text-color);
+    width: max-content;
+    float: right;
+    margin-right: -1px;
+    /* float: left;
+    margin-left: -1px; */
+    position: relative;
+    z-index: 0;
+    transition: top .5s ease 0s,
+        border .5s ease 0s,
+        color .5s ease 0s,
+        background-color .5s ease 0s,
+        border-top-right-radius .5s ease 0s;
+    top: 0;
+}
+
+.tab:hover {
+    cursor: pointer;
+    top: -3px;
+    background-color: var(--secondary-color-hover);
+    color: var(--text-color);
+    z-index: 2;
+    /* border-top-left-radius: 5px; */
+}
+
+.tab::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 20px transparent solid;
+    /* border-bottom: 60px var(--secondary-color) solid; */
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    transition: border-bottom .5s ease 0s;
+}
+
+.tab:hover::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 20px transparent solid;
+    /* border-bottom: 60px var(--secondary-color-hover) solid; */
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 100%;
+}
+
+.tab:first-child {
+    margin-right: 0;
+    /* border-top-left-radius: 5px; */
+}
+
+.tab:focus {
+    outline: none;
+}
+
+.tabs .active {
+    top: -3px;
+    color: var(--text-color);
+    z-index: 3;
+    background-color: var(--primary-color);
+    /* border-top-left-radius: 5px; */
+}
+
+.tab.active::after {
+    border-bottom: 60px var(--primary-color) solid;
+}
+
+section {
+    margin: 15px auto;
+    width: 96%;
+
+    /* width: 700px; */
+}
+
+.content {
+    height: 800px;
+    color: white;
+    z-index: 500;
+}
+
+.tabs menu ul {
+    list-style: none;
+}
+
+.tabs menu+div {
+    clear: both;
+    margin-top: 15px;
+    padding: 15px 0;
+    color: white;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, .6);
+    position: relative;
+}
+
+.tabs menu+div>div>hr {
+    height: 2px;
+    width: 33%;
+    opacity: 0;
+    transition: opacity .5s ease 0s;
+    margin-bottom: 15px;
+    /* background-color: var(--secondary-color); */
+}
+
+.tabs menu+div>div {
+    visibility: hidden;
+    color: var(--hidden-text-color);
+    transition: color .5s ease 0s;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgb(24, 26, 30);
+}
+
+.tabs menu+div>.active {
+    visibility: visible;
+    color: var(--text-color);
+    border-bottom: 1px var(--tertiary-color) solid;
+    transition: color 1s ease 0s;
+    /* border-radius: 5px 5px 0px 5px; */
+}
+
+.tabs menu+div>div.active>hr {
+    opacity: .5;
+}
+
+.m1 {
+    width: 30px;
+    height: 30px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+

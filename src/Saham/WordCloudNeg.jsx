@@ -28,10 +28,7 @@ export const WordCloudNeg = () => {
         worldCloud();
     }, []);
 
-    useEffect(() => {
-        console.log("words ...");
-        console.log(words);
-    }, [words]);
+
 
     const worldCloud = () => {
         axios(
@@ -45,26 +42,26 @@ export const WordCloudNeg = () => {
             }).then(function (response) {
 
                 const resultItems = response.data;
-                console.log(resultItems);
+                // console.log(resultItems);
                 const itemsArray = resultItems.result;
-                console.log("itemsArray");
-                console.log(itemsArray);
+                // console.log("itemsArray");
+                // console.log(itemsArray);
 
                 const arr = JSON.parse(itemsArray);
-                console.log(arr);
+                // console.log(arr);
                 // arr.map(item => {
 
                 //     setWords(words => [...words, { text: item.words, value: item.weights }])
                 // });
 
 
-                console.log("data series ...");
-                console.log(dataSeries);
+                // console.log("data series ...");
+                // console.log(dataSeries);
                 setIsLoading(false);
 
             }).catch(function (error) {
                 setIsLoading(false);
-                console.log("axois error: " + error);
+                // console.log("axois error: " + error);
                 Swal.fire(
                     'خطا',
                     error.message,

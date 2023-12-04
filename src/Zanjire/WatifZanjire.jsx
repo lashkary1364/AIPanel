@@ -2,7 +2,7 @@ import React from 'react'
 import {
     Card,
     CardHeader,
-    CardBody, Container, FormSelect
+    CardBody, Container, FormSelect, Row, Col
 } from "shards-react";
 import "../shards-dashboard/styles/slider-style.css"
 import ReactECharts from 'echarts-for-react';
@@ -46,120 +46,120 @@ export const WatifZanjire = () => {
     const [supplyLine, setSupplyLine] = React.useState(true);
     const [inventoryAdjustmentTime, setInventoryAdjustmentTime] = useState(1);
 
-    const [flag,setFlag]=useState(false);
-   
+    const [flag, setFlag] = useState(false);
+
 
     const handleChangeIgnoreBackorder = (event) => {
         setBackorder(event.target.checked);
-        console.log(event.target.checked);
+        // console.log(event.target.checked);
     };
 
     const handleChangeSupplyLine = (event) => {
-        console.log("handleChangeSupplyLine");
+        // console.log("handleChangeSupplyLine");
         setSupplyLine(event.target.checked);
     };
 
 
     useEffect(() => {
-        console.log("factorySendingOrder");
+        // console.log("factorySendingOrder");
 
-        console.log(factorySendingOrder);
+        // console.log(factorySendingOrder);
 
         setOption({
-                    // title: {
-                    //     text: 'Stacked Line'
-                    // },
-                    textStyle: {
-                        fontFamily: 'b yekan',
-                        fontSize: 13,
-                        fontStyle: 'normal',
-                        fontWeight: 'bold'
+            // title: {
+            //     text: 'Stacked Line'
+            // },
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ["سفارش ارسال کارخانه", "سفارش ارسال توزیع کننده", 'سفارش ارسال  عمده فروش', 'سفارش ارسال خرده فروش', 'سفارش ارسال مصرف کننده']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: time//['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: "سفارش ارسال کارخانه",
+                    type: 'line',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
                     },
-                    tooltip: {
-                        trigger: 'axis'
+                    smooth: true,
+                    seriesLayoutBy: 'row',
+                    data: factorySendingOrder//[120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: "سفارش ارسال توزیع کننده",
+                    type: 'line',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
                     },
-                    legend: {
-                        data: ["سفارش ارسال کارخانه", "سفارش ارسال توزیع کننده", 'سفارش ارسال  عمده فروش', 'سفارش ارسال خرده فروش', 'سفارش ارسال مصرف کننده']
+                    smooth: true,
+                    seriesLayoutBy: 'row',
+                    data: distributorSendingOrder //[220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: 'سفارش ارسال  عمده فروش',
+                    type: 'line',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
                     },
-                    grid: {
-                        left: '3%',
-                        right: '4%',
-                        bottom: '3%',
-                        containLabel: true
-                      },
-                      toolbox: {
-                        feature: {
-                          saveAsImage: {}
-                        }
-                      },          
-                    
-                    xAxis: {
-                        type: 'category',
-                        boundaryGap: false,
-                        data: time//['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    smooth: true,
+                    seriesLayoutBy: 'row',
+                    data: wholesalerSendingOrder //[150, 232, 201, 154, 190, 330, 410]
+                },
+                {
+                    name: 'سفارش ارسال خرده فروش',
+                    type: 'line',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
                     },
-                    yAxis: {
-                        type: 'value'
+                    smooth: true,
+                    seriesLayoutBy: 'row',
+                    data: etailerSendingOrder //[320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: 'سفارش ارسال مصرف کننده',
+                    type: 'line',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
                     },
-                    series: [
-                        {
-                            name: "سفارش ارسال کارخانه",
-                            type: 'line',
-                            areaStyle: {},
-                            emphasis: {
-                              focus: 'series'
-                            },
-                            smooth: true,
-                            seriesLayoutBy: 'row',
-                            data: factorySendingOrder//[120, 132, 101, 134, 90, 230, 210]
-                        },
-                        {
-                            name: "سفارش ارسال توزیع کننده",
-                            type: 'line',
-                            areaStyle: {},
-                            emphasis: {
-                              focus: 'series'
-                            },
-                            smooth: true,
-                            seriesLayoutBy: 'row',
-                             data: distributorSendingOrder //[220, 182, 191, 234, 290, 330, 310]
-                        },
-                        {
-                            name: 'سفارش ارسال  عمده فروش',
-                            type: 'line',
-                            areaStyle: {},
-                            emphasis: {
-                              focus: 'series'
-                            },
-                            smooth: true,
-                            seriesLayoutBy: 'row',
-                            data: wholesalerSendingOrder //[150, 232, 201, 154, 190, 330, 410]
-                        },
-                        {
-                            name: 'سفارش ارسال خرده فروش',
-                            type: 'line',
-                            areaStyle: {},
-                            emphasis: {
-                              focus: 'series'
-                            },
-                            smooth: true,
-                            seriesLayoutBy: 'row',
-                            data: etailerSendingOrder //[320, 332, 301, 334, 390, 330, 320]
-                        },
-                        {
-                            name: 'سفارش ارسال مصرف کننده',
-                            type: 'line',
-                            areaStyle: {},
-                            emphasis: {
-                              focus: 'series'
-                            },
-                            smooth: true,
-                            seriesLayoutBy: 'row',
-                            data: consumerSendingOrder //[820, 932, 901, 934, 1290, 1330, 1320]
-                        }
-                    ]
-                });
-       
+                    smooth: true,
+                    seriesLayoutBy: 'row',
+                    data: consumerSendingOrder //[820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        });
+
     }, [factorySendingOrder, distributorSendingOrder, wholesalerSendingOrder, etailerSendingOrder, consumerSendingOrder]);
 
     useEffect(() => {
@@ -202,15 +202,15 @@ export const WatifZanjire = () => {
             },
             series: [
                 {
-                    name: 'مازاد کارخانه',                  
-                    type: 'line',   
+                    name: 'مازاد کارخانه',
+                    type: 'line',
                     // seriesLayoutBy: 'row',   
                     // areaStyle: {},            
                     data: factorySurplus//[120, 132, 101, 134, 90, 230, 210]
                 },
                 {
                     name: 'مازاد پخش کننده',
-                    type: 'line', 
+                    type: 'line',
                     // seriesLayoutBy: 'row', 
                     // areaStyle: {},  
                     // emphasis: {
@@ -220,7 +220,7 @@ export const WatifZanjire = () => {
                 },
                 {
                     name: 'مازاد عمده فروش',
-                    type: 'line',     
+                    type: 'line',
                     // seriesLayoutBy: 'row',  
                     // areaStyle: {},
                     // emphasis: {
@@ -230,7 +230,7 @@ export const WatifZanjire = () => {
                 },
                 {
                     name: 'مازاد خرده فروش',
-                    type: 'line',    
+                    type: 'line',
                     // seriesLayoutBy: 'row',  
                     // areaStyle: {},  
                     // emphasis: {
@@ -283,7 +283,7 @@ export const WatifZanjire = () => {
             series: [
                 {
                     name: 'کل هزینه خرده فروش',
-                    type: 'line',  
+                    type: 'line',
                     // seriesLayoutBy: 'row', 
                     // areaStyle: {},    
                     // emphasis: {
@@ -293,7 +293,7 @@ export const WatifZanjire = () => {
                 },
                 {
                     name: 'هزینه هدف گذاری خرده فروش',
-                    type: 'line', 
+                    type: 'line',
                     // seriesLayoutBy: 'row', 
                     // areaStyle: {},
                     // emphasis: {
@@ -303,7 +303,7 @@ export const WatifZanjire = () => {
                 },
                 {
                     name: 'کل هزینه زنجیره تامین',
-                    type: 'line',   
+                    type: 'line',
                     // seriesLayoutBy: 'row',     
                     // areaStyle: {},   
                     // emphasis: {
@@ -313,7 +313,7 @@ export const WatifZanjire = () => {
                 },
                 {
                     name: 'هزینه زنجیره تامین هدف',
-                    type: 'line', 
+                    type: 'line',
                     // seriesLayoutBy: 'row',    
                     // areaStyle: {},
                     // emphasis: {
@@ -329,8 +329,8 @@ export const WatifZanjire = () => {
 
 
     const watifSupplyChain = (form) => {
-        console.log("tab avari ...");
-        console.log(form)
+        // console.log("tab avari ...");
+        // console.log(form)
         axios(
             {
                 url: serverAddress + "what_if_supply_chain",
@@ -343,13 +343,13 @@ export const WatifZanjire = () => {
             }).then(function (response) {
 
                 const resultItems = response.data;
-                console.log(resultItems);
+                // console.log(resultItems);
                 const itemsArray = resultItems.result;
-                console.log("itemsArray");
-                console.log(itemsArray);
+                // console.log("itemsArray");
+                // console.log(itemsArray);
 
                 const arr = JSON.parse(itemsArray);
-                console.log(arr);
+                // console.log(arr);
 
                 setTime([]);
                 setFactorySendingOrder([]);
@@ -391,7 +391,7 @@ export const WatifZanjire = () => {
 
 
 
-              
+
                 setIsLoading(false);
 
             }).catch(function (error) {
@@ -412,7 +412,7 @@ export const WatifZanjire = () => {
     const handleSearch = () => {
         setIsLoading(true);
         setVisible(true);
-        console.log("")
+        // console.log("")
         const form = new FormData();
         if (backorder == true) {
             form.append("ignore_backorders", "1");
@@ -432,8 +432,8 @@ export const WatifZanjire = () => {
     }
 
     const inventoryTime = (e) => {
-        console.log("inventory-adjusment-time...");
-        console.log(e);
+        // console.log("inventory-adjusment-time...");
+        // console.log(e);
         setInventoryAdjustmentTime(e)
 
     }
@@ -450,7 +450,7 @@ export const WatifZanjire = () => {
                                 onChange={handleChangeIgnoreBackorder} control={<Switch defaultChecked />} label="سفارشات به تاخیر افتاده" />
                             <FormControlLabel required checked={supplyLine}
                                 onChange={handleChangeSupplyLine} control={<Switch />} label="اعمال حد تامین" />
-                            <label htmlFor="time" className=' ml-5'>زمان تعدیل موجودی</label>
+                            <label npm rclassName=' ml-5'>زمان تعدیل موجودی</label>
                             <FormSelect className="form-control ml-3 combo" onChange={(e) => inventoryTime(e.target.value)} >
                                 {
                                     comboItem.map((item, index) => (
@@ -467,39 +467,41 @@ export const WatifZanjire = () => {
                 </CardBody>
             </Card>
             {visible ?
-
-                <div>
-                    <hr />
-                    <Card small className="h-100">
-                        <CardHeader>نمودار سفارشات ارسالی</CardHeader>
-                        <CardBody className="pt-0">
-                            {
-                                isLoading == true ? <Loading></Loading>
-                                    : option != undefined ? <ReactECharts option={option} /> : ''
-                            }
-                        </CardBody>
-                    </Card>
-                    <hr />
-                    <Card small className="h-100">
-                        <CardHeader>نمودار مازاد موجودی</CardHeader>
-                        <CardBody className="pt-0">
-                            {
-                                isLoading == true ? <Loading></Loading>
-                                    : option != undefined ? <ReactECharts option={optionSurplus} /> : ''
-                            }
-                        </CardBody>
-                    </Card>
-                    <hr />
-                    <Card small className="h-100 mb-3">
-                        <CardHeader>نمودار هزینه زنجیره تامین</CardHeader>
-                        <CardBody className="pt-0">
-                            {
-                                isLoading == true ? <Loading></Loading>
-                                    : option != undefined ? <ReactECharts option={option2} /> : ''
-                            }
-                        </CardBody>
-                    </Card>
-                </div>
+                <>
+                    <Row className="mt-3">
+                        <Col>
+                            <Card small className="h-100">
+                                <CardHeader>نمودار سفارشات ارسالی</CardHeader>
+                                <CardBody className="pt-0">
+                                    {
+                                        isLoading == true ? <Loading></Loading>
+                                            : option != undefined ? <ReactECharts option={option} /> : ''
+                                    }
+                                </CardBody>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card small className="h-100">
+                                <CardHeader>نمودار مازاد موجودی</CardHeader>
+                                <CardBody className="pt-0">
+                                    {
+                                        isLoading == true ? <Loading></Loading>
+                                            : option != undefined ? <ReactECharts option={optionSurplus} /> : ''
+                                    }
+                                </CardBody>
+                            </Card>
+                        </Col>
+                        <Col> <Card small className="h-100 mb-3">
+                            <CardHeader>نمودار هزینه زنجیره تامین</CardHeader>
+                            <CardBody className="pt-0">
+                                {
+                                    isLoading == true ? <Loading></Loading>
+                                        : option != undefined ? <ReactECharts option={option2} /> : ''
+                                }
+                            </CardBody>
+                        </Card></Col>
+                    </Row>
+                </>
                 : ''}
 
         </Container>

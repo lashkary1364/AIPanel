@@ -46,65 +46,44 @@ export const WatifSaham = () => {
   const [isLoadingVisible, setIsLoadingVisible] = useState(false);
   const [isChartVisible, setIsChartVisible] = useState(false);
   const [isDivVisible, setIsDivVisible] = useState("hidden");
-
-  // const [value, setValue] = React.useState('female');
+  const [optionIndex, setOptionIndex] = useState(0);
 
   const handleChange = (event) => {
     setShakhes(event.target.value);
-    console.log(event.target.value)
+
   };
 
-  useEffect(() => {
 
-    setOption({});
-    setOption({
-      legend: {},
-      tooltip: {},
-      dataset: {
-        source: [
-          ['product', 'قبل', 'بعد'],
-          ['neutral', neutral, newNeutral],
-          ['overbought', overbought, newOverbought],
-          ['oversold', oversold, newOversold],
-        ]
-      },
-      xAxis: { type: 'category' },
-      yAxis: {},
-      series: [{ type: 'bar' }, { type: 'bar' }]
-    });
+  useEffect(() => {
+    setOption(options[optionIndex]);
+    const interval = setInterval(() => {
+      setOptionIndex((optionIndex + 1) % options.length);
+      setOption(options[optionIndex]);
+    }, 2000);
+
+    return () => clearInterval(interval);
+
   }, [newOversold, overbought, oversold, newOversold, neutral, newNeutral]);
 
 
   useEffect(() => {
+    setOption(options[optionIndex]);
+  }, [optionIndex])
 
-    setOption({});
-    setOption({
-      legend: {},
-      tooltip: {},
-      dataset: {
-        source: [
-          ['product', 'قبل', 'بعد'],
-          ['neutral', neutral, newNeutral],
-          ['negative', negative, newNegative],
-          ['positive', positive, newPositive],
-        ]
-      },
-      xAxis: { type: 'category' },
-      yAxis: {},
-      series: [{ type: 'bar' }, { type: 'bar' }]
-    });
 
+
+  useEffect(() => {
+    setOption(options[optionIndex]);
+    const interval = setInterval(() => {
+      setOptionIndex((optionIndex + 1) % options.length);
+      setOption(options[optionIndex]);
+    }, 2000);
+
+    return () => clearInterval(interval);
 
   }, [newNegative, negative, positive, newPositive, neutral, newNeutral]);
 
 
-  const handleRsiChange = () => {
-    setShakhes("rsi_change");
-  }
-
-  // const handleChange = () => {
-  //   setShakhes("change");
-  // }
 
 
   const bbn_brandwagen = [
@@ -234,15 +213,25 @@ export const WatifSaham = () => {
 
             if (item.rsi_change == "neutral") {
 
+              console.log(newNeutral);
+              console.log(item.p);
+
               setNeutral(newNeutral);
               setNewNeutral(item.p);
 
             } else if (item.rsi_change == "overbought") {
 
+              console.log(newOverbought);
+              console.log(item.p);
+
               setOverbought(newOverbought);
               setNewOverbought(item.p);
 
             } else if (item.rsi_change == "oversold") {
+
+
+              console.log(newOversold);
+              console.log(item.p);
 
               setOversold(newOversold);
               setNewOversold(item.p);
@@ -251,28 +240,6 @@ export const WatifSaham = () => {
           });
 
 
-          // setOption({});
-          // setOption({
-          //   legend: {},
-          //   tooltip: {},
-          //   dataset: {
-          //     source: [
-          //       ['product', 'قبل', 'بعد'],
-          //       ['neutral', neutral, newNeutral],
-          //       ['overbought', overbought, newOverbought],
-          //       ['oversold', oversold, newOversold],
-          //     ]
-          //   },
-          //   xAxis: { type: 'category' },
-          //   yAxis: {},
-          //   series: [{ type: 'bar' }, { type: 'bar' }]
-          // });
-
-          // setIsLoadingVisible(false);
-          // setIsChartVisible(true);
-          // setIsDivVisible("visible");
-
-          // return 0;
         }
 
         if (shakhes == "change") {
@@ -296,11 +263,6 @@ export const WatifSaham = () => {
 
           });
 
-
-          // setIsLoadingVisible(false);
-          // setIsChartVisible(true);
-          // setIsDivVisible("visible");
-          // return 0;
         }
 
         setIsLoadingVisible(false);
@@ -637,152 +599,353 @@ export const WatifSaham = () => {
 
   }
 
+  const labelSetting = {
+    show: true,
+    position: 'right',
+    offset: [10, 0],
+    fontSize: 16
+  };
+
+  function makeOption(type, symbol) {
+
+    if (shakhes == "rsi_change") {
+      return {
+        textStyle: {
+          fontFamily: 'b yekan',
+          fontSize: 13,
+          fontStyle: 'normal',
+          fontWeight: 'bold'
+        },
+        // title: {
+        //   text: chartName
+        // },
+        legend: {
+          data: [chartName]
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        grid: {
+          containLabel: true,
+          left: 20
+        },
+        yAxis: {
+          data: ['خرید بیش از حد', 'خنثی', 'فروش بیش از حد'],
+          inverse: true,
+          axisLine: { show: false },
+          axisTick: { show: false },
+          axisLabel: {
+            margin: 30,
+            fontSize: 14
+          },
+          axisPointer: {
+            label: {
+              show: true,
+              margin: 30
+            }
+          }
+        },
+        xAxis: {
+          splitLine: { show: false },
+          axisLabel: { show: false },
+          axisTick: { show: false },
+          axisLine: { show: false }
+        },
+        animationDurationUpdate: 500,
+        series: [
+          {
+            name: chartName,
+            id: 'bar1',
+            type: type,
+            label: labelSetting,
+            symbolRepeat: true,
+            symbolSize: ['80%', '60%'],
+            barCategoryGap: '40%',
+            universalTransition: {
+              enabled: true,
+              delay: function (idx, total) {
+                return (idx / total) * 1000;
+              }
+            },
+            data: [
+              {
+                value: newOverbought,
+                symbol: symbol
+              },
+              {
+                value: newNeutral,
+                symbol: symbol
+              },
+              {
+                value: newOversold,
+                symbol: symbol
+              },
+
+            ]
+          }
+        ]
+      };
+    }
+    else {
+
+      return {
+        textStyle: {
+          fontFamily: 'b yekan',
+          fontSize: 13,
+          fontStyle: 'normal',
+          fontWeight: 'bold'
+        },
+        // title: {
+        //   text: chartName
+        // },
+        legend: {
+          data: [chartName]
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        grid: {
+          containLabel: true,
+          left: 20
+        },
+        yAxis: {
+          data: ['منفی', 'خنثی', 'مثبت'],
+          inverse: true,
+          axisLine: { show: false },
+          axisTick: { show: false },
+          axisLabel: {
+            margin: 30,
+            fontSize: 14
+          },
+          axisPointer: {
+            label: {
+              show: true,
+              margin: 30
+            }
+          }
+        },
+        xAxis: {
+          splitLine: { show: false },
+          axisLabel: { show: false },
+          axisTick: { show: false },
+          axisLine: { show: false }
+        },
+        animationDurationUpdate: 500,
+        series: [
+          {
+            name: chartName,
+            id: 'bar1',
+            type: type,
+            label: labelSetting,
+            symbolRepeat: true,
+            symbolSize: ['80%', '60%'],
+            barCategoryGap: '40%',
+            universalTransition: {
+              enabled: true,
+              delay: function (idx, total) {
+                return (idx / total) * 1000;
+              }
+            },
+            data: [
+              {
+                value: newNegative,
+                symbol: symbol
+              },
+              {
+                value: newNeutral,
+                symbol: symbol
+              },
+              {
+                value: newPositive,
+                symbol: symbol
+              },
+
+            ]
+          },
+        ]
+      };
+    }
+  }
+
+  const options = [
+    makeOption('pictorialBar'),
+    makeOption('bar'),
+    makeOption('pictorialBar', 'diamond')
+  ];
 
 
   return (
-    <div>
-      {/* <MainNavbar ></MainNavbar> */}
-      <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
-        <Card small className="h-100" >
-          <CardHeader>واتیف سهام</CardHeader>
-          <CardBody className="pt-0">
-            {/* <ListGroup flush>
-            <ListGroupItem > */}
-            <Row>
-              <Col md="4" >
-                <Col>
-                  <FormControl>
-                    {/* <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel> */}
-                    <RadioGroup row
-                      aria-labelledby="demo-controlled-radio-buttons-group"
-                      name="controlled-radio-buttons-group" onChange={(e) => handleChange(e)} value={shakhes} >
-                      <FormControlLabel value="rsi_change" control={<Radio />} label="شاخص rsi" color="#540d7b" />
-                      <FormControlLabel value="change" control={<Radio />} label="قیمت" color="#540d7b" />
-                    </RadioGroup>
-                  </FormControl>
-                </Col>
-                {/* <Col>                   
-                    <button className='btn-watif'    value="rsi_change" onClick={handleRsiChange}>شاخص rsi</button>
-                    <button className="btn-watif" onClick={handleChange}>قیمت</button>
-                  </Col> */}
-                <Col>
-                  <label className='lable-watif'>رفتار توده ای</label>
-                  <Box>
-                    <Slider style={{ fontFamily: "iransans", fontSize: "11px" }}
-                      aria-label="Restricted values"
-                      defaultValue={0}
-                      valueLabelFormat={bbn_brandwagen_Format}
-                      getAriaValueText={bbn_brandwagenText}
-                      step={null}
-                      onChange={bbn_brandwagen_handleChange}
-                      marks={bbn_brandwagen}
-                    />
-                  </Box>
-                </Col>
 
-                <Col >
-                  <label className='lable-watif'>شاخص کل</label>
-                  <Box >
-                    <Slider
-                      defaultValue={0}
-                      valueLabelFormat={bbn_total_index_Format}
-                      getAriaValueText={bbn_total_index_Text}
-                      onChange={bbn_total_index_handleChange}
-                      step={null}
-                      marks={bbn_total_index}
-                    />
-                  </Box>
-                </Col>
+    <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
+      <Card small className="h-100" >
+        <CardHeader>واتیف سهام</CardHeader>
+        <CardBody >
 
-                <Col >
-                  <label className='lable-watif'>نگرش</label>
-                  <Box >
-                    <Slider
-                      defaultValue={0}
-                      valueLabelFormat={bbn_attitude_Format}
-                      getAriaValueText={bbn_attitude_Text}
-                      onChange={bbn_attitude_handleChange}
-                      step={null}
-                      marks={bbn_attitude}
-                    />
-                  </Box>
-                </Col>
+          <Row>
+            <Col >
+              <FormControl style={{ display: "block", textAlign: "center" }}>
+                <RadioGroup row
+                  aria-labelledby="demo-controlled-radio-buttons-group"
+                  name="controlled-radio-buttons-group"
+                  onChange={(e) => handleChange(e)} value={shakhes} >
+                  <FormControlLabel value="rsi_change" control={<Radio />} label="شاخص rsi" color="#540d7b" />
+                  <FormControlLabel value="change" control={<Radio />} label="قیمت" color="#540d7b" />
+                </RadioGroup>
+              </FormControl>
 
-                <Col >
-                  <label className='lable-watif'>اخبار</label>
-                  <Box >
-                    <Slider
-                      defaultValue={0}
-                      valueLabelFormat={bbn_news_Format}
-                      getAriaValueText={bbn_news_Text}
-                      onChange={bbn_news_handleChange}
-                      step={null}
-                      marks={bbn_news}
-                    />
-                  </Box>
-                </Col>
+            </Col>
 
-                <Col >
-                  <label className='lable-watif'>حالت</label>
-                  <Box >
-                    <Slider
-                      defaultValue={0}
-                      valueLabelFormat={bbn_mood_Format}
-                      getAriaValueText={bbn_mood_Text}
-                      onChange={bbn_mood_handleChange}
-                      step={null}
-                      marks={bbn_mood}
-                    />
-                  </Box>
-                </Col>
+          </Row>
+          <Row>
+            <Col md="3">
+              <div>
+                <span className='lable-watif'>رفتار توده ای</span>
+                {/* <Box className='box-slider' > */}
 
-                <Col >
-                  <label className='lable-watif'>تصمیم</label>
-                  <Box >
-                    <Slider
-                      defaultValue={0}
-                      valueLabelFormat={bbn_decision_Format}
-                      getAriaValueText={bbn_decision_Text}
-                      onChange={bbn_decision_handleChange}
-                      step={null}
-                      marks={bbn_decision}
-                    />
-                  </Box>
-                </Col>
+                <Slider className='box-slider' style={{ fontFamily: "iransans", fontSize: "11px" }}
+                  aria-label="Restricted values"
+                  defaultValue={0}
+                  valueLabelFormat={bbn_brandwagen_Format}
+                  getAriaValueText={bbn_brandwagenText}
+                  step={null}
+                  onChange={bbn_brandwagen_handleChange}
+                  marks={bbn_brandwagen}
+                />
 
-                <Col>
-                  <label className='lable-watif'>احساسات</label>
-                  <Box >
-                    <Slider
-                      defaultValue={0}
-                      valueLabelFormat={bbn_sentiment_Format}
-                      getAriaValueText={bbn_sentiment_Text}
-                      onChange={bbn_sentiment_handleChange}
-                      step={null}
-                      marks={bbn_sentiment}
-                    />
-                  </Box>
-                </Col>
 
-              </Col>
-              <Col md="8" >
+              </div>
+              <div>
+                <span className='lable-watif'>شاخص کل</span>
+                {/* <Box className='box-slider' > */}
+                <Slider className='box-slider'
+                  defaultValue={0}
+                  valueLabelFormat={bbn_total_index_Format}
+                  getAriaValueText={bbn_total_index_Text}
+                  onChange={bbn_total_index_handleChange}
+                  step={null}
+                  marks={bbn_total_index}
+                />
+              </div>
 
-                <div style={{ width: "90%", height: "80%", position: "absolute", top: "50%", transform: "translateY(-50%)", borderRadius: "5px", border: "2px solid #dbd7d9", margin: "20px", visibility: isDivVisible }}>
-                  {isLoadingVisible && <Loading></Loading>}
-                  {isChartVisible ? <label className='text-center d-flex justify-content-center chart-title' >{chartName}</label>
-                    : ''
-                  }
-                  {isChartVisible ? <ReactECharts style={{ margin: "50px" }} option={option} /> : ""}
-                </div>
-              </Col>
-            </Row>
-            {/* </ListGroupItem>
-          </ListGroup> */}
-          </CardBody>
-        </Card>
-        <br />
-      </Container>
-    </div>
+              <div>
+                <span className='lable-watif'>رفتار توده ای</span>
+                {/* <Box className='box-slider' > */}
+                <Slider className='box-slider' style={{ fontFamily: "iransans", fontSize: "11px" }}
+                  aria-label="Restricted values"
+                  defaultValue={0}
+                  valueLabelFormat={bbn_brandwagen_Format}
+                  getAriaValueText={bbn_brandwagenText}
+                  step={null}
+                  onChange={bbn_brandwagen_handleChange}
+                  marks={bbn_brandwagen}
+                />
+                {/* </Box> */}
+              </div>
+
+              <div>
+                <span className='lable-watif'>شاخص کل</span>
+                {/* <Box className='box-slider' > */}
+                <Slider className='box-slider'
+                  defaultValue={0}
+                  valueLabelFormat={bbn_total_index_Format}
+                  getAriaValueText={bbn_total_index_Text}
+                  onChange={bbn_total_index_handleChange}
+                  step={null}
+                  marks={bbn_total_index}
+                />
+                {/* </Box> */}
+              </div>
+
+              <div>
+                <span className='lable-watif'>نگرش</span>
+                {/* <Box className='box-slider'  > */}
+                <Slider className='box-slider'
+                  defaultValue={0}
+                  valueLabelFormat={bbn_attitude_Format}
+                  getAriaValueText={bbn_attitude_Text}
+                  onChange={bbn_attitude_handleChange}
+                  step={null}
+                  marks={bbn_attitude}
+                />
+                {/* </Box> */}
+              </div>
+              <div>
+                <span className='lable-watif'>اخبار</span>
+                {/* <Box className='box-slider' > */}
+                <Slider className='box-slider'
+                  defaultValue={0}
+                  valueLabelFormat={bbn_news_Format}
+                  getAriaValueText={bbn_news_Text}
+                  onChange={bbn_news_handleChange}
+                  step={null}
+                  marks={bbn_news}
+                />
+                {/* </Box> */}
+              </div>
+
+              <div>
+                <span className='lable-watif'>حالت</span>
+                {/* <Box className='box-slider' > */}
+                <Slider className='box-slider'
+                  defaultValue={0}
+                  valueLabelFormat={bbn_mood_Format}
+                  getAriaValueText={bbn_mood_Text}
+                  onChange={bbn_mood_handleChange}
+                  step={null}
+                  marks={bbn_mood}
+                />
+
+              </div>
+              <div>
+                <span className='lable-watif'>تصمیم</span>
+                {/* <Box className='box-slider' > */}
+                <Slider className='box-slider'
+                  defaultValue={0}
+                  valueLabelFormat={bbn_decision_Format}
+                  getAriaValueText={bbn_decision_Text}
+                  onChange={bbn_decision_handleChange}
+                  step={null}
+                  marks={bbn_decision}
+                />
+                {/* </Box> */}
+              </div>
+              <div>
+                <span className='lable-watif'>احساسات</span>
+                {/* <Box className='box-slider' > */}
+                <Slider className='box-slider'
+                  defaultValue={0}
+                  valueLabelFormat={bbn_sentiment_Format}
+                  getAriaValueText={bbn_sentiment_Text}
+                  onChange={bbn_sentiment_handleChange}
+                  step={null}
+                  marks={bbn_sentiment}
+                />
+                {/* </Box> */}
+              </div>
+            </Col>
+            <Col md="9">
+              {isLoadingVisible && <Loading></Loading>}
+              {/* {
+                isChartVisible ? <label className='text-center d-flex justify-content-center chart-title' >{chartName}</label>
+                  : ''
+              } */}
+              {
+                isChartVisible ?
+                  <ReactECharts style={{ margin: "50px" }} option={option} />
+                  : ""
+              }
+            </Col>
+          </Row>
+        </CardBody>
+      </Card>
+    </Container>
+
   )
 }
 

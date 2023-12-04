@@ -9,10 +9,10 @@ const PrivateRoute = () => {
     //localStorage.setItem('user','1234')
     const location = window.location.pathname;
     // const currentURL = window.location.href
-    console.log("Current Location:")
-    console.log(location)
-    console.log("access-tocken");
-    console.log(localStorage.getItem("access-tocken"))
+    // console.log("Current Location:")
+    // console.log(location)
+    // console.log("access-tocken");
+    // console.log(localStorage.getItem("access-tocken"))
     // const [isAuth = false
     // if (localStorage.getItem("access-tocken")==null){
 

@@ -175,7 +175,7 @@ export const RepChart = () => {
 
     return (
 
-        <Container fluid className="main-content-container px-4" dir="rtl" >
+        <Container fluid className="main-content-container px-4"  >
             <Row className="page-header mt-2 ">
                 <Col lg="12"  >
                     <nav className="breadcrumb">
@@ -186,8 +186,6 @@ export const RepChart = () => {
             </Row>
             <Card small className="h-100">
                 <CardBody className="pt-0">
-                    {/* <ListGroup flush>
-                            <ListGroupItem> */}
                     <Row>
                         <Col lg="6">
                             <ReactECharts id="" option={option} />

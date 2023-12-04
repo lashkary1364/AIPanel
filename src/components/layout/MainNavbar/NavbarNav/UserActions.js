@@ -18,12 +18,12 @@ export default class UserActions extends React.Component {
 
     this.state = {
       visible: false,
-      firstName:"",
-      lastName:""
+      firstName: "",
+      lastName: ""
     };
 
-    this.toggleUserActions = this.toggleUserActions.bind(this);   
-    
+    this.toggleUserActions = this.toggleUserActions.bind(this);
+
     // sessionStorage.setItem("LoginTocken", JSON.stringify({
     //   userFirstName: data.userName,
     //   userLastName: data.password,
@@ -31,8 +31,8 @@ export default class UserActions extends React.Component {
     // }));
 
     const user = JSON.parse(sessionStorage.getItem("LoginTocken"))
-    this.state.firstName=user.userFirstName;
-    this.state.lastName=user.userLastName;
+    this.state.firstName = user.userFirstName;
+    this.state.lastName = user.userLastName;
   }
 
   toggleUserActions() {
@@ -45,22 +45,22 @@ export default class UserActions extends React.Component {
 
   render() {
 
-  
+
     return (
       <NavItem tag={Dropdown} caret toggle={this.toggleUserActions}>
-      <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
-        <img
-          className="user-avatar rounded-circle mr-2"
-          src={require("../../../../images/navbar/images3.png")}
-          alt="User Avatar"
-        />{" "}
-        <span className="d-none d-md-inline-block">{this.state.lastName + " " +this.state.firstName }  </span>
-      </DropdownToggle>
-      <Collapse tag={DropdownMenu} right small open={this.state.visible} style={{fontFamily:"b nazanin bold" , fontWeight:"bold"}}>
-        <DropdownItem tag={Link} to="user-profile">
-          <i className="material-icons">&#xE7FD;</i> تغییر رمز عبور
-        </DropdownItem>
-        {/* <DropdownItem tag={Link} to="edit-user-profile">
+        <DropdownToggle caret tag={NavLink} className="text-nowrap ">
+          <img
+            className="user-avatar rounded-circle mr-2"
+            src={require("../../../../images/navbar/images3.png")}
+            alt="User Avatar"
+          />{" "}
+          <span className="d-none d-md-inline-block">{this.state.lastName + " " + this.state.firstName}  </span>
+        </DropdownToggle>
+        <Collapse tag={DropdownMenu} right small open={this.state.visible} style={{ fontFamily: "b nazanin bold", fontWeight: "bold", zIndex: "1000" }}>
+          <DropdownItem tag={Link} to="user-profile">
+            <i className="material-icons">&#xE7FD;</i> تغییر رمز عبور
+          </DropdownItem>
+          {/* <DropdownItem tag={Link} to="edit-user-profile">
           <i className="material-icons">&#xE8B8;</i> Edit Profile
         </DropdownItem>
         <DropdownItem tag={Link} to="file-manager-list">
@@ -69,12 +69,12 @@ export default class UserActions extends React.Component {
         <DropdownItem tag={Link} to="transaction-history">
           <i className="material-icons">&#xE896;</i> Transactions
         </DropdownItem> */}
-        <DropdownItem divider />
-        <DropdownItem tag={Link} to="/" className="text-danger">
-          <i className="material-icons text-danger">&#xE879;</i> خروج
-        </DropdownItem>
-      </Collapse>
-    </NavItem>
+          <DropdownItem divider />
+          <DropdownItem tag={Link} to="/" className="text-danger">
+            <i className="material-icons text-danger">&#xE879;</i> خروج
+          </DropdownItem>
+        </Collapse>
+      </NavItem>
     );
   }
 }

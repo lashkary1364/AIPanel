@@ -55,7 +55,7 @@ export default class Notifications1 extends React.Component {
         }
       }).then(function (response) {
 
-        console.log(response.data);
+        // console.log(response.data);
 
         const resultItems = response.data;
 
@@ -95,11 +95,11 @@ export default class Notifications1 extends React.Component {
           className="dropdown-menu dropdown-menu-small"
         >
           {this.state.FinanceYear.map((item) => (
-            <DropdownItem value={item.Id} onClick={(e) =>{
+            <DropdownItem value={item.Id} onClick={(e) => {
 
               sessionStorage.setItem("SalMali", e.target.innerText);
               sessionStorage.setItem("SalId", e.target.value);
-              alert("سال مالی به" + sessionStorage.getItem("SalMali") +"تغییر یافت");
+              alert("سال مالی به" + sessionStorage.getItem("SalMali") + "تغییر یافت");
 
             }}>{item.Name}</DropdownItem>
           ))}

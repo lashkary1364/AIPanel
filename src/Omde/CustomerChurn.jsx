@@ -33,7 +33,7 @@ export const CustomerChurn = () => {
         fontSize: 13,
         fontStyle: 'normal',
         fontWeight: 'bold'
-    },
+      },
       xAxis: {
         type: 'category',
         data: xDataList //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -64,7 +64,7 @@ export const CustomerChurn = () => {
     setDivChart({ border: "2px solid ", color: "#9b9797", borderRadius: "10px", marginTop: "8px" });
     setStyleVar({ visibility: 'visible' });
     setIsLoading(true);
-    console.log("....................");
+    // console.log("....................");
 
     axios(
       {
@@ -78,7 +78,7 @@ export const CustomerChurn = () => {
 
         const resultItems = response.data;
         const itemsArray = resultItems.result;
-        console.log(itemsArray);
+        // console.log(itemsArray);
         setXDataList(itemsArray.map(m => m.reRecency));
         setSeriDatalist(itemsArray.map(m => m.churn));
 
@@ -100,12 +100,7 @@ export const CustomerChurn = () => {
         <Button type="button" className='btn btn-secondary' onClick={getTransactionCustomerKPI}>محاسبه</Button>
         {
           isLoading == true ? <Loading></Loading>
-          // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-          //   <Spinner animation="grow" size="sm"  className='color-spinner'  />
-          //   <Spinner animation="grow"  className='color-spinner'  />
-          //   <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
-          // </div> 
-          :
+            :
             <div style={divChart}  ><ReactECharts option={option} style={styleVar} /></div>
         }
 

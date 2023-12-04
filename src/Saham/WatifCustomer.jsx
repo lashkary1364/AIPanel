@@ -46,17 +46,20 @@ export const WatifCustomer = () => {
     const [selectedDistinct3Day, setDistinct3Day] = useState(50);
     const [selectedDistinct4Day, setDistinct4Day] = useState(50);
     const [days, setDays] = useState([]);
-    const [discount4, setDiscount4] = React.useState(50);
-    const [discount3, setDiscount3] = React.useState(50);
-    const [discount2, setDiscount2] = React.useState(50);
-    const [discount1, setDiscount1] = React.useState(50);
+    const [daysValue1, setDaysValue1] = useState([]);
     const [daysValue, setDaysValue] = useState([]);
     const [qtyValue, setQtyValue] = useState([]);
     const [revenueValue, setRevenueValue] = useState([]);
+    const [revenueValue1, setRevenueValue1] = useState([]);
+    const [qtyValue1, setQtyValue1] = useState([]);
+    const [revenueValue2, setRevenueValue2] = useState([]);
+
     const [optionRevenue, setOptionRevenue] = useState({});
     const [optionQty, setOptionQty] = useState({});
     const [checked, setChecked] = useState(true);
     const [disabled, setdisabled] = useState(true);
+    const [isVisibleChart, setIsVisibleChart] = useState(false);
+
     const Month = [
         { label: 'فروردین', value: '1' },
         { label: 'اردیبهشت', value: '2' },
@@ -74,42 +77,11 @@ export const WatifCustomer = () => {
 
     useEffect(() => {
 
-        getProductKpis();
+        // getProductKpis();
         getProductCategory();
         getCustomers();
         getAreas();
-        // setOptionQty({
-        //     xAxis: {
-        //         type: 'category',
-        //         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        //     },
-        //     yAxis: {
-        //         type: 'value'
-        //     },
-        //     series: [
-        //         {
-        //             data: [150, 230, 224, 218, 135, 147, 260],
-        //             type: 'line'
-        //         }
-        //     ]
-        // })
 
-
-        // setOptionRevenue({
-        //     xAxis: {
-        //         type: 'category',
-        //         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        //     },
-        //     yAxis: {
-        //         type: 'value'
-        //     },
-        //     series: [
-        //         {
-        //             data: [150, 230, 224, 218, 135, 147, 260],
-        //             type: 'line'
-        //         }
-        //     ]
-        // })
 
     }, []);
 
@@ -184,6 +156,10 @@ export const WatifCustomer = () => {
     }
 
     const changeCategory = (e) => {
+
+        console.log("change category");
+        console.log(e)
+
         // setSelectedCategory([]);
         e.map((item) => {
             setSelectedCategory(p => [...p, item.value]);
@@ -194,6 +170,7 @@ export const WatifCustomer = () => {
         } else {
             setErrorCategory(false);
         }
+
     }
 
     const changeCustomer = (e) => {
@@ -222,35 +199,41 @@ export const WatifCustomer = () => {
         setErrorToDay(false);
     }
 
-    const getProductKpis = () => {
+    const getProductKpis = (e) => {
+        console.log(e);
 
-        axios(
-            {
-                url: serverAddress + "get_product_kpis",
-                method: "get",
-                headers:
-                {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }).then(function (response) {
+        if (e.length == 0) {
+            setErrorCategory(true);
+        } else {
+            setErrorCategory(false);
+        }
+
+        var products = localStorage.getItem("products");
+
+        console.log("products....")
+        console.log(JSON.parse(products));
+
+        var products2 = JSON.parse(products);
+        setProductId([]);
+        e.map((item) => {
+
+            setSelectedCategory(p => [...p, item.value]);
 
 
-                const resultItems = response.data;
+            let xxx = products2.filter(element => element.L0_GroupID === item.value);
+            console.log("xxx")
+            console.log(xxx);
 
-                const products = JSON.parse(resultItems.result_max);
-                setProductId([]);
-                products.map((item) => {
-                    setProductId(p => [...p, { label: item.ProductID, value: item.ProductID }]);
-                });
-
-                setIsLoadingProduct(false);
-
-            }).catch(function (error) {
-
-                console.log("axois error: " + error);
-
+            xxx.map((item) => {
+                setProductId(p => [...p, { label: item.GoodsName, value: item.GoodsCode }]);
 
             });
+
+            setIsLoadingProduct(false);
+
+        });
+
+
 
     }
 
@@ -267,14 +250,26 @@ export const WatifCustomer = () => {
 
                 const resultItems = response.data;
 
-                const products = JSON.parse(resultItems.result);
+                let productsTemp = JSON.parse(resultItems.result);
+                window.localStorage.setItem("products", JSON.stringify(productsTemp));
+
+
+                // const uniqueNames = products.filter((val, id, array) => {
+                //     return array.indexOf(val) == id;
+                // });
+
 
                 setProductCategory([]);
-                products.slice(0, 100).map((item) => {
-                    setProductCategory(p => [...p, { label: item.GoodsName, value: item.GoodsCode }]);
+
+
+
+                let p = productsTemp.filter((ele, ind) => ind === productsTemp.findIndex(elem => elem.L0_GroupID === ele.L0_GroupID && elem.L0_GroupName === ele.L0_GroupName));
+                p.slice(0, 500).map((item) => {
+                    setProductCategory(p => [...p, { label: item.L0_GroupName, value: item.L0_GroupID }]);
                 });
 
                 setIsLoadingCategory(false);
+                setIsLoadingProduct(false);
 
             }).catch(function (error) {
 
@@ -347,12 +342,13 @@ export const WatifCustomer = () => {
     }
 
     const promotionPrediction = () => {
+        setIsVisibleChart(true);
+        setIsLoading(true);
 
         setOptionQty({});
         setOptionRevenue({});
         console.log(selectedCategory);
-        setIsLoading(true);
-        const form = new FormData();
+
         if (selectedProduct == undefined) {
             setErrorProduct(true);
         } else {
@@ -400,6 +396,7 @@ export const WatifCustomer = () => {
                 'error');
             return;
         } else {
+            const form = new FormData();
             form.append("sku_filter", selectedProduct);
             form.append("sku_category_filter", selectedCategory);
             form.append("customer_type_filter", selectedCustomer);
@@ -412,8 +409,19 @@ export const WatifCustomer = () => {
             form.append("dis3_filter", selectedDistinct3Day);
             form.append("dis4_filter", selectedDistinct4Day);
 
+            const form1 = new FormData();
+            form1.append("sku_filter", selectedProduct);
+            form1.append("sku_category_filter", selectedCategory);
+            form1.append("customer_type_filter", selectedCustomer);
+            form1.append("area_filter", selectedArea);
+            form1.append("month_filter", selectedMonth);
+            form1.append("from_day_filter", selectedFromDay);
+            form1.append("to_day_filter", selectedToDay);
+            form1.append("dis1_filter", 0);
+            form1.append("dis2_filter", 0);
+            form1.append("dis3_filter", 0);
+            form1.append("dis4_filter", 0);
 
-            console.log(form);
 
             axios(
                 {
@@ -440,8 +448,40 @@ export const WatifCustomer = () => {
                         setRevenueValue(p => [...p, item.revenue_pred]);
                         setDaysValue(p => [...p, item.day]);
                     });
+                }).catch(function (error) {
+                    Swal.fire(
+                        'خطا',
+                        error.message,
+                        'error');
 
-                    setIsLoading(false);
+                });
+
+
+            axios(
+                {
+                    url: serverAddress + "promotion_prediction",
+                    method: "post",
+                    headers:
+                    {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                    data: form1,
+                }).then(function (response) {
+
+                    console.log("end ......")
+                    console.log("response:")
+                    console.log(response);
+                    const resultItems = response.data;
+                    console.log(resultItems.result);
+                    const products = JSON.parse(resultItems.result);
+                    setQtyValue1([]);
+                    setDaysValue1([]);
+                    setRevenueValue1([]);
+                    products.map((item) => {
+                        setQtyValue1(p => [...p, item.qty_pred]);
+                        setRevenueValue1(p => [...p, item.revenue_pred]);
+                        setDaysValue1(p => [...p, item.day]);
+                    });
 
                 }).catch(function (error) {
                     Swal.fire(
@@ -450,6 +490,10 @@ export const WatifCustomer = () => {
                         'error');
 
                 });
+
+
+            setIsLoading(false);
+
         }
 
 
@@ -460,59 +504,180 @@ export const WatifCustomer = () => {
     useEffect(() => {
         setOptionQty({
             // title: {
-            //     text: 'Stacked Line'
-            //   },
-            xAxis: {
-                name: 'days',
-                type: 'category',
-                data: daysValue
+            //     text: 'Stacked Area Chart'
+            // }, 
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
             },
-            yAxis: {
-                name: 'qty',
-                type: 'value'
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
             },
+            legend: {
+                data: ['بدون تخفیف', 'با تخفیف']
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    name: 'روز',
+                    type: 'category',
+                    boundaryGap: false,
+                    data: daysValue
+                }
+            ],
+            yAxis: [
+                {
+                    name: 'مقدار',
+                    type: 'value'
+                }
+            ],
             series: [
                 {
-                    data: qtyValue,
-                    type: 'line'
+                    title: '',
+                    name: 'بدون تخفیف',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: qtyValue1
+                },
+                {
+                    name: 'با تخفیف',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: qtyValue
                 }
             ]
         });
-    }, [daysValue, qtyValue])
+    }, [daysValue, qtyValue1, qtyValue])
+
+
 
     useEffect(() => {
         setOptionRevenue({
-            xAxis: {
-                name: 'days',
-                type: 'category',
-                data: daysValue
+            // title: {
+            //     text: 'Stacked Area Chart'
+            // }, textStyle: {
+            textStyle: {
+                fontFamily: 'b yekan',
+                fontSize: 13,
+                fontStyle: 'normal',
+                fontWeight: 'bold'
             },
-            yAxis: {
-                name: 'revenue',
-                type: 'value'
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
             },
+            legend: {
+                data: ['بدون تخفیف', 'با تخفیف']
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    name: 'روز',
+                    type: 'category',
+                    boundaryGap: false,
+                    data: daysValue
+                }
+            ],
+            yAxis: [
+                {
+                    name: 'حجم',
+                    type: 'value'
+                }
+            ],
             series: [
                 {
-                    data: revenueValue,
-                    type: 'line'
+                    name: 'بدون تخفیف',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: revenueValue1
+                },
+                {
+                    name: 'با تخفیف',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: revenueValue
                 }
             ]
         });
-    }, [daysValue, revenueValue])
+    }, [daysValue1, revenueValue, revenueValue1])
 
 
     return (
         <div>
             <Container fluid className="main-content-container px-4 mt-2" dir="rtl" >
                 <Card small className="h-100" >
-                    <CardHeader>واتیف تحلیل مشتریان</CardHeader>
+                    <CardHeader>برنامه ریزی پروموشن</CardHeader>
                     <CardBody className="pt-2">
                         <div>
                             <Row >
                                 <Col md="4">
                                     <Row >
                                         <Col className="form-group">
-                                            <label htmlFor="PoductCode">کد محصول / نام محصول</label>
+                                            <label>کد گروه محصول / نام گروه محصول</label>
+                                            <Select
+                                                placeholder="انتخاب کنید"
+                                                defaultValue={selectedOption}
+                                                onChange={(e) => getProductKpis(e)}
+                                                selectedOption options={productCategory}
+                                                isMulti={true}
+                                                isLoading={isLoadingCategory}
+                                            />
+                                            {errorCategory ?
+                                                <p className='error-message'>فیلد اجباری</p> : ""}
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col className="form-group">
+                                            <label >کد محصول / نام محصول</label>
                                             <Select
                                                 placeholder="انتخاب کنید"
                                                 defaultValue={selectedOption}
@@ -521,21 +686,6 @@ export const WatifCustomer = () => {
                                                 isLoading={isLoadingProduct}
                                             />
                                             {errorProduct ?
-                                                <p className='error-message'>فیلد اجباری</p> : ""}
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col className="form-group">
-                                            <label>کد گروه محصول / نام گروه محصول</label>
-                                            <Select
-                                                placeholder="انتخاب کنید"
-                                                defaultValue={selectedOption}
-                                                onChange={(e) => changeCategory(e)}
-                                                options={productCategory}
-                                                isMulti={true}
-                                                isLoading={isLoadingCategory}
-                                            />
-                                            {errorCategory ?
                                                 <p className='error-message'>فیلد اجباری</p> : ""}
                                         </Col>
                                     </Row>
@@ -589,8 +739,6 @@ export const WatifCustomer = () => {
                                                 <p className='error-message'>فیلد اجباری</p>
                                                 : ""}
                                         </Col>
-                                    </Row>
-                                    <Row>
                                         <Col className="form-group">
                                             <label>از روز</label>
                                             <Select
@@ -615,6 +763,7 @@ export const WatifCustomer = () => {
                                                 <p className='error-message'>فیلد اجباری</p> : ""}
                                         </Col>
                                     </Row>
+
                                     <Row>
                                         <Col className="form-group">
                                             <label>تخفیف محصول</label>
@@ -664,17 +813,17 @@ export const WatifCustomer = () => {
                                         </Col>
                                     </Row>
                                 </Col>
-                                <Col md="6">
-                                    {isLoading ? "" :
-
-                                        <ReactECharts style={{ height: "50%", width: "100%" }} option={optionQty} />
-                                    }
-                                    {isLoading ? "" :
-                                        <ReactECharts style={{ height: "50%", width: "100%" }} option={optionRevenue} />
-                                    }
-
-
-                                </Col>
+                                {isVisibleChart ?
+                                    <Col md="6">
+                                        {
+                                            isLoading ? <Loading></Loading> :
+                                                <>
+                                                    <ReactECharts style={{ height: "50%", width: "100%" }} option={optionQty} />
+                                                    <ReactECharts style={{ height: "50%", width: "100%" }} option={optionRevenue} />
+                                                </>
+                                        }
+                                    </Col> : ""
+                                }
                             </Row>
                             <Row>
                                 <Col>
@@ -682,7 +831,6 @@ export const WatifCustomer = () => {
                                         نمایش نمودار
                                     </Button>
                                 </Col>
-
                             </Row>
                         </div>
                     </CardBody>

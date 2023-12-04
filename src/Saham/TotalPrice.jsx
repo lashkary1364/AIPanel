@@ -11,12 +11,13 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import Loading from '../Loading';
 import Swal from 'sweetalert2';
+import { DateTimePicker } from '@mui/lab';
 
 export const TotalPrice = () => {
 
     const accessToken = localStorage.getItem("access-tocken");
     const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
-    const [option,setOption]=useState();
+    const [option, setOption] = useState();
     const [value, setValue] = useState([]);
     const [date, setDate] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -26,12 +27,8 @@ export const TotalPrice = () => {
     }, []);
 
     useEffect(() => {
-
-        console.log("data series ...")
-        console.log(date);
-        console.log(value);
-
-
+        console.log("value")
+        console.log(value)
         setOption({
             textStyle: {
                 fontFamily: 'b yekan',
@@ -42,33 +39,27 @@ export const TotalPrice = () => {
             xAxis: {
                 type: 'category',
                 data: date
-              },
-              yAxis: {
+            },
+            yAxis: {
+
                 type: 'value'
-              },
-              series: [
+            },
+            series: [
                 {
-                  data:value,
-                  type: 'line'
+
+                    data: value,
+                    type: 'line'
                 }
-              ]       
+            ]
         });
-
-
-
 
     }, [date, value]);
 
-    useEffect(() => {
 
-        console.log("option ....")
-        console.log(option);
-
-    }, [option])
 
     const getTotalPrice = () => {
 
-        console.log("tahlile geymat ...");
+        // console.log("tahlile geymat ...");
         axios(
             {
                 url: serverAddress + "get_total_price",
@@ -78,57 +69,64 @@ export const TotalPrice = () => {
                     Authorization: `Bearer ${accessToken}`,
                 },
             }).then(function (response) {
-
-               console.log("get total price ....")
+                // console.log("get total price ....")
                 const resultItems = response.data;
-                console.log(resultItems);
+                // console.log(resultItems);
                 const itemsArray = resultItems.result;
-                console.log("itemsArray");
-                console.log(itemsArray);
+                // console.log("itemsArray");
+                // console.log(itemsArray);
                 const arr = JSON.parse(itemsArray);
-                console.log(arr);
+                // console.log(arr);
+                // arr.sort((a, b) => a.date - b.date);
+                // const copyArray = [...arr];
+                // copyArray.sort((a, b) => {
+                //     return a.date - b.date;
+                // });
                 setDate([]);
                 setValue([]);
-                
 
+                const dataTemp = [];
                 arr.map((item) => {
-                    
+                    console.log(item.date)
                     setDate(date => [...date, item.date]);
-                    setValue(value => [...value, item.value]);
+
+                    //dataTemp.push(item.date);
+                    setValue(value => [...value, (item.value)]);
 
                 });
+
+                //dataTemp.sort((a, b) => b - a);
+
+                // setDate(...dataTemp);
 
                 setIsLoading(false);
 
-                }).catch(function (error) {
+            }).catch(function (error) {
 
-                    setIsLoading(false);
-                    console.log("axois error: " + error);
-                    Swal.fire(
-                        'خطا',
-                        error.message,
-                        'error' );
-                });
+                setIsLoading(false);
+                // console.log("axois error: " + error);
+                Swal.fire(
+                    'خطا',
+                    error.message,
+                    'error');
+            });
 
-            }
+    }
 
 
-  return (
-    <Card small className="h-100" >
-    <CardHeader>تحلیل قیمت شاخص کل</CardHeader>
-    <CardBody className="pt-0">
-        {
-            isLoading == true ? <Loading></Loading>
-            // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-            //     <Spinner animation="grow" size="sm" variant="primary" />
-            //     <Spinner animation="grow" variant="primary" />
-            //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-            // </div> 
-            :
-                option != undefined ? <ReactECharts option={option} /> : ''
-        }
+    return (
+        <>
+            <Card small className="h-100" >
+                <CardHeader>تحلیل قیمت شاخص کل</CardHeader>
+                <CardBody className="pt-0">
+                    {
+                        isLoading == true ? <Loading></Loading>
+                            :
+                            option != undefined ? <ReactECharts option={option} /> : ''
+                    }
+                </CardBody>
+            </Card>
+        </>
 
-    </CardBody>
-</Card>
-  )
+    )
 }

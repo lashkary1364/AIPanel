@@ -9,10 +9,10 @@ const PrivateRouteChild = () => {
     //localStorage.setItem('user','1234')
     const location = window.location.pathname;
     // const currentURL = window.location.href
-    console.log("Current Location:");
-    console.log(location);
-    console.log("access-tocken");
-    console.log(localStorage.getItem("access-tocken"));
+    // console.log("Current Location:");
+    // console.log(location);
+    // console.log("access-tocken");
+    // console.log(localStorage.getItem("access-tocken"));
     // const [isAuth = false
     // if (localStorage.getItem("access-tocken")==null){
 
@@ -25,7 +25,7 @@ const PrivateRouteChild = () => {
     // }));
     return (
         <>
-        {/* // <div> */}
+            {/* // <div> */}
             {
                 localStorage.getItem("access-tocken") != null ? routes.map((route, index) => {
                     return (
@@ -35,11 +35,11 @@ const PrivateRouteChild = () => {
                             exact={route.exact}
                             component={withTracker(props => {
                                 return (
-                                   <Route {...props}>
-                                          <route.layout {...props}>
+                                    <Route {...props}>
+                                        <route.layout {...props}>
                                             <route.component {...props} />
                                         </route.layout>
-                                </Route>
+                                    </Route>
                                 );
                             })}></Route>
 
@@ -48,8 +48,8 @@ const PrivateRouteChild = () => {
 
                     : <Redirect to="/login"   ></Redirect>
             }
-        {/* // </div> */}
-</>
+            {/* // </div> */}
+        </>
     )
 }
 

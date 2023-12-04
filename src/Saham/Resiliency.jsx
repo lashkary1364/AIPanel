@@ -32,8 +32,6 @@ export const Resiliency = () => {
 
     useEffect(() => {
 
-        console.log("data series ...")
-        console.log(dataSeries);
 
         setOption({
             textStyle: {
@@ -42,6 +40,8 @@ export const Resiliency = () => {
                 fontStyle: 'normal',
                 fontWeight: 'bold'
             },
+            animation: true,
+            animationEasing: 'elasticOut',
             // title: {
             //     text: 'بهره وری بر اساس سال'
             // },textStyle: fontFamily: Microsoft YaHeifontSize: 12fontStyle: normalfontWeight: normal
@@ -70,7 +70,10 @@ export const Resiliency = () => {
             yAxis: {
                 type: 'value'
             },
-            series: dataSeries
+            series: dataSeries,
+            animationDelayUpdate: function (idx) {
+                return idx * 5;
+            }
             //[
             //   {
             //     name: 'Email',
@@ -109,17 +112,11 @@ export const Resiliency = () => {
     }, [dataSeries, names]);
 
 
-    useEffect(() => {
-
-        console.log("option ....")
-        console.log(option);
-
-    }, [option])
 
     const tabAvary = () => {
 
-        console.log("tab avari ...");
-       
+        // console.log("tab avari ...");
+
         axios(
             {
                 url: serverAddress + "industry_resiliency",
@@ -129,16 +126,16 @@ export const Resiliency = () => {
                     Authorization: `Bearer ${accessToken}`,
                 },
             }).then(function (response) {
-               
+
                 const resultItems = response.data;
-                console.log(resultItems);
+                // console.log(resultItems);
                 const itemsArray = resultItems.result;
-                console.log("itemsArray");
-                console.log(itemsArray);
+                // console.log("itemsArray");
+                // console.log(itemsArray);
                 const arr = JSON.parse(itemsArray);
-                console.log(arr);
-                console.log(arr[0].name);
-                
+                // console.log(arr);
+                // console.log(arr[0].name);
+
                 arr.map(item => {
                     var temp = [];
                     setNames(names => [...names, item.name]);
@@ -148,53 +145,47 @@ export const Resiliency = () => {
                     temp.push(item.y1398);
                     temp.push(item.y1399);
                     temp.push(item.y1400);
-                    var obj = { "name": item.name, "type": "line", "stack": "Total", "data": temp }
-                    console.log(obj);
+                    var obj = {
+                        "name": item.name, "type": "line", "stack": "Total", "data": temp, animationDelay: function (idx) {
+                            return idx * 10 + 100;
+                        }
+                    }
+                    // console.log(obj);
                     setDataSeries(dataSeries => [...dataSeries, obj])
-                    console.log("data series ...")
-                    console.log(dataSeries);
+                    // console.log("data series ...")
+                    // console.log(dataSeries);
                     temp = [];
                 });
 
 
-                console.log("data series ...");
-                console.log(dataSeries);
+                // console.log("data series ...");
+                // console.log(dataSeries);
                 setIsLoading(false);
             }).catch(function (error) {
                 setIsLoading(false);
-                console.log("axois error: " + error);
+                // console.log("axois error: " + error);
                 Swal.fire(
                     'خطا',
                     error.message,
-                    'error' );
+                    'error');
 
             });
 
     }
 
     return (
-        <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
-            <Card small className="h-100" >
-                <CardHeader>تاب آوری بر اساس سال</CardHeader>
-                <CardBody className="pt-0">
-                    {
-                        isLoading == true ? <Loading></Loading>
-                        //  <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                        //     <Spinner animation="grow" size="sm" variant="primary" />
-                        //     <Spinner animation="grow" variant="primary" />
-                        //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-                        // </div> 
+
+        <Card small className="h-100" >
+            <CardHeader>تاب آوری بر اساس سال</CardHeader>
+            <CardBody className="pt-0">
+                {
+                    isLoading == true ? <Loading></Loading>
                         :
-                            option != undefined ? <ReactECharts option={option}  /> : ''
-                    }
-                </CardBody>
-            </Card>
-            
+                        option != undefined ? <ReactECharts option={option} /> : ''
 
-        </Container>
-
-
-
+                }
+            </CardBody>
+        </Card>
 
 
     )

@@ -8,7 +8,7 @@ import { RFMPurchase } from './RFMPurchase';
 import { RFMPrice } from './RFMPrice';
 import { CustomerSegmentation } from './CustomerSegmentation';
 import { Container } from "shards-react"
-
+import { Col, Row } from "shards-react"
 
 
 export const CustomerPredicted = () => {
@@ -140,8 +140,8 @@ export const CustomerPredicted = () => {
 
     useEffect(() => {
 
-        console.log("segment list ...");
-        console.log(segmentList);
+        // console.log("segment list ...");
+        // console.log(segmentList);
 
         setOptionCustSegment({
             textStyle: {
@@ -183,8 +183,8 @@ export const CustomerPredicted = () => {
     const getCustomerPredicted = () => {
 
         setIsLoading(true);
-        console.log("......getCustomerPredicted..............");
-        
+        // console.log("......getCustomerPredicted..............");
+
         axios(
             {
                 url: serverAddress + "get_customer_predicted",
@@ -194,37 +194,33 @@ export const CustomerPredicted = () => {
                     Authorization: `Bearer ${accessToken}`,
                 },
             }).then(function (response) {
-                console.log("response for ===>getCustomerPredicted");
-                console.log(response.date);
+                // console.log("response for ===>getCustomerPredicted");
+                // console.log(response.date);
                 const resultItems = response.data;
                 const itemsArray = resultItems.result;
-                const arr = JSON.parse(itemsArray);
-                console.log("resultItems.....");
-                console.log(resultItems);
-                console.log("itemsArray...");
-                console.log(itemsArray);
-                console.log("arr.....");
-                console.log(arr);
-                // arr.map((item,index)=>{
-                //     console.log(item.Recency);
-                // });
-                setRecencyList(arr.map(m => m.Recency));//تازگی خرید
-                setFrequencyList(arr.map(m => m.Frequency));
-                setPredictedPurchaseList(arr.map(m => m.predicted_purchases)); // تعداد خرید
+                const arr = JSON.parse(itemsArray).slice(0, 100);
+                // console.log("resultItems.....");
+                // console.log(resultItems);
+                // console.log("itemsArray...");
+                // console.log(itemsArray);
+                // console.log("arr.....");
+                // console.log(arr);
+                setRecencyList(arr.map(m => m.recency));//تازگی خرید
+                setFrequencyList(arr.map(m => m.frequency));
+                setPredictedPurchaseList(arr.map(m => m.predicted_90_days)); // تعداد خرید
                 setMonetoryList(arr.map(m => m.monetary_value));
 
                 var countMedium = 0;
                 var countHight = 0;
                 var countLow = 0;
                 arr.map((item, index) => {
-                    if (item.Profile == "medium value") {
-                        countMedium++;
-                    } else if (item.Profile == "high value") {
-                        countHight++;
-                    } else if (item.Profile == "low value") {
+                    if (item.segmentclv == " Low") {
                         countLow++;
+                    } else if (item.segmentclv == "Hight") {
+                        countHight++;
+                    } else if (item.segmentclv == "Medium") {
+                        countMedium++;
                     } else {
-
                     }
                 });
 
@@ -240,13 +236,15 @@ export const CustomerPredicted = () => {
 
     return (
         <Container fluid className="main-content-container px-4 mt-3" dir="rtl"  >
-            <RFM optionRFM={optionRFM} isLoading={isLoading} />
-            <br />
-            <RFMPurchase optionPurchase={optionPurchase} isLoading={isLoading} ></RFMPurchase>
-            <br />
-            <RFMPrice optionPrice={optionPrice} isLoading={isLoading}></RFMPrice>
-            <br />
-            <CustomerSegmentation optiobCustSegment={optiobCustSegment} isLoading={isLoading} />
+            <Row>
+                <Col><CustomerSegmentation optiobCustSegment={optiobCustSegment} isLoading={isLoading} /></Col>
+            </Row>
+            <Row className="mt-3">
+                <Col> <RFM optionRFM={optionRFM} isLoading={isLoading} /></Col>
+                <Col> <RFMPurchase optionPurchase={optionPurchase} isLoading={isLoading} ></RFMPurchase></Col>
+                <Col><RFMPrice optionPrice={optionPrice} isLoading={isLoading}></RFMPrice></Col>
+            </Row>
+
         </Container>
 
     )

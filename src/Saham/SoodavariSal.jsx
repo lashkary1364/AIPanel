@@ -13,7 +13,7 @@ import Loading from '../Loading';
 import Swal from 'sweetalert2';
 
 export const SoodavariSal = () => {
- 
+
     const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
     const accessToken = localStorage.getItem("access-tocken");
     const [option, setOption] = useState({});
@@ -27,8 +27,8 @@ export const SoodavariSal = () => {
 
     useEffect(() => {
 
-        console.log("data series ...")
-        console.log(dataSeries);
+        // console.log("data series ...")
+        // console.log(dataSeries);
 
         setOption({
             title: {
@@ -67,14 +67,14 @@ export const SoodavariSal = () => {
 
     useEffect(() => {
 
-        console.log("option ....")
-        console.log(option);
+        // console.log("option ....")
+        // console.log(option);
 
     }, [option])
 
     const naghdineghi = () => {
 
-        console.log("tab avari ...");
+        // console.log("tab avari ...");
         axios(
             {
                 url: serverAddress + "industry_solvency",
@@ -86,14 +86,14 @@ export const SoodavariSal = () => {
             }).then(function (response) {
 
                 const resultItems = response.data;
-                console.log(resultItems);
+                // console.log(resultItems);
                 const itemsArray = resultItems.result;
-                console.log("itemsArray");
-                console.log(itemsArray);
+                // console.log("itemsArray");
+                // console.log(itemsArray);
 
                 const arr = JSON.parse(itemsArray);
-                console.log(arr);
-                console.log(arr[0].name);
+                // console.log(arr);
+                // console.log(arr[0].name);
                 arr.map(item => {
                     var temp = [];
                     setNames(names => [...names, item.name]);
@@ -104,24 +104,24 @@ export const SoodavariSal = () => {
                     temp.push(item.y1399);
                     temp.push(item.y1400);
                     var obj = { "name": item.name, "type": "line", "stack": "Total", "data": temp }
-                    console.log(obj);
+                    // console.log(obj);
                     setDataSeries(dataSeries => [...dataSeries, obj])
-                    console.log("data series ...")
-                    console.log(dataSeries);
+                    // console.log("data series ...")
+                    // console.log(dataSeries);
                     temp = [];
                 });
 
 
-                console.log("data series ...");
-                console.log(dataSeries);
+                // console.log("data series ...");
+                // console.log(dataSeries);
                 setIsLoading(false);
             }).catch(function (error) {
                 setIsLoading(false);
                 Swal.fire(
                     'خطا',
                     error.message,
-                    'error' );
-                console.log("axois error: " + error);
+                    'error');
+                // console.log("axois error: " + error);
 
             });
 
@@ -134,12 +134,7 @@ export const SoodavariSal = () => {
             <CardBody className="pt-0">
                 {
                     isLoading == true ? <Loading></Loading>
-                    // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                    //     <Spinner animation="grow" size="sm" variant="primary" />
-                    //     <Spinner animation="grow" variant="primary" />
-                    //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-                    // </div> 
-                    :
+                        :
                         option != undefined ? <ReactECharts option={option} /> : ''
                 }
 

@@ -8,16 +8,16 @@ import { useHistory } from "react-router-dom";
 export const Mohit = () => {
   const history = useHistory();
   const handleLogout = () => {
-    console.log("log out")
+    // console.log("log out")
     const user = JSON.parse(sessionStorage.getItem("LoginTocken"));
-    console.log("user:");
-    console.log(JSON.parse(sessionStorage.getItem("LoginTocken")));
-    console.log(user.userFirstName);
-    console.log(user.userLastName);
+    // console.log("user:");
+    // console.log(JSON.parse(sessionStorage.getItem("LoginTocken")));
+    // console.log(user.userFirstName);
+    // console.log(user.userLastName);
     sessionStorage.clear();
     localStorage.clear();
-    console.log("user");
-    console.log(sessionStorage.getItem("LoginTocken"));
+    // console.log("user");
+    // console.log(sessionStorage.getItem("LoginTocken"));
     window.location.replace('/n');
     window.location.clear();
   }
@@ -78,6 +78,6 @@ export const Mohit = () => {
       </NavItem>
     </>
   );
-  
+
 }
 export default Mohit;

@@ -38,7 +38,7 @@ export const CustomerDashboard = () => {
         fontSize: 13,
         fontStyle: 'normal',
         fontWeight: 'bold'
-    },
+      },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -103,10 +103,10 @@ export const CustomerDashboard = () => {
 
   useEffect(() => {
 
-    console.log("revenue new ...");
-    console.log(revenueNew);
-    console.log("revenue old ...");
-    console.log(revenueOld);
+    // console.log("revenue new ...");
+    // console.log(revenueNew);
+    // console.log("revenue old ...");
+    // console.log(revenueOld);
 
     setOptionRevenue({
       textStyle: {
@@ -114,7 +114,7 @@ export const CustomerDashboard = () => {
         fontSize: 13,
         fontStyle: 'normal',
         fontWeight: 'bold'
-    },
+      },
       // title: {
       //   text: 'Rainfall vs Evaporation',
       //   //subtext: 'Fake Data'
@@ -135,10 +135,10 @@ export const CustomerDashboard = () => {
         //   saveAsImage: {
         //     pixelRatio: 2
         //   }
-          // dataView: { show: true, readOnly: false },
-          // magicType: { show: true, type: ['line', 'bar'] },
-          // restore: { show: true },
-          // saveAsImage: { show: true }
+        // dataView: { show: true, readOnly: false },
+        // magicType: { show: true, type: ['line', 'bar'] },
+        // restore: { show: true },
+        // saveAsImage: { show: true }
         //}
       },
       calculable: true,
@@ -156,7 +156,7 @@ export const CustomerDashboard = () => {
       ],
       series: [
         {
-          color:"#f54257",
+          color: "#f54257",
           name: 'مشتریان جدید',
           type: 'bar',
           data: revenueNew,
@@ -171,7 +171,7 @@ export const CustomerDashboard = () => {
           }
         },
         {
-          color:"#029e6f",
+          color: "#029e6f",
           name: 'مشتریان قدیم',
           type: 'bar',
           data: revenueOld,
@@ -196,7 +196,7 @@ export const CustomerDashboard = () => {
     //setDivChart({ border: "2px solid ", color: "#9b9797" , borderRadius:"10px", marginTop: "8px" });
 
     setIsLoading(true);
-    console.log("....................");
+    // console.log("....................");
 
     axios(
       {
@@ -210,10 +210,10 @@ export const CustomerDashboard = () => {
 
         const resultItems = response.data;
         const itemsArray = resultItems.result;
-        console.log("itemsArray");
-        console.log(itemsArray);
+        // console.log("itemsArray");
+        // console.log(itemsArray);
         const arr = JSON.parse(itemsArray);
-        console.log(arr);
+        // console.log(arr);
 
         const newList = arr.filter(employee => {
           return (
@@ -235,15 +235,15 @@ export const CustomerDashboard = () => {
         }, []);
 
 
-        console.log(newGroupYeraList);
+        // console.log(newGroupYeraList);
 
-        console.log(newGroupYeraList.map(item => item.year));
+        // console.log(newGroupYeraList.map(item => item.year));
 
         setYearList(newGroupYeraList.map(item => item.year));
 
         const newRevenue = newGroupYeraList.map(item => item.Revenue);
 
-        console.log(newRevenue);
+        // console.log(newRevenue);
 
         setNewRevenueList(newRevenue);
 
@@ -254,9 +254,9 @@ export const CustomerDashboard = () => {
           return a;
         }, []);
 
-        console.log(oldGroupYeraList);
+        // console.log(oldGroupYeraList);
         const oldRevenue = oldGroupYeraList.map(item => item.Revenue);
-        console.log(oldRevenue);
+        // console.log(oldRevenue);
         setOldRevenueList(oldRevenue);
 
         newList.map((item, index) => {
@@ -272,7 +272,7 @@ export const CustomerDashboard = () => {
         });
 
         arr.map((item, index) => {
-          console.log(item.year + " , " + item.month)
+          // console.log(item.year + " , " + item.month)
           const date1 = item.year + " , " + item.month;
           setDate(date => [...date, date1]);
           setRrevenueNew(revenueNew => [...revenueNew, item.Revenue]);
@@ -281,7 +281,7 @@ export const CustomerDashboard = () => {
 
       }).catch(function (error) {
 
-        console.log("axois error: " + error);
+        // console.log("axois error: " + error);
         setIsLoading(false);
         setInlineStyles()
 
@@ -293,11 +293,16 @@ export const CustomerDashboard = () => {
 
   return (
 
-    <Container fluid className="main-content-container px-4 mt-3" >
-      <CustomerKPI option={option} isLoading={isLoading}></CustomerKPI>
-      <br/>
-      <RevenueCustomer optionRevenue={optionRevenue} isLoading={isLoading} ></RevenueCustomer>
-      <br />
+    <Container fluid className="main-content-container px-4 mt-3" dir="rtl" >
+      <Row>
+        <CustomerKPI option={option} isLoading={isLoading}></CustomerKPI>
+      </Row>
+      <Row className="mt-3">
+        <RevenueCustomer optionRevenue={optionRevenue} isLoading={isLoading} ></RevenueCustomer>
+      </Row>
+
+
+
     </Container>
   )
 }

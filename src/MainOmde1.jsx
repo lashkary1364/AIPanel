@@ -20,10 +20,10 @@ export const MainOmde1 = () => {
 
     function getWindowDimensions() {
         const { innerWidth: width, innerHeight: height } = window;
-        console.log({
-            width,
-            height
-        });
+        // console.log({
+        //     width,
+        //     height
+        // });
 
         if (width <= 500) {
             setVisible(false);
@@ -117,8 +117,8 @@ export const MainOmde1 = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <button className='btn btn-dashboard-mobile'  onClick={(e) => handleDashboard(e)}>داشبورد</button>
-                                                 </td>
+                                            <button className='btn btn-dashboard-mobile' onClick={(e) => handleDashboard(e)}>داشبورد</button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -134,7 +134,7 @@ export const MainOmde1 = () => {
                                     </tr>
                                     <tr>
                                         <td >
-                                            <button className='btn btn-watif-mobile' onClick={(e) => handleWatif(e)} >واتیف</button>                                         
+                                            <button className='btn btn-watif-mobile' onClick={(e) => handleWatif(e)} >واتیف</button>
                                         </td>
                                     </tr>
 

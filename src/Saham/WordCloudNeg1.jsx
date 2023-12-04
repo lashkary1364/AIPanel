@@ -11,9 +11,13 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import Loading from '../Loading';
 import Swal from 'sweetalert2';
-import WordCloud from 'react-d3-cloud';
-import { scaleOrdinal } from 'd3-scale';
-import { schemeCategory10 } from 'd3-scale-chromatic';
+// import WordCloud from 'react-d3-cloud';
+// import { scaleOrdinal } from 'd3-scale';
+// import { schemeCategory10 } from 'd3-scale-chromatic';
+import ReactWordcloud from "react-wordcloud";
+import "tippy.js/dist/tippy.css";
+import "tippy.js/animations/scale.css";
+
 
 export const WordCloudNeg1 = () => {
 
@@ -24,10 +28,6 @@ export const WordCloudNeg1 = () => {
     useEffect(() => {
         worldCloud();
     }, []);
-
-
-
-
 
     const worldCloud = () => {
         axios(
@@ -46,7 +46,7 @@ export const WordCloudNeg1 = () => {
                 const arr = JSON.parse(itemsArray);
                 arr.map(item => {
 
-                    setData(data => [...data, { text: item.words, value: item.weights }])
+                    setData(data => [...data, { text: item.words, value: item.weights * 10000 }])
                 });
 
                 setIsLoading(false);
@@ -60,29 +60,50 @@ export const WordCloudNeg1 = () => {
                     'error');
             });
     }
-    const schemeCategory10ScaleOrdinal = scaleOrdinal(schemeCategory10);
+    // const schemeCategory10ScaleOrdinal = scaleOrdinal(schemeCategory10);
     return (
 
-        <div style={{ border: "1px solid", borderColor: "rgb(219, 222, 238)", borderRadius: "15px" }} >
+        // <div style={{ border: "1px solid", borderColor: "rgb(219, 222, 238)", borderRadius: "15px" }} >
+        //     <CardHeader>ابر کلمات منفی</CardHeader>
+        //     {
+
+        //         isLoading == true ? <Loading></Loading> :
+        //             <WordCloud data={data} width={500}
+        //                 height={400}
+        //                 font="tahoma"
+        //                 fontSize={(word) => Math.log2(word.value) * 5}
+        //                 spiral="rectangular"
+        //                 rotate={(word) => word.value % 360}
+        //                 padding={5}
+        //                 random={Math.random}
+        //                 fill={(d, i) => schemeCategory10ScaleOrdinal(i)}
+        //             />
+        //     }
+        // </div>
+
+
+        <div style={{ height: 700, border: "1px solid", borderColor: "rgb(219, 222, 238)", borderRadius: "15px" }} >
             <CardHeader>ابر کلمات منفی</CardHeader>
             {
 
                 isLoading == true ? <Loading></Loading> :
-                    <WordCloud data={data} width={500}
-                        height={400}
-                        font="tahoma"
-                        fontSize={(word) => Math.log2(word.value) * 5}
-                        spiral="rectangular"
-                        rotate={(word) => word.value % 360}
+                    <ReactWordcloud
+                        words={data}
                         padding={5}
-                        random={Math.random}
-                        fill={(d, i) => schemeCategory10ScaleOrdinal(i)}
+                        // spiral="rectangular"
+                        // rotate={(word) => word.value % 360}
+                        style={{ fontFamily: "cinema" }}
+                        options={{
+                            fontSizes: [10, 100],
+                            fontFamily: "tahoma",
+                            // rotations: 0,
+                            rotations: 0,
+                            rotationAngles: [-90, 0],
+                            enableOptimizations: true
+                        }}
                     />
             }
         </div>
-
-
-
 
 
 

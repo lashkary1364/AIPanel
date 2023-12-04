@@ -13,12 +13,12 @@ import ReactECharts from 'echarts-for-react';
 import { Spinner } from 'react-bootstrap';
 import Loading from '../Loading';
 
-export const CustomerSegmentation = ({optiobCustSegment , isLoading}) => {
+export const CustomerSegmentation = ({ optiobCustSegment, isLoading }) => {
 
-// useEffect(() => {
-//   console.log("segmentation 123");
-//   console.log(optiobCustSegment);
-// }, [])
+  // useEffect(() => {
+  //   console.log("segmentation 123");
+  //   console.log(optiobCustSegment);
+  // }, [])
 
 
   // const accessToken = localStorage.getItem("access-tocken");
@@ -28,7 +28,7 @@ export const CustomerSegmentation = ({optiobCustSegment , isLoading}) => {
   // const [divChart, setDivChart] = useState({ border: "0px" })
   // const serverAddress = process.env.REACT_APP_SERVER_ADRESS
   // const [seriDataList, setSeriDatalist] = useState([])
-  
+
 
   // useEffect(() => {
 
@@ -97,7 +97,7 @@ export const CustomerSegmentation = ({optiobCustSegment , isLoading}) => {
 
 
 
-      
+
   //       setSeriDatalist([countLow, countMedium , countHight]);
 
   //     }).catch(function (error) {
@@ -112,19 +112,14 @@ export const CustomerSegmentation = ({optiobCustSegment , isLoading}) => {
 
 
   return (
-    
+
     <Card small className="h-100"  >
-      <CardHeader>بخش بندی مشتریان</CardHeader>
+      <CardHeader></CardHeader>
       <CardBody className="pt-0">
-           {
+        {
           isLoading == true ? <Loading></Loading>
-          // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-          //   <Spinner animation="grow" size="sm"  className='color-spinner' />
-          //   <Spinner animation="grow"  className='color-spinner'  />
-          //   <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
-          // </div> 
-          :
-          <ReactECharts option={optiobCustSegment}   />
+            :
+            <ReactECharts option={optiobCustSegment} />
         }
 
       </CardBody>

@@ -10,8 +10,8 @@ import UserActions from "./UserActions";
 export default () => (
 
   <Nav navbar className="border-left flex-row">
-    <HomePage></HomePage>
-    <Notifications />
+    {/* <HomePage></HomePage>
+    <Notifications /> */}
     <UserActions />
   </Nav>
 
@@ -27,6 +27,6 @@ export default () => (
   //   {/* <Mohit/>   */}
   //   {/* <Signout></Signout>  */}
   //   // <UserActions />
-  
+
   // // </Nav>
 );

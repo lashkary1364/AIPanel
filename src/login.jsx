@@ -1,5 +1,4 @@
-import '../src/login/fonts/font-awesome-4.7.0/css/font-awesome.css'
-import '../src/login/css/main.css'
+import '../src/login/fonts/font-awesome-4.7.0/css/font-awesome.css' import '../src/login/css/main.css'
 import '../src/login/css/fontiran.css'
 import React, { useState } from "react";
 import { useFormik } from 'formik'
@@ -13,14 +12,13 @@ import { Environment } from 'ag-grid-community';
 
 const Login = () => {
 
-    const serverAddress=process.env.REACT_APP_SERVER_ADRESS;
+    const serverAddress = process.env.REACT_APP_SERVER_ADRESS;
 
     useEffect(() => {
         sessionStorage.clear();
         localStorage.clear();
-        console.log("env variable")
-        console.log(serverAddress+"auth/token")
-    }, []);    
+
+    }, []);
 
     const [ErrorFlag, setErrorFlag] = useState(false);
     const validationSchema = Yup.object().shape({
@@ -46,7 +44,7 @@ const Login = () => {
 
             axios(
                 {
-                    url: serverAddress+"auth/token",
+                    url: serverAddress + "auth/token",
                     method: "post",
                     data: form,
                     headers: {
@@ -54,9 +52,7 @@ const Login = () => {
                     },
                 }).then(function (response) {
 
-                    console.log("response: ");
-                    console.log(response);
-                    console.log(response.data.access_token);
+
 
                     sessionStorage.setItem("LoginTocken", JSON.stringify({
                         userFirstName: data.userName,
@@ -65,8 +61,7 @@ const Login = () => {
                     }));
 
                     if (response.data.access_token != null) {
-                        console.log("access tocken")
-                        console.log(response.data.access_token)
+
                         localStorage.setItem("access-tocken", response.data.access_token);
                         window.location.replace('/home')
 
@@ -78,7 +73,7 @@ const Login = () => {
                     // handle error
                     setErrorFlag(true);
                     console.log("axois error: " + error);
-                    console.log(ErrorFlag);
+
                     localStorage.clear();
                 })
         }

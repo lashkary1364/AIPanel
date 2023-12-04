@@ -12,16 +12,12 @@ import Loading from '../Loading';
 export const AvgOrderMonth = ({ optionAvgOrderMonth, isLoading }) => {
 
   return (
-    <Card small className="h-100" style={{width:"83%"}}>
+    <Card small className="h-100" >
       <CardHeader>متوسط سفارشات در سال</CardHeader>
       <CardBody className="pt-0">
         {isLoading == true ? <Loading></Loading>
-        //  <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-        //   <Spinner animation="grow" size="sm"   className='color-spinner' />
-        //   <Spinner animation="grow"  className='color-spinner'   />
-        //   <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
-        // </div> 
-        :
+
+          :
           optionAvgOrderMonth != undefined ? <ReactECharts option={optionAvgOrderMonth} /> : ''
         }
       </CardBody>

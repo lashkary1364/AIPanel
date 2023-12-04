@@ -3,7 +3,7 @@ import {
   Container,
   Row,
   Col,
-  
+
 } from "shards-react";
 import axios from 'axios'
 import "../shards-dashboard/styles/slider-style.css"
@@ -67,7 +67,7 @@ export const DashboardOmde = () => {
       }
     )
 
-    console.log(option)
+    // console.log(option)
   }, [date, setDate, order, setOrder])
 
   //-----------------------------------------------------------------------
@@ -75,56 +75,56 @@ export const DashboardOmde = () => {
 
   const [optionActivityCustomer, setOptionActivityCustomer] = useState({});
   const [countcustomer, setCountCustomer] = useState([]);
-  
-  
+
+
 
   useEffect(() => {
 
-      console.log(date);
-      console.log(countcustomer);
+    // console.log(date);
+    // console.log(countcustomer);
 
-      setOptionActivityCustomer(
-          {
-              tooltip: {
-                  trigger: 'axis',
-                  axisPointer: {
-                      type: 'shadow'
-                  }
-              },
-              grid: {
-                  left: '3%',
-                  right: '4%',
-                  bottom: '3%',
-                  containLabel: true
-              },
-              xAxis: [
-                  {
-                      type: 'category',
-                      data: date,
-                      axisTick: {
-                          alignWithLabel: true
-                      }
-                  }
-              ],
-              yAxis: [
-                  {
-                      type: 'value'
-                  }
-              ],
-              series: [
-                  {
-                      name: 'Direct',
-                      type: 'bar',
-                      barWidth: '60%',
-                      data: countcustomer
-                  }
-              ]
+    setOptionActivityCustomer(
+      {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
           }
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: date,
+            axisTick: {
+              alignWithLabel: true
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value'
+          }
+        ],
+        series: [
+          {
+            name: 'Direct',
+            type: 'bar',
+            barWidth: '60%',
+            data: countcustomer
+          }
+        ]
+      }
 
 
-      )
+    )
 
-      console.log(option)
+    // console.log(option)
   }, [date, setDate, countcustomer, setCountCustomer])
 
 
@@ -279,10 +279,10 @@ export const DashboardOmde = () => {
 
         const resultItems = response.data;
         const itemsArray = resultItems.result;
-        console.log("itemsArray");
-        console.log(itemsArray);
+        // console.log("itemsArray");
+        // console.log(itemsArray);
         const arr = JSON.parse(itemsArray);
-        console.log(arr);
+        // console.log(arr);
         setDate([]);
         setRevenue([]);
         setGrowth([]);
@@ -291,20 +291,20 @@ export const DashboardOmde = () => {
         setCountCustomer([]);
 
         arr.map((item) => {
-          console.log(item.year + " , " + item.month)
+          // console.log(item.year + " , " + item.month)
           const date1 = item.year + " , " + item.month;
           setDate(date => [...date, date1]);
           setCountCustomer(countcustomer => [...countcustomer, item.active_customers]);
 
           if (item.Revenue == null) {
-            console.log("null");
+            // console.log("null");
           } else {
             setRevenue(revenue => [...revenue, item.Revenue])
           }
 
 
           if (item.monthly_growth == null) {
-            console.log("null")
+            // console.log("null")
 
           } else {
             if (item.monthly_growth < 0) {
@@ -317,13 +317,13 @@ export const DashboardOmde = () => {
 
 
           if (item.monthly_order_average == null) {
-            console.log("null")
+            // console.log("null")
           } else {
             setAvgOrder(avgOrder => [...avgOrder, item.monthly_order_average])
           }
 
           if (item.monthly_order_count == null) {
-            console.log("null")
+            // console.log("null")
 
           } else {
             setOrder(order => [...order, item.monthly_order_count])
@@ -335,7 +335,7 @@ export const DashboardOmde = () => {
 
       }).catch(function (error) {
 
-        console.log("axois error: " + error);
+        // console.log("axois error: " + error);
         setIsLoading(false);
 
         sessionStorage.clear();
@@ -347,7 +347,7 @@ export const DashboardOmde = () => {
 
 
   return (
-<></>
+    <></>
     // <Container fluid className="main-content-container px-4 mt-3" dir="rtl"  >
     //   {/* <Row className="page-header mt-2 ">
     //     <Col lg="12"  >

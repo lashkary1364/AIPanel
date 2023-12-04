@@ -27,14 +27,14 @@ export const ProductDashboard = () => {
 
 
   useEffect(() => {
-    console.log(accessToken)
+    // console.log(accessToken)
     getProductKpis();
 
   }, [])
 
   useEffect(() => {
 
-    console.log("lllllllllllllllllllllll")
+    // console.log("lllllllllllllllllllllll")
 
     setOptionMax({
       // title: {
@@ -125,7 +125,7 @@ export const ProductDashboard = () => {
 
     setIsLoading(true);
 
-    console.log("....................");
+    // console.log("....................");
 
     axios(
       {
@@ -136,18 +136,18 @@ export const ProductDashboard = () => {
           Authorization: `Bearer ${accessToken}`,
         },
       }).then(function (response) {
-        console.log("response:")
-        console.log(response);
+        // console.log("response:")
+        // console.log(response);
         const resultItems = response.data;
         const maxItems = resultItems.result_max;
         const minItems = resultItems.result_min;
 
         const arrMax = JSON.parse(maxItems);
-        console.log(arrMax);
+        // console.log(arrMax);
 
 
         const arrMin = JSON.parse(minItems);
-        console.log(arrMin);
+        // console.log(arrMin);
         setProductMax([]);
         setRevenueMax([]);
         setProductMin([]);
@@ -171,7 +171,7 @@ export const ProductDashboard = () => {
 
       }).catch(function (error) {
 
-        console.log("axois error: " + error);
+        // console.log("axois error: " + error);
         setIsLoading(false);
         setInlineStyles();
 
@@ -182,20 +182,14 @@ export const ProductDashboard = () => {
 
   return (
     <Container fluid className="main-content-container px-4 mt-2" dir="rtl" >
+      <Row>
+        <MinSaleProduct optionMin={optionMin} isLoading={isLoading}></MinSaleProduct>
+      </Row>
 
-      <MinSaleProduct optionMin={optionMin} isLoading={isLoading}></MinSaleProduct>
-      <br />
-      <MaxSaleProduct optionMax={optionMax} isLoading={isLoading}></MaxSaleProduct>
-      <br />
-      {/* <RFM />
-      <hr />
-      <RFMPurchase />
-      <hr />
-      <RFMPrice />
-      <hr />
-      <CustomerChurn />
-      <hr />
-      <CustomerSegmentation /> */}
+      <Row className="mt-3">
+        <MaxSaleProduct optionMax={optionMax} isLoading={isLoading}></MaxSaleProduct>
+      </Row>
+
     </Container>
   )
 }

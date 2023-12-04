@@ -44,7 +44,7 @@ export const BarChart = () => {
   useEffect(() => {
 
     setOption({
-      color:"rgb(182, 94, 223)",
+      color: "rgb(182, 94, 223)",
       xAxis: {
         type: 'category',
         data: x
@@ -61,7 +61,7 @@ export const BarChart = () => {
     });
 
     setOption1({
-      color:["rgb(107, 54, 132)" , "rgb(173, 15, 240)" , "rgb(213, 124, 251)" ],
+      color: ["rgb(107, 54, 132)", "rgb(173, 15, 240)", "rgb(213, 124, 251)"],
       // title: {
       //  // text: chartName,
       //   //subtext: 'Fake Data',
@@ -207,8 +207,8 @@ export const BarChart = () => {
 
     setIsLoadingVisible(true)
     setIsDivVisible("visible")
-    console.log("form:")
-    console.log(form)
+    // console.log("form:")
+    // console.log(form)
 
     axios(
       {
@@ -222,14 +222,14 @@ export const BarChart = () => {
         data: form
       }).then(function (response) {
 
-        console.log("bbn_query response:");
-        console.log(response.data);
+        // console.log("bbn_query response:");
+        // console.log(response.data);
 
         const resultItems = response.data;
         console.log(resultItems.result);
         const itemsArray = resultItems.result;
         const arr = JSON.parse(itemsArray)
-        console.log(arr)
+        // console.log(arr)
 
         setX([]);
         setY([]);
@@ -239,8 +239,8 @@ export const BarChart = () => {
         if (shakhes == "rsi_change") {
 
           arr.map((item, index) => {
-            console.log(index);
-            console.log(item);
+            // console.log(index);
+            // console.log(item);
             // setChartData(chartData => [...chartData, { "rsi_change": item.rsi_change, "p": item.p }])
             setX(x => [...x, item.rsi_change]);
             setY(y => [...y, item.p]);
@@ -249,8 +249,8 @@ export const BarChart = () => {
 
         } else {
           arr.map((item, index) => {
-            console.log(index)
-            console.log(item)
+            // console.log(index)
+            // console.log(item)
             //  setChartData(chartData => [...chartData, { "change": item.rsi_change, "p": item.p }])
             setX(x => [...x, item.change])
             setY(y => [...y, item.p])
@@ -259,14 +259,14 @@ export const BarChart = () => {
           });
         }
 
-        console.log("data of charts ...")
-        console.log(dataChart);
+        // console.log("data of charts ...")
+        // console.log(dataChart);
         setIsLoadingVisible(false);
         setIsChartVisible(true);
         setIsDivVisible("visible")
 
-        console.log(x);
-        console.log(y);
+        // console.log(x);
+        // console.log(y);
 
         // setIsLoadingVisible(false)
         // setIsChartVisible(true)
@@ -276,14 +276,14 @@ export const BarChart = () => {
           if (error.response.status == 401)
             window.location.replace('/')
 
-          console.log(error.response.status);
-          console.log(error.message);
-          console.log(error.response.headers);
-          console.log(error.response.data);
+          // console.log(error.response.status);
+          // console.log(error.message);
+          // console.log(error.response.headers);
+          // console.log(error.response.data);
         }
 
-        console.log("axois error: ");
-        console.log(error)
+        // console.log("axois error: ");
+        // console.log(error)
         setIsLoadingVisible(false)
         setIsChartVisible(false)
         setIsDivVisible("hidden")
@@ -355,8 +355,8 @@ export const BarChart = () => {
     setDataChart([]);
     setOption({});
     setOption1({});
-    console.log("handleChange_bbn_brandwagen")
-    console.log(newValue);
+    // console.log("handleChange_bbn_brandwagen")
+    // console.log(newValue);
     const form = new FormData();
     form.append("asset_id", "14447");
     form.append("var_name", "bbn_bandwagen");
@@ -391,8 +391,8 @@ export const BarChart = () => {
     setDataChart([]);
     setOption({})
     setOption1({})
-    console.log("bbn_total_index_handleChange")
-    console.log(newValue);
+    // console.log("bbn_total_index_handleChange")
+    // console.log(newValue);
     const form = new FormData();
     form.append("asset_id", "14447");
     form.append("var_name", "bbn_total_index");
@@ -433,8 +433,8 @@ export const BarChart = () => {
     setOption({});
     setOption1({});
 
-    console.log("bbn_total_index_handleChange")
-    console.log(newValue);
+    // console.log("bbn_total_index_handleChange")
+    // console.log(newValue);
 
     const form = new FormData();
     form.append("asset_id", "14447");
@@ -476,8 +476,8 @@ export const BarChart = () => {
     setDataChart([]);
     setOption({})
     setOption1({})
-    console.log("bbn_total_index_handleChange")
-    console.log(newValue);
+    // console.log("bbn_total_index_handleChange")
+    // console.log(newValue);
 
     const form = new FormData();
     form.append("asset_id", "14447");
@@ -519,8 +519,8 @@ export const BarChart = () => {
 
     setOption({})
     setOption1({})
-    console.log("bbn_total_index_handleChange")
-    console.log(newValue);
+    // console.log("bbn_total_index_handleChange")
+    // console.log(newValue);
 
     const form = new FormData();
     form.append("asset_id", "14447");
@@ -567,8 +567,8 @@ export const BarChart = () => {
 
     setOption({});
     setOption1({});
-    console.log("bbn_decision_handleChange")
-    console.log(newValue);
+    // console.log("bbn_decision_handleChange")
+    // console.log(newValue);
     const form = new FormData();
     form.append("asset_id", "14447");
     form.append("var_name", "bbn_mood");
@@ -612,8 +612,8 @@ export const BarChart = () => {
     setDataChart([]);
     setOption({})
     setOption1({})
-    console.log("bbn_decision_handleChange")
-    console.log(newValue);
+    // console.log("bbn_decision_handleChange")
+    // console.log(newValue);
     const form = new FormData();
     form.append("asset_id", "14447");
     form.append("var_name", "bbn_sentiment");
@@ -684,135 +684,135 @@ export const BarChart = () => {
   return (
     <div>
       <MainNavbar></MainNavbar>
-      <Container fluid className="main-content-container px-4" style={{marginTop:"50px"}}>
-          <Card small className="mb-2"  >
+      <Container fluid className="main-content-container px-4" style={{ marginTop: "50px" }}>
+        <Card small className="mb-2"  >
           <ListGroup flush>
             <ListGroupItem >
               <Row>
                 <Col md="4" >
-                      <Col>
-                        <ToggleButtonGroup className='d-flex justify-content-center'
-                          color="primary"
-                          value={shakhes}
-                          exclusive
-                          onChange={handleChange}
-                          aria-label="Platform">
-                          <ToggleButton  className="btn-watif" value="rsi_change btn-watif" >شاخص rsi</ToggleButton>
-                          <ToggleButton value="change" className="btn-watif">قیمت</ToggleButton>
-                        </ToggleButtonGroup>
-                      </Col>
-                      <Col >
-                        <label className='lable-watif'>رفتار توده ای</label>
-                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                          <Slider style={{ fontFamily: "iransans", fontSize: "11px" }}
-                            aria-label="Restricted values"
-                            defaultValue={0}
-                            valueLabelFormat={bbn_brandwagen_Format}
-                            getAriaValueText={bbn_brandwagenText}
-                            step={null}
-                            onChange={bbn_brandwagen_handleChange}
-                            // valueLabelDisplay="auto"
-                            marks={bbn_brandwagen}
-                          />
-                        </Box>
-                      </Col>
+                  <Col>
+                    <ToggleButtonGroup className='d-flex justify-content-center'
+                      color="primary"
+                      value={shakhes}
+                      exclusive
+                      onChange={handleChange}
+                      aria-label="Platform">
+                      <ToggleButton className="btn-watif" value="rsi_change btn-watif" >شاخص rsi</ToggleButton>
+                      <ToggleButton value="change" className="btn-watif">قیمت</ToggleButton>
+                    </ToggleButtonGroup>
+                  </Col>
+                  <Col >
+                    <label className='lable-watif'>رفتار توده ای</label>
+                    <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                      <Slider style={{ fontFamily: "iransans", fontSize: "11px" }}
+                        aria-label="Restricted values"
+                        defaultValue={0}
+                        valueLabelFormat={bbn_brandwagen_Format}
+                        getAriaValueText={bbn_brandwagenText}
+                        step={null}
+                        onChange={bbn_brandwagen_handleChange}
+                        // valueLabelDisplay="auto"
+                        marks={bbn_brandwagen}
+                      />
+                    </Box>
+                  </Col>
 
-                      <Col >
-                        <label className='lable-watif'>شاخص کل</label>
-                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                          <Slider
-                            // aria-label="Restricted values"
-                            defaultValue={0}
-                            valueLabelFormat={bbn_total_index_Format}
-                            getAriaValueText={bbn_total_index_Text}
-                            onChange={bbn_total_index_handleChange}
-                            step={null}
-                            // valueLabelDisplay="auto"
-                            marks={bbn_total_index}
-                          />
-                        </Box>
-                      </Col>
+                  <Col >
+                    <label className='lable-watif'>شاخص کل</label>
+                    <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                      <Slider
+                        // aria-label="Restricted values"
+                        defaultValue={0}
+                        valueLabelFormat={bbn_total_index_Format}
+                        getAriaValueText={bbn_total_index_Text}
+                        onChange={bbn_total_index_handleChange}
+                        step={null}
+                        // valueLabelDisplay="auto"
+                        marks={bbn_total_index}
+                      />
+                    </Box>
+                  </Col>
 
-                      <Col >
-                        <label className='lable-watif'>نگرش</label>
-                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                          <Slider
-                            // aria-label="Restricted values"
-                            defaultValue={0}
-                            valueLabelFormat={bbn_attitude_Format}
-                            getAriaValueText={bbn_attitude_Text}
-                            onChange={bbn_attitude_handleChange}
-                            step={null}
-                            // valueLabelDisplay="auto"
-                            marks={bbn_attitude}
-                          />
-                        </Box>
-                      </Col>
+                  <Col >
+                    <label className='lable-watif'>نگرش</label>
+                    <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                      <Slider
+                        // aria-label="Restricted values"
+                        defaultValue={0}
+                        valueLabelFormat={bbn_attitude_Format}
+                        getAriaValueText={bbn_attitude_Text}
+                        onChange={bbn_attitude_handleChange}
+                        step={null}
+                        // valueLabelDisplay="auto"
+                        marks={bbn_attitude}
+                      />
+                    </Box>
+                  </Col>
 
-                      <Col >
-                        <label className='lable-watif'>اخبار</label>
-                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                          <Slider
-                            // aria-label="Restricted values"
-                            defaultValue={0}
-                            valueLabelFormat={bbn_news_Format}
-                            getAriaValueText={bbn_news_Text}
-                            onChange={bbn_news_handleChange}
-                            step={null}
-                            // valueLabelDisplay="auto"
-                            marks={bbn_news}
-                          />
-                        </Box>
-                      </Col>
+                  <Col >
+                    <label className='lable-watif'>اخبار</label>
+                    <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                      <Slider
+                        // aria-label="Restricted values"
+                        defaultValue={0}
+                        valueLabelFormat={bbn_news_Format}
+                        getAriaValueText={bbn_news_Text}
+                        onChange={bbn_news_handleChange}
+                        step={null}
+                        // valueLabelDisplay="auto"
+                        marks={bbn_news}
+                      />
+                    </Box>
+                  </Col>
 
-                      <Col >
-                        <label className='lable-watif'>حالت</label>
-                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                          <Slider
-                            // aria-label="Restricted values"
-                            defaultValue={0}
-                            valueLabelFormat={bbn_mood_Format}
-                            getAriaValueText={bbn_mood_Text}
-                            onChange={bbn_mood_handleChange}
-                            step={null}
-                            // valueLabelDisplay="auto"
-                            marks={bbn_mood}
-                          />
-                        </Box>
-                      </Col>
+                  <Col >
+                    <label className='lable-watif'>حالت</label>
+                    <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                      <Slider
+                        // aria-label="Restricted values"
+                        defaultValue={0}
+                        valueLabelFormat={bbn_mood_Format}
+                        getAriaValueText={bbn_mood_Text}
+                        onChange={bbn_mood_handleChange}
+                        step={null}
+                        // valueLabelDisplay="auto"
+                        marks={bbn_mood}
+                      />
+                    </Box>
+                  </Col>
 
-                      <Col >
-                        <label className='lable-watif'>تصمیم</label>
-                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                          <Slider
-                            // aria-label="Restricted values"
-                            defaultValue={0}
-                            valueLabelFormat={bbn_decision_Format}
-                            getAriaValueText={bbn_decision_Text}
-                            onChange={bbn_decision_handleChange}
-                            step={null}
-                            // valueLabelDisplay="auto"
-                            marks={bbn_decision}
-                          />
-                        </Box>
-                      </Col>
+                  <Col >
+                    <label className='lable-watif'>تصمیم</label>
+                    <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                      <Slider
+                        // aria-label="Restricted values"
+                        defaultValue={0}
+                        valueLabelFormat={bbn_decision_Format}
+                        getAriaValueText={bbn_decision_Text}
+                        onChange={bbn_decision_handleChange}
+                        step={null}
+                        // valueLabelDisplay="auto"
+                        marks={bbn_decision}
+                      />
+                    </Box>
+                  </Col>
 
-                      <Col>
-                        <label className='lable-watif'>احساسات</label>
-                        <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
-                          <Slider
-                            // aria-label="Restricted values"
-                            defaultValue={0}
-                            valueLabelFormat={bbn_sentiment_Format}
-                            getAriaValueText={bbn_sentiment_Text}
-                            onChange={bbn_sentiment_handleChange}
-                            step={null}
-                            // valueLabelDisplay="auto"
-                            marks={bbn_sentiment}
-                          />
-                        </Box>
-                      </Col>
-                 
+                  <Col>
+                    <label className='lable-watif'>احساسات</label>
+                    <Box sx={{ width: 400, padding: '5px', marginRight: "10px" }}>
+                      <Slider
+                        // aria-label="Restricted values"
+                        defaultValue={0}
+                        valueLabelFormat={bbn_sentiment_Format}
+                        getAriaValueText={bbn_sentiment_Text}
+                        onChange={bbn_sentiment_handleChange}
+                        step={null}
+                        // valueLabelDisplay="auto"
+                        marks={bbn_sentiment}
+                      />
+                    </Box>
+                  </Col>
+
                 </Col>
                 <Col md="8" >
 
@@ -820,8 +820,8 @@ export const BarChart = () => {
 
                     {isLoadingVisible && <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
                       {/* <Spinner animation="border" role="status" ></Spinner> */}
-                      <Spinner animation="grow" size="sm"  className='color-spinner'  />
-                      <Spinner animation="grow"  className='color-spinner'  />
+                      <Spinner animation="grow" size="sm" className='color-spinner' />
+                      <Spinner animation="grow" className='color-spinner' />
                       <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
                     </div>
                     }
@@ -835,8 +835,8 @@ export const BarChart = () => {
 
                     {isLoadingVisible && <div className="text-center"  >
                       {/* <Spinner animation="border" role="status" ></Spinner> */}
-                      <Spinner animation="grow" size="sm"  className='color-spinner'  />
-                      <Spinner animation="grow"  className='color-spinner'  />
+                      <Spinner animation="grow" size="sm" className='color-spinner' />
+                      <Spinner animation="grow" className='color-spinner' />
                       <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
                     </div>
                     }

@@ -11,6 +11,7 @@ import { GrowthMonth } from './GrowthMonth';
 import { AvgOrderMonth } from './AvgOrderMonth';
 import { OrderValueMonth } from './OrderValueMonth';
 import { CustomerActivity } from './CustomerActivity';
+import { Row, Col } from 'shards-react'
 
 export const TransactionKpI = () => {
 
@@ -70,7 +71,7 @@ export const TransactionKpI = () => {
       }
     )
 
-    console.log(option)
+    // console.log(option)
   }, [date, setDate, order, setOrder])
 
   //-----------------------------------------------------------------------
@@ -83,8 +84,8 @@ export const TransactionKpI = () => {
 
   useEffect(() => {
 
-    console.log(date);
-    console.log(countcustomer);
+    // console.log(date);
+    // console.log(countcustomer);
 
     setOptionActivityCustomer(
       {
@@ -133,7 +134,7 @@ export const TransactionKpI = () => {
 
     )
 
-    console.log(option)
+    // console.log(option)
   }, [date, setDate, countcustomer, setCountCustomer])
 
 
@@ -242,10 +243,10 @@ export const TransactionKpI = () => {
   //---------------------------------------------------------------
   //متوسط سفارش در ماه
   useEffect(() => {
-    console.log("year------------------");
-    console.log(year);
-    console.log("revenue year-----------------");
-    console.log(revenueYear);
+    // console.log("year------------------");
+    // console.log(year);
+    // console.log("revenue year-----------------");
+    // console.log(revenueYear);
 
     // setOptionAvgOrderMonth(
     //   {
@@ -369,11 +370,11 @@ export const TransactionKpI = () => {
         const resultItems = response.data;
         const itemsArray = resultItems.result;
 
-        console.log("itemsArray");
-        console.log(itemsArray);
+        // console.log("itemsArray");
+        // console.log(itemsArray);
         const arr = JSON.parse(itemsArray);
 
-        console.log(arr);
+        // console.log(arr);
         setDate([]);
         setRevenue([]);
         setGrowth([]);
@@ -418,15 +419,15 @@ export const TransactionKpI = () => {
             growth2024 += item.monthly_growth;
           }
 
-          console.log(year);
+          // console.log(year);
           setYear(item.year);
-          console.log(item.year + " , " + item.month)
+          // console.log(item.year + " , " + item.month)
           const date1 = item.year + " , " + item.month;
           setDate(date => [...date, date1]);
           setCountCustomer(countcustomer => [...countcustomer, item.active_customers]);
 
           if (item.Revenue == null) {
-            console.log("null");
+            // console.log("null");
           } else {
             setRevenue(revenue => [...revenue, item.Revenue])
           }
@@ -443,13 +444,13 @@ export const TransactionKpI = () => {
           // }
 
           if (item.monthly_order_average == null) {
-            console.log("null")
+            // console.log("null")
           } else {
             setAvgOrder(avgOrder => [...avgOrder, item.monthly_order_average])
           }
 
           if (item.monthly_order_count == null) {
-            console.log("null")
+            // console.log("null")
 
           } else {
             setOrder(order => [...order, item.monthly_order_count])
@@ -476,12 +477,12 @@ export const TransactionKpI = () => {
         setGrowth(revenueYear => [...revenueYear, growth2022]);
         setGrowth(revenueYear => [...revenueYear, growth2023]);
         setGrowth(revenueYear => [...revenueYear, growth2024]);
-        console.log(sumMentoryValue)
+        // console.log(sumMentoryValue)
         setIsLoading(false);
 
       }).catch(function (error) {
 
-        console.log("axois error: " + error);
+        // console.log("axois error: " + error);
         setIsLoading(false);
 
         sessionStorage.clear();
@@ -494,17 +495,34 @@ export const TransactionKpI = () => {
 
   return (
 
-    <Container fluid className="main-content-container" >
-      <RevenueMonth optionRevenueMonth={optionRevenueMonth} isLoading={isLoading} />
-      <br />
-      <GrowthMonth optionGrowthMonth={optionGrowthMonth} isLoading={isLoading} />
-      <br />
-      <AvgOrderMonth optionAvgOrderMonth={optionAvgOrderMonth} isLoading={isLoading} />
-      <br />
-      <OrderValueMonth option={option} isLoading={isLoading} />
-      <br />
-      <CustomerActivity optionActivityCustomer={optionActivityCustomer} isLoading={isLoading} />
-      <br />
+    <Container fluid className="main-content-container" dir="rtl" >
+      <Row>
+        <Col>
+          <GrowthMonth optionGrowthMonth={optionGrowthMonth} isLoading={isLoading} />
+        </Col>
+
+        <Col>
+          <AvgOrderMonth optionAvgOrderMonth={optionAvgOrderMonth} isLoading={isLoading} />
+        </Col>
+
+        <Col>
+          <RevenueMonth optionRevenueMonth={optionRevenueMonth} isLoading={isLoading} />
+        </Col>
+      </Row>
+
+      <Row className="mt-3">
+        <Col> <OrderValueMonth option={option} isLoading={isLoading} /></Col>
+        <Col><CustomerActivity optionActivityCustomer={optionActivityCustomer} isLoading={isLoading} /></Col>
+      </Row>
+
+
+
+      {/* <AvgOrderMonth optionAvgOrderMonth={optionAvgOrderMonth} isLoading={isLoading} /> */}
+
+
+
+
+
     </Container>
   )
 }

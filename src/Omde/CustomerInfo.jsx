@@ -6,10 +6,9 @@ import {
 } from "shards-react";
 import axios from 'axios'
 import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp, faThumbsDown } from "@fortawesome/fontawesome-free-solid";
-import { Spinner } from 'react-bootstrap';
 import Loading from '../Loading';
+import ReactECharts from 'echarts-for-react';
+import GaugeChart from 'react-gauge-chart'
 
 export const CustomerInfo = () => {
 
@@ -19,21 +18,118 @@ export const CustomerInfo = () => {
   const [sumPredictedPurchases, setSumPredictedPurchases] = useState(0);
   const [sumMonetory, setSumMonetory] = useState(0);
   const [array, setArray] = useState([]);
-  const [profile, setProfile] = useState("ارزش");
+  const [profile, setProfile] = useState(0);
   const [churn, setChurn] = useState();
-  const [clusterList, setClusterList] = useState([{ Id: 0, Name: "ارزش پایین" }, { Id: 1, Name: "ارزش متوسط" }, { Id: 2, Name: "ارزش بالا" }]);
-  const [sumPredictedPurchases1, setSumPredictedPurchases1] = useState(0);
-  const [sumMonetory1, setSumMonetory1] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [option, setOption] = useState({});
+  const [option1, setOption1] = useState({});
+  const [clv, setClv] = useState(0);
+  const [customers, setCustomers] = useState([]);
+  const [pred, setPred] = useState([]);
+  const [newPred, setNewPred] = useState([]);
+  const [segment, setSegment] = useState("خوشه با ارزش پایین");
+  const [data, setData] = useState([]);
+  const [newSegment, setNewSegment] = useState([]);
+  const [a, setA] = useState([]);
+  const [b, setB] = useState([]);
+  const [visiblePanel2, setVisiblePanel2] = useState(false);
+  const [newCustomer, setNewCustomer] = useState([]);
 
   useEffect(() => {
     getCustomers();
   }, [])
 
-  const getCustomers = () => {
+  useEffect(() => {
 
-    console.log("....................");
+    setOption1({
+      textStyle: {
+        fontFamily: "cinema",
+      },
+      title: {
+        text: 'ارزش خرید مشتریان هم خوشه',
+        textStyle: {
+          color: "rgb(140, 17, 197)"
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {},
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'value',
+        boundarbyGap: [0, 0.01]
+      },
+      yAxis: {
+        type: 'category',
+        data: a
+      },
+      series: [
+        {
+          name: segment,
+          type: 'bar',
+          data: b,
+        }
+      ]
+    });
+  }, [a, b]);
+
+  useEffect(() => {
+
+    console.log("new customer ...");
+    console.log(newCustomer);
+
+    setOption({
+      textStyle: {
+        fontFamily: "cinema",
+      },
+      title: {
+        text: 'مشتریان با بیشترین میزان خرید',
+        textStyle: {
+          color: "rgb(140, 17, 197)"
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {},
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01]
+      },
+      yAxis: {
+        type: 'category',
+        data: newCustomer
+      },
+      series: [
+        {
+          // name: '2011',
+          type: 'bar',
+          data: pred,
+        }
+      ]
+    });
+
+  }, [newCustomer])
+
+  const getCustomers = () => {
 
     axios(
       {
@@ -45,56 +141,90 @@ export const CustomerInfo = () => {
         },
       }).then(function (response) {
 
-        console.log("response for ===>getCustomerPredicted");
-        console.log(response.date);
         const resultItems = response.data;
         const itemsArray = resultItems.result;
-        const arr = JSON.parse(itemsArray);
-        console.log("resultItems.....");
-        console.log(resultItems);
-        console.log("itemsArray...");
-        console.log(itemsArray);
-        console.log("arr.....");
-        console.log(arr);
+        const arr = JSON.parse(itemsArray).slice(0, 100);
         setArray(arr);
-        setCustomerItems(arr.slice(0, 100).map(m => m.CustomerID));
+        setCustomerItems([]);
+        setData([]);
+        setPred([]);
+        setCustomers([]);
+        setCustomerItems(arr.map(m => m.CustomerID));
+        const copyArray = [...arr];
+        copyArray.sort((a, b) => {
+          return b.predicted_90_days - a.predicted_90_days;
+        });
+
+        setCustomers(copyArray.slice(0, 10).map(p => p.CustomerID));
+        setPred(copyArray.slice(0, 10).map(p => p.predicted_90_days));
+
+        arr.map(item => {
+          setData(p => [...p, {
+            "CustomerID": item.CustomerID,
+            "frequency": item.frequency,
+            "recency": item.recency,
+            "monetary_value": item.monetary_value,
+            "predicted_90_days": item.predicted_90_days,
+            "Retention": item.Retention,
+            "Churn": item.Churn,
+            "clv": item.clv,
+            "segmentclv": item.segmentclv
+          }])
+        });
+
         setIsLoading(false);
 
       }).catch(function (error) {
-
-        console.log("axois error: " + error);
         setIsLoading(false);
       });
   }
 
-
   const changeCustomer = (value) => {
-    console.log(value);
-    setProfile("ارزش");
+
     setSumPredictedPurchases(0);
     setSumMonetory(0);
-
-
+    setNewCustomer([]);
+    setNewCustomer([...customers, value]);
     const customerList = array.filter(m => m.CustomerID == value);
-
     if (customerList.length == 1) {
+      setPred(p => [...p, customerList[0].predicted_90_days]);
 
-      setChurn(customerList[0].churn);
-      console.log(customerList[0].predicted_purchases);
+      setChurn(customerList[0].Churn);
+      setClv(customerList[0].clv);
+      const temp = data.filter(name => name.segmentclv.includes(customerList[0].segmentclv));
 
-      if (customerList[0].Profile == 'low value') {
-        setProfile("ارزش پایین");
-      } else if (customerList[0].Profile == "medium value") {
-        setProfile("ارزش متوسط");
+      setNewSegment(temp.slice(0, 10));
+      setNewSegment(p => [...p, {
+        "CustomerID": customerList[0].CustomerID,
+        "frequency": customerList[0].frequency,
+        "recency": customerList[0].recency,
+        "monetary_value": customerList[0].monetary_value,
+        "predicted_90_days": customerList[0].predicted_90_days,
+        "Retention": customerList[0].Retention,
+        "Churn": customerList[0].Churn,
+        "clv": customerList[0].clv,
+        "segmentclv": customerList[0].segmentclv
+      }]);
+
+      setA(temp.slice(0, 10).map(i => i.CustomerID))
+      setA(p => [...p, customerList[0].CustomerID])
+      setB(temp.slice(0, 10).map(i => i.monetary_value))
+      setB(p => [...p, customerList[0].monetary_value])
+
+      setVisiblePanel2(true);
+
+      if (customerList[0].segmentclv == 'Medium') {
+        setSegment("خوشه با ارزش متوسط")
+        setProfile(0.5);
+      } else if (customerList[0].segmentclv == "High") {
+        setSegment("خوشه با ارزش بالا")
+        setProfile(1);
       } else {
-        setProfile("ارزش بالا");
+        setSegment("خوشه با ارزش پایین")
+        setProfile(0);
       }
 
-      if (customerList[0].predicted_purchases == null) {
-        setSumPredictedPurchases(0);
-      } else {
-        setSumPredictedPurchases(customerList[0].predicted_purchases);
-      }
+      setSumPredictedPurchases(customerList[0].predicted_90_days.toFixed(2));
 
       if (customerList[0].monetary_value == null) {
         setSumMonetory(0);
@@ -102,71 +232,21 @@ export const CustomerInfo = () => {
         setSumMonetory(customerList[0].monetary_value);
       }
     }
-
-
-    //arr.map(item => item.predicted_purchases).reduce((prev, curr) => prev + curr, 0);
-
   }
-
-  const changeCluster = (value) => {
-    console.log(value);
-    const customerList = array.filter(m => m.Cluster == value);
-    console.log(customerList);
-    var countPredictedPurchase = customerList.map(item => item.predicted_purchases).length;
-    console.log("count predicted purchase");
-    console.log(countPredictedPurchase);
-    const sumPredictedPurchases = customerList.map(item => item.predicted_purchases).reduce((prev, curr) => prev + curr, 0);
-    const sumMentoryValue = customerList.map(item => item.monetary_value).reduce((prev, curr) => prev + curr, 0);
-
-    var avgPredictedPurchase = sumPredictedPurchases / countPredictedPurchase;
-    console.log("avg predicted purchase ...");
-    console.log(avgPredictedPurchase);
-
-    var countMonetory = customerList.map(item => item.monetary_value).length;
-    console.log("count monetory");
-    console.log(countMonetory);
-    var avgMonetory = sumMentoryValue / countMonetory;
-    console.log("avg mnetory");
-    console.log(avgMonetory);
-
-    setSumPredictedPurchases1(avgPredictedPurchase.toLocaleString());
-    setSumMonetory1(avgMonetory.toLocaleString());
-
-    // const number = 123456.789;
-    // console.log(number.toLocaleString("de-DE"));
-    // // → 123.456,789    
-    // // Arabic in most Arabic speaking countries uses Eastern Arabic digits
-    // console.log(number.toLocaleString("ar-EG"));
-    // // → ١٢٣٤٥٦٫٧٨٩    
-    // // India uses thousands/lakh/crore separators
-    // console.log(number.toLocaleString("en-IN"));
-    // console.log(sumMentoryValue.toLocaleString());
-    // → 1,23,456.789
-
-
-  }
-
-
-
 
   return (
-    <Container fluid className="main-content-container px-4 mt-3" dir="rtl"  >
+    <Container fluid className="main-content-container px-4" dir="rtl" >
       <Card small className="h-100" >
         <CardHeader> اطلاعات مشتری</CardHeader>
         <CardBody className="pt-0">
           {isLoading == true ? <Loading></Loading>
-            // <div className="text-center " style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-            //   <Spinner animation="grow" size="sm" className='color-spinner' />
-            //   <Spinner animation="grow" className='color-spinner' />
-            //   <div className='text-center color-spinner loading-text' dir="rtl">در حال بارگزاری...</div>
-            // </div> 
             :
             <>
               <Row>
-                <Col md="6" className="form-group">
+                <Col md="4" className="form-group">
                   <div className="form-inline mt-3">
-                    <label htmlFor="customer" > فیلتر مشتری</label>
-                    <FormSelect className="form-control" id="tankhah" name="tankhah" onChange={(e) => changeCustomer(e.target.value)}>
+                    <label>فیلتر مشتری</label>
+                    <FormSelect className="form-control" onChange={(e) => changeCustomer(e.target.value)}>
                       <option value={""}>یک موردانتخاب کنید</option>
                       {
                         customerItems.map((item, index) => (
@@ -180,71 +260,37 @@ export const CustomerInfo = () => {
                   </div>
                 </Col>
               </Row>
-              <Row>
-                <Col md="3">
-                  <label>ریزش مشتری</label>
-                  <div className='div-box'>
-                    {/* <FontAwesomeIcon icon={faSortAlphaDown} className="mr-2 ml-2" /> */}
-                    <h5 className='box-font' >{churn == "yes" ? <><FontAwesomeIcon icon={faThumbsUp} className="yes" ></FontAwesomeIcon><span className='yes ml-2'  >بلی</span></> : <><FontAwesomeIcon icon={faThumbsDown} className="no" ></FontAwesomeIcon><span className='no ml-2' >خیر</span></>}</h5>
-                    {/* //' <FontAwesomeIcon icon={faReply} style={{ fontSize: "16pt", color: "#6f0a9d" }} /> <span>بلی</span>:<FontAwesomeIcon icon={faReply} style={{ fontSize: "16pt", color: "#6f0a9d" }} /> <span>خیر</span>}</h5> */}
-                  </div>
-                </Col>
-                <Col md="3">
-                  <label>پیش بینی تعداد خرید </label>
-                  <div className='div-box'>
-                    {/* <FontAwesomeIcon icon={faDolly} className="mr-2 ml-2" /> */}
-                    <h5 className='box-font'>{sumPredictedPurchases}</h5>
-                  </div>
-                </Col>
-                <Col md="3">
-                  <label>پیش بینی ارزش خرید </label>
-                  <div className='div-box'>
-                    {/* <FontAwesomeIcon icon={faObjectGroup} className="mr-2 ml-2" /> */}
-                    <h5 className='box-font'>{sumMonetory}</h5>
-                  </div>
-                </Col>
-                <Col md="3">
-                  <label>خوشه بندی</label>
-                  <div className='div-box'>
-                    {/* <FontAwesomeIcon icon={faUserCog} className="mr-2 ml-2" /> */}
-                    <h5 className='box-font'>{profile}</h5>
-                  </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md="6" className="form-group">
-                  <div className="form-inline mt-3 ">
-                    <label htmlFor="customer" > فیلتر خوشه</label>
-                    <FormSelect className="form-control" id="tankhah" name="tankhah" onChange={(e) => changeCluster(e.target.value)}>
-                      <option value={""}>یک موردانتخاب کنید</option>
-                      {
-                        clusterList.map((item, index) => (
-                          <option key={index}
-                            value={item.Id}>
-                            {item.Name}
-                          </option>
-                        ))
-                      }
-                    </FormSelect>
-                  </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md="3">
-                  <label>پیش بینی تعداد خرید </label>
-                  <div className='div-box'>
-                    <h5 className='box-font' >{sumPredictedPurchases1}</h5>
-                  </div>
-                </Col>
-                <Col md="3">
-                  <label>پیش بینی ارزش خرید </label>
-                  <div className='div-box'>
-                    <h5 className='box-font' >
-                      {sumMonetory1}
-                    </h5>
-                  </div>
-                </Col>
-              </Row>
+              {visiblePanel2 == true ?
+                <>
+                  <Row >
+                    <Col md="6" className="center-align bold">
+                      <h3 className="center-align bold">احتمال ریزش </h3>
+                      <GaugeChart id="gauge-chart2"
+                        nrOfLevels={10}
+                        percent={churn}
+                        colors={["#099657", "#bd0829"]}
+                        textColor="black" className="center-align bold"
+                        style={{ heigh: "100px", width: "500px" }}
+                      />
+                    </Col>
+                    <Col md="6" className="center-align bold">
+                      <h3 className="center-align bold">خوشه بندی</h3>
+                      <GaugeChart id="gauge-chart2" className="center-align bold"
+                        colors={["red", "orange", "green"]}
+                        nrOfLevels={3}
+                        percent={profile}
+                        textColor="black"
+                        style={{ heigh: "100px", width: "500px" }}
+                        formatTextValue={value => segment}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col><ReactECharts option={option} /></Col>
+                    <Col><ReactECharts option={option1} /></Col>
+                  </Row>
+                </>
+                : ""}
             </>
           }
 

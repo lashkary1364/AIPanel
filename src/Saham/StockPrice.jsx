@@ -27,9 +27,7 @@ export const StockPrice = () => {
 
     useEffect(() => {
 
-        console.log("data series ...")
-        console.log(date);
-        console.log(lastPrice);
+
 
 
         setOption({
@@ -56,16 +54,10 @@ export const StockPrice = () => {
 
     }, [date, lastPrice]);
 
-    useEffect(() => {
-
-        console.log("option ....")
-        console.log(option);
-
-    }, [option])
 
     const getStockPrice = () => {
 
-        console.log("tahlile  zar ...");
+        // console.log("tahlile  zar ...");
         axios(
             {
                 url: serverAddress + "get_stock_price",
@@ -76,14 +68,14 @@ export const StockPrice = () => {
                 },
             }).then(function (response) {
 
-                console.log("get stock price ....")
+                // console.log("get stock price ....")
                 const resultItems = response.data;
-                console.log(resultItems);
+                // console.log(resultItems);
                 const itemsArray = resultItems.result;
-                console.log("itemsArray");
-                console.log(itemsArray);
+                // console.log("itemsArray");
+                // console.log(itemsArray);
                 const arr = JSON.parse(itemsArray);
-                console.log(arr);
+                // console.log(arr);
                 setDate([]);
                 setLastPrice([]);
 
@@ -99,7 +91,7 @@ export const StockPrice = () => {
 
             }).catch(function (error) {
                 setIsLoading(false);
-                console.log("axois error: " + error);
+                // console.log("axois error: " + error);
                 Swal.fire(
                     'خطا',
                     error.message,
@@ -109,21 +101,18 @@ export const StockPrice = () => {
     }
 
     return (
-        <Card small className="h-100 mt-20" >
-            <CardHeader>تحلیل قیمت زر</CardHeader>
-            <CardBody className="pt-0">
-                {
-                    isLoading == true ? <Loading></Loading>
-                        // <div className="text-center" style={{ paddingTop: "50px", margin: "auto", width: "50%" }} >
-                        //     <Spinner animation="grow" size="sm" variant="primary" />
-                        //     <Spinner animation="grow" variant="primary" />
-                        //     <div className='text-primary text-center' dir="rtl">در حال بارگزاری...</div>
-                        // </div>
-                        :
-                        option != undefined ? <ReactECharts option={option} /> : ''
-                }
+        <>
+            <Card small className="h-100 mt-20" >
+                <CardHeader>تحلیل قیمت زر</CardHeader>
+                <CardBody className="pt-0">
+                    {
+                        isLoading == true ? <Loading></Loading>
+                            :
+                            option != undefined ? <ReactECharts option={option} /> : ''
+                    }
 
-            </CardBody>
-        </Card>
+                </CardBody>
+            </Card>
+        </>
     )
 }

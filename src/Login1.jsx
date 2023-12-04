@@ -1,4 +1,4 @@
-import React ,{ useState } from 'react'
+import React, { useState } from 'react'
 import "./assets/css/fontiran.css"
 import "./assets/login1.css"
 import { useFormik } from 'formik'
@@ -14,8 +14,7 @@ export const Login1 = () => {
   useEffect(() => {
     sessionStorage.clear();
     localStorage.clear();
-    console.log("env variable")
-    console.log(serverAddress + "auth/token")
+
   }, []);
 
 
@@ -52,11 +51,6 @@ export const Login1 = () => {
             "Content-Type": "multipart/form-data"
           },
         }).then(function (response) {
-
-          console.log("response: ");
-          console.log(response);
-          console.log(response.data.access_token);
-
           sessionStorage.setItem("LoginTocken", JSON.stringify({
             userFirstName: data.userName,
             userLastName: data.password,
@@ -76,7 +70,7 @@ export const Login1 = () => {
               'error'
             );
             //alert("نام کاربری یا رمز عبور اشتباه میباشد");
-           // setErrorFlag(true);
+            // setErrorFlag(true);
           }
 
         }).catch(function (error) {
@@ -87,8 +81,7 @@ export const Login1 = () => {
             "نام کاربری یا رمز عبور اشتباه میباشد",
             'error'
           );
-          console.log("axois error: " + error);
-          console.log(ErrorFlag);
+
           localStorage.clear();
         })
     }
@@ -107,16 +100,15 @@ export const Login1 = () => {
           <img src={require("./images/login/3.png")} alt="" className="image-2" />
           <div style={{ fontFamily: "cinema", fontSize: "25px" }}>ورود به سامانه</div>
           <div>
-            <input type="text" id="userName" name="userName" value={formik.values.userName} onChange={formik.handleChange} placeholder='نام کاربری' />
+            <input className='input-login' type="text" id="userName" name="userName" value={formik.values.userName} onChange={formik.handleChange} placeholder='نام کاربری' />
           </div>
           <div>
-            <input type="password" id="password" name="password" value={formik.values.password} onChange={formik.handleChange} placeholder='رمز عبور' />
+            <input className='input-login' type="password" id="password" name="password" value={formik.values.password} onChange={formik.handleChange} placeholder='رمز عبور' />
           </div>
           <div className='form-inline'>
-
             <button className="login100-form-btn" type='submit' style={{ marginLeft: "20px" }}>ورود</button>
-            <button className="login100-form-btn" type='submit'  onClick={handleRegister} >ثبت نام</button>
-          </div>          
+            <button className="login100-form-btn" type='submit' onClick={handleRegister} >ثبت نام</button>
+          </div>
           <div style={{ textAlign: "center", marginTop: "30px", fontFamily: "cinema", }}>
             <a style={{ color: "#8c11c5", textDecoration: "bottom", fontSize: "12pt" }} href="#" >فراموشی رمز عبور</a>
           </div>

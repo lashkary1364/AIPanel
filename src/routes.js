@@ -11,7 +11,7 @@ import { Dion } from "./Saham/Dion";
 import { MainOmde } from "./MainOmde"
 import { MainZanjire } from "./MainZanjire"
 import { MainSaham } from "./MainSaham"
-import { WathiOmde } from "./Omde/WathiOmde"
+import { MainSaham2 } from "./MainSaham2"
 import { MainOmde1 } from "./MainOmde1"
 import { WatifSaham } from "./Saham/WatifSaham"
 import { WatifZanjire } from "./Zanjire/WatifZanjire"
@@ -33,7 +33,8 @@ import OmdeWhatifLayout from "./layouts/OmdeWhatifLayout";
 import ZanjireWhatifLayout from "./layouts/ZanjireWhatifLayout";
 import { HomeChain } from "./Zanjire/HomeChain";
 import { WatifCustomer } from "./Saham/WatifCustomer";
-
+import { Omde } from "./Omde";
+import { Zanjire } from "./Zanjire";
 
 export default [
   {
@@ -49,17 +50,22 @@ export default [
   {
     path: "/mainomde",
     layout: DefaulCustomeLayout,
-    component: MainOmde1
+    component: Omde
   },
   {
     path: "/mainzanjire",
     layout: DefaulCustomeLayout,
     component: MainZanjire
   },
+  // {
+  //   path: "/mainsaham",
+  //   layout: DefaulCustomeLayout,
+  //   component: MainSaham
+  // },
   {
     path: "/mainsaham",
     layout: DefaulCustomeLayout,
-    component: MainSaham
+    component: MainSaham2
   },
   {
     path: "/kpi",
@@ -123,8 +129,8 @@ export default [
   // },
   {
     path: "/whatif-chain",
-    layout: ZanjireWhatifLayout,
-    component: WatifZanjire
+    layout: DefaulCustomeLayout,
+    component: Zanjire
   },
   {
     path: "/dashboardomde",
